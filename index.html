@@ -5112,8 +5112,8 @@ Liste les améliorations à faire en moins de 5 lignes, puis donne-moi la versio
       <div class="parcours-nav-label">Les 7 parcours</div>
       <ul>
         <li>💼 <strong><a href="#parcours-business">Parcours 1 — Business &amp; Commercial</a></strong> — Sales/BD, Account Management, Pre-Sales, Customer Success, Partnerships</li>
-        <li>🎧 <strong>Parcours 2 — Support &amp; Service Client</strong> — Support technique, Customer Service, Onboarding <span class="tag-soon">en cours</span></li>
-        <li>⚖️ <strong>Parcours 3 — Risk, Compliance &amp; Legal</strong> — Legal, Compliance, Risk Management, DPO/Privacy <span class="tag-soon">en cours</span></li>
+        <li>🎧 <strong><a href="#parcours-support">Parcours 2 — Support &amp; Service Client</a></strong> — Support technique, Customer Service, Onboarding</li>
+        <li>⚖️ <strong><a href="#parcours-risk">Parcours 3 — Risk, Compliance &amp; Legal</a></strong> — Legal, Compliance, Risk Management, DPO/Privacy</li>
         <li>💰 <strong>Parcours 4 — Finance &amp; Ops</strong> — Finance, Comptabilité, Operations, Procurement <span class="tag-soon">en cours</span></li>
         <li>📣 <strong>Parcours 5 — Marketing, Produit &amp; Communication</strong> — Marketing, Product, Product Marketing, Communication <span class="tag-soon">en cours</span></li>
         <li>🛠️ <strong>Parcours 6 — Tech &amp; Engineering</strong> — Engineering, DevOps/SRE, Data, QA/Security <span class="tag-soon">en cours</span></li>
@@ -5678,6 +5678,1006 @@ Source chaque info. Si tu hésites, dis-le.</pre>
 
     </div>
     <!-- /PARCOURS 1 — BUSINESS & COMMERCIAL -->
+
+    <!-- ============ PARCOURS 2 — SUPPORT & SERVICE CLIENT ============ -->
+    <div class="parcours-block" id="parcours-support">
+      <div class="parcours-block-label">🎧 Parcours 2 · Support &amp; Service Client · 6-8 min</div>
+      <h3>Support &amp; <em>Service Client</em></h3>
+      <p class="lead">Le métier où l'IA accélère le plus vite la qualité du premier contact — à condition de ne pas confondre "répondre vite" et "répondre bien".</p>
+
+      <p>Vous gérez des flux : tickets, demandes, escalades, onboarding de nouveaux marchands. Chaque jour, vous traitez des dizaines de cas dont une grande partie sont <strong>structurellement similaires</strong> ("comment activer X", "pourquoi ce paiement a échoué"). Et une petite partie sont des <strong>incidents réels</strong> qui demandent du temps de diagnostic. L'IA déplace le ratio entre ces deux populations. Sur les cas répétitifs, vous gagnez 60-80% du temps. Sur les cas complexes, vous récupérez ce temps pour vraiment creuser.</p>
+
+      <div class="callout">
+        <span class="callout-label">Règle d'or Support</span>
+        L'IA drafte la réponse, vous tenez la qualité du diagnostic et le ton de la relation.
+      </div>
+
+      <h4>Pièges transverses à la catégorie Support</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — Réponse IA générique sur un cas spécifique</span>
+        <p>L'IA répond toujours quelque chose, même quand elle ne sait pas. Sur un cas client précis, une réponse générique du type <em>"vérifiez la configuration de votre intégration"</em> perd du temps au client et casse la confiance.</p>
+        <p><strong>Bonne pratique :</strong> alimenter l'IA avec <strong>la doc HiPay réelle</strong> (via Notebook ou Gem dédié) et lui demander de signaler quand elle ne trouve pas de réponse précise dans les sources.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — Tonalité standardisée sur des clients en colère</span>
+        <p>Un client en colère reçoit une réponse au ton trop neutre : il a l'impression de parler à un bot. Sur les cas tendus, le ton humain est non négociable.</p>
+        <p><strong>Bonne pratique :</strong> utiliser l'IA pour drafter la <strong>structure</strong>, puis <strong>réécrire à la main la phrase d'ouverture et de clôture</strong>. Les 2 minutes que ça coûte sauvent la relation.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Données clients dans des outils non validés</span>
+        <p>Un ticket support contient typiquement : ID marchand, ID transaction, montants, parfois des données 3DS. Coller ça dans un outil non validé = exfiltration de données sensibles.</p>
+        <p><strong>Bonne pratique :</strong> <strong>Gemini Advanced, Claude.ai Team (pilote), DUST (pilote)</strong> uniquement. Sur les tickets très sensibles (suspicion de fraude, incident de sécurité, données PCI-DSS), <strong>aucun outil IA externe</strong>.
+        <!-- À VÉRIFIER : liste des outils validés HiPay pour tickets support — à confirmer avec IT/Sécurité --></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Bot sans validation humaine sur des incidents</span>
+        <p>Un bot qui répond directement sur Zendesk ou Slack #support sans humain dans la boucle, sur un incident = escalade gérée n'importe comment.</p>
+        <p><strong>Bonne pratique :</strong> tout bot support doit avoir un <strong>seuil de criticité</strong> au-delà duquel il escalade automatiquement à un humain. Et le client doit <strong>toujours</strong> savoir qu'il parle à un bot.
+        <!-- À VÉRIFIER : obligation de divulgation bot (AI Act) — à confirmer avec Compliance --></p>
+      </div>
+
+      <!-- SOUS-MÉTIER 2.1 — SUPPORT TECHNIQUE -->
+      <div class="sous-metier" id="sous-metier-support-tech">
+        <div class="lesson-meta">Sous-métier 2.1 · Support technique</div>
+        <h3>Support <em>technique</em></h3>
+        <p class="lead">Vous êtes en première ligne sur les intégrations payment. L'IA vous aide à drafter les réponses techniques 3x plus vite, à condition de toujours valider le claim technique avant envoi.</p>
+
+        <p>Vous traitez des marchands en intégration ou en run : intégration API qui ne passe pas, transaction qui retourne une erreur opaque, redirection 3DS qui boucle. La majorité des tickets se rangent dans 20-30 cas types. L'IA fait deux choses bien : <strong>structurer une réponse</strong> à partir d'un cas type identifié, et <strong>proposer un premier diagnostic</strong> sur les logs ou les codes d'erreur. Elle ne fait pas le diagnostic à votre place.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Réponse à un ticket d'intégration</h5>
+            <p><strong>Avant :</strong> 20-30 min pour relire la doc d'intégration, identifier le blocage probable, rédiger une réponse structurée.</p>
+            <p><strong>Après :</strong> 8-10 min. Vous brieffez Gemini Advanced avec le ticket et des logs anonymisés. L'IA propose 2-3 hypothèses + la réponse type. Vous identifiez la bonne, personnalisez 2-3 phrases, envoyez.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Diagnostic à partir de logs</h5>
+            <p><strong>Avant :</strong> 15-20 min de lecture de logs bruts pour identifier où ça casse.</p>
+            <p><strong>Après :</strong> 5-10 min. Logs anonymisés dans Gemini Advanced : <em>"Identifie les anomalies, propose 3 hypothèses ordonnées de la plus probable à la moins probable, indique ce que je dois vérifier pour trancher."</em> Vous tranchez.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Documentation d'un cas résolu</h5>
+            <p><strong>Avant :</strong> vous résolvez un cas tordu, vous savez que ça repassera, mais vous ne documentez pas (pas le temps).</p>
+            <p><strong>Après :</strong> 10 min. Vous brieffez Gemini Advanced : symptôme initial, diagnostic, étapes de résolution → fiche Confluence propre à valider et publier. Au bout de 6 mois, vous avez une vraie base de cas.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">⚡</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−60%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps<br>par ticket d'intégration</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Traiter un ticket d'intégration en 15 min"</h4>
+        <p><strong>Contexte :</strong> un marchand écrit <em>"Quand je tente une transaction par carte en mode test, je reçois une erreur 5000. Mon intégration fonctionnait la semaine dernière."</em></p>
+
+        <p><strong>Étapes 1-2 — Contexte + anonymisation (4 min) :</strong> Extrayez ID marchand, environnement, logs de la console. Avant Gemini Advanced : remplacez l'ID marchand par MERCHANT-X, abstraisez les montants.</p>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 3 — Diagnostic (5 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Support technique senior dans une fintech B2B de paiement.
+Symptôme : [COLLER] | Logs anonymisés : [COLLER] | Contexte : [COLLER]
+
+Identifie :
+1. Les anomalies visibles dans les logs (sans inventer)
+2. 3 hypothèses de cause, ordonnées, avec niveau de confiance
+3. Pour chaque hypothèse : ce que je dois vérifier pour trancher
+4. Si le cas nécessite Engineering, signale-le clairement.
+Ne propose pas encore de réponse au marchand.</pre>
+        </div>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 5 — Draft réponse (3 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Support technique dans une fintech B2B de paiement.
+Cause identifiée : [COLLER] | Symptôme initial : [COLLER] | Tonalité marchand : [calme/tendu/agressif]
+
+Rédige une réponse de 150-200 mots : reformulation symptôme / cause accessible / étapes de correction / comment tester.
+Pas de "je me permets", "n'hésitez pas à". Si tendu, 1 phrase d'ouverture qui reconnaît le désagrément.</pre>
+        </div>
+
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Garde-fou</span>
+          Si l'IA hésite entre plusieurs hypothèses et que vous n'arrivez pas à trancher, <strong>escalade Engineering</strong>. L'IA ne doit jamais vous pousser à envoyer une réponse "qui sonne bien" sur un cas que vous ne comprenez pas.
+        </div>
+
+        <h4>💎 Gems Support technique</h4>
+
+        <div class="gem-block" data-gem-id="5.2.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.1.1</span>
+            <span class="gem-block-title">Diagnostic à partir de logs anonymisés</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Support technique senior dans une fintech B2B européenne de paiement.
+
+Cas à diagnostiquer :
+- Symptôme rapporté par le marchand : [...]
+- Environnement (test/prod) : [...]
+- Ancienneté de l'intégration : [...]
+- Dernier changement côté marchand connu : [...]
+- Logs anonymisés : [...]
+
+Produis :
+1. Anomalies visibles dans les logs (factuel, sans inventer ce qui n'est pas dedans)
+2. 3 hypothèses de cause, ordonnées de la plus probable à la moins probable, avec niveau de confiance (faible/moyen/fort)
+3. Pour chaque hypothèse : ce que je dois vérifier pour trancher
+4. Si le cas nécessite une escalade Engineering, signale-le clairement et explique pourquoi
+5. Ne propose pas encore de réponse au marchand — je la rédigerai après avoir tranché</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.2.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.1.2</span>
+            <span class="gem-block-title">Draft de réponse marchand après cause identifiée</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Support technique dans une fintech B2B européenne de paiement.
+
+Cause identifiée du problème marchand : [COLLER]
+Symptôme initial rapporté : [COLLER]
+Tonalité observée du marchand (calme / tendu / agressif) : [...]
+
+Rédige une réponse de 150-200 mots, structurée :
+1. Reformulation du symptôme (1-2 lignes)
+2. Cause identifiée en termes accessibles (pas de jargon inutile)
+3. Étapes précises de correction (numérotées, vérifiables)
+4. Comment tester que ça marche
+5. Phrase de clôture proportionnée au ton du marchand
+
+Règles :
+- Pas de "je me permets", "n'hésitez pas à", "je reste à votre disposition pour toute question"
+- Si le marchand est tendu, l'ouverture reconnaît le désagrément (1 phrase, sans surjouer)
+- Pas de promesse de feature ou de SLA non vérifiée</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.2.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.1.3</span>
+            <span class="gem-block-title">Documentation d'un cas résolu pour Confluence</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Support technique senior dans une fintech B2B européenne de paiement.
+
+J'ai résolu un cas marchand que je veux documenter pour l'équipe.
+
+Symptôme initial : [...]
+Diagnostic posé : [...]
+Cause réelle confirmée : [...]
+Étapes de résolution : [...]
+Pièges rencontrés en cours de route : [...]
+
+Rédige une fiche Confluence "Cas résolu" :
+1. Titre court et descriptif (sans nom client)
+2. Symptômes types (comment reconnaître ce cas à l'avenir)
+3. Pré-requis pour diagnostiquer (accès, outils)
+4. Étapes de diagnostic dans l'ordre
+5. Étapes de résolution
+6. Comment vérifier que c'est bien résolu
+7. Pièges à éviter
+8. Cas similaires connus (à compléter manuellement)
+
+Ton : factuel, opératoire. Cible : un collègue Support junior qui doit pouvoir refaire seul.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-support-tech">
+          <div class="lesson-checklist-title">Checklist Support technique</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Je traite chaque ticket d'intégration en moins de 15 min avec Gemini Advanced + Notebook doc</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> J'anonymise systématiquement avant de coller des logs dans l'IA</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je n'envoie <strong>jamais</strong> une réponse marchand que je ne comprends pas moi-même</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Je documente sur Confluence au moins 1 cas résolu par semaine</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Sur les tickets sensibles (suspicion fraude, incident sécurité), aucun outil IA externe</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 2.1 -->
+
+      <!-- SOUS-MÉTIER 2.2 — CUSTOMER SERVICE -->
+      <div class="sous-metier" id="sous-metier-customer-service">
+        <div class="lesson-meta">Sous-métier 2.2 · Customer Service (non technique)</div>
+        <h3>Customer <em>Service</em></h3>
+        <p class="lead">Vous traitez du volume sur des demandes répétitives. L'IA vous fait gagner 70% du temps de rédaction tout en améliorant la qualité du premier contact.</p>
+
+        <p>Vos demandes sont moins techniques mais plus nombreuses : factures, modifications de configuration, questions commerciales basiques, demandes d'information produit. Le temps moyen par ticket est plus court qu'en Support technique, mais le volume est plus élevé. L'enjeu est de <strong>rester chaleureux à l'échelle</strong>.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Réponse aux questions FAQ</h5>
+            <p><strong>Avant :</strong> 5-8 min par ticket FAQ, parce qu'il faut quand même personnaliser un minimum.</p>
+            <p><strong>Après :</strong> 2 min. Un Gem prend la question, identifie le cas FAQ, sort une réponse structurée à partir de votre Notebook FAQ. Vous validez et personnalisez 1 phrase.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Reformulation d'une réponse trop sèche</h5>
+            <p><strong>Avant :</strong> vous avez rédigé une réponse correcte mais sèche, vous la retravaillez 5 min.</p>
+            <p><strong>Après :</strong> 30 secondes. <em>"Reformule cette réponse en gardant le contenu mais en adoucissant le ton. Ajoute une phrase de reconnaissance du désagrément en ouverture."</em></p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Traitement d'un retour négatif</h5>
+            <p><strong>Avant :</strong> 20-30 min pour rédiger une réponse à un client mécontent, parce qu'il faut peser chaque mot.</p>
+            <p><strong>Après :</strong> 10 min. Brief à Gemini Advanced (contexte anonymisé), 3 variantes (directe, enveloppée, courte), vous choisissez et personnalisez.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">⏱️</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−70%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps de rédaction<br>par ticket FAQ</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Répondre à 15 tickets FAQ en 30 min"</h4>
+        <p>Triez les tickets par cas type (5 min). Pour chaque ticket : identifiez le cas FAQ (5 sec), lancez le Gem 5.2.2.1 avec le contexte (15 sec), relisez et personnalisez l'ouverture (30 sec), envoyez (10 sec). Soit ~1 min par ticket. Relecture finale sur les 15 (5 min). Résultat : 30 min au lieu de 1h30, avec un ton plus homogène.</p>
+
+        <h4>💎 Gems Customer Service</h4>
+
+        <div class="gem-block" data-gem-id="5.2.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.2.1</span>
+            <span class="gem-block-title">Réponse FAQ structurée à partir d'un cas type</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es agent Customer Service dans une fintech B2B européenne de paiement.
+
+Cas type FAQ identifié : [NUMÉRO OU NOM DU CAS — référence à votre catalogue de FAQ]
+Question reçue : [...]
+Contexte du marchand (ancienneté, type d'offre, dernière interaction) : [...]
+Tonalité observée : [calme / impatient / mécontent]
+
+À partir de la réponse type pour ce cas FAQ (ci-dessous), produis une réponse personnalisée :
+[COLLER LA RÉPONSE TYPE depuis votre Notebook FAQ]
+
+Règles :
+- Si le marchand est impatient ou mécontent, ajoute une phrase d'ouverture qui reconnaît son ressenti (1 phrase, sans surjouer)
+- Personnalise au moins 1 élément (ancienneté, contexte) pour que ça ne sente pas le copier-coller
+- Pas de "n'hésitez pas à", "je me permets", "je reste à votre entière disposition"
+- Max 150 mots</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.2.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.2.2</span>
+            <span class="gem-block-title">Réponse à un client mécontent (3 variantes)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es agent Customer Service senior dans une fintech B2B européenne de paiement.
+
+Situation :
+- Ce qui s'est passé côté marchand : [COLLER, anonymisé]
+- Ce que nous pouvons / devons faire pour résoudre : [...]
+- Ce que nous NE pouvons PAS faire : [...]
+- Ancienneté de la relation : [...]
+- Niveau de tension perçu (1-5) : [...]
+
+Génère 3 variantes de réponse :
+- Variante A : plus directe (factuelle, peu d'enveloppe)
+- Variante B : plus enveloppée (reconnaissance forte du désagrément, sans surjouer)
+- Variante C : la plus courte possible (max 80 mots)
+
+Chaque variante reconnaît le désagrément en ouverture (1 phrase), explique ce qu'on peut faire, donne un plan avec deadline.
+Évite "je comprends parfaitement", "je vous prie de bien vouloir nous excuser".</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.2.2.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.2.2.3</span>
+            <span class="gem-block-title">Reformulation d'une réponse trop sèche</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es agent Customer Service dans une fintech B2B européenne de paiement.
+
+Voici une réponse que j'ai rédigée :
+[COLLER LA RÉPONSE]
+
+Reformule-la en gardant le contenu exact, mais en :
+- Adoucissant l'ouverture (1 phrase qui reconnaît la situation du marchand)
+- Améliorant les transitions entre paragraphes
+- Évitant les formules sèches ("Veuillez noter que", "Il est de votre responsabilité de")
+- Gardant la longueur similaire (pas plus de +20% de mots)
+
+Donne 2 versions : une légèrement adoucie, une plus chaleureuse. Je choisirai.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-customer-service">
+          <div class="lesson-checklist-title">Checklist Customer Service</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> J'ai un Notebook FAQ alimenté avec mes 20 cas types les plus fréquents</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Je traite mes tickets FAQ en ~1 min chacun via Gem</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Sur les clients mécontents, je génère toujours 3 variantes avant de choisir</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Je ne signe <strong>jamais</strong> une réponse rédigée à 100% par l'IA sans avoir personnalisé au moins une phrase</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 2.2 -->
+
+      <!-- ENCART COURT — ONBOARDING -->
+      <h3>Onboarding (Implementation) — Accès rapide</h3>
+
+      <div class="encart-court">
+        <h4>📋 Onboarding marchand</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Checklist d'onboarding personnalisée par profil marchand</strong> (e-commerce SaaS, marketplace, mid-market retail) : un Gem qui prend en entrée le type de marchand et sort la checklist adaptée.</li>
+          <li><strong>Draft de mail de bienvenue + plan d'onboarding</strong> sur les 30 premiers jours.</li>
+          <li><strong>Synthèse hebdomadaire de l'avancement</strong> des onboardings en cours (à partir d'un tableau Notion/Sheets).</li>
+          <li><strong>Documentation d'un onboarding réussi</strong> comme cas type pour les suivants.</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Onboarding</span>
+          Ne <strong>pas</strong> laisser un agent envoyer les mails d'onboarding tout seul. Le rythme et le ton de la prise en main client se voient — un mail générique le J+1 a un coût relationnel énorme. L'IA drafte, vous envoyez.
+        </div>
+        <div class="gem-block" data-gem-id="5.2.onboard.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Onboarding</span>
+            <span class="gem-block-title">Checklist + plan d'onboarding personnalisé</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Onboarding Manager dans une fintech B2B européenne de paiement.
+
+Nouveau marchand qui arrive en intégration :
+- Type : [e-commerce SaaS / marketplace / mid-market retail / autre]
+- Volumes estimés mensuels : [...]
+- Stack technique (si connue) : [...]
+- Use cases prioritaires : [...]
+- Délai de go-live attendu : [...]
+- Niveau de maturité payment (débutant / intermédiaire / avancé) : [...]
+
+Produis :
+1. La checklist d'onboarding personnalisée (features à activer, doc à fournir, points d'attention spécifiques au profil)
+2. Un plan en 4 jalons sur les 30 premiers jours (J+0 / J+7 / J+15 / J+30) avec les livrables HiPay et les attendus côté marchand
+3. Les 3 risques typiques pour ce profil de marchand (et comment les anticiper)
+
+Si tu n'es pas sûr d'une feature HiPay spécifique, marque [À VÉRIFIER] plutôt que d'inventer.</pre>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE SUPPORT -->
+      <div class="case-study" data-case="case-5-p2">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Support</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Support technique chez HiPay. Vous recevez un ticket urgent d'un marchand stratégique :</p>
+          <p><em>"DEPUIS 30 MIN AUCUNE de mes transactions ne passe. J'ai 200€ par minute en train de partir dans le mur. C'est URGENT, j'attends votre réponse dans la minute, sinon je résilie."</em></p>
+          <p>Le ticket arrive en fin de journée (17h45). Vos premiers logs montrent que toutes les transactions remontent une erreur côté PSP en aval (pas côté HiPay).</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle est la meilleure approche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced avec le ticket et les logs anonymisés, vous lui demandez une réponse "rassurante mais factuelle" et vous l'envoyez sous 5 min.</button>
+          <button class="cs-option">B) Vous prenez 2 min pour drafter à la main un mail très court de prise en compte ("Reçu, j'investigue, je reviens dans 15 min"), vous escaladez à l'astreinte technique pour confirmer côté PSP, puis vous rédigez une réponse complète avec l'IA quand vous avez la cause confirmée.</button>
+          <button class="cs-option">C) Vous laissez le bot de premier niveau répondre automatiquement, puisqu'il est entraîné sur les cas FAQ.</button>
+          <button class="cs-option">D) Vous attendez d'avoir la cause complète avant de répondre au marchand (le marchand attendra 30 min de plus, tant pis).</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>Un marchand stratégique qui perd des paiements en temps réel a besoin de <strong>savoir qu'on l'a vu</strong> avant d'avoir la réponse complète. 2 min pour un mail d'accusé de réception + escalade interne = la bonne séquence. L'erreur côté PSP n'est <strong>pas</strong> un cas où Support peut répondre seul. L'IA intervient dans un second temps, après que la cause est confirmée — pas en première intention sur un incident en cours.</p>
+          <ul>
+            <li><strong>A est dangereux :</strong> une réponse IA "rassurante" sans cause confirmée peut envoyer le marchand sur une fausse piste et prolonger l'incident.</li>
+            <li><strong>C est une catastrophe :</strong> un bot sur un incident en cours n'escalade pas — le client pense que tout va bien, on perd 4 heures.</li>
+            <li><strong>D est trop long :</strong> laisser le marchand 30 min sans réponse alors qu'il dit "URGENT, je résilie" = on le perd. 2 min pour un mot, ça change tout.</li>
+          </ul>
+          <p><strong>À retenir :</strong> sur les incidents en cours, l'IA n'intervient pas en première réponse. Premier réflexe humain (accusé de réception + escalade), puis l'IA structure la réponse de fond une fois la cause confirmée.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE SUPPORT -->
+      <div class="quiz" data-quiz="m5-p2">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Support &amp; Service Client</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE SUPPORT -->
+      <div class="lesson-checklist" data-checklist="m5-p2-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie Support</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> J'anonymise systématiquement les logs et données marchand avant tout usage IA</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Sur les cas complexes, je demande à l'IA des hypothèses ordonnées (pas une réponse), je tranche moi-même</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Sur les clients mécontents, je génère des variantes et je personnalise toujours l'ouverture/clôture à la main</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Je documente sur Confluence au moins 1 cas résolu par semaine pour capitaliser</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucun bot ne répond seul sur des incidents en cours ou des tickets critiques</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Les tickets très sensibles (fraude, incident sécurité client) ne passent <strong>jamais</strong> par un outil IA externe</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 2 — SUPPORT & SERVICE CLIENT -->
+
+    <!-- ============ PARCOURS 3 — RISK, COMPLIANCE & LEGAL ============ -->
+    <div class="parcours-block" id="parcours-risk">
+      <div class="parcours-block-label">⚖️ Parcours 3 · Risk, Compliance &amp; Legal · 6-8 min</div>
+      <h3>Risk, Compliance &amp; <em>Legal</em></h3>
+      <p class="lead">Le métier où l'IA fait le plus peur — et où elle apporte pourtant des gains massifs, à condition de comprendre exactement ce qu'elle peut faire et ce qu'elle ne doit JAMAIS faire.</p>
+
+      <p>Vous êtes le garde-fou réglementaire et opérationnel de HiPay. Vous lisez des contrats, vous suivez la réglementation (PSD2/PSD3, LCB-FT, RGPD, AI Act, KYC, sanctions internationales), vous évaluez les risques marchands, vous arbitrez les cas tendus. Vous produisez beaucoup de <strong>rédaction technique</strong> et beaucoup de <strong>synthèse</strong> (relecture contrats, comparaison de réglementations, revue de dossiers KYC).</p>
+      <p>L'IA est extrêmement précieuse pour la rédaction technique structurée et la synthèse de longs documents. Mais elle est <strong>dangereuse</strong> sur la décision juridique elle-même : elle invente des références, hallucine des articles, simplifie des nuances critiques.</p>
+
+      <div class="callout">
+        <span class="callout-label">Règle d'or Risk / Compliance / Legal</span>
+        L'IA aide à structurer, comparer, synthétiser ; vous gardez 100% de la décision et de la responsabilité juridique. Aucune référence réglementaire sortant d'une IA ne se cite sans vérification source.
+      </div>
+
+      <h4>Pièges transverses à la catégorie</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — Citation de références réglementaires inventées</span>
+        <p>L'IA peut citer un article de loi avec une parfaite assurance — mais l'article n'existe pas, ou bien il dit autre chose. Les "hallucinations sur du droit" sont <strong>le piège n°1</strong> de toute la catégorie.</p>
+        <p><strong>Bonne pratique :</strong> aucune référence réglementaire sortant d'une IA ne se cite sans avoir été <strong>vérifiée sur la source primaire</strong> (Légifrance, EUR-Lex, ESMA, ACPR, etc.). Demandez explicitement à l'IA : <em>"Si tu n'es pas certain d'une référence précise, dis 'à vérifier' plutôt que de citer."</em></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — Décisions automatisées sur des personnes</span>
+        <p>Refuser un onboarding marchand sur la base d'un score IA, classer un dossier KYC en "risque élevé" automatiquement = décisions impactant des personnes ou des entités économiques.</p>
+        <p><strong>Bonne pratique :</strong> l'IA <strong>propose</strong>, l'humain <strong>décide</strong>. Toute décision qui impacte un marchand (refus, classification risque, escalade compliance) doit être <strong>traçable, explicable, et signée par un humain</strong>.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Données sensibles dans des outils non validés</span>
+        <p>Les contrats marchands, les dossiers KYC, les alertes LCB-FT contiennent des données très sensibles : identités, montants, structure d'actionnariat, parfois suspicions d'infractions. Coller ça dans un outil non validé = incident grave (RGPD + secret professionnel + obligations LCB-FT).</p>
+        <p><strong>Bonne pratique :</strong> uniquement <strong>Gemini Advanced</strong>, <strong>Claude.ai Team</strong> (pilote), <strong>DUST</strong> (pilote, à confirmer accessibilité Compliance). Sur les dossiers très sensibles (alerte Tracfin, fraude organisée), <strong>aucun outil IA externe</strong>.
+        <!-- À VÉRIFIER : liste des outils validés Compliance HiPay — à confirmer avec IT/Sécurité et DPO --></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Agent autonome sur des actes juridiques</span>
+        <p>Tentation : un agent qui signe automatiquement des renouvellements de contrat, qui classifie automatiquement des dossiers KYC, qui clôture des alertes LCB-FT.</p>
+        <p><strong>Bonne pratique :</strong> tout acte qui engage HiPay (signature, classification réglementaire, clôture d'alerte) reste <strong>humain</strong>. L'IA prépare le dossier, vous signez.</p>
+      </div>
+
+      <!-- SOUS-MÉTIER 3.1 — COMPLIANCE / LCB-FT / KYC -->
+      <div class="sous-metier" id="sous-metier-compliance">
+        <div class="lesson-meta">Sous-métier 3.1 · Compliance / LCB-FT / KYC</div>
+        <h3>Compliance / <em>LCB-FT / KYC</em></h3>
+        <p class="lead">Vous traitez du volume avec un standard de qualité légalement non négociable. L'IA vous fait gagner 40-50% du temps de revue documentaire à condition de garder la décision sous votre signature.</p>
+
+        <p>Vous traitez des dossiers KYC (entry et ongoing), vous instruisez des alertes LCB-FT, vous vérifiez la conformité réglementaire des opérations. Beaucoup de votre temps est mangé par la <strong>lecture-synthèse</strong> : relire 80 pages de Kbis, statuts, attestations, articles de presse, registre des bénéficiaires effectifs pour un seul dossier. L'IA peut absorber ça à votre place — à condition qu'elle vous remonte <strong>les éléments factuels structurés</strong>, pas une "opinion compliance" qui n'a aucune valeur juridique.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Synthèse d'un dossier KYC volumineux</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour lire un dossier complet (statuts, Kbis, organigramme, articles presse, registre des BE) et sortir une fiche de synthèse.</p>
+            <p><strong>Après :</strong> 45 min. Vous uploadez les pièces dans NotebookLM (un Notebook par dossier), vous demandez une synthèse structurée sourcée. Vous gardez 30-45 min pour creuser ce qui mérite d'être creusé.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Revue d'une alerte LCB-FT en pré-instruction</h5>
+            <p><strong>Avant :</strong> 1-2 heures pour relire l'historique de transactions, identifier les éléments anormaux, structurer une pré-instruction.</p>
+            <p><strong>Après :</strong> 30-45 min. Brief à Gemini Advanced sur les éléments factuels anonymisés → anomalies structurées remontées. Vous gardez le jugement sur la qualification.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Rédaction d'une procédure interne</h5>
+            <p><strong>Avant :</strong> 4-6 heures pour rédiger une procédure (revue de conformité, KYC remediation, escalade LCB-FT).</p>
+            <p><strong>Après :</strong> 2 heures. Vous brieffez Gemini Advanced avec les références réglementaires (que VOUS donnez en entrée). Il vous sort un draft structuré que vous itérez et validez ligne à ligne.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">📋</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−50%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps de revue<br>documentaire KYC</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Synthèse d'un dossier KYC en 45 min"</h4>
+        <p><strong>Contexte :</strong> un nouveau marchand mid-market arrive en onboarding. Le dossier contient : Kbis, statuts, organigramme actionnarial, registre des BE, attestation URSSAF, 3 articles de presse récents, 2 ans de comptes. Soit ~80 pages.</p>
+
+        <p><strong>Étape 1 — Constitution du Notebook (5 min)</strong></p>
+        <p>Vous créez un Notebook dans NotebookLM dédié à ce dossier. Vous y uploadez l'ensemble des pièces. <strong>⚠️ Avant :</strong> ce dossier contient des données nominatives et financières sensibles. Vérifiez avec la DPO que NotebookLM est validé pour ce type de données dans votre cas d'usage.
+        <!-- À VÉRIFIER : validation DPO NotebookLM pour données KYC HiPay — à confirmer avant publication --></p>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 2 — Synthèse structurée (15 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>À partir des sources uploadées, donne-moi :
+- L'identification complète de l'entité (raison sociale, forme juridique, capital, siège, numéro RCS)
+- Les dirigeants effectifs et leur date d'arrivée
+- Les bénéficiaires effectifs avec leur % de détention
+- Le secteur d'activité réel (pas juste le code NAF)
+- La santé financière sur les 2 derniers exercices (CA, résultat net, fonds propres)
+- Tout élément de presse négatif ou ambigu (litiges, sanctions, controverses)
+Cite les sources pour chaque élément. Si un élément n'est pas dans les sources, dis-le.</pre>
+        </div>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 3 — Points à creuser (10 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Sur la base des sources, identifie :
+1. Les incohérences ou contradictions entre documents
+2. Les éléments manquants pour une revue KYC standard
+3. Les indicateurs de risque visibles (secteur sensible, structure complexe, pays à risque)
+4. Les questions à poser au marchand pour compléter le dossier</pre>
+        </div>
+
+        <p><strong>Étape 4 — Rédaction de la fiche de synthèse (15 min) :</strong> vous rédigez la fiche en Canvas. L'IA vous a préparé le matériel — <strong>c'est votre responsabilité, votre signature</strong>. La conclusion (acceptable / à creuser / à refuser) est <strong>votre</strong> décision.</p>
+
+        <h4>💎 Gems Compliance</h4>
+
+        <div class="gem-block" data-gem-id="5.3.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.1.1</span>
+            <span class="gem-block-title">Synthèse structurée d'un dossier KYC (avec NotebookLM)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Compliance Officer dans une fintech B2B européenne de paiement.
+
+À partir des sources uploadées dans ce Notebook (dossier KYC d'un marchand), produis une fiche de synthèse structurée :
+
+1. Identification de l'entité
+   - Raison sociale, forme juridique, capital, siège, numéro RCS, date de constitution
+
+2. Gouvernance
+   - Dirigeants effectifs (nom, fonction, date d'arrivée)
+   - Bénéficiaires effectifs (nom, % de détention, lien capitalistique)
+
+3. Activité
+   - Secteur réel (au-delà du code NAF)
+   - Volumes d'activité (CA, exercices N-1 et N-2) | Géographies opérées
+
+4. Santé financière
+   - CA, résultat net, fonds propres, dette financière (2 derniers exercices)
+   - Variations significatives
+
+5. Éléments externes
+   - Articles de presse (positifs, négatifs, ambigus)
+   - Litiges, sanctions, controverses identifiables
+
+6. Cohérence du dossier
+   - Incohérences ou contradictions entre documents
+   - Pièces manquantes pour une revue KYC complète
+
+7. Indicateurs de risque visibles
+   - Secteur sensible / pays à risque / structure complexe / changements récents
+
+CITE LES SOURCES pour chaque élément (nom du document + page si possible).
+Si un élément n'est PAS dans les sources, ÉCRIS : "non trouvé dans les sources fournies".
+Ne produis AUCUNE conclusion sur l'acceptabilité du dossier — c'est ma décision.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.1.2</span>
+            <span class="gem-block-title">Pré-instruction d'une alerte LCB-FT (éléments factuels)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es analyste LCB-FT dans une fintech B2B européenne de paiement.
+
+Voici les éléments factuels d'une alerte (anonymisée) :
+- Typologie de l'alerte : [...]
+- Période concernée : [...]
+- Marchand (anonymisé : MERCHANT-X, secteur générique) : [...]
+- Pattern de transactions observé : [...]
+- Contreparties typiques : [...]
+- Volumes relatifs vs activité habituelle du marchand : [...]
+- Historique d'alertes antérieures sur ce marchand : [...]
+
+Produis une pré-instruction structurée :
+1. Faits objectifs : ce qui est observé dans les données (sans interprétation)
+2. Écarts vs profil habituel : ce qui sort de l'ordinaire pour ce type de marchand
+3. Hypothèses neutres : 3 explications possibles ordonnées de la plus probable à la moins probable (sans présumer la mauvaise foi)
+4. Éléments à creuser : ce qu'il faut vérifier avant qualification
+5. Questions à poser au marchand si une vérification métier est nécessaire
+
+NE PRODUIS PAS de qualification (alerte fondée / classée sans suite).
+NE CITE PAS d'article du Code monétaire et financier — je vérifierai moi-même les références applicables.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.1.3</span>
+            <span class="gem-block-title">Draft d'une procédure interne Compliance</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Compliance Officer senior dans une fintech B2B européenne de paiement.
+
+Je dois rédiger une procédure interne :
+- Objet de la procédure : [...]
+- Périmètre (équipes concernées, types de cas couverts) : [...]
+- Rôles impliqués : [...]
+- Références réglementaires applicables (que JE te donne) : [...]
+- Cas d'usage type à couvrir : [...]
+
+Rédige un draft structuré :
+1. Objet et périmètre | 2. Définitions | 3. Acteurs et rôles
+4. Processus pas-à-pas (étapes numérotées, qui fait quoi, dans quels délais)
+5. Contrôles et traçabilité | 6. Cas particuliers et exceptions | 7. Documents de référence
+
+Ton : juridique-opérationnel, factuel. Cible : un opérateur qui doit appliquer.
+N'ajoute JAMAIS de référence réglementaire que je ne t'ai pas donnée. Si tu penses qu'il en manque une, écris [RÉFÉRENCE À AJOUTER : ...] sans la citer.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-compliance">
+          <div class="lesson-checklist-title">Checklist Compliance</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> J'utilise NotebookLM pour les synthèses de dossiers KYC longs, après validation DPO sur le type de données</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Je vérifie SYSTÉMATIQUEMENT chaque référence réglementaire citée par l'IA à la source primaire</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> L'IA ne produit JAMAIS de qualification ou de décision finale dans mes dossiers</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Mes pré-instructions LCB-FT n'incluent aucune référence réglementaire sortie d'une IA sans vérification</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Sur les alertes très sensibles (Tracfin, fraude organisée), aucun outil IA externe</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 3.1 -->
+
+      <!-- SOUS-MÉTIER 3.2 — RISK MANAGEMENT -->
+      <div class="sous-metier" id="sous-metier-risk">
+        <div class="lesson-meta">Sous-métier 3.2 · Risk Management (opérationnel)</div>
+        <h3>Risk <em>Management</em></h3>
+        <p class="lead">Vous arbitrez quotidiennement entre l'acceptation et le refus de risques. L'IA vous donne des éléments pour mieux décider, sans jamais décider à votre place.</p>
+
+        <p>Vous gérez les risques opérationnels : risque marchand, risque de fraude, risque de contrepartie, risque réputationnel. L'IA vous aide sur trois choses : <strong>synthétiser un dossier de revue de risque</strong>, <strong>structurer une analyse comparative</strong> (entre marchands, entre secteurs, entre périodes), <strong>rédiger des notes d'arbitrage</strong> propres pour le comité Risk.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Note d'arbitrage pour comité Risk</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour rédiger une note de revue de risque marchand pour le comité hebdo.</p>
+            <p><strong>Après :</strong> 1 heure. Vous donnez à Gemini Advanced les éléments factuels anonymisés. Il structure une note avec sections standard : situation, évolution, risques identifiés, options envisagées. Vous validez et arbitrez la recommandation finale.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Comparaison de risque entre marchands</h5>
+            <p><strong>Avant :</strong> 1 heure pour comparer 5 marchands d'un même secteur sur 8 indicateurs.</p>
+            <p><strong>Après :</strong> 20 min. Vous donnez à l'IA un tableau de KPIs (chiffres venant de la BI, l'IA ne calcule pas). Elle remonte une analyse comparative structurée : qui est dans la norme, qui sort, sur quels axes.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Veille réglementaire ciblée</h5>
+            <p><strong>Avant :</strong> 2 heures par semaine pour lire les communications ACPR, ESMA, ABE, EBA et faire le tri.</p>
+            <p><strong>Après :</strong> 30-45 min. Un Notebook "Veille réglementaire" alimenté chaque semaine. Synthèse ciblée : "Qu'est-ce qui pourrait impacter HiPay sur les sujets X, Y, Z ?"</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">📊</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−60%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps<br>de préparation comité</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Préparer une note d'arbitrage Risk en 1h"</h4>
+        <p><strong>Étape 1 (15 min) :</strong> Sortez depuis la BI les volumes 90 derniers jours, taux d'autorisation, taux de fraude, taux de chargebacks, évolution mensuelle des KPIs.</p>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 2 — Synthèse Notebook (10 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Sur ce marchand, synthétise les 6 derniers mois : évolution du profil de risque, événements notables (changement de business, plainte chargeback, alerte fraude), engagements pris dans les notes Risk précédentes et leur statut.</pre>
+        </div>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 3 — Draft note comité (25 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Risk Manager dans une fintech B2B européenne de paiement.
+Rédige une note de revue de risque pour le comité Risk hebdomadaire sur le marchand [ANONYMISÉ — secteur, volume, ancienneté].
+KPIs des 90 derniers jours : [COLLER] | Historique des 6 mois : [COLLER]
+
+Structure :
+1. Situation actuelle (1 paragraphe)
+2. Évolution récente (KPIs + commentaires)
+3. Risques identifiés (avec niveau de priorité)
+4. Options d'arbitrage (au moins 3, du plus restrictif au plus permissif)
+5. Recommandation préliminaire (que JE confirmerai)
+
+Sois factuel. Cite les chiffres précisément. Pas de référence réglementaire que tu n'as pas en source explicite.</pre>
+        </div>
+
+        <p><strong>Étape 4 (10 min) :</strong> Vous lisez le draft, vous tranchez la recommandation (l'IA peut suggérer, c'est vous qui décidez). Résultat : 1 heure au lieu de 2-3h, avec une note mieux structurée pour faciliter la décision collective.</p>
+
+        <h4>💎 Gems Risk Management</h4>
+
+        <div class="gem-block" data-gem-id="5.3.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.2.1</span>
+            <span class="gem-block-title">Note de revue de risque marchand pour comité Risk</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Risk Manager dans une fintech B2B européenne de paiement.
+
+Voici les éléments factuels sur un marchand (anonymisé) :
+- Type d'entité / secteur : [...] | Ancienneté chez HiPay : [...]
+- Volumes 90 derniers jours : [...] | Taux d'autorisation : [...]
+- Taux de fraude (par CB / par 3DS) : [...] | Taux de chargebacks : [...]
+- Évolution sur 3 mois : [...] | Historique d'incidents / alertes : [...]
+- Engagements pris dans les notes précédentes : [...]
+
+Rédige une note de revue de risque structurée :
+1. Situation actuelle (paragraphe court, factuel)
+2. Évolution récente (KPIs + commentaires, vs trimestre précédent)
+3. Risques identifiés (liste, avec niveau de priorité haut/moyen/faible)
+4. Options d'arbitrage (au moins 3, du plus restrictif au plus permissif, avec impact opérationnel estimé)
+5. Recommandation préliminaire (qui sera validée par moi)
+
+Règles : cite les chiffres précisément | prudent sur les jugements | pas de référence réglementaire non sourcée | ne tranche pas.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.2.2</span>
+            <span class="gem-block-title">Analyse comparative de marchands d'un même secteur</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Risk Manager dans une fintech B2B européenne de paiement.
+
+Voici un tableau de KPIs sur N marchands d'un même secteur (anonymisés : MERCHANT-A, B, C…) sur la même période :
+[COLLER LE TABLEAU AVEC LES CHIFFRES]
+
+Réalise une analyse comparative :
+1. Distribution des KPIs : qui est dans la norme, qui sort
+2. Marchands à risque relatif élevé sur le secteur (avec justification chiffrée)
+3. Marchands à profil intéressant pour expansion (volumes en croissance + KPIs sains)
+4. Anomalies à creuser (un KPI très éloigné des autres)
+
+Règles : ne calcule rien (tous les chiffres viennent du tableau) | si un KPI te semble incohérent, signale-le | ne juge pas, décris les écarts.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.2.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.2.3</span>
+            <span class="gem-block-title">Synthèse de veille réglementaire ciblée</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Risk Manager dans une fintech B2B européenne de paiement.
+
+À partir des sources de veille uploadées dans ce Notebook (communications ACPR/ESMA/ABE/EBA/Banque de France des 2 dernières semaines) :
+
+1. Identifie les sujets qui pourraient impacter HiPay sur :
+   - Paiement / PSP | LCB-FT | PSD2/PSD3 | AI Act / RGPD | Stablecoins / crypto (si pertinent)
+
+2. Pour chaque sujet identifié :
+   - Source précise (autorité + date + titre)
+   - Résumé factuel en 2-3 phrases
+   - Impact potentiel sur HiPay (haut / moyen / faible)
+   - Action recommandée (suivre / analyser / réagir)
+
+3. Ignore le bruit de fond (communications de routine sans impact).
+
+Ne reformule pas creusement. Cite les sources.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-risk">
+          <div class="lesson-checklist-title">Checklist Risk Management</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes notes de revue de risque sont structurées en 1h max</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Tous les KPIs viennent de la BI — l'IA ne calcule jamais</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je ne tranche jamais sur la recommandation de l'IA — je propose, je décide</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> J'ai un Notebook de veille réglementaire que je consulte 1x par semaine</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Sur les dossiers de fraude organisée ou les escalades graves, aucun outil IA externe</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 3.2 -->
+
+      <!-- SOUS-MÉTIER 3.3 — LEGAL -->
+      <div class="sous-metier" id="sous-metier-legal">
+        <div class="lesson-meta">Sous-métier 3.3 · Legal (contrats, contentieux)</div>
+        <h3><em>Legal</em></h3>
+        <p class="lead">Vous gérez du flux contractuel et juridique. L'IA accélère la lecture, la comparaison, le drafting de premier jet — sans jamais remplacer votre signature.</p>
+
+        <p>Vous traitez : contrats marchands (négociation, renouvellement), partenariats, contentieux, gestion des incidents juridiques, support aux équipes Business sur les sujets contractuels. Beaucoup de <strong>lecture-comparaison</strong> (ce contrat vs notre template, qu'est-ce qui dévie ?) et beaucoup de <strong>drafting de premier jet</strong>. L'IA est <strong>excellente</strong> sur ces deux usages — à condition que toute production juridique repasse par votre validation.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Comparaison contrat reçu vs notre template</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour relire un contrat marchand de 40 pages et identifier toutes les déviations vs notre template standard.</p>
+            <p><strong>Après :</strong> 30-45 min. Vous uploadez les deux dans NotebookLM. L'IA remonte un tableau structuré de déviations (rédactionnelle / substantielle / critique). Vous arbitrez ce qui est négociable.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Draft d'un premier jet juridique</h5>
+            <p><strong>Avant :</strong> 1-2 heures pour un premier jet propre (lettre, mémo, clause).</p>
+            <p><strong>Après :</strong> 20-30 min. Brief à Gemini Advanced (contexte anonymisé, résultat attendu, faits, ton voulu). Draft de qualité 70% — vous itérez et validez ligne à ligne.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Synthèse d'un dossier contentieux</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour reprendre 6 mois d'échanges sur un litige.</p>
+            <p><strong>Après :</strong> 45 min. Notebook dédié au dossier. Synthèse chronologique, engagements de chaque partie, points sur lesquels nous sommes solides vs exposés.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">⚖️</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−65%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps de revue<br>contractuelle</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Comparer un contrat reçu à notre template en 45 min"</h4>
+        <p><strong>Étape 1 (5 min) :</strong> Notebook dédié à cette négociation. Upload du template HiPay et du contrat reçu. Si le contrat contient des données très sensibles (montants stratégiques, clauses confidentielles), vérifier la classification avec la DPO.
+        <!-- À VÉRIFIER : validation DPO NotebookLM pour contrats sensibles HiPay --></p>
+
+        <div class="prompt-box">
+          <span class="prompt-label">Étape 2 — Identification des déviations (20 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Voici notre template standard et un contrat reçu. Clause par clause, identifie toutes les déviations.
+Pour chaque déviation :
+1. Numéro et titre de la clause concernée
+2. Citation exacte de notre version
+3. Citation exacte de la version reçue
+4. Type de déviation (rédactionnelle / substantielle / critique)
+5. Sujet de la déviation
+Présente sous forme de tableau. N'omet aucune déviation, même mineure.</pre>
+        </div>
+
+        <p><strong>Étapes 3-4 :</strong> Classez les déviations (Bloquant / Négociable / Acceptable — 10 min), puis rédigez une note de synthèse pour Sales/Direction avec les arguments de négociation sur les points bloquants (10 min).</p>
+
+        <h4>💎 Gems Legal</h4>
+
+        <div class="gem-block" data-gem-id="5.3.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.3.1</span>
+            <span class="gem-block-title">Comparaison contrat reçu vs template HiPay (avec NotebookLM)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Legal Counsel dans une fintech B2B européenne de paiement.
+
+À partir des deux documents uploadés dans ce Notebook (notre template standard HiPay et un contrat reçu d'un partenaire/client), réalise une comparaison clause par clause.
+
+Pour chaque déviation identifiée, produis une ligne de tableau :
+Clause # | Titre clause | Notre version (citation exacte) | Version reçue (citation exacte) | Type (rédactionnelle / substantielle / critique) | Sujet
+
+Règles strictes :
+- CITE les passages exacts (entre guillemets), ne reformule pas
+- N'OMETS aucune déviation, même mineure
+- Distingue rédactionnel (sans impact) de substantiel (impact juridique) et de critique (change l'équilibre)
+- Si une clause de notre template est ABSENTE du contrat reçu, signale-le
+- Ne propose pas de conclusion sur l'acceptabilité — je trancherai</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.3.2</span>
+            <span class="gem-block-title">Draft de premier jet juridique</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Legal Counsel dans une fintech B2B européenne de paiement.
+
+Type de document : [lettre / mémo interne / clause contractuelle / mise en demeure / autre]
+Destinataire : [...] | Contexte (anonymisé) : [...]
+Objectif du document : [...] | Faits à inclure : [...]
+Ton voulu : [factuel-neutre / ferme / amiable / formel]
+Longueur cible : [...] | Références juridiques à utiliser (que JE te donne) : [...]
+
+Rédige un premier jet structuré, factuel, jamais affirmatif sur ce qui n'est pas dans les faits fournis.
+Si tu identifies un risque juridique non couvert, signale-le en commentaire à la fin.
+
+Règles ABSOLUES :
+- NE CITE AUCUNE référence juridique que je ne t'ai pas donnée
+- Si tu penses qu'une référence serait pertinente, écris [RÉFÉRENCE À AJOUTER : sujet, à vérifier par moi]
+- Ne tranche pas sur des questions de qualification juridique — propose plusieurs angles</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.3.3.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.3.3.3</span>
+            <span class="gem-block-title">Synthèse chronologique d'un dossier contentieux</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Legal Counsel dans une fintech B2B européenne de paiement.
+
+À partir des sources uploadées dans ce Notebook (correspondances, mises en demeure, échanges, mémos internes), produis une synthèse structurée d'un dossier contentieux.
+
+Structure :
+1. Chronologie des événements clés (date / acteur / nature de l'action / référence document)
+2. Positions des parties (notre position / position adverse) sur chaque point en débat
+3. Engagements pris de chaque côté (avec date et statut : tenu / non tenu / en discussion)
+4. Points sur lesquels nous sommes solides (avec citation des éléments de preuve)
+5. Points sur lesquels nous sommes exposés (avec citation des faiblesses identifiables)
+6. Documents manquants au dossier pour une analyse complète
+
+CITE les sources pour chaque élément.
+Ne produis AUCUNE recommandation stratégique — c'est ma décision.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-legal">
+          <div class="lesson-checklist-title">Checklist Legal</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes comparaisons de contrats passent par NotebookLM, en 45 min max</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes premiers jets juridiques (lettres, mémos, clauses) partent en 20-30 min, validés ligne à ligne</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Aucune référence juridique (article, jurisprudence, directive) ne se cite sans vérification source</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> J'ai validé avec la DPO l'usage de NotebookLM pour mes types de documents</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Sur les contentieux les plus sensibles (gros enjeux financiers), aucun outil IA externe</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 3.3 -->
+
+      <!-- ENCART COURT — DPO / PRIVACY -->
+      <h3>DPO &amp; Privacy — Accès rapide</h3>
+
+      <div class="encart-court">
+        <h4>🔐 DPO et Privacy Operations</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Synthèse d'un mapping de traitement</strong> : un Notebook avec les fiches de traitement existantes, vous interrogez ("Quels traitements impliquent des données de santé ? Quels traitements ont une base légale 'intérêt légitime' ?").</li>
+          <li><strong>Draft de réponse à une demande d'accès / d'effacement (DSAR)</strong> : l'IA structure la réponse-type, vous la personnalisez.</li>
+          <li><strong>Analyse d'impact (AIPD/PIA) — premier jet</strong> : structure standard remplie à partir des inputs métier, à valider ligne à ligne.</li>
+          <li><strong>Veille AI Act / RGPD</strong> : Notebook alimenté avec les communications CNIL, EDPB, et les guides des éditeurs IA sur les usages professionnels.</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique DPO</span>
+          Ne <strong>jamais</strong> classer le risque RGPD d'un traitement par IA. L'IA peut structurer l'AIPD, identifier des points à creuser, proposer des mitigations — la <strong>classification du risque résiduel</strong> et la décision (acceptable / à modifier / à abandonner) restent humaines.
+        </div>
+        <div class="gem-block" data-gem-id="5.3.dpo.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem DPO</span>
+            <span class="gem-block-title">Premier jet d'AIPD (Analyse d'Impact sur la Protection des Données)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Data Protection Officer dans une fintech B2B européenne de paiement.
+
+Voici un traitement à analyser (AIPD préliminaire) :
+- Finalité du traitement : [...]
+- Catégories de données traitées : [...]
+- Personnes concernées : [...]
+- Base légale envisagée : [...]
+- Destinataires des données : [...]
+- Durée de conservation : [...]
+- Sous-traitants / hébergement / transferts hors UE : [...]
+- Mesures de sécurité techniques : [...]
+
+Produis un premier jet d'AIPD structuré :
+1. Description du traitement (synthèse 1 paragraphe)
+2. Nécessité et proportionnalité (questions à vérifier — pas de réponse définitive)
+3. Risques pour les personnes (au moins 3 risques typiques pour ce type de traitement)
+4. Mesures de mitigation proposées (techniques et organisationnelles)
+5. Points à creuser avant validation (questions à poser au métier)
+
+NE PROPOSE PAS de classification finale du risque résiduel (faible/moyen/élevé) — c'est ma responsabilité.
+Si une référence RGPD ou AI Act te semble pertinente, écris [RÉFÉRENCE À VÉRIFIER : ...] sans la citer.</pre>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE RISK/COMPLIANCE/LEGAL -->
+      <div class="case-study" data-case="case-5-p3">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Risk / Compliance / Legal</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Compliance chez HiPay. Vous instruisez un dossier KYC complexe : un nouveau marchand mid-market arrive avec une structure actionnariale impliquant 3 pays, dont un classé "risque modéré" par le GAFI. Le dossier fait 120 pages. Vous avez 3 jours pour rendre votre avis.</p>
+          <p>Sales pousse pour signer rapidement parce que c'est un compte stratégique. Vous voulez creuser un point précis (structure capitalistique inhabituelle pour ce secteur). Quelle approche est la meilleure ?</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle est la meilleure approche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced avec le dossier (uploadé sans précaution) et lui demandez de classer le dossier "acceptable / à creuser / à refuser" pour gagner du temps.</button>
+          <button class="cs-option">B) Vous créez un Notebook dédié (après vérif DPO sur la classification de ces données), vous structurez votre synthèse en sourçant chaque élément, vous identifiez précisément le point à creuser, vous demandez les documents complémentaires au marchand, et vous rendez votre avis en tranchant vous-même.</button>
+          <button class="cs-option">C) Vous laissez Sales gérer l'arbitrage parce qu'ils connaissent mieux le contexte commercial.</button>
+          <button class="cs-option">D) Vous refusez l'usage de l'IA sur ce dossier parce que c'est trop sensible, vous lisez les 120 pages à la main en 8 heures.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>C'est exactement le cas où l'IA apporte une vraie valeur (synthèse structurée et sourcée d'un dossier long) <strong>sans</strong> prendre la décision. La vérification préalable avec la DPO est non négociable — un dossier KYC avec actionnariat international, c'est du sensible. L'IA vous fait gagner 1h30-2h sur la synthèse, ce qui vous permet de <strong>mieux creuser</strong> le point précis. La décision finale reste <strong>votre signature</strong>.</p>
+          <ul>
+            <li><strong>A est un piège majeur :</strong> demander à l'IA de classer un dossier KYC = aucune valeur juridique, risque d'être induit en erreur. La classification d'un dossier KYC engage votre responsabilité personnelle.</li>
+            <li><strong>C est une faute professionnelle :</strong> laisser Sales arbitrer un dossier KYC. Le côté commercial est un input, jamais la décision.</li>
+            <li><strong>D est trop conservateur :</strong> refuser l'IA sur un dossier long alors qu'on a des outils validés = vous perdez du temps que vous pouviez consacrer au point critique. Refuser l'IA n'est pas "plus prudent", c'est "moins efficace pour la même rigueur".</li>
+          </ul>
+          <p><strong>À retenir :</strong> la rigueur Compliance ne s'oppose pas à l'IA. Elle l'oblige à respecter trois règles : validation préalable du type de données, sourçage systématique, décision finale <strong>humaine et signée</strong>.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE RISK/COMPLIANCE/LEGAL -->
+      <div class="quiz" data-quiz="m5-p3">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Risk, Compliance &amp; Legal</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE RISK/COMPLIANCE/LEGAL -->
+      <div class="lesson-checklist" data-checklist="m5-p3-global">
+        <div class="lesson-checklist-title">Checklist globale — Risk, Compliance &amp; Legal</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> AUCUNE référence réglementaire ou jurisprudence sortant d'une IA n'est citée sans vérification à la source primaire</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je n'utilise NotebookLM pour des données KYC / contractuelles sensibles qu'après validation DPO</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Toute classification, qualification ou décision réglementaire reste signée par un humain (jamais output IA pur)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> L'IA n'agit jamais en autonomie sur des actes juridiques (signature, clôture d'alerte, classification)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Sur les dossiers les plus sensibles (Tracfin, gros contentieux, fraude organisée), aucun outil IA externe</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Je distingue clairement ce que l'IA fait (synthèse, comparaison, structure) de ce que je signe (décision, qualification, recommandation)</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 3 — RISK, COMPLIANCE & LEGAL -->
 
     <!-- QUIZ RÉCAPITULATIF PARCOURS MÉTIERS -->
     <div class="quiz" data-quiz="m4">
@@ -6605,6 +7605,54 @@ const QUIZZES = {
       ],
       correct: 1,
       explain: "L'absence de consigne d'honnêteté est la source principale d'hallucinations sur les sujets sensibles. Le modèle, par défaut, préfère inventer plutôt qu'admettre une limite. Ajouter 'si tu n'es pas sûr, dis-le' est probablement la consigne avec le meilleur ratio impact / effort de tout le prompting."
+    }
+  ],
+  'm5-p2': [
+    {
+      q: "Vous traitez un ticket complexe avec des logs marchand. Comment utiliser Gemini Advanced correctement ?",
+      opts: [
+        "Coller les logs bruts tels quels pour gagner du temps",
+        "Anonymiser les logs (retirer IDs marchand, montants exacts, références clients) avant de coller, puis demander 3 hypothèses ordonnées avec niveau de confiance",
+        "Laisser l'IA rédiger directement la réponse au marchand sans diagnostic intermédiaire",
+        "Demander à un bot Slack de traiter le ticket en autonomie"
+      ],
+      correct: 1,
+      explain: "Anonymiser les logs avant l'IA = pratique de base RGPD/sécurité. Demander des hypothèses ordonnées avec confiance permet de garder la main sur le diagnostic. Coller les logs bruts = exfiltration de données. Laisser l'IA rédiger directement = risque de réponse plausible mais fausse. Bot en autonomie sur ticket complexe = piège classique."
+    },
+    {
+      q: "Un marchand stratégique vous écrit, très en colère, parce qu'un incident a impacté ses paiements pendant 2 heures. Quelle approche ?",
+      opts: [
+        "Réponse standard FAQ avec excuses génériques pour aller vite",
+        "Brief à Gemini Advanced avec le contexte anonymisé, génération de 3 variantes de tonalité (directe, enveloppée, courte), choix et personnalisation manuelle de l'ouverture et de la clôture",
+        "Demander à l'IA de générer la réponse complète et l'envoyer telle quelle",
+        "Ne pas répondre tant qu'on n'a pas la cause technique complète (même si ça prend 4h)"
+      ],
+      correct: 1,
+      explain: "Sur les clients mécontents, l'IA structure mais ne signe pas la relation. Génération de variantes = on choisit la bonne tonalité pour ce client précis. Personnalisation manuelle de l'ouverture et de la clôture = c'est là que la relation se joue. Réponse FAQ = générique, fait empirer la colère. Envoi direct IA = ton 'support standardisé' qui sonne faux. Attendre 4h sans répondre = on perd le client."
+    }
+  ],
+  'm5-p3': [
+    {
+      q: "Dans un mémo Legal pour une négociation client, vous voulez citer une jurisprudence pertinente. Que faites-vous ?",
+      opts: [
+        "Je demande à Gemini Advanced de me citer la jurisprudence pertinente, je copie-colle dans mon mémo",
+        "Je demande à Gemini Advanced si une jurisprudence semble pertinente, je vérifie SYSTÉMATIQUEMENT sur Légifrance ou une base juridique avant de citer",
+        "J'évite de citer toute jurisprudence pour ne pas prendre de risque",
+        "Je demande à un agent autonome de finaliser le mémo, jurisprudences incluses"
+      ],
+      correct: 1,
+      explain: "Les hallucinations sur du droit (jurisprudences inventées, articles inexistants, formulations inexactes) sont LE piège n°1 en Legal/Compliance. L'IA peut suggérer des pistes, mais aucune référence juridique ne se cite sans vérification source primaire (Légifrance, EUR-Lex, bases pro). Éviter toute citation = trop conservateur. Agent autonome sur du Legal = faute professionnelle."
+    },
+    {
+      q: "Vous instruisez un dossier KYC complexe avec actionnariat international. Quelle est l'approche correcte avec l'IA ?",
+      opts: [
+        "J'upload tout dans Gemini Advanced sans précaution et je demande à l'IA de classer le dossier 'acceptable / à creuser / à refuser'",
+        "Je valide avec la DPO l'usage de NotebookLM pour ce type de données, je structure une synthèse sourcée, je creuse les points sensibles, et JE tranche la classification finale",
+        "Je refuse d'utiliser l'IA pour ne pas prendre de risque",
+        "Je laisse Sales arbitrer puisqu'ils connaissent le contexte commercial"
+      ],
+      correct: 1,
+      explain: "L'IA structure et source un dossier KYC long (gain de 1-2h), mais ne classe JAMAIS le dossier — c'est votre décision réglementaire personnelle. Validation DPO sur le type de données = non négociable. Refuser l'IA = perte de temps qui aurait été consacrée au creusage des points sensibles. Laisser Sales arbitrer un dossier KYC = faute professionnelle Compliance."
     }
   ],
   'm5-p1': [
