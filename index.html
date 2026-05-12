@@ -2788,6 +2788,14 @@ JAMAIS de fix proposé sans avoir d'abord identifié la cause racine. Si le cont
 </footer>
 
 <script>
+// Polyfill window.storage → localStorage when not running inside Claude Code
+if (!window.storage) {
+  window.storage = {
+    get: async (key) => ({ value: localStorage.getItem(key) }),
+    set: async (key, value) => { localStorage.setItem(key, value); }
+  };
+}
+
 // ============================================
 // DATA — Quizzes
 // ============================================
