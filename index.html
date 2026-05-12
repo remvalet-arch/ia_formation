@@ -5114,10 +5114,10 @@ Liste les améliorations à faire en moins de 5 lignes, puis donne-moi la versio
         <li>💼 <strong><a href="#parcours-business">Parcours 1 — Business &amp; Commercial</a></strong> — Sales/BD, Account Management, Pre-Sales, Customer Success, Partnerships</li>
         <li>🎧 <strong><a href="#parcours-support">Parcours 2 — Support &amp; Service Client</a></strong> — Support technique, Customer Service, Onboarding</li>
         <li>⚖️ <strong><a href="#parcours-risk">Parcours 3 — Risk, Compliance &amp; Legal</a></strong> — Legal, Compliance, Risk Management, DPO/Privacy</li>
-        <li>💰 <strong>Parcours 4 — Finance &amp; Ops</strong> — Finance, Comptabilité, Operations, Procurement <span class="tag-soon">en cours</span></li>
-        <li>📣 <strong>Parcours 5 — Marketing, Produit &amp; Communication</strong> — Marketing, Product, Product Marketing, Communication <span class="tag-soon">en cours</span></li>
-        <li>🛠️ <strong>Parcours 6 — Tech &amp; Engineering</strong> — Engineering, DevOps/SRE, Data, QA/Security <span class="tag-soon">en cours</span></li>
-        <li>👥 <strong>Parcours 7 — People &amp; Internal</strong> — RH/Talent, People Ops, IT interne <span class="tag-soon">en cours</span></li>
+        <li>💰 <strong><a href="#parcours-finance">Parcours 4 — Finance &amp; Ops</a></strong> — Finance, Comptabilité, Operations, Procurement</li>
+        <li>📣 <strong><a href="#parcours-marketing">Parcours 5 — Marketing, Produit &amp; Communication</a></strong> — Marketing, Product, Product Marketing, Communication</li>
+        <li>🛠️ <strong><a href="#parcours-tech">Parcours 6 — Tech &amp; Engineering</a></strong> — Engineering, DevOps/SRE, Data, QA/Security</li>
+        <li>👥 <strong><a href="#parcours-people">Parcours 7 — People &amp; Internal</a></strong> — RH/Talent, People Ops, IT interne</li>
       </ul>
     </div>
 
@@ -6679,6 +6679,1793 @@ Si une référence RGPD ou AI Act te semble pertinente, écris [RÉFÉRENCE À V
     </div>
     <!-- /PARCOURS 3 — RISK, COMPLIANCE & LEGAL -->
 
+    <!-- ============ PARCOURS 4 — FINANCE & OPS ============ -->
+    <div class="parcours-block" id="parcours-finance">
+      <div class="parcours-block-label">💰 Parcours 4 · Finance &amp; Ops · 5-6 min</div>
+      <h3>Finance &amp; <em>Ops</em></h3>
+      <p class="lead">Le métier où l'IA fait gagner du temps sur la mise en mots des chiffres — sans jamais toucher aux chiffres eux-mêmes.</p>
+
+      <p>Vous travaillez avec <strong>des chiffres</strong>. Beaucoup. Tableaux Excel, BI, reportings, prévisions, suivi de cash, comptabilité, achats, opérations transverses. L'enjeu n'est pas de produire les chiffres — Excel et la BI le font. L'enjeu est de <strong>les commenter, les structurer, les expliquer</strong> à des audiences qui n'ouvriront pas un tableur.</p>
+      <p>C'est exactement là où l'IA est forte : transformer un tableau de KPIs en un commentaire propre, structurer une note de synthèse, drafter un rapport mensuel. Et c'est exactement là où l'IA est dangereuse si vous lui demandez de <strong>calculer</strong> : elle invente des chiffres avec une assurance désarmante.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Règle d'or Finance / Ops</span>
+        Les chiffres viennent toujours d'Excel ou de la BI. L'IA met les chiffres en mots, jamais l'inverse.
+      </div>
+
+      <h4>Pièges transverses à la catégorie</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — Demander des calculs à l'IA</span>
+        <p>Vous collez 3 colonnes de chiffres et vous demandez à Gemini Advanced <em>"calcule-moi la moyenne pondérée et la variance"</em>. L'IA répond. Le résultat <strong>peut être faux</strong>. L'IA n'est pas une calculatrice, c'est un modèle de langage. Sur de l'arithmétique simple ça passe souvent, sur du moins simple ça déraille.</p>
+        <p><strong>Bonne pratique :</strong> tous les calculs dans Excel ou la BI. L'IA <strong>commente</strong> des chiffres que vous lui donnez déjà calculés. Si vous voulez de l'aide pour structurer un calcul complexe, demandez la <strong>formule</strong> Excel — pas le résultat.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — Citation de références comptables ou fiscales inventées</span>
+        <p>Comme côté Legal/Compliance : l'IA peut citer "l'article 39 du CGI" ou "la norme IFRS 15 § 18" avec assurance et se tromper.</p>
+        <p><strong>Bonne pratique :</strong> aucune référence comptable ou fiscale sortant d'une IA ne se cite dans une note officielle sans vérification source. Pour les sujets fiscaux/réglementaires fins, l'IA structure la question, votre expert-comptable / votre fiscaliste répond.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Données chiffrées dans des outils non validés</span>
+        <p>Les KPIs business, le cash, le P&amp;L, les volumes par marchand sont des données sensibles (financièrement, commercialement, parfois boursièrement). Coller ça dans ChatGPT perso = exfiltration.</p>
+        <p><strong>Bonne pratique :</strong> <strong>Gemini Advanced, Claude.ai Team, DUST</strong> uniquement. Sur les sujets très sensibles (préparation de levée, données boursières si applicable, données stratégiques sur la roadmap), traitement humain interne.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Agent autonome sur des paiements ou validations</span>
+        <p>Tentation : un agent qui valide automatiquement des factures, qui clôture des écritures comptables, qui exécute des paiements fournisseurs. Sur tout ce qui touche au <strong>cash</strong> ou aux <strong>écritures</strong>, l'humain valide.</p>
+        <p><strong>Bonne pratique :</strong> l'IA prépare les justificatifs, les rapprochements, les commentaires. L'humain valide et exécute. Pour de l'automatisation, n8n avec étapes de validation explicites, pas agent autonome.</p>
+      </div>
+
+      <!-- SOUS-MÉTIER 4.1 — FINANCE / FP&A / CONTRÔLE DE GESTION -->
+      <div class="sous-metier" id="sous-metier-fpa">
+        <div class="lesson-meta">Sous-métier 4.1 · Finance / FP&amp;A / Contrôle de gestion</div>
+        <h3>Finance / <em>FP&amp;A</em></h3>
+        <p class="lead">Vous produisez beaucoup de reporting et d'analyse. L'IA vous fait passer de "rédacteur de commentaires" à "analyste qui réfléchit", parce qu'elle absorbe la couche basse.</p>
+
+        <p>Vous produisez : reporting mensuel, atterrissage trimestriel, business reviews avec les équipes, prévisions glissantes, analyses ad hoc pour la direction. Chaque exercice combine <strong>récupération des chiffres</strong> (BI, Excel) + <strong>analyse</strong> (qu'est-ce qui bouge, pourquoi, est-ce attendu ?) + <strong>mise en récit</strong> (commentaires, notes, slides). L'IA est forte sur les deux derniers points. Sur le premier, elle ne touche pas.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Commentaires du reporting mensuel</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour rédiger les commentaires d'un reporting mensuel (15-20 KPIs, comparaison vs M-1 et vs budget).</p>
+            <p><strong>Après :</strong> 45 min. Vous donnez à Gemini Advanced le tableau des KPIs avec les écarts déjà calculés (depuis Excel/BI). Vous lui demandez de générer les commentaires structurés par bloc. Vous validez et personnalisez les passages sensibles.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Préparation d'une business review</h5>
+            <p><strong>Avant :</strong> 4-6 heures pour préparer une business review trimestrielle avec une équipe (deck 15-20 slides).</p>
+            <p><strong>Après :</strong> 2 heures. Vous extrayez les KPIs (manuel). Gemini Advanced + Canvas structurent le deck : titre par slide, message clé, 3-4 bullets de contenu, question à poser à l'équipe. Vous validez et itérez sur les slides sensibles.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Note d'éclairage pour la direction</h5>
+            <p><strong>Avant :</strong> 1-2 heures pour préparer une note d'éclairage de 1-2 pages sur un sujet précis (un écart inattendu, une projection, une hypothèse à débattre).</p>
+            <p><strong>Après :</strong> 30-45 min. Vous brieffez Gemini Advanced sur les faits chiffrés, l'angle d'analyse, le public, le format attendu. Vous itérez en Canvas.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">📊</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−60%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps sur<br>la rédaction reporting</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Rédiger le commentaire du reporting mensuel en 45 min"</h4>
+        <p><strong>Étape 1 — Extraction des KPIs (15 min, manuel ou n8n) :</strong> vous sortez depuis Excel / la BI : 15-20 KPIs avec leurs valeurs M, M-1, vs Budget, et la variation calculée. <strong>⚠️ Tous les écarts sont déjà calculés dans Excel.</strong> Vous ne demandez pas à l'IA de calculer.</p>
+
+        <p><strong>Étape 2 — Brief structuré à Gemini Advanced (5 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Finance — Commentaires reporting</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Contrôleur de gestion dans une fintech B2B de paiement.
+Voici les KPIs du mois écoulé avec leurs écarts vs M-1 et vs Budget :
+[COLLER LE TABLEAU]
+
+Voici les éléments contextuels que je connais et que tu ne peux pas deviner :
+[COLLER LES ÉLÉMENTS CONTEXTUELS]
+
+Rédige les commentaires du reporting, structurés en 5 blocs : 1) Revenus, 2) Marge brute, 3) Opex, 4) Headcount, 5) Cash.
+Pour chaque bloc : 1 phrase synthétique vs M-1 et vs Budget, 2-3 points d'analyse, 1 point d'attention si pertinent.
+Ton : factuel, sobre. Cite les chiffres précisément. Ne calcule rien — utilise UNIQUEMENT les chiffres et écarts du tableau.</pre>
+        </div>
+
+        <p><strong>Étape 3 — Itération Canvas (15 min) :</strong> vous reprenez paragraphe par paragraphe — ajout d'éléments contextuels que l'IA ne pouvait pas connaître, suppression des formulations creuses.</p>
+        <p><strong>Étape 4 — Validation finale (10 min) :</strong> vérification que tous les chiffres cités correspondent au tableau (chasse aux hallucinations chiffrées). Cohérence avec le narratif des mois précédents.</p>
+
+        <div class="callout warn">
+          <span class="callout-label">Règle absolue Finance</span>
+          Chaque chiffre dans la sortie IA doit être retracé au tableau d'origine. Un seul chiffre faux dans un reporting COMEX, c'est votre crédibilité Finance.
+        </div>
+
+        <h4>💎 Gems Finance / FP&amp;A</h4>
+
+        <div class="gem-block" data-gem-id="5.4.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.4.1.1</span>
+            <span class="gem-block-title">Commentaires de reporting mensuel</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Contrôleur de gestion / FP&A dans une fintech B2B européenne de paiement.
+
+Voici les KPIs du mois, avec leurs valeurs M, M-1, vs Budget, et les écarts (déjà calculés) :
+[COLLER LE TABLEAU]
+
+Voici les éléments contextuels que tu ne peux PAS deviner :
+[COLLER LES ÉLÉMENTS CONTEXTUELS BUSINESS]
+
+Rédige les commentaires du reporting, structurés en 5 blocs :
+1. Revenus
+2. Marge brute
+3. Opex
+4. Headcount
+5. Cash
+
+Pour chaque bloc :
+- 1 phrase synthétique sur la performance vs M-1 et vs Budget
+- 2-3 points d'analyse (qu'est-ce qui explique l'écart)
+- 1 point d'attention pour le mois suivant si pertinent
+
+Règles ABSOLUES :
+- N'INVENTE AUCUN CHIFFRE qui ne soit pas dans le tableau
+- NE CALCULE RIEN (utilise les écarts déjà fournis)
+- Ton sobre et factuel — pas alarmiste, pas marketing
+- Si un écart te semble important mais que tu n'as pas d'explication contextuelle, écris "à expliciter" plutôt que d'inventer une cause
+- Cite les chiffres précisément avec leur unité</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.4.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.4.1.2</span>
+            <span class="gem-block-title">Préparation de business review avec une équipe</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Contrôleur de gestion dans une fintech B2B européenne de paiement.
+
+Je dois préparer une business review trimestrielle avec l'équipe [...].
+
+Voici les KPIs de leur périmètre sur le trimestre :
+[COLLER LE TABLEAU AVEC ÉCARTS]
+
+Voici les principaux événements du trimestre (que tu ne peux pas deviner) :
+[COLLER]
+
+Voici les engagements pris dans la BR précédente :
+[COLLER]
+
+Structure un deck de business review en 12-15 slides :
+1. Titre + message clé pour chaque slide
+2. 3-4 bullets de contenu par slide
+3. 1 question à poser à l'équipe pour ouvrir la discussion
+
+Blocs à couvrir :
+- Rappel des engagements précédents et leur statut
+- KPIs financiers (revenus, marge, opex)
+- KPIs opérationnels du périmètre
+- Risques identifiés
+- Opportunités à explorer
+- Engagements pour le trimestre suivant
+
+Règles :
+- N'invente aucun chiffre qui ne soit pas fourni
+- Ne calcule rien
+- Garde un ton constructif (BR = discussion, pas tribunal)</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.4.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.4.1.3</span>
+            <span class="gem-block-title">Note d'éclairage 1-2 pages pour la direction</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Finance Business Partner dans une fintech B2B européenne de paiement.
+
+Je dois rédiger une note d'éclairage pour la direction sur :
+- Sujet : [...]
+- Faits chiffrés : [COLLER]
+- Angle d'analyse demandé : [...]
+- Public et niveau de détail attendu : [...]
+
+Rédige une note 1-2 pages, structurée :
+1. Constat (1 paragraphe factuel, chiffres précis)
+2. Analyse (qu'est-ce qui explique le constat, 2-3 angles)
+3. Options (3 options pour réagir, du plus conservateur au plus agressif)
+4. Hypothèses sous-jacentes (ce qu'il faudrait vérifier pour valider l'analyse)
+5. Recommandation préliminaire (à valider par moi)
+
+Règles :
+- N'invente aucun chiffre
+- Ne calcule rien
+- Sois prudent sur les projections — préfère "si X se confirme, alors Y" à "Y va se produire"</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p4-fpa">
+          <div class="lesson-checklist-title">Checklist Finance / FP&amp;A</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Tous mes commentaires de reporting partent d'un tableau de KPIs déjà calculés (Excel/BI)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> L'IA ne calcule jamais — je ne lui demande pas de calculer, même un % simple</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je relis chaque chiffre cité par l'IA pour vérifier qu'il vient bien de mon tableau</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Mes business reviews sont préparées en 2h max avec Canvas</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Je ne colle aucune donnée financière sensible dans un outil IA non validé</label>
+        </div>
+      </div>
+
+      <!-- ENCARTS COURTS — COMPTABILITÉ / OPERATIONS / PROCUREMENT -->
+      <div class="encart-court">
+        <h4>🧾 Comptabilité</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Rédaction de notes de méthode comptable</strong> (premier jet à partir d'un sujet et des références que VOUS donnez à l'IA)</li>
+          <li><strong>Synthèse d'une procédure de clôture</strong> à partir des sources internes (Notebook dédié)</li>
+          <li><strong>Reformulation de commentaires d'écritures</strong> pour audit (mise en forme propre des justificatifs)</li>
+          <li><strong>Préparation des annexes</strong> : structuration des explications narratives à partir des chiffres bruts</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Comptabilité</span>
+          Aucune écriture comptable, aucun retraitement, aucun rapprochement ne se valide par l'IA. L'IA peut <strong>suggérer</strong> un schéma d'écriture, vous le validez avec votre référentiel et votre expert-comptable. Et bien sûr, aucun calcul — les chiffres viennent toujours du SI comptable.
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>⚙️ Operations</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Documentation des procédures opérationnelles</strong> (transformation d'un workflow tacite en SOP écrite)</li>
+          <li><strong>Synthèse d'incidents opérationnels</strong> post-mortem (à partir des notes brutes + extraction de patterns)</li>
+          <li><strong>Préparation de réunions de pilotage</strong> (KPIs + commentaire + ordre du jour)</li>
+          <li><strong>Tableaux de bord narratifs</strong> mensuels pour la direction</li>
+        </ul>
+        <div class="gem-block" data-gem-id="5.4.ops.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Operations</span>
+            <span class="gem-block-title">Documenter un workflow opérationnel (SOP)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Operations Manager dans une fintech B2B européenne de paiement.
+
+Je veux documenter un workflow opérationnel que mon équipe exécute régulièrement mais qui n'est pas formalisé.
+
+Description orale du workflow (brouillon) :
+[COLLER]
+
+Acteurs impliqués : [...]
+Outils utilisés : [...]
+Fréquence d'exécution : [...]
+Points sensibles connus : [...]
+
+Rédige une SOP (Standard Operating Procedure) structurée :
+1. Objectif et périmètre
+2. Pré-requis (accès, outils, inputs)
+3. Étapes pas-à-pas (numérotées, qui fait quoi, quand)
+4. Contrôles et points de vérification
+5. Cas particuliers / exceptions
+6. Indicateurs de bonne exécution
+7. Escalade en cas de blocage
+
+Ton : factuel, opératoire. Cible : un opérateur qui doit pouvoir exécuter sans connaître le contexte historique.</pre>
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>🛒 Procurement / Achats</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Comparaison de propositions fournisseurs</strong> (à structure équivalente) — via NotebookLM si les propositions sont longues</li>
+          <li><strong>Draft de lettre / mail de négociation</strong> (3 variantes : ferme / amiable / courte)</li>
+          <li><strong>Préparation d'un brief RFP</strong> à partir d'un besoin métier exprimé en interne</li>
+          <li><strong>Synthèse d'évaluations annuelles fournisseurs</strong> à partir des feedbacks équipes utilisatrices</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Procurement</span>
+          Sur les propositions fournisseurs, l'IA est sensible à <strong>l'effet de présentation</strong>. Une proposition mieux mise en forme peut paraître objectivement meilleure dans la synthèse IA. À recalibrer avec les KPIs concrets (prix, SLA, références, conformité).
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE FINANCE/OPS -->
+      <div class="case-study" data-case="case-5-p4">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Finance &amp; Ops</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Contrôleur de gestion chez HiPay. Le COMEX vous demande une note d'éclairage en urgence (livrable demain matin) : <em>"Pourquoi notre marge brute s'est dégradée de 2,1 points ce trimestre vs le précédent ? Donnez-nous les options pour redresser."</em></p>
+          <p>Vous avez : le tableau détaillé des coûts variables du trimestre (depuis la BI), les commentaires des équipes business sur leurs deals signés ce trimestre, et l'historique des marges sur 8 trimestres.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche est la meilleure ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced avec le tableau brut et lui demandez de "calculer l'impact de chaque facteur sur la marge et de proposer des options".</button>
+          <button class="cs-option">B) Vous calculez vous-même la décomposition dans Excel (effet mix, effet prix, effet coût unitaire), vous donnez à Gemini Advanced les contributions chiffrées de chaque facteur + les commentaires business + l'historique, vous lui demandez de structurer la note (constat / analyse / options).</button>
+          <button class="cs-option">C) Vous laissez un agent Cowork récupérer les données depuis Excel et générer la note en autonomie pour gagner du temps.</button>
+          <button class="cs-option">D) Vous évitez l'IA sur ce sujet trop politique et vous rédigez tout à la main en y passant 4h.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>La <strong>décomposition d'écart de marge</strong> (effet mix / effet prix / effet coût) est un calcul. Excel fait ça correctement, l'IA peut se tromper. La règle d'or Finance s'applique : <strong>les chiffres viennent d'Excel</strong>. Une fois les contributions chiffrées calculées (par vous), l'IA est très efficace pour <strong>structurer la note</strong> à partir de ces chiffres + des commentaires business + de l'historique. Vous gagnez ~1h-1h30 sur la mise en récit, vous gardez 100% de fiabilité sur les chiffres.</p>
+          <ul>
+            <li><strong>A :</strong> demander à l'IA de "calculer l'impact de chaque facteur" = scénario typique où l'IA produit un chiffre faux mais cité avec assurance. Si ça remonte au COMEX, vous perdez votre crédibilité Finance d'un seul coup.</li>
+            <li><strong>C :</strong> agent autonome qui produit seul une note pour le COMEX = abdication de responsabilité Finance. Et risque énorme si un chiffre est faux.</li>
+            <li><strong>D :</strong> refuser l'IA sur un sujet politique = vous passez 4h sur la rédaction au lieu de 1h30, et vous arrivez moins bien préparé sur l'analyse de fond.</li>
+          </ul>
+          <p><strong>À retenir :</strong> la fiabilité Finance se construit sur Excel + votre expertise. L'IA accélère la mise en mots, jamais le calcul.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE FINANCE/OPS -->
+      <div class="quiz" data-quiz="m5-p4">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Finance &amp; Ops</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE FINANCE/OPS -->
+      <div class="lesson-checklist" data-checklist="m5-p4-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie Finance &amp; Ops</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Tous mes chiffres viennent d'Excel ou de la BI — l'IA ne calcule jamais, même un % simple</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je vérifie chaque chiffre cité par l'IA pour confirmer qu'il vient bien de mon tableau d'origine</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Aucune référence comptable, fiscale ou normative sortant d'une IA n'est citée sans vérification source primaire</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Mes notes pour la direction sont structurées en 30-45 min avec Canvas, avec relecture systématique des chiffres</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucun agent autonome ne touche au cash, aux écritures, aux validations de factures</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Les données financières sensibles (cash, P&amp;L détaillé, projections stratégiques) ne sortent que vers des outils validés HiPay</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 4 — FINANCE & OPS -->
+
+    <!-- ============ PARCOURS 5 — MARKETING, PRODUIT & COMMUNICATION ============ -->
+    <div class="parcours-block" id="parcours-marketing">
+      <div class="parcours-block-label">📣 Parcours 5 · Marketing, Produit &amp; Communication · 6-8 min</div>
+      <h3>Marketing, Produit &amp; <em>Communication</em></h3>
+      <p class="lead">Les métiers de la production de contenu et de la décision produit. L'IA accélère massivement le premier jet et l'analyse — à condition de ne pas confondre "output IA" et "voix de la marque".</p>
+
+      <p>Vous produisez du contenu (Marketing, Comm, Product Marketing) ou des décisions sur le produit (Product Management). Vos métiers reposent sur la créativité, la connaissance du marché, l'écoute des utilisateurs — toutes choses où l'IA est un accélérateur très puissant <strong>et un risque de standardisation</strong> si on s'en sert mal.</p>
+      <p>L'IA est excellente pour : drafter des contenus, synthétiser des recherches utilisateurs, comparer des positionnements concurrents, produire des variations à tester. Elle est mauvaise pour : trouver l'angle stratégique, faire la différence créative, arbitrer un trade-off produit. C'est votre travail.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Règle d'or Marketing / Produit / Comm</span>
+        L'IA accélère la production et l'analyse. La stratégie, l'angle, la voix restent humains.
+      </div>
+
+      <h4>Pièges transverses à la catégorie</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — Contenu qui "sent l'IA"</span>
+        <p>L'IA a un style reconnaissable : phrases parfaitement équilibrées, structure trop propre, formules creuses ("dans un monde en constante évolution", "à l'ère du digital"). Sur un public B2B aguerri, ça décrédibilise instantanément.</p>
+        <p><strong>Bonne pratique :</strong> réécrire à la main au moins 30% du texte. Briser la perfection : <em>"Ton conversationnel, comme si je l'avais écrit entre deux meetings"</em>. Banlist explicite dans le prompt : pas de <em>"révolutionner"</em>, <em>"leader"</em>, <em>"transformer"</em>, <em>"écosystème"</em>, <em>"unique en son genre"</em>.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — Génération de contenu sans connaissance produit réelle</span>
+        <p>Vous demandez à Gemini Advanced de "rédiger un post LinkedIn sur la valeur de HiPay sur le marché payment B2B". L'IA invente des features, des chiffres, des positionnements qui n'existent pas. Si vous publiez, vous engagez la marque sur du faux.</p>
+        <p><strong>Bonne pratique :</strong> alimenter l'IA avec <strong>les vraies messages clés HiPay</strong> (via Notebook Brand) et <strong>demander à l'IA de signaler quand elle s'aventure hors des sources fournies</strong>. Toute claim produit dans un contenu publié doit être vérifiable.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Données utilisateurs dans des outils non validés</span>
+        <p>Les insights utilisateurs contiennent des données personnelles (citations identifiables, noms d'entreprises) qui ne peuvent pas être collés n'importe où.</p>
+        <p><strong>Bonne pratique :</strong> <strong>anonymiser</strong> systématiquement avant tout traitement IA (retirer noms, entreprises identifiables, mentions de contrats spécifiques). Cf. Module 3 sur le RGPD.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Décisions produit prises sur output IA</span>
+        <p>Tentation : demander à l'IA "quelle feature prioriser pour le Q2 ?". Réponse confiante. Décision prise. Erreur potentielle.</p>
+        <p><strong>Bonne pratique :</strong> l'IA synthétise les inputs (interviews utilisateurs, données d'usage, benchmarks). Le Product Manager décide. L'IA n'est ni un utilisateur ni un PM.</p>
+      </div>
+
+      <!-- SOUS-MÉTIER 5.1 — PRODUCT MANAGEMENT -->
+      <div class="sous-metier" id="sous-metier-product">
+        <div class="lesson-meta">Sous-métier 5.1 · Product Management</div>
+        <h3>Product <em>Management</em></h3>
+        <p class="lead">Vous arbitrez en permanence entre la stratégie, les utilisateurs, la tech et les chiffres. L'IA vous fait gagner sur la synthèse — vous gardez la décision.</p>
+
+        <p>Vous gérez : la stratégie produit (vision, roadmap), la recherche utilisateurs (interviews, tests), la spécification (PRD, user stories), la coordination avec Engineering et Design, le go-to-market. Beaucoup de <strong>synthèse</strong> (que disent les utilisateurs, que fait la concurrence, qu'est-ce qu'on a appris du dernier release ?). Beaucoup de <strong>rédaction structurée</strong> (PRD, notes de décision, briefs). L'IA est excellente sur ces deux tâches. Sur l'<strong>arbitrage produit</strong> lui-même, elle n'a rien à apporter.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Synthèse d'interviews utilisateurs</h5>
+            <p><strong>Avant :</strong> 3-4 heures pour synthétiser 8 interviews utilisateurs (transcripts ou notes) et en sortir un memo d'insights.</p>
+            <p><strong>Après :</strong> 1 heure. Notebook avec les transcripts anonymisés. Vous demandez : <em>"Clusterise les douleurs, identifie les patterns récurrents, signale les tensions ou contradictions, remonte les signaux faibles."</em> Vous gardez le temps gagné pour creuser les insights vraiment intéressants.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Rédaction d'un PRD</h5>
+            <p><strong>Avant :</strong> 4-6 heures pour rédiger un PRD propre (problem statement, user stories, requirements, edge cases, KPIs de succès).</p>
+            <p><strong>Après :</strong> 2 heures. Vous brieffez Gemini Advanced sur le problème, les utilisateurs, les use cases, les contraintes. Il sort un draft structuré que vous itérez en Canvas et personnalisez sur les sections sensibles.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Benchmark concurrentiel</h5>
+            <p><strong>Avant :</strong> 1 journée pour faire un benchmark sérieux sur une feature ou un positionnement.</p>
+            <p><strong>Après :</strong> 2-3 heures. Deep Research (Gemini Advanced) sur les acteurs ciblés, leurs offres, leurs positionnements, leurs messages clés. Synthèse structurée en Canvas. Vous arbitrez les implications stratégiques.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">🗺️</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−60%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps sur la<br>synthèse d'interviews</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Rédiger un PRD en 2 heures"</h4>
+        <p><strong>Étape 1 — Brief structuré (15 min, sans IA) :</strong> vous clarifiez à l'écrit : problème à résoudre, utilisateurs cibles, use cases prioritaires, hypothèses de succès, contraintes connues (tech, business, réglementaires).</p>
+
+        <p><strong>Étape 2 — Draft de la structure (Canvas, 30 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt PM — Premier jet de PRD</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Product Manager dans une fintech B2B européenne de paiement.
+Aide-moi à rédiger un PRD sur la feature suivante :
+- Problème à résoudre : [...]
+- Utilisateurs cibles : [...]
+- Use cases prioritaires : [...]
+- Hypothèses de succès : [...]
+- Contraintes connues : [...]
+
+Génère un PRD structuré :
+1. Problem statement (1 paragraphe)
+2. Goals & non-goals (bullet points)
+3. Personas concernées (avec leurs douleurs spécifiques)
+4. User stories (format "En tant que X, je veux Y, pour Z")
+5. Functional requirements (numérotés)
+6. Edge cases et exceptions à anticiper
+7. KPIs de succès (qualitatifs + quantitatifs)
+8. Risques et dépendances
+9. Hors-scope (ce qu'on NE fait PAS dans cette V1)
+
+Sois précis. Si tu identifies un élément manquant que je devrais préciser, écris [À CLARIFIER : ...] plutôt que d'inventer.</pre>
+        </div>
+
+        <p><strong>Étape 3 — Itération sur les sections sensibles (45 min) :</strong> vous reprenez en Canvas : positionnement vs concurrents (vous le connaissez mieux que l'IA), KPIs (à arbitrer selon les vrais objectifs business), edge cases métier (paiement = beaucoup de cas tordus que seul vous connaissez).</p>
+        <p><strong>Étape 4 — Validation cross-fonctionnelle (30 min) :</strong> vous partagez à Engineering, Design, Sales/CSM clés pour première validation. Vous itérez. Résultat : PRD propre en 2h vs 4-6h. Et structurellement plus complet.</p>
+
+        <h4>💎 Gems Product Management</h4>
+
+        <div class="gem-block" data-gem-id="5.5.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.1.1</span>
+            <span class="gem-block-title">Synthèse d'interviews utilisateurs (avec NotebookLM)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Product Manager dans une fintech B2B européenne de paiement.
+
+À partir des transcripts anonymisés uploadés dans ce Notebook (interviews utilisateurs sur le thème [SUJET]), réalise une synthèse :
+
+1. Clusters de douleurs identifiées
+   - 4 à 7 clusters, chacun avec un nom court et une description en 1 phrase
+   - Nombre approximatif d'utilisateurs ayant mentionné chaque cluster
+   - 2-3 citations représentatives par cluster (anonymisées : "Utilisateur A", "Utilisateur B"...)
+
+2. Patterns récurrents (au-delà des douleurs)
+   - Workflows que plusieurs utilisateurs décrivent de la même façon
+   - Outils alternatifs mentionnés
+   - Critères de succès cités
+
+3. Tensions et contradictions entre utilisateurs sur un même sujet
+
+4. Signaux faibles : sujets mentionnés par 1-2 utilisateurs seulement mais qui te semblent pertinents
+
+5. Ce qui n'est PAS dans les interviews mais qui aurait dû y être (questions qu'on n'a pas posées)
+
+Règles :
+- Cite les sources pour chaque cluster
+- N'invente pas d'insights : ne dis que ce qui est dans les sources
+- Ne formule PAS de recommandation produit — c'est mon travail</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.5.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.1.2</span>
+            <span class="gem-block-title">Premier jet de PRD structuré</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Product Manager dans une fintech B2B européenne de paiement.
+
+Aide-moi à rédiger un PRD sur la feature suivante.
+
+Brief :
+- Problème à résoudre : [...]
+- Utilisateurs cibles : [...]
+- Use cases prioritaires : [...]
+- Hypothèses de succès : [...]
+- Contraintes connues (tech, business, réglementaires) : [...]
+
+Génère un PRD structuré :
+1. Problem statement (1 paragraphe)
+2. Goals & non-goals
+3. Personas concernées (avec douleurs spécifiques)
+4. User stories (format "En tant que X, je veux Y, pour Z")
+5. Functional requirements (numérotés)
+6. Edge cases et exceptions à anticiper
+7. KPIs de succès (qualitatifs + quantitatifs)
+8. Risques et dépendances
+9. Hors-scope (ce qu'on NE fait PAS dans cette V1)
+
+Si un élément te manque, écris [À CLARIFIER : ...] plutôt que d'inventer.
+Ne propose pas de planning ni d'estimation effort — ce n'est pas ton rôle ici.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.5.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.1.3</span>
+            <span class="gem-block-title">Benchmark concurrentiel structuré (avec Deep Research)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Product Manager dans une fintech B2B européenne de paiement.
+
+Réalise un benchmark concurrentiel sur le thème suivant :
+- Sujet du benchmark : [feature / positionnement / message / autre]
+- Concurrents à analyser : [...]
+- Angle d'analyse : [...]
+
+Pour chaque concurrent :
+1. Offre : ce qu'ils proposent concrètement sur ce sujet (avec sources publiques)
+2. Positionnement : comment ils en parlent (messages clés, vocabulaire)
+3. Cible : qui ils visent prioritairement
+4. Tarification si publique
+5. Forces apparentes sur ce sujet
+6. Faiblesses ou manques identifiables
+
+Puis :
+7. Analyse comparative : où sont les écarts, où sont les redondances
+8. Espaces non couverts par les concurrents (opportunités potentielles)
+
+Règles :
+- Source chaque information (URL ou nom de la source)
+- Si tu hésites sur un fait, dis-le
+- Ne conclus pas sur la stratégie HiPay — c'est moi qui arbitre</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p5-product">
+          <div class="lesson-checklist-title">Checklist Product Management</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes interviews utilisateurs sont anonymisées avant tout traitement IA</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes PRD partent toujours d'un brief structuré écrit avant l'IA</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je décide seul (avec l'équipe) de la priorisation produit — l'IA n'arbitre rien</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Mes benchmarks concurrentiels passent par Deep Research, avec sources citées</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucune donnée client identifiable (interviews, NPS verbatims) ne va vers un outil IA non validé</label>
+        </div>
+      </div>
+
+      <!-- SOUS-MÉTIER 5.2 — MARKETING -->
+      <div class="sous-metier" id="sous-metier-marketing-content">
+        <div class="lesson-meta">Sous-métier 5.2 · Marketing (acquisition, content, demand gen)</div>
+        <h3>Marketing &amp; <em>Content</em></h3>
+        <p class="lead">Vous produisez beaucoup, vite, à plusieurs formats. L'IA double votre cadence sur le premier jet — à condition que la voix de la marque reste la vôtre.</p>
+
+        <p>Vous gérez : la stratégie marketing, l'acquisition (SEA, SEO, social paid, ABM), le contenu (articles, livres blancs, posts, webinaires), la demand gen, l'event marketing. Énormément de <strong>production de contenu</strong> sur des formats variés, avec des cycles courts. L'IA divise par 2-3 le temps de premier jet sur la plupart des formats. Mais le différenciant — voix, angle, point de vue — ne sort jamais d'une IA.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Article de blog (1 200 mots)</h5>
+            <p><strong>Avant :</strong> 4-6 heures de la recherche au draft final.</p>
+            <p><strong>Après :</strong> 1h30. Deep Research 20 min, Gemini Advanced + Canvas 45 min (structure + premier jet), réécriture manuelle 30 min (voix, angle, exemples HiPay-specific), relecture 15 min.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Variantes pour A/B test</h5>
+            <p><strong>Avant :</strong> 30 min pour générer 5-10 variantes de qualité (titres, CTAs, accroches).</p>
+            <p><strong>Après :</strong> 5 min. Vous brieffez l'IA sur le contexte, l'audience, l'angle, vous demandez 15 variantes. Vous gardez les 3-4 meilleures.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Adaptation multi-format</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour adapter proprement un article en post LinkedIn + newsletter.</p>
+            <p><strong>Après :</strong> 30 min. Un Gem qui prend en entrée le contenu source et le format cible, sort un draft adapté. Vous personnalisez 2-3 phrases par format.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">✍️</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">×3</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de cadence de<br>production contenu</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Article de blog en 1h30"</h4>
+        <p><strong>Étape 1 — Cadrage (10 min, sans IA) :</strong> vous fixez : sujet précis, angle, audience cible, message clé, longueur, mots-clés SEO si pertinent, exemples HiPay à intégrer.</p>
+        <p><strong>Étape 2 — Deep Research (20 min) :</strong> état actuel du sujet, angles déjà couverts par les acteurs de référence, angles peu couverts, chiffres récents sourcés.</p>
+        <p><strong>Étape 3 — Structure et premier jet (Canvas, 45 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Marketing — Article de blog B2B</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Content Manager dans une fintech B2B européenne de paiement. À partir du brief de recherche ci-dessus, écris un premier jet d'article de blog sur [SUJET]. Audience : [...]. Angle : [...]. Longueur cible : 1200 mots. Structure : intro accrocheuse (pas "dans un monde en constante évolution"), 3-4 sections H2, conclusion qui débouche sur une action. Ton : informatif, posé, point de vue assumé. Banlist : révolutionner, leader, transformer, écosystème, unique en son genre, innovant, solution clé en main.</pre>
+        </div>
+        <p><strong>Étape 4 — Réécriture manuelle (30 min) :</strong> phase non délégable. Vous réécrivez à votre voix, vous ajoutez les exemples HiPay-specific, vous tranchez les passages tièdes. <strong>Si vous publiez sans cette étape, le contenu sent l'IA.</strong></p>
+        <p><strong>Étape 5 — Relecture finale (15 min) :</strong> SEO si pertinent, claims produit vérifiés, cohérence avec la ligne édito.</p>
+
+        <h4>💎 Gems Marketing</h4>
+
+        <div class="gem-block" data-gem-id="5.5.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.2.1</span>
+            <span class="gem-block-title">Premier jet d'article de blog B2B</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Content Manager dans une fintech B2B européenne de paiement.
+
+Brief :
+- Sujet : [...]
+- Audience cible : [...]
+- Angle (votre point de vue) : [...]
+- Message clé : [...]
+- Longueur cible : [...] mots
+- Mots-clés SEO à intégrer naturellement : [...]
+- Exemples HiPay-specific à intégrer : [...]
+- Brief de recherche (sources, chiffres, angles déjà couverts) : [...]
+
+Écris un premier jet structuré :
+- Intro accrocheuse (PAS "dans un monde en constante évolution", PAS "à l'ère du digital", PAS de question rhétorique creuse)
+- 3-4 sections H2 avec un angle par section
+- Conclusion qui débouche sur une action (pas un résumé)
+
+Banlist (ne JAMAIS utiliser) : révolutionner, leader/leadership, transformer/transformation (comme cliché), écosystème (sauf technique), unique en son genre, solution clé en main, innovant/innovation (comme cliché).
+
+Ton : informatif, posé, point de vue assumé sans agressivité.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.5.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.2.2</span>
+            <span class="gem-block-title">Variantes pour A/B test (titres, CTAs, accroches)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Marketing Manager dans une fintech B2B européenne de paiement.
+
+Je veux tester [TITRE / CTA / ACCROCHE / OBJET DE MAIL].
+
+Contexte :
+- Objectif de la communication : [...]
+- Audience : [...]
+- Contenu à promouvoir : [...]
+- Ton de la marque : [direct / chaleureux / expert / etc.]
+- Longueur max : [...]
+
+Génère 15 variantes ordonnées par approche :
+- 3 variantes "directes" (annonce claire de la valeur)
+- 3 variantes "question" (interroger l'audience sur sa problématique)
+- 3 variantes "preuve" (chiffre, fait, citation)
+- 3 variantes "curiosité" (créer un manque)
+- 3 variantes "courtes" (max 8 mots)
+
+Règles :
+- Pas de superlatifs creux ("le meilleur", "incroyable")
+- Pas de point d'exclamation
+- Pour chaque variante, indique en 5 mots le pari sous-jacent</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.5.2.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.5.2.3</span>
+            <span class="gem-block-title">Adaptation d'un contenu à plusieurs formats</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Content Manager dans une fintech B2B européenne de paiement.
+
+Voici un contenu source :
+[COLLER L'ARTICLE ou la base de contenu]
+
+Génère 3 adaptations :
+
+1. Post LinkedIn (200-250 mots, ton conversationnel, 1 hook fort en première ligne, 1 CTA en fin)
+2. Newsletter (400-500 mots, format "1 idée, 1 exemple, 1 ressource")
+3. Thread Twitter / X (8-10 tweets, ton plus direct, accroche forte sur le 1er tweet)
+
+Règles :
+- Chaque format garde le message clé mais s'adapte au registre du canal
+- Pas de banalités type "Récemment, j'ai pensé à..." ou "Voici un thread sur..."
+- LinkedIn : commence par une affirmation contre-intuitive ou un chiffre étonnant
+- Newsletter : commence par une question concrète
+- Thread : commence par un fait précis, pas par "Aujourd'hui je vais vous parler de..."</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p5-marketing">
+          <div class="lesson-checklist-title">Checklist Marketing</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes articles de blog passent par : cadrage humain → Deep Research → Canvas → réécriture manuelle (30% du texte minimum)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Je banlist explicitement les mots IA-marker dans mes prompts</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Pour les A/B tests, je génère 10-15 variantes en 5 min puis je trie</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Aucune claim produit dans mes contenus publiés sans vérification (PM, doc Confluence)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Je n'utilise que des outils IA validés HiPay (pas de ChatGPT perso pour le contenu)</label>
+        </div>
+      </div>
+
+      <!-- ENCARTS COURTS — PRODUCT MARKETING / COMMUNICATION -->
+      <div class="encart-court">
+        <h4>🎯 Product Marketing</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Adaptation des messages clés</strong> à différents personas et formats (one-pager Sales, page produit, pitch deck)</li>
+          <li><strong>Synthèse des retours marché</strong> sur une feature nouvellement lancée (à partir des retours Sales, CSM, Support)</li>
+          <li><strong>Préparation d'un lancement</strong> : générer la matrice de communication (canaux × personas × messages)</li>
+          <li><strong>Briefs Sales enablement</strong> à partir d'un nouveau positionnement</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Product Marketing</span>
+          Ne <strong>jamais</strong> laisser l'IA inventer des arguments différenciants. Les vraies forces de HiPay vs concurrents viennent du terrain (Sales, CSM, clients). L'IA structure ces inputs, elle ne les invente pas.
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>📢 Communication / RP</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Draft de communiqué de presse</strong> (premier jet à partir de l'angle et des faits)</li>
+          <li><strong>Préparation de Q&amp;A pour interviews</strong> : générer 20-30 questions probables avec angles de réponse</li>
+          <li><strong>Adaptation d'un message à plusieurs canaux</strong> (presse, social, interne)</li>
+          <li><strong>Synthèse de la couverture presse</strong> sur HiPay ou un sujet d'industrie</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Communication</span>
+          Les communiqués de presse contiennent souvent des données sensibles (annonces non encore publiques, chiffres financiers). Pas d'outil IA non validé. Et toute citation attribuée à un dirigeant doit être validée mot à mot par la personne — l'IA ne met pas en bouche.
+        </div>
+        <div class="gem-block" data-gem-id="5.5.comm.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Communication</span>
+            <span class="gem-block-title">Premier jet de communiqué de presse</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Communication Manager dans une fintech B2B européenne de paiement.
+
+Je prépare un communiqué de presse sur :
+- Sujet : [...]
+- Angle principal : [...]
+- Faits clés à inclure (déjà validés) : [...]
+- Citation envisagée du dirigeant (à valider par lui-même) : [...]
+- Public cible (médias spécialisés / généralistes / les deux) : [...]
+- Embargo si applicable : [...]
+
+Rédige un premier jet de communiqué structuré :
+1. Titre (court, factuel, pas accrocheur de manière forcée)
+2. Lead (50-70 mots : qui, quoi, où, quand, pourquoi)
+3. Corps (3-4 paragraphes : développement des faits, contexte, citation)
+4. Boilerplate "À propos de HiPay" (laisser un placeholder [À COMPLÉTER avec le boilerplate officiel])
+5. Contact presse (placeholder)
+
+Règles :
+- Pas de superlatifs ("révolutionnaire", "innovant", "unique")
+- Pas de jargon corporate
+- La citation du dirigeant doit sonner humaine — pas un "manifeste" de 5 lignes
+- Si tu ne sais pas un fait, mets [À VÉRIFIER] plutôt que d'inventer</pre>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE MARKETING/PRODUIT/COMM -->
+      <div class="case-study" data-case="case-5-p5">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Marketing, Produit &amp; Comm</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Product Marketing chez HiPay. Vous préparez le lancement d'une nouvelle feature qui simplifie la réconciliation comptable pour les marchands mid-market. Vous avez 10 jours avant le lancement et vous devez produire : 1) une page produit sur le site, 2) un one-pager Sales, 3) un post LinkedIn de la CMO le jour J, 4) un script de démo de 5 min pour les CSM, 5) une FAQ Support pour anticiper les questions.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche est la plus efficace ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced sur la feature et lui demandez de générer les 5 livrables en série, vous relisez et publiez.</button>
+          <button class="cs-option">B) Vous commencez par une réunion de cadrage (PM + Sales lead + CSM lead + Support lead, 1h) pour aligner sur le message clé, les bénéfices différenciants, les claims produit. Puis vous brieffez Gemini Advanced pour générer chaque livrable à partir de ces inputs validés, avec personnalisation manuelle finale.</button>
+          <button class="cs-option">C) Vous laissez un agent autonome récupérer toutes les sources internes et générer les 5 livrables en parallèle pour gagner du temps.</button>
+          <button class="cs-option">D) Vous rédigez tout à la main parce que c'est un lancement et qu'il ne faut pas se tromper, vous y passez 5 jours.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>Un lancement produit échoue presque toujours sur l'<strong>alignement</strong> des messages entre équipes (Marketing, Sales, CSM, Support) — pas sur la qualité d'écriture d'un livrable individuel. La réunion de cadrage initiale est l'investissement à plus haut ROI. Une fois les messages clés validés, l'IA peut adapter le même message validé à 5 formats différents — c'est son terrain de force. La personnalisation manuelle finale par livrable garde la voix de la marque.</p>
+          <ul>
+            <li><strong>A :</strong> générer les 5 livrables sans cadrage initial = chaque livrable porte un message légèrement différent. Les marchands voient l'incohérence, les Sales s'embrouillent, le lancement perd en clarté.</li>
+            <li><strong>C :</strong> un agent autonome qui produit 5 livrables sans humain dans la boucle, sur un lancement où chaque mot engage la marque = scénario d'incident garanti.</li>
+            <li><strong>D :</strong> 5 jours à la main vs 2 jours avec l'IA bien utilisée = vous perdez du temps, vous arrivez moins reposé, et vous gagnez 0% en qualité.</li>
+          </ul>
+          <p><strong>À retenir :</strong> sur les sujets multi-format (lancement, campagne, RP), l'investissement clé est le <strong>cadrage initial</strong>. L'IA accélère la production une fois les messages alignés, jamais avant.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE MARKETING/PRODUIT/COMM -->
+      <div class="quiz" data-quiz="m5-p5">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Marketing, Produit &amp; Comm</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE MARKETING/PRODUIT/COMM -->
+      <div class="lesson-checklist" data-checklist="m5-p5-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie Marketing, Produit &amp; Comm</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Sur le contenu publié, je réécris à la main au moins 30% du texte généré par l'IA</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> J'utilise une banlist explicite des mots-marker IA dans mes prompts</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Aucune claim produit dans mes contenus publiés sans vérification (PM ou Confluence)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Sur les lancements multi-format, je commence toujours par une réunion de cadrage cross-fonctionnelle</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Les données utilisateurs (interviews, NPS verbatims) sont anonymisées avant tout traitement IA</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Toute citation attribuée à un dirigeant est validée mot à mot par la personne — l'IA ne met pas en bouche</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="6"> Aucun agent autonome ne publie de contenu en mon nom ou au nom de HiPay</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 5 — MARKETING, PRODUIT & COMMUNICATION -->
+
+    <!-- ============ PARCOURS 6 — TECH & ENGINEERING ============ -->
+    <div class="parcours-block" id="parcours-tech">
+      <div class="parcours-block-label">🛠️ Parcours 6 · Tech &amp; Engineering · 6-8 min</div>
+      <h3>Tech &amp; <em>Engineering</em></h3>
+      <p class="lead">Le métier où l'IA change le plus vite la façon de travailler — et où les pièges sont les moins visibles parce qu'ils se cachent dans du code qui marche.</p>
+
+      <p>Vous écrivez du code, vous opérez de l'infrastructure, vous gérez des données, vous assurez la qualité et la sécurité. Vous êtes la seule catégorie pour qui des outils IA spécialisés (Cursor, Claude Code) sont déployés chez HiPay. Vous êtes aussi celle qui a le plus à perdre si l'IA est mal utilisée : un bug en prod, une vulnérabilité ignorée, une fuite de données.</p>
+      <p>Une particularité Tech : ici, la productivité ne se mesure pas en heures gagnées sur de la rédaction. Elle se mesure en <strong>vélocité de delivery</strong> et en <strong>qualité du résultat</strong>. L'IA peut accélérer la première, dégrader la seconde si on ne fait pas attention.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Règle d'or Tech / Engineering</span>
+        L'IA accélère ce que vous comprenez déjà. Sur ce que vous ne comprenez pas encore, elle vous fait gagner du temps à court terme et en perdre massivement à long terme.
+      </div>
+
+      <h4>Pièges transverses à la catégorie Tech</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — Code qui marche mais qui est faux</span>
+        <p>L'IA peut générer du code qui compile, qui passe les tests existants, et qui est <strong>subtilement faux</strong> sur la logique business. Exemple typique : une fonction de calcul de frais qui marche sur le happy path mais qui rate un cas de change ou un cas de retry. Les tests existants ne couvrent pas ce cas, donc rien ne lève. Vous mergez. Le bug part en prod et facture mal pendant 3 semaines avant qu'on s'en rende compte.</p>
+        <p><strong>Bonne pratique :</strong> review humaine systématique sur les chemins critiques (surtout les calculs métier paiement). Tests <strong>sur les cas que l'IA n'a probablement pas couverts</strong> : edge cases métier, retries, idempotence, états transitoires. Demander à l'IA d'expliciter les hypothèses qu'elle prend sur la logique business.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — APIs hallucinées</span>
+        <p>L'IA peut "inventer" une méthode sur une librairie connue (ex : <code>client.refundPartial(...)</code> qui n'existe pas) ou des paramètres qui n'existent pas. Le code semble plausible. Il échoue à l'exécution.</p>
+        <p><strong>Bonne pratique :</strong> sur les librairies tierces, <strong>toujours vérifier la doc officielle</strong> avant de commit du code qui appelle une méthode "exotique". Linter et CI doivent rester stricts. En cas de doute : <em>"Confirme que cette méthode existe dans la version X de cette lib."</em></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Agents sur des systèmes critiques</span>
+        <p>Tentation : laisser Claude Code, Cursor en agent mode, ou un autre agent agir directement sur un repo prod, un cluster, une base de données. Risque : l'agent fait quelque chose d'inattendu (suppression de fichiers, push force sur main, drop de table).</p>
+        <p><strong>Bonne pratique :</strong> <strong>toujours sur une branche Git dédiée</strong>, jamais sur main. Jamais d'accès direct production à un agent. Garde-fous explicites dans les prompts. Revue de chaque commit produit par un agent avant merge.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Code source HiPay dans des outils non validés</span>
+        <p>Le code HiPay contient : la logique métier paiement, les schémas DB, parfois des données réelles dans des tests. Coller ça dans un outil non validé = exfiltration de propriété intellectuelle critique.</p>
+        <p><strong>Bonne pratique :</strong> <strong>Cursor</strong> et <strong>Claude Code</strong> sont validés pour les devs HiPay. Gemini Advanced et Claude.ai Team acceptables pour des questions générales (snippets isolés). Jamais : ChatGPT perso, autres outils non validés. Les secrets ne vont <strong>jamais</strong> dans un outil IA, même validé (<code>.env</code>, clés API, certificats).</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 5 — Doc / commentaires qui mentent</span>
+        <p>L'IA peut générer des commentaires de code qui décrivent ce que le code <strong>devrait faire</strong> plutôt que ce qu'il fait. Le commentaire ment, les futurs lecteurs sont induits en erreur.</p>
+        <p><strong>Bonne pratique :</strong> ne demander de doc que sur du code dont vous comprenez le comportement réel. Préciser : <em>"Documente ce que ce code fait réellement. Si tu repères une incohérence entre l'intention apparente et le comportement, signale-la."</em></p>
+      </div>
+
+      <!-- SOUS-MÉTIER 6.1 — SOFTWARE ENGINEERING -->
+      <div class="sous-metier" id="sous-metier-engineering">
+        <div class="lesson-meta">Sous-métier 6.1 · Software Engineering (backend, frontend, full-stack)</div>
+        <h3>Software <em>Engineering</em></h3>
+        <p class="lead">L'IA double votre vélocité sur les tâches que vous maîtrisez. Sur celles que vous ne maîtrisez pas encore, elle vous donne l'illusion de la vélocité — c'est le moment de ralentir.</p>
+
+        <p>Vous codez : features, bugs, refactoring, tests, doc, scripts d'outillage. Vous gérez aussi : code reviews, mentorat, design technique, dette technique. L'IA touche directement la majorité de vos tâches quotidiennes — d'où le besoin de cadres clairs sur <strong>quand l'utiliser à fond</strong> et <strong>quand la freiner</strong>.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Écrire une feature standard</h5>
+            <p><strong>Avant :</strong> 2-4 heures pour une feature bien cadrée (lecture du code existant, implémentation, tests, doc).</p>
+            <p><strong>Après :</strong> 45 min - 1h30 selon la complexité. Avec Cursor / Claude Code : génération du squelette, implémentation guidée, premiers tests, doc. Vous gardez la main sur l'architecture et la review.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Comprendre du code existant</h5>
+            <p><strong>Avant :</strong> 30-60 min pour comprendre un module qu'on n'a pas écrit (lecture, traces mentales, parfois pas-à-pas debugger).</p>
+            <p><strong>Après :</strong> 10-15 min. <em>"Explique-moi ce que fait ce fichier / cette fonction. Identifie les invariants supposés, les effets de bord, les cas limites. Si tu vois une logique douteuse, signale-la sans la 'réparer'."</em></p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Tests pour du code existant non couvert</h5>
+            <p><strong>Avant :</strong> 1-2 heures pour écrire les tests d'un module existant (lecture, identification des cas, écriture).</p>
+            <p><strong>Après :</strong> 30-45 min. L'IA identifie les chemins à tester (incluant les edge cases), génère un premier jeu de tests. Vous validez la pertinence et <strong>ajoutez ceux que l'IA a oubliés</strong> (les cas métier spécifiques).</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">⚡</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">×2</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de vélocité sur les<br>features maîtrisées</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Implémenter une feature backend en 1h30"</h4>
+        <p><strong>Contexte :</strong> ajouter un endpoint qui retourne les statistiques de transactions d'un marchand sur une période donnée, avec pagination.</p>
+
+        <p><strong>Étape 1 — Lecture du code existant (10 min) :</strong> vous lisez les endpoints similaires, le pattern de pagination utilisé, les classes de modèles. Vous demandez à Cursor / Claude Code : <em>"Explique-moi les patterns utilisés pour les endpoints similaires. Identifie : structure de réponse standard, pattern de pagination, pattern d'authentification/autorisation, conventions de nommage. Ne propose rien encore."</em></p>
+
+        <p><strong>Étape 2 — Spécification précise (5 min, à l'écrit) :</strong> route (URL, méthode HTTP), paramètres en entrée, format de sortie, cas d'autorisation (qui peut appeler), cas limites (période invalide, marchand inexistant, pas de transactions), performance attendue.</p>
+
+        <p><strong>Étape 3 — Implémentation guidée avec Claude Code / Cursor (45 min) :</strong> vous travaillez <strong>sur une branche dédiée</strong>, section par section — skeleton, validation des inputs, logique métier, sérialisation, tests unitaires, tests d'intégration. Vous validez à chaque étape.</p>
+
+        <p><strong>Étape 4 — Tests des cas que l'IA a peut-être ratés (15 min) :</strong> cas de période très longue (timeout potentiel), cas d'autorisation (un autre marchand qui essaie d'accéder), marchand existant mais sans transactions, retry / idempotence si pertinent.</p>
+
+        <p><strong>Étape 5 — Review IA puis review humaine (15 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Review IA — avant la review humaine</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Review ce code en tant que reviewer senior. Identifie : 1) les bugs potentiels, 2) les cas limites non couverts par les tests, 3) les violations de nos conventions, 4) les risques de sécurité, 5) les soucis de performance. Ne propose pas de fix — liste juste les points à traiter.</pre>
+        </div>
+
+        <div class="callout warn">
+          <span class="callout-label">Garde-fous obligatoires</span>
+          Branche Git dédiée, jamais main. Review humaine <strong>systématique</strong> avant merge, surtout sur logique métier paiement. Pas d'agent autonome qui merge tout seul. Code propriétaire reste dans Cursor / Claude Code (validés).
+        </div>
+
+        <h4>💎 Gems Software Engineering</h4>
+
+        <div class="gem-block" data-gem-id="5.6.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.6.1.1</span>
+            <span class="gem-block-title">Comprendre un fichier / module existant</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Software Engineer senior dans une fintech B2B européenne de paiement.
+
+Voici un fichier / module à comprendre :
+[COLLER LE CODE — anonymisé : retirer noms internes, secrets, identifiants clients]
+
+Produis une analyse structurée :
+1. Ce que fait ce code (résumé en 3-5 phrases, ce qu'il fait réellement, pas ce qu'il devrait faire)
+2. Responsabilités principales (fonctions / classes clés et leur rôle)
+3. Invariants supposés (conditions implicites assumées par le code)
+4. Effets de bord (mutations d'état, IO, appels externes)
+5. Cas limites traités (et comment)
+6. Cas limites NON traités (ce qui crash si on les hit)
+7. Code douteux : logique ambiguë, anti-patterns, code mort apparent — SIGNALE sans "réparer"
+8. Dépendances externes (libs, services, env vars)
+
+Ne propose AUCUN refactor à ce stade — je veux d'abord comprendre.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.6.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.6.1.2</span>
+            <span class="gem-block-title">Implémenter une feature à partir d'une spec</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Software Engineer senior dans une fintech B2B européenne de paiement.
+
+Stack : [...]
+Patterns existants à respecter : [coller les patterns identifiés ou pointer vers les fichiers de référence]
+
+Spec de la feature à implémenter :
+- Description fonctionnelle : [...]
+- Inputs : [...]
+- Output attendu : [...]
+- Autorisation / authentification : [...]
+- Cas limites à gérer : [...]
+- Performance attendue : [...]
+
+Procède par étapes :
+1. Pose-moi toutes les questions nécessaires pour lever les ambiguïtés AVANT de coder
+2. Une fois validé : propose le skeleton (structure des fichiers, fonctions principales)
+3. Une fois validé : implémente section par section, je valide à chaque étape
+4. Ajoute des tests unitaires ET d'intégration
+5. Liste à la fin les cas limites métier que je devrais tester en plus (que tu n'as peut-être pas couverts)
+
+Règles :
+- Suis les patterns existants (pas de "je connais mieux")
+- Si tu manques d'info sur la stack ou les conventions, demande
+- Si une lib externe te semble nécessaire, demande validation avant d'importer
+- N'invente AUCUNE méthode ou paramètre d'API tierce — si tu hésites, dis-le</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.6.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.6.1.3</span>
+            <span class="gem-block-title">Review IA d'un PR (avant review humaine)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Software Engineer senior reviewer dans une fintech B2B européenne de paiement.
+
+Voici un diff de PR à reviewer :
+[COLLER LE DIFF]
+
+Contexte de la PR :
+- Objectif fonctionnel : [...]
+- Stack et conventions de l'équipe : [...]
+
+Identifie, en ordre de criticité (du plus important au moins important) :
+1. Bugs potentiels : logique incorrecte, off-by-one, gestion d'erreurs manquante, null safety
+2. Sécurité : injection, auth/authz, secrets exposés, log de données sensibles
+3. Cas limites non couverts par les tests (avec exemple précis de test à ajouter)
+4. Violations des conventions d'équipe (style, pattern, nommage)
+5. Risques de performance (requêtes N+1, allocations excessives, blocking I/O)
+6. Dette technique introduite ou non résolue
+
+Pour chaque point :
+- Niveau (bloquant / important / nice-to-have)
+- Localisation (fichier + ligne approximative)
+- Justification (1-2 phrases)
+- NE PROPOSE PAS de fix — je veux la liste, pas la solution
+
+Sois sévère et thorough. C'est mieux d'overflag que d'underflag à ce stade.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p6-engineering">
+          <div class="lesson-checklist-title">Checklist Software Engineering</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Je travaille <strong>toujours</strong> sur une branche Git dédiée avec Claude Code / Cursor</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Je fais une review IA AVANT de demander une review humaine</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je teste systématiquement les cas que l'IA n'a probablement pas couverts (edge cases métier paiement)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Aucun secret (<code>.env</code>, clés API, certificats) ne va dans un outil IA, même validé</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Je vérifie l'existence réelle des méthodes / paramètres d'APIs tierces avant commit</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="5"> La review humaine reste <strong>systématique</strong> sur la logique métier critique, même si le PR est petit</label>
+        </div>
+      </div>
+
+      <!-- ENCARTS COURTS — DEVOPS/SRE / DATA / QA & SECURITY -->
+      <div class="encart-court">
+        <h4>🔧 DevOps / SRE</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Génération de configs</strong> (Terraform, Kubernetes manifests, Helm charts) à partir d'une description haut niveau, à valider ligne à ligne avant apply</li>
+          <li><strong>Investigation post-incident</strong> : synthèse de logs, identification de patterns, draft de RCA (root cause analysis)</li>
+          <li><strong>Génération de scripts d'outillage</strong> (CLI internes, automatisation de tâches répétitives)</li>
+          <li><strong>Doc d'infrastructure</strong> : génération de README et de runbooks à partir du code existant</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Pièges spécifiques DevOps/SRE</span>
+          Aucun <code>terraform apply</code> ni <code>kubectl apply</code> lancé en autonomie par un agent sur de la prod. Plan oui, apply non. Les configs IA peuvent introduire des défauts subtils (security groups trop ouverts, IAM policies trop larges). Les RCA IA peuvent inventer des causes plausibles mais fausses — la RCA reste la responsabilité de l'humain qui a investigué.
+        </div>
+        <div class="gem-block" data-gem-id="5.6.devops.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem DevOps / SRE</span>
+            <span class="gem-block-title">Draft de RCA (Root Cause Analysis) post-incident</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es SRE senior dans une fintech B2B européenne de paiement.
+
+Voici les éléments d'un incident à analyser :
+- Symptômes observés (logs, alerts, métriques) : [...]
+- Période de l'incident : [...]
+- Composants impactés : [...]
+- Actions de remédiation déjà effectuées : [...]
+- État actuel (résolu / en cours / rollback) : [...]
+
+Produis un draft de RCA structuré :
+1. Résumé exécutif (3-5 lignes)
+2. Timeline des événements (avec heure, événement, source)
+3. Hypothèses de cause racine (au moins 3, ordonnées de la plus probable à la moins probable, avec niveau de confiance)
+4. Pour chaque hypothèse : éléments à vérifier pour confirmer/infirmer
+5. Actions correctives possibles (court terme + long terme)
+6. Apprentissages potentiels (sans présumer la cause)
+
+Règles :
+- Ne tranche pas la cause racine — propose des hypothèses
+- Ne crée AUCUN log ou métrique inventé
+- Si une donnée te manque pour conclure, écris [À VÉRIFIER : ...]</pre>
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>📊 Data Engineering / Analytics</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Génération de requêtes SQL</strong> complexes à partir d'une description métier (avec validation sur les données)</li>
+          <li><strong>Documentation de pipelines data</strong> existants (lineage, transformations)</li>
+          <li><strong>Synthèse d'investigations data quality</strong> (où est l'anomalie, quelles tables sont concernées)</li>
+          <li><strong>Aide à la modélisation</strong> : critique d'un schéma proposé, identification de pièges</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Pièges spécifiques Data</span>
+          L'IA peut générer une requête SQL syntaxiquement correcte mais sémantiquement fausse (jointure mal placée, agrégation sur le mauvais grain, oubli de filtre temporel). Toujours valider sur des données de test avant prod. Sur les requêtes en prod contre des bases sensibles, jamais d'agent autonome qui exécute.
+        </div>
+        <div class="gem-block" data-gem-id="5.6.data.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Data Engineering</span>
+            <span class="gem-block-title">Requête SQL à partir d'une question métier</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Data Engineer senior dans une fintech B2B européenne de paiement.
+
+Voici le schéma des tables concernées (DDL ou description) :
+[COLLER LE SCHÉMA]
+
+Voici la question métier à répondre :
+[QUESTION EN LANGAGE NATUREL]
+
+Produis :
+1. Une requête SQL pour répondre à cette question
+2. Les hypothèses que tu prends sur le grain des données et les jointures
+3. Les cas particuliers à vérifier (timezone, NULL, soft delete, etc.)
+4. Un échantillon de tests à passer avant prod
+5. Les optimisations possibles si la requête est lourde (index, partition, pré-agrégation)
+
+Règles :
+- Si tu hésites sur le grain ou un join, demande-moi avant de produire la requête
+- N'INVENTE PAS de colonne ou de table : utilise UNIQUEMENT ce qui est dans le schéma fourni
+- NE CALCULE PAS de résultat — la base de données calculera</pre>
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>🛡️ QA &amp; Security</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Génération de plans de test</strong> à partir d'une spec (cas nominaux + edge cases + cas d'erreur)</li>
+          <li><strong>Génération de cas d'attaque</strong> sur une feature pour test sécurité (injection, escalade, IDOR)</li>
+          <li><strong>Aide à la rédaction de tickets de bug</strong> propres et reproductibles</li>
+          <li><strong>Synthèse de scans de vulnérabilités</strong> : tri du bruit, identification des findings critiques</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Pièges spécifiques QA/Security</span>
+          L'IA peut générer des cas de test plausibles mais incomplets sur le métier paiement (cas de change, retry, idempotence, 3DS). En sécurité, l'IA peut suggérer des "fixes" qui introduisent d'autres vulnérabilités — faire valider par un expert sécurité. Les rapports de vulnérabilités contiennent des données sensibles : pas d'outil IA non validé.
+        </div>
+        <div class="gem-block" data-gem-id="5.6.qa.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem QA &amp; Security</span>
+            <span class="gem-block-title">Plan de test structuré à partir d'une spec</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es QA senior dans une fintech B2B européenne de paiement.
+
+Voici la spec d'une feature à tester :
+[COLLER LA SPEC]
+
+Voici les patterns de tests utilisés par l'équipe (si pertinent) :
+[COLLER]
+
+Produis un plan de test structuré :
+1. Cas nominaux (happy path, 3-5 cas)
+2. Edge cases métier paiement (montants à 0, virgules, devises exotiques, 3DS échoué, retry, idempotence, refunds partiels)
+3. Cas d'erreur (inputs invalides, auth échouée, ressource inexistante, timeout)
+4. Cas de sécurité (injection, IDOR, données d'un autre marchand, escalade)
+5. Cas de performance (volume élevé, pagination, charge concurrente)
+6. Cas de régression (impact possible sur features adjacentes)
+
+Pour chaque cas :
+- ID court
+- Description
+- Pré-condition
+- Étapes
+- Résultat attendu
+- Niveau de priorité (P1 / P2 / P3)
+
+Règles :
+- Couvre les edge cases SPÉCIFIQUEMENT métier paiement (pas seulement les classiques génériques)
+- Identifie les cas où tu manques d'info pour spécifier (écris [À CLARIFIER])
+- N'invente pas de feature qui n'est pas dans la spec</pre>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE TECH -->
+      <div class="case-study" data-case="case-5-p6">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Tech &amp; Engineering</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Software Engineer chez HiPay. Le PM vous demande d'implémenter en urgence une nouvelle logique de calcul de commissions marchand : un modèle de tarification spécifique (palier sur volume + bonus si certains seuils sont atteints). Le commercial veut une démo en staging dans 48h.</p>
+          <p>Vous avez : la spec rédigée par le PM (2 pages, pas de cas limites détaillés) et l'accès au repo backend où vit la logique actuelle de commissions.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche est la meilleure ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous lancez Claude Code en agent autonome sur une nouvelle branche, vous lui demandez d'implémenter la feature complète (lecture du code existant + implémentation + tests + doc), vous review le PR final en 30 min avant le merge.</button>
+          <button class="cs-option">B) Vous utilisez Claude Code en mode interactif sur une branche dédiée. Vous commencez par lui faire expliquer la logique de commissions actuelle, vous identifiez les patterns à respecter, vous ajoutez à la spec les edge cases métier paiement (devises, retries, refunds partiels, idempotence) que le PM n'a pas couverts, puis vous implémentez section par section en validant à chaque étape. Vous ajoutez à la main les tests sur les cas que Claude Code a probablement oubliés.</button>
+          <button class="cs-option">C) Vous codez tout à la main parce que la logique de commissions est trop critique pour confier ça à une IA.</button>
+          <button class="cs-option">D) Vous demandez à Cursor de générer la feature à partir de la spec en 1 prompt et vous mergez direct pour tenir le délai.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>La logique de commissions touche au <strong>cash réel des marchands</strong>. Toute erreur = perte d'argent, litige, atteinte à la confiance. C'est exactement le type de feature où la review humaine et les tests métier sont <strong>non négociables</strong>. Mais la délivrabilité en 48h n'est possible que si on <strong>n'écrit pas tout à la main</strong>. Mode interactif Claude Code = bon compromis : vitesse de génération + contrôle humain à chaque étape.</p>
+          <p>L'étape clé est de <strong>compléter la spec</strong> : un PM décrit le happy path, l'IA implémente le happy path, et on rate les cas de change, refund partiel, retry. C'est à vous (l'ingénieur) d'ajouter ces edge cases métier paiement. Les tests sur ces cas sont <strong>votre valeur ajoutée</strong>, pas une formalité.</p>
+          <ul>
+            <li><strong>A :</strong> agent autonome qui implémente seul + 30 min de review = recette pour un bug en prod. Sur du code qui calcule du cash, c'est inacceptable.</li>
+            <li><strong>C :</strong> tout à la main en 48h sur une logique non triviale = soit qualité dégradée (pas de tests propres), soit délai non tenu. Refuser l'IA n'est pas plus prudent — c'est moins efficace pour la même rigueur.</li>
+            <li><strong>D :</strong> "1 prompt + merge direct" = pratique typique du dev qui prend Cursor pour un raccourci. C'est exactement le scénario qui produit un bug en prod et fait reculer l'adoption IA de 6 mois.</li>
+          </ul>
+          <p><strong>À retenir :</strong> sur le code critique, le compromis n'est pas IA vs pas-IA. C'est IA en mode interactif + cadrage métier en amont + tests sur les cas que l'IA n'a pas couverts.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE TECH -->
+      <div class="quiz" data-quiz="m5-p6">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Tech &amp; Engineering</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE TECH -->
+      <div class="lesson-checklist" data-checklist="m5-p6-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie Tech &amp; Engineering</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je travaille <strong>toujours</strong> sur une branche Git dédiée avec Claude Code / Cursor</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je fais une review IA AVANT de demander une review humaine</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Je complète la spec métier avec les edge cases paiement (devises, retry, idempotence, refunds partiels) que le PM n'a probablement pas couverts</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Je teste à la main les cas que l'IA a probablement oubliés</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucun agent autonome n'agit sur main, sur la prod, ou sur des données réelles</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Le code propriétaire reste dans les outils validés (Cursor, Claude Code) — pas d'outils tiers</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="6"> Aucun secret (<code>.env</code>, clés API, certificats) ne va dans un outil IA, même validé</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="7"> La review humaine reste <strong>systématique</strong> sur la logique métier critique (paiement, calcul, sécurité), même si le PR est petit</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="8"> Sur les RCA d'incidents, l'IA structure la narration — je tranche la cause racine</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 6 — TECH & ENGINEERING -->
+
+    <!-- ============ PARCOURS 7 — PEOPLE & INTERNAL ============ -->
+    <div class="parcours-block" id="parcours-people">
+      <div class="parcours-block-label">👥 Parcours 7 · People &amp; Internal · 6-8 min</div>
+      <h3>People &amp; <em>Internal</em></h3>
+      <p class="lead">Les métiers où l'IA fait gagner le plus de temps en volume d'usage quotidien — et le plus de risques sur le traitement des personnes. Voici comment combiner les deux.</p>
+
+      <p>Vous travaillez sur des <strong>personnes</strong> (candidats, collaborateurs, anciens collaborateurs) et sur ce qui les entoure au travail (outils, accès, sécurité, climat). C'est la catégorie où le <strong>RGPD est le plus présent</strong>, où l'<strong>AI Act peut s'appliquer</strong> directement (recrutement = "usage potentiellement élevé"), et où l'enjeu humain interdit certaines automatisations.</p>
+      <p>Mais c'est aussi la catégorie où l'IA fait gagner <strong>le plus de temps en volume</strong> : rédaction d'offres, communications internes, synthèses de feedbacks, documentation IT, checklists d'onboarding, tickets répétitifs. Le métier consiste largement à transformer de l'informel en formel. L'IA est excellente sur cette traduction.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Règle d'or People &amp; Internal</span>
+        Automatisez la mécanique, gardez l'humain sur le jugement, et n'oubliez jamais que vos "données" sont des personnes.
+      </div>
+
+      <h4>Pièges transverses à la catégorie</h4>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 1 — AI Act et décisions impactant des personnes</span>
+        <p>Le règlement européen sur l'IA classe certains usages en "usage élevé" (high-risk), notamment : la présélection ou le classement de candidats à un emploi, l'évaluation de performance impactant des décisions sur l'emploi, l'allocation de ressources / d'avantages. Conséquences : <strong>information</strong> des personnes concernées, <strong>supervision humaine</strong>, <strong>traçabilité</strong>, <strong>droit à révision humaine</strong>, <strong>documentation</strong>.</p>
+        <p><strong>Bonne pratique :</strong> utiliser l'IA pour <strong>structurer / synthétiser</strong> ce qui touche aux personnes (résumé d'un CV, agrégation de feedbacks), <strong>jamais pour noter, classer ou décider</strong>. La décision reste humaine, signée, traçable.
+        <!-- À VÉRIFIER : processus AI Act recrutement HiPay — à recouper avec DPO/Compliance avant publication --></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 2 — Données personnelles dans des outils non validés</span>
+        <p>Un CV, une évaluation, un mail de candidat, un ticket IT, un dossier maladie, une enquête climat : ce sont <strong>toutes</strong> des données personnelles au sens RGPD. Coller ça dans ChatGPT perso = violation directe.</p>
+        <p><strong>Bonne pratique :</strong> outils validés HiPay uniquement (Gemini Advanced, Claude.ai Team pilote, DUST pilote — vérifier que le périmètre couvre les données RH). <strong>Anonymisation systématique</strong> quand c'est faisable. Sur les dossiers très sensibles (médical, conflit, plainte harcèlement, alertes éthiques), <strong>aucun outil IA</strong> même validé sans validation explicite DPO.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 3 — Automatisation des actes administratifs sensibles</span>
+        <p>Tentation : agent autonome qui provisionne des accès, envoie des contrats, classe des candidatures, traite des notes de frais. Risque : un agent qui agit sur les comptes ou les droits d'une personne, sans humain dans la boucle, peut faire des dégâts (révoquer des accès le vendredi soir, valider un faux candidat, déprovisionner un manager actif).</p>
+        <p><strong>Bonne pratique :</strong> l'IA <strong>prépare</strong> (checklist, draft, structure). Un humain <strong>exécute</strong> sur tout ce qui touche aux comptes, aux droits, aux contrats. Pour de l'automatisation, n8n avec étapes de validation explicites, jamais agent autonome.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-label">Piège 4 — Communications sensibles standardisées</span>
+        <p>Un mail de licenciement, un retour de candidature négatif, une médiation, une annonce de départ : si vous envoyez un texte 100% IA tel quel, ça se sent et ça blesse. La personne en face mérite mieux que du copier-coller IA.</p>
+        <p><strong>Bonne pratique :</strong> l'IA peut générer des <strong>variantes</strong> ("plus ferme", "plus chaleureux", "plus formel"). Vous choisissez, vous personnalisez l'ouverture et la clôture à la main. Sur ces sujets, les 2-3 minutes de personnalisation manuelle sont <strong>non négociables</strong>.</p>
+      </div>
+
+      <!-- SOUS-MÉTIER 7.1 — RH / TALENT ACQUISITION -->
+      <div class="sous-metier" id="sous-metier-rh">
+        <div class="lesson-meta">Sous-métier 7.1 · RH / Talent Acquisition</div>
+        <h3>RH / <em>Talent Acquisition</em></h3>
+        <p class="lead">Le métier où l'IA a le plus de valeur en quantité d'usage quotidien — et le plus de risques sur le traitement des personnes. Voici comment combiner les deux.</p>
+
+        <p>Vous traitez chaque jour des <strong>personnes physiques identifiables</strong> : candidats à différents stades, collaborateurs en évolution, anciens collaborateurs. L'IA fait gagner énormément de temps sur la <strong>forme</strong> (rédaction, synthèse, mise en mots). Sur le <strong>fond</strong> (décision sur un candidat, évaluation d'un collaborateur, arbitrage sensible), l'humain reste à la barre — et l'AI Act vous y oblige.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Rédaction d'une offre d'emploi</h5>
+            <p><strong>Avant :</strong> 2-3 heures pour rédiger une offre — copier-coller d'anciennes, retravailler, ajuster pour SEO, relire.</p>
+            <p><strong>Après :</strong> 30 minutes. Vous donnez les ingrédients (intitulé, missions, must-haves, nice-to-haves, contexte d'équipe), Gemini Advanced rédige 3 versions. Vous itérez sur la meilleure dans Canvas.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Synthèse de candidatures</h5>
+            <p><strong>Avant :</strong> 5 minutes par CV × 50 candidats = 4 heures de pré-screen.</p>
+            <p><strong>Après :</strong> structuration par IA des candidatures (à condition d'anonymiser et de respecter l'AI Act). Vous gagnez 60-70% du temps de tri. Mais <strong>la décision finale reste humaine</strong> : l'IA structure, vous notez, vous décidez.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Communications internes sensibles</h5>
+            <p><strong>Avant :</strong> 1 heure pour rédiger une com sur un sujet sensible (réorga, changement de politique, départ).</p>
+            <p><strong>Après :</strong> 15 minutes. Brief à Gemini Advanced avec contexte et ton voulu, premier jet immédiat, itération Canvas. Vous gardez le <strong>fond stratégique</strong> (le quoi), l'IA accélère <strong>la forme</strong> (le comment). Ouverture et clôture personnalisées à la main.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">📋</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−70%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps sur la<br>rédaction d'offres</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Préparer le draft d'une offre d'emploi en 30 min"</h4>
+        <p><strong>Étape 1 — Brief structuré (5 min) :</strong> vous notez à l'écrit : intitulé du poste, équipe, manager, 3-5 missions principales, must-haves, nice-to-haves, contexte d'équipe, niveau de salaire ciblé (anonymisé), localisation et modalités de télétravail.</p>
+
+        <p><strong>Étape 2 — Prompt à Gemini Advanced (1 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt RH — Offre d'emploi</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Talent Acquisition Manager dans une fintech B2B européenne de paiement. À partir des éléments suivants, rédige une offre d'emploi de 500-700 mots, structurée en 5 sections : Le poste / Vos missions / Votre profil / L'équipe et l'environnement / Pourquoi nous rejoindre. Ton : professionnel mais humain, sans jargon marketing creux. [Coller les éléments]</pre>
+        </div>
+
+        <p><strong>Étape 3 — Itération Canvas (15 min) :</strong> vous passez la réponse en Canvas. Vous reformulez paragraphe par paragraphe : sections trop génériques, formulations creuses, ajout de précisions HiPay-specific.</p>
+        <p><strong>Étape 4 — Validation finale (10 min) :</strong> cohérence avec la politique HiPay, vocabulaire conforme, mention des avantages sociaux exacts, conformité légale (mentions obligatoires, non-discrimination).</p>
+
+        <div class="callout warn">
+          <span class="callout-label">Garde-fous AI Act — Recrutement</span>
+          Si vous utilisez de l'IA dans votre process de tri ou de classement de candidats (au-delà de la simple structuration), <strong>les candidats doivent en être informés</strong>. La décision finale sur un candidat doit être <strong>humaine, traçable, et susceptible de révision</strong>. Documentation interne du process attendue.
+          <!-- À VÉRIFIER : processus AI Act recrutement HiPay — à recouper avec DPO/Compliance avant publication -->
+        </div>
+
+        <h4>💎 Gems RH / Talent</h4>
+
+        <div class="gem-block" data-gem-id="5.7.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.1.1</span>
+            <span class="gem-block-title">Rédaction d'offre d'emploi structurée</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Talent Acquisition Manager dans une fintech B2B européenne de paiement.
+
+À partir des éléments suivants, rédige une offre d'emploi optimisée pour la lecture en ligne.
+
+Contexte du poste :
+- Intitulé : [...]
+- Équipe : [...]
+- Manager : [...]
+- 3-5 missions principales : [...]
+- Must-haves : [...]
+- Nice-to-haves : [...]
+- Niveau d'expérience : [...]
+- Localisation / télétravail : [...]
+
+Structure attendue (500-700 mots) :
+1. Le poste (4-5 lignes d'accroche)
+2. Vos missions (bullet points, 5-7 items)
+3. Votre profil (bullet points, must-haves + nice-to-haves)
+4. L'équipe et l'environnement (3-4 lignes)
+5. Pourquoi nous rejoindre (3-4 lignes)
+
+Ton : professionnel mais humain, sans jargon marketing creux ("révolutionner", "leader", "passion", "écosystème").
+Mentions légales et non-discrimination : laisser un placeholder [À COMPLÉTER : mentions légales HiPay].
+Si tu n'es pas sûr d'un détail HiPay-spécifique, mets [À COMPLÉTER].</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.1.2</span>
+            <span class="gem-block-title">Synthèse de feedbacks anonymisés (360° ou collecte similaire)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es RH Business Partner dans une fintech B2B européenne de paiement.
+
+Voici N feedbacks anonymisés sur un collaborateur (Contributeur A, B, C...).
+
+⚠️ Pré-requis : les feedbacks fournis doivent être anonymisés en amont (noms des contributeurs remplacés par des labels, informations directement identifiantes retirées).
+
+Feedbacks :
+[COLLER LES FEEDBACKS ANONYMISÉS]
+
+Synthétise selon 5 axes :
+1. Points forts récurrents (mentionnés par 3+ contributeurs)
+2. Points d'amélioration récurrents
+3. Désaccords ou divergences entre contributeurs
+4. Signaux faibles à explorer (mentionnés par 1-2 personnes mais pertinents)
+5. Sujets clés à aborder en entretien
+
+Cite les contributeurs (A, B, C...) à l'appui de chaque point.
+Distingue clairement ce qui est consensuel de ce qui est minoritaire.
+Ne formule AUCUNE évaluation, note ou recommandation de décision — c'est mon travail.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.1.3</span>
+            <span class="gem-block-title">Aide à la rédaction d'un mail RH sensible</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es RH Business Partner dans une fintech B2B européenne de paiement.
+
+J'ai besoin de rédiger un mail sur le sujet sensible suivant :
+
+Situation : [DÉCRIVEZ LA SITUATION, anonymisée]
+Destinataire : [PROFIL ANONYMISÉ : rôle, ancienneté approximative]
+Objectif du mail : [...]
+Ton voulu : [empathique mais ferme / factuel / chaleureux / autre]
+Ce qui DOIT être dit : [...]
+Ce qui NE DOIT PAS être dit : [...]
+
+Génère 3 variantes du mail :
+- Variante A : plus directe
+- Variante B : plus enveloppée
+- Variante C : la plus courte possible
+
+Longueur max par variante : 8 lignes.
+
+Règles :
+- Pas de "Je tiens à vous remercier de votre compréhension", "veuillez agréer", "n'hésitez pas à"
+- Reconnaître le contexte humain en ouverture (1 phrase, sans surjouer) si la situation le justifie
+- Aucune promesse que vous ne pouvez pas tenir</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.1.4">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.1.4</span>
+            <span class="gem-block-title">Préparation d'entretien comportemental (méthode STAR)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Talent Acquisition Manager / RH BP dans une fintech B2B européenne de paiement.
+
+J'ai un entretien à mener pour le poste suivant :
+
+Poste : [...]
+Profil du candidat : [PROFIL ANONYMISÉ : seniorité, secteur, parcours]
+Compétences clés à évaluer : [3-5 compétences]
+Soft skills clés : [2-3 soft skills]
+
+Prépare :
+1. 5 questions comportementales (méthode STAR) ciblant les compétences clés
+2. 3 questions situationnelles (cas pratiques métier paiement / fintech)
+3. 2 questions pour évaluer la motivation et l'alignement
+4. Pour chaque question : ce que je dois écouter / chercher dans la réponse (signaux positifs et signaux d'alerte)
+
+Format : tableau Question / Compétence visée / Critères d'évaluation.
+
+Règles :
+- Évite les questions classiques rebattues ("vos 3 défauts", "où vous voyez-vous dans 5 ans")
+- Évite toute question discriminatoire (famille, projets personnels, origine)
+- Inclus au moins 1 question qui touche au paiement / fintech pour tester la curiosité métier</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p7-rh">
+          <div class="lesson-checklist-title">Checklist RH / Talent</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes offres d'emploi sont rédigées en 30 min via Canvas</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes feedbacks 360° sont anonymisés avant tout traitement IA</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> La décision finale sur un candidat est <strong>toujours</strong> humaine, traçable, et signée</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Si j'utilise l'IA pour le pré-tri de candidatures, les candidats sont informés et le process est documenté</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Mes communications sensibles sortent en variantes IA + personnalisation manuelle de l'ouverture et de la clôture</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="5"> Aucun dossier médical, conflit, plainte ou alerte éthique ne passe par un outil IA, même validé, sans accord DPO</label>
+        </div>
+      </div>
+
+      <!-- SOUS-MÉTIER 7.2 — PEOPLE OPERATIONS -->
+      <div class="sous-metier" id="sous-metier-people-ops">
+        <div class="lesson-meta">Sous-métier 7.2 · People Operations</div>
+        <h3>People <em>Operations</em></h3>
+        <p class="lead">Vous tenez la mécanique RH au quotidien : politiques, processus, enquêtes, données collaborateurs. L'IA vous fait gagner sur la structure et l'analyse, sans jamais toucher aux données nominatives.</p>
+
+        <p>Vous gérez la mécanique RH : politiques internes (charte, télétravail, congés, expense policy), processus structurés (revues annuelles, mobilité, NPS interne, enquêtes climat), tableaux de bord RH, conformité administrative. L'IA est précieuse sur la <strong>conception</strong> (structurer un questionnaire, drafter une politique) et sur l'<strong>analyse</strong> (clustering de verbatims anonymisés). Elle est dangereuse dès qu'on lui donne des données nominatives.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Conception d'un questionnaire d'enquête climat</h5>
+            <p><strong>Avant :</strong> 4-6 heures pour concevoir un questionnaire sérieux (choix des thèmes, formulation des questions, relecture biais, test à blanc).</p>
+            <p><strong>Après :</strong> 1 heure. Vous fixez les thèmes (votre travail), Gemini Advanced drafte les questions par thème, vous relancez l'IA pour traquer les biais. Vous validez en interne avec votre Head of People et 2-3 managers test.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Draft d'une politique RH</h5>
+            <p><strong>Avant :</strong> 3-5 heures pour drafter une nouvelle politique (télétravail, congés, expense policy).</p>
+            <p><strong>Après :</strong> 1h30. Vous brieffez Gemini Advanced sur l'objectif, le périmètre, les contraintes légales que VOUS donnez en référence. Il sort un draft structuré, vous itérez en Canvas, vous validez ligne à ligne.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Analyse de verbatims d'une enquête (anonymisés)</h5>
+            <p><strong>Avant :</strong> 2 heures pour lire 100 verbatims d'une question ouverte et en extraire les thèmes principaux.</p>
+            <p><strong>Après :</strong> 30 min. Vous anonymisez les verbatims (retirer noms d'équipes, mentions de projets identifiables, noms de personnes). Vous demandez à l'IA un clustering thématique avec citations représentatives.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">🔍</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−75%</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de temps sur<br>l'analyse de verbatims</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Structurer une enquête climat en 30-40 min"</h4>
+        <p><strong>Étape 1 — Cadrage des thèmes (10 min, sans IA) :</strong> vous fixez vous-même les 5 thèmes à couvrir. Exemple : 1) charge de travail et équilibre, 2) clarté du rôle et des priorités, 3) qualité du management direct, 4) qualité de la collaboration inter-équipes, 5) confiance dans la direction et la trajectoire.</p>
+
+        <p><strong>Étape 2 — Génération d'un premier jet de questionnaire (10 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt People Ops — Enquête climat</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es People Ops dans une fintech B2B européenne de paiement (~300 personnes, équipes Tech, Sales, Support, Risk, Finance, RH). Je prépare une enquête climat semestrielle. Voici les 5 thèmes que je veux couvrir : [COLLER LES THÈMES]. Pour chaque thème, propose-moi : 3 à 4 questions fermées (échelle de Likert 1-5, formulation neutre) + 1 question ouverte courte. Évite les questions à double sens, les négations, les présupposés. Format : tableau Thème / Question / Type (Likert/ouverte) / Justification de la formulation.</pre>
+        </div>
+
+        <p><strong>Étape 3 — Relecture biais et formulation (10 min) :</strong> vous passez le draft en Canvas et lancez un second prompt pour traquer les biais (présupposés, double sens, formulation chargée). L'IA remonte typiquement 3-5 questions à revoir. Vous arbitrez.</p>
+        <p><strong>Étape 4 — Validation interne et mise en forme :</strong> vous partagez le questionnaire à votre Head of People et à 2-3 managers pour test à blanc. Puis vous le portez dans votre outil de collecte
+        <!-- À VÉRIFIER : outil d'enquête interne HiPay (Typeform, Officevibe, autre ?) -->.</p>
+
+        <h4>💎 Gems People Operations</h4>
+
+        <div class="gem-block" data-gem-id="5.7.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.2.1</span>
+            <span class="gem-block-title">Draft de questionnaire d'enquête interne</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es People Ops dans une fintech B2B européenne de paiement (~300 personnes).
+
+Je prépare une enquête interne sur le thème suivant : [THÈME].
+Public cible : [POPULATION CONCERNÉE].
+Format de réponse souhaité : [Likert 1-5 / oui-non / ouvertes courtes / mix].
+Nombre de questions visé : [N].
+
+Génère un questionnaire en respectant ces règles :
+- Formulation neutre, pas de présupposé, pas de double négation
+- Pas de question qui force socialement une réponse positive
+- Équilibre entre questions fermées (mesurables) et ouvertes (qualitatives)
+- Regroupement logique par sous-thème si pertinent
+
+Format de sortie : tableau Sous-thème / Question / Type / Justification de la formulation.
+Si tu hésites sur la pertinence d'une question pour une fintech B2B, dis-le plutôt que de la garder par défaut.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.2.2</span>
+            <span class="gem-block-title">Relecture biais d'un questionnaire existant</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es méthodologue d'enquête.
+
+Voici un questionnaire que j'ai préparé :
+[COLLER LE QUESTIONNAIRE]
+
+Pour chaque question :
+1. Identifie tout biais potentiel (présupposé, double sens, formulation chargée, désirabilité sociale)
+2. Propose une reformulation si nécessaire (sinon, dis qu'elle va bien)
+3. Note les questions sur lesquelles tu hésites (et pourquoi)
+4. Signale les redondances entre questions
+
+Sois critique. Ne valide pas par défaut. Si tu trouves que le questionnaire est globalement bon, dis-le aussi.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.2.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.2.3</span>
+            <span class="gem-block-title">Analyse de verbatims anonymisés (clustering thématique)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es analyste qualitatif.
+
+⚠️ Pré-requis : les verbatims doivent être anonymisés en amont (retrait des noms, équipes nominales, projets identifiants). Si l'enquête a moins de 30 répondants sur le sous-segment analysé, passer par un échantillon agrégé plutôt que par les verbatims bruts.
+
+Voici N verbatims issus d'une question ouverte d'enquête interne :
+[COLLER LES VERBATIMS ANONYMISÉS]
+
+Réalise :
+1. Un clustering thématique : 4 à 7 thèmes récurrents, avec pour chacun un nom court, une description en 1 phrase, et le nombre approximatif de verbatims rattachés
+2. Pour chaque thème : 2-3 verbatims représentatifs (cités tels quels, courts)
+3. Les signaux faibles : thèmes mentionnés par 1-2 personnes mais qui te semblent pertinents
+4. Les tensions ou contradictions entre verbatims sur un même sujet
+
+Ne formule AUCUNE recommandation managériale — c'est mon travail, pas le tien.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.2.4">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.2.4</span>
+            <span class="gem-block-title">Draft d'une politique RH</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es People Ops senior dans une fintech B2B européenne de paiement.
+
+Je dois drafter une politique interne sur le thème :
+- Sujet : [télétravail / congés / expense / mobilité / autre]
+- Périmètre : [équipes concernées, pays, types de contrats]
+- Contraintes légales applicables (que JE te donne) : [...]
+- Pratique actuelle HiPay (informelle ou écrite) : [...]
+- Objectifs de la politique : [...]
+- Points sensibles à anticiper : [...]
+
+Rédige un draft structuré :
+1. Objet et périmètre
+2. Définitions
+3. Principes généraux
+4. Modalités pratiques (qui fait quoi, comment, dans quels délais)
+5. Cas particuliers et exceptions
+6. Validation et entrée en vigueur
+
+Ton : juridique-opérationnel, sans jargon, lisible par un collaborateur non spécialiste.
+
+⚠️ N'ajoute JAMAIS de référence légale (article du Code du travail, convention collective) que je ne t'ai pas donnée. Si tu penses qu'une référence serait nécessaire, écris [RÉFÉRENCE À AJOUTER : sujet, à vérifier par moi].</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p7-people-ops">
+          <div class="lesson-checklist-title">Checklist People Operations</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Je sais utiliser Gemini Advanced pour drafter un questionnaire d'enquête sans biais flagrants</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Je fais relire mes questionnaires par l'IA pour traquer les présupposés</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je n'envoie <strong>jamais</strong> de données nominatives de collaborateurs à l'IA</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Quand j'analyse des verbatims, je les anonymise <strong>avant</strong> de coller, et je vérifie que l'anonymisation tient sur le segment analysé (&gt;30 personnes)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucune référence légale (Code du travail, convention collective) sortant d'une IA n'est citée sans vérification source</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="5"> J'ai au moins un Notebook People Ops (politique RH HiPay, accord d'entreprise, benchmarks externes)</label>
+        </div>
+      </div>
+
+      <!-- SOUS-MÉTIER 7.3 — IT INTERNE / WORKPLACE -->
+      <div class="sous-metier" id="sous-metier-it-interne">
+        <div class="lesson-meta">Sous-métier 7.3 · IT interne / Workplace</div>
+        <h3>IT interne / <em>Workplace</em></h3>
+        <p class="lead">Le métier où l'IA donne le plus vite des résultats visibles — parce que vos "clients" (les collaborateurs) sont juste à côté et vous diront immédiatement si ça marche.</p>
+
+        <p>Vous gérez les postes, les accès, les outils SaaS, l'onboarding/offboarding technique, le support de niveau 1-2. À ~300 personnes, vous êtes une petite équipe avec un flux constant de demandes basse valeur ajoutée (réinitialisations, demandes d'accès, "mon outil ne marche pas") qui mange le temps que vous devriez passer sur l'infra et la sécurité. L'IA peut <strong>abattre la couche basse du support</strong> : reformuler des tickets confus, proposer un premier diagnostic, générer des procédures d'onboarding par profil.</p>
+
+        <div class="callout good">
+          <span class="callout-label">Règle d'or IT interne</span>
+          L'IA traite la masse, vous gardez les exceptions et la sécurité.
+        </div>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Triage et reformulation des tickets entrants</h5>
+            <p><strong>Avant :</strong> 40-60 tickets/semaine arrivent dans des formats hétérogènes ("ça marche plus", "ai besoin accès", "VPN cassé"). 5-10 minutes par ticket pour comprendre, requalifier, prioriser.</p>
+            <p><strong>Après :</strong> un workflow n8n récupère chaque ticket, l'envoie à Gemini Advanced qui le reformule en format standard (catégorie, criticité présumée, contexte utilisateur, demande claire). Vous arrivez sur un ticket déjà structuré. Gain typique : 2-3 min × 50 = 1h30-2h par semaine récupérées.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Documentation d'onboarding par profil</h5>
+            <p><strong>Avant :</strong> à chaque nouveau collaborateur, vous adaptez la doc générique d'onboarding IT à son profil (Dev / Sales / Risk / Finance) — 30-45 min par profil.</p>
+            <p><strong>Après :</strong> 5 min. Un Gem qui prend en entrée le profil (rôle, équipe, manager, date d'arrivée, type de poste) et génère la checklist d'onboarding IT personnalisée : liste d'accès à provisionner, outils à installer, comptes à créer, procédures de sécurité.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Réponses niveau 1 sur #ask-it</h5>
+            <p><strong>Avant :</strong> un collaborateur écrit "comment je configure le VPN sur mon nouveau Mac ?". Réponse humaine. 10-15 fois par jour, sur des questions souvent identiques.</p>
+            <p><strong>Après :</strong> un Gem "Support IT niveau 1 HiPay" est partagé à l'équipe IT. Sur ces questions répétitives, vous collez la question, vous récupérez une réponse structurée alignée sur les procédures HiPay, vous relisez (30 secondes), vous postez.
+            <!-- À VÉRIFIER : avancement pilote bot Slack DUST pour support IT HiPay --></p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">🎫</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−2h</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">par semaine sur<br>le triage de tickets</div>
+          </div>
+        </div>
+
+        <h4>Workflow réel — "Automatiser le triage des tickets IT avec n8n + Gemini Advanced"</h4>
+        <p><strong>Contexte :</strong> vous recevez 40-60 tickets IT par semaine
+        <!-- À VÉRIFIER : outil de ticketing HiPay — Jira ? Freshservice ? autre ? -->. La moitié sont des demandes standard (accès, réinitialisation, install logiciel). L'autre moitié sont des incidents qui demandent un diagnostic.</p>
+
+        <p><strong>Étape 1 — Déclencheur n8n (5 min de setup) :</strong> n8n détecte la création d'un nouveau ticket et récupère : titre, description, auteur (rôle, équipe — pas le nom complet), date.</p>
+
+        <p><strong>Étape 2 — Appel Gemini Advanced via API (prompt système à mettre en config n8n)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt système n8n — Triage ticket IT</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es support IT niveau 1 dans une fintech B2B (~300 personnes). À partir du titre et de la description d'un ticket, retourne un JSON avec : catégorie (parmi : ACCÈS / MATÉRIEL / LOGICIEL / VPN-RÉSEAU / SÉCURITÉ / AUTRE), criticité (P1 bloquant / P2 important / P3 normal), résumé en 1 phrase, et 3 premières actions à mener par l'agent. Si le ticket évoque une suspicion d'incident sécurité (phishing, accès compromis, données fuitées), retourne criticité = P1 et catégorie = SÉCURITÉ, sans autre tentative de réponse. Préfère P2 à P1 en cas de doute.</pre>
+        </div>
+
+        <p><strong>Étape 3 — Mise à jour du ticket :</strong> n8n parse le JSON et met à jour le ticket avec les labels (catégorie, criticité), ajoute un commentaire interne avec le résumé et les 3 premières actions, et notifie l'agent IT de garde si P1.</p>
+        <p><strong>Étape 4 — Boucle d'amélioration (continue) :</strong> une fois par mois, vous relisez 20 tickets triés par l'IA et vous regardez les erreurs (mauvaise catégorie, criticité sous/sur-estimée). Vous ajustez le prompt en conséquence.</p>
+
+        <div class="callout warn">
+          <span class="callout-label">Garde-fous obligatoires</span>
+          Aucune action automatique sur le ticket par l'IA (pas de fermeture, pas de réponse au demandeur, pas de provision d'accès). Pour SÉCURITÉ : notification humaine immédiate, jamais de réponse automatisée. Logs n8n conservés pour traçabilité.
+        </div>
+
+        <h4>💎 Gems IT interne</h4>
+
+        <div class="gem-block" data-gem-id="5.7.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.3.1</span>
+            <span class="gem-block-title">Checklist d'onboarding IT par profil</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es responsable IT interne dans une fintech B2B (~300 personnes).
+
+Profil du nouveau collaborateur :
+- Rôle : [...]
+- Équipe : [...]
+- Manager : [...]
+- Type de poste : Mac / Windows / Linux
+- Type d'accès : standard / élevé (admin sur certains systèmes)
+- Date d'arrivée : [...]
+
+Génère :
+1. La liste des outils HiPay à provisionner pour ce profil (Slack, Notion, Jira, [À COMPLÉTER : liste d'outils HiPay], + outils métier spécifiques selon le rôle)
+2. La liste des accès à créer (Google Workspace, [À COMPLÉTER], + accès métier)
+3. Les actions de sécurité à faire dès J-1 (MFA, gestionnaire de mots de passe, charte signée)
+4. La doc spécifique à fournir au collaborateur le jour J
+
+Format : checklist cochable, regroupée par catégorie (Comptes / Outils / Accès métier / Sécurité / Doc à fournir).
+Si tu n'es pas sûr d'un outil spécifique HiPay, marque [À VÉRIFIER].</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.3.2</span>
+            <span class="gem-block-title">Reformulation et triage d'un ticket IT</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es support IT niveau 1 dans une fintech B2B (~300 personnes).
+
+Ticket reçu :
+Titre : [...]
+Description : [...]
+Auteur (rôle / équipe, sans nom) : [...]
+
+Retourne :
+1. Une reformulation claire du problème en 1-2 phrases
+2. La catégorie : ACCÈS / MATÉRIEL / LOGICIEL / VPN-RÉSEAU / SÉCURITÉ / AUTRE
+3. La criticité présumée : P1 (bloquant) / P2 (important) / P3 (normal). Préfère P2 en cas de doute.
+4. Les 3 premières actions à mener par l'agent IT
+5. Si le ticket évoque une suspicion sécurité (phishing, accès compromis, fuite de données), arrête le diagnostic et signale clairement : "ESCALADE SÉCURITÉ — traitement humain immédiat"
+
+Ne propose jamais de réponse directe au demandeur — c'est moi qui la rédige après diagnostic.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.7.3.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.7.3.3</span>
+            <span class="gem-block-title">Brouillon de procédure IT à partir d'un cas réel</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es responsable IT interne. J'ai résolu un cas que je veux documenter pour que mes collègues sachent le refaire.
+
+Cas résolu :
+- Symptôme initial : [...]
+- Diagnostic posé : [...]
+- Étapes de résolution : [...]
+- Pièges rencontrés : [...]
+
+Rédige une procédure interne format Confluence :
+1. Titre court et descriptif
+2. Symptômes (comment reconnaître ce cas)
+3. Pré-requis (outils / accès nécessaires)
+4. Étapes de résolution (numérotées, une action par étape)
+5. Vérification finale
+6. Pièges à éviter
+
+Ton : factuel, opératoire. Cible : un collègue IT junior qui doit pouvoir suivre sans poser de question.
+Si une étape dépend d'un outil HiPay spécifique que tu ne connais pas, mets [À VÉRIFIER].</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-p7-it">
+          <div class="lesson-checklist-title">Checklist IT interne</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Je fais reformuler les tickets confus par l'IA avant de les attaquer</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> J'ai un Gem onboarding IT par profil principal (Dev / Sales / Support / autre)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je documente mes cas résolus avec l'IA en sortie pour les capitaliser sur Confluence</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Je ne laisse <strong>aucun</strong> agent autonome agir sur les accès ou les comptes</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Les tickets sécurité ne passent <strong>jamais</strong> par un outil IA externe</label>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE PEOPLE -->
+      <div class="case-study" data-case="case-5-p7">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie People &amp; Internal</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes People Ops chez HiPay. Vous préparez la communication interne autour de l'arrivée d'un nouveau Head of Engineering, qui remplace l'ancien parti récemment dans un contexte tendu (départ négocié, frustrations connues dans l'équipe Tech). Vous devez : 1) rédiger l'annonce interne (mail + post Slack), 2) préparer un onboarding IT de niveau "accès élevé" (admin sur plusieurs systèmes), 3) anticiper les questions des managers Tech qui vont arriver.</p>
+          <p>Vous avez 2 jours pour tout préparer.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche est la meilleure ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced avec tous les éléments (y compris les détails sur le contexte tendu du précédent départ) et vous lui demandez de générer les 3 livrables d'un coup pour gagner du temps.</button>
+          <button class="cs-option">B) Vous préparez vous-même l'annonce (sujet sensible, ton à votre main), vous utilisez le Gem onboarding IT par profil pour le checklist d'accès, et vous brieffez Gemini Advanced uniquement sur la FAQ managers avec un contexte anonymisé ("départ d'un précédent responsable dans un contexte délicat").</button>
+          <button class="cs-option">C) Vous demandez à un agent autonome de générer les trois livrables et de poster directement l'annonce sur Slack à H-0 pour gagner du temps.</button>
+          <button class="cs-option">D) Vous évitez totalement l'IA sur ce dossier parce que c'est sensible et politique.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>L'annonce interne sur un sujet sensible (remplacement après départ tendu) doit refléter <strong>votre intention</strong>, pas une formulation IA générique. Vous gardez la main, l'IA peut au mieux vous donner 2-3 variantes de phrasing une fois que vous avez le squelette. Cf. Piège 4 catégorie (communications sensibles standardisées).</p>
+          <p>L'onboarding IT à accès élevé est exactement le cas où un Gem standardisé fait gagner du temps <strong>et</strong> force à ne rien oublier. Mais l'exécution reste humaine — pas d'agent autonome sur des accès admin. La FAQ managers peut largement bénéficier de Gemini Advanced : rédaction structurée à partir d'inputs que vous maîtrisez, <strong>avec un contexte anonymisé</strong>.</p>
+          <ul>
+            <li><strong>A :</strong> coller le contexte détaillé du précédent départ dans un outil IA, c'est exposer des informations sensibles RH (négociation, frustrations nominatives). Risque RGPD + risque réputationnel si fuite. Et générer une annonce sensible "d'un coup" c'est s'exposer à un ton générique qui sonnera faux.</li>
+            <li><strong>C :</strong> agent autonome qui poste seul une annonce sensible = scénario d'incident. Pas une décision RH, une démission carrière. À ne <strong>jamais</strong> faire sur ce type de sujet.</li>
+            <li><strong>D :</strong> trop conservateur. L'IA peut clairement aider sur les parties non sensibles (FAQ structurée, checklist onboarding IT). Refuser tout usage parce que "c'est politique", c'est passer à côté des gains réels.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE PEOPLE -->
+      <div class="quiz" data-quiz="m5-p7">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours People &amp; Internal</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE PEOPLE -->
+      <div class="lesson-checklist" data-checklist="m5-p7-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie People &amp; Internal</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je distingue clairement ce que l'IA fait (forme, structure, synthèse) de ce que je garde (décision, jugement, ton)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> J'anonymise systématiquement les données de personnes (candidats, collaborateurs, contributeurs feedback) avant de les passer à l'IA</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Je connais les usages "AI Act élevé" qui me concernent (recrutement, évaluation), et je sais les cadrer (information des personnes, supervision humaine, traçabilité)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> J'ai au moins un Notebook par sous-métier que je traite (RH, People Ops, IT) qui me sert de base de connaissance interrogeable</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucun agent autonome ne touche aux décisions RH, aux comptes, ni aux accès</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Les communications sensibles (réorga, départ, conflit) gardent une rédaction humaine — l'IA aide à varier le phrasing, pas à générer le fond</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="6"> Sur les tickets IT, les cas "sécurité" ne passent jamais par un outil IA externe</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="7"> Sur les dossiers très sensibles (médical, conflit, plainte harcèlement, alertes éthiques), aucun outil IA même validé sans accord DPO explicite</label>
+      </div>
+
+    </div>
+    <!-- /PARCOURS 7 — PEOPLE & INTERNAL -->
+
     <!-- QUIZ RÉCAPITULATIF PARCOURS MÉTIERS -->
     <div class="quiz" data-quiz="m4">
       <div class="quiz-head">
@@ -7605,6 +9392,102 @@ const QUIZZES = {
       ],
       correct: 1,
       explain: "L'absence de consigne d'honnêteté est la source principale d'hallucinations sur les sujets sensibles. Le modèle, par défaut, préfère inventer plutôt qu'admettre une limite. Ajouter 'si tu n'es pas sûr, dis-le' est probablement la consigne avec le meilleur ratio impact / effort de tout le prompting."
+    }
+  ],
+  'm5-p6': [
+    {
+      q: "Vous demandez à Claude Code d'implémenter une feature. Le code généré compile et les tests passent. Que faites-vous avant de merger ?",
+      opts: [
+        "Merger directement, les tests passent",
+        "Review humaine systématique, en particulier sur les chemins critiques métier et les cas limites NON couverts par les tests existants (à compléter à la main)",
+        "Demander à Claude Code de \'vérifier\' son propre code",
+        "Lancer les tests une 2e fois"
+      ],
+      correct: 1,
+      explain: "Tests qui passent ≠ code correct. L'IA peut générer du code qui implémente le happy path mais oublie les edge cases métier (devises, retry, idempotence, refunds partiels), utilise des APIs hallucinées que les tests existants ne couvrent pas, introduit des patterns dangereux non détectés. Review humaine sur les chemins critiques + tests sur les cas que l'IA a probablement oubliés = obligatoire. Demander à l'IA de \'vérifier\' = elle a tendance à confirmer son propre code."
+    },
+    {
+      q: "Vous lancez Claude Code pour implémenter une feature sur un module critique (calcul de commissions marchand). Quelle précaution est la plus importante ?",
+      opts: [
+        "Donner à Claude Code l'accès à tout le repo pour qu'il ait le contexte",
+        "Travailler sur une branche Git dédiée + compléter la spec métier avec les edge cases paiement (devises, retry, idempotence) que le PM n'a pas couverts + tester ces cas à la main",
+        "Lancer Claude Code en agent autonome sans review, on verra le résultat",
+        "Désactiver les tests pour aller plus vite"
+      ],
+      correct: 1,
+      explain: "Sur le code critique, deux précautions clés : 1) branche Git dédiée (jamais main), 2) compléter la spec avec les edge cases métier que le PM n'a pas couverts (devises, retry, idempotence, refunds partiels) — c'est la valeur ajoutée de l'ingénieur. Donner accès à tout le repo n'est pas faux mais secondaire. Agent autonome sans review = scénario d'incident. Désactiver les tests = catastrophe assurée."
+    }
+  ],
+  'm5-p7': [
+    {
+      q: "Vous préparez une enquête climat anonyme. Comment utiliser l'IA correctement à chaque étape ?",
+      opts: [
+        "Je donne à l'IA les réponses brutes nominatives pour qu'elle clusterise — c'est plus précis",
+        "L'IA m'aide à drafter et relire le questionnaire en amont, puis j'analyse les verbatims seulement après anonymisation et en vérifiant que le segment est assez grand (>30 personnes)",
+        "Je n'utilise pas d'IA sur une enquête, c'est trop sensible",
+        "Je laisse un agent autonome envoyer le questionnaire et synthétiser les résultats"
+      ],
+      correct: 1,
+      explain: "L'IA apporte une vraie valeur en amont (questionnaire neutre, sans biais) et après (clustering thématique sur verbatims). À condition d'anonymiser avant de coller, et de vérifier que l'anonymisation tient sur le segment analysé (sinon l'IA peut ré-identifier par recoupement). Donner des réponses nominatives = violation RGPD claire. Refuser tout usage = trop conservateur. Agent autonome sur une enquête interne = aucune raison valable et risque d'incident."
+    },
+    {
+      q: "Un nouveau collaborateur arrive lundi. Vous préparez son onboarding IT. Quelle approche est la bonne ?",
+      opts: [
+        "Je laisse un agent IA provisionner directement tous ses accès pour gagner du temps",
+        "J'utilise un Gem \'checklist onboarding IT par profil\' pour ne rien oublier, et j'exécute moi-même les provisions",
+        "Je copie-colle la doc onboarding générique sans la personnaliser, l'IA n'a rien à apporter ici",
+        "Je demande à l'IA de me lister tous les outils HiPay sans rien lui préciser"
+      ],
+      correct: 1,
+      explain: "Le Gem checklist par profil est exactement le bon usage : il force à personnaliser (rôle, équipe, type d'accès) et à ne rien oublier (MFA, charte, gestionnaire de mots de passe). L'exécution des provisions reste humaine — un agent autonome sur des accès, c'est non. Doc générique = mauvaise expérience J-1. Demander à l'IA de lister les outils HiPay sans contexte = elle invente."
+    }
+  ],
+  'm5-p4': [
+    {
+      q: "Vous préparez un commentaire de reporting mensuel. Vous avez 3 colonnes de chiffres dans Excel et vous avez calculé les variations. Comment utiliser Gemini Advanced ?",
+      opts: [
+        "Coller les 3 colonnes brutes et demander à l'IA de calculer les variations, puis de commenter",
+        "Calculer les variations dans Excel d'abord, coller le tableau complet (valeurs + variations) à Gemini Advanced, lui demander UNIQUEMENT de structurer le commentaire à partir des chiffres fournis",
+        "Demander à Gemini Advanced de récupérer les chiffres depuis la BI lui-même",
+        "Rédiger à la main, l'IA n'apporte rien sur les chiffres"
+      ],
+      correct: 1,
+      explain: "L'IA n'est PAS une calculatrice. Tous les calculs dans Excel. L'IA reçoit le tableau complet (valeurs + variations déjà calculées) et structure le commentaire. C'est ce découpage qui donne 0% de risque sur les chiffres ET 60-80% de gain de temps sur la rédaction. Demander à l'IA d'aller chercher les chiffres dans la BI = elle ne peut pas, et si elle invente, ça passe. Rédiger à la main = vous perdez 1-2h pour rien."
+    },
+    {
+      q: "Vous écrivez une note de méthode comptable et vous voulez mentionner une norme IFRS spécifique. Que faites-vous ?",
+      opts: [
+        "Je demande à Gemini Advanced de me citer la norme IFRS applicable et son numéro, je copie",
+        "Je demande à Gemini Advanced de me suggérer quelle norme pourrait s'appliquer, je vérifie SYSTÉMATIQUEMENT la référence exacte sur le site IFRS ou avec mon expert-comptable avant de citer",
+        "J'évite toute référence normative pour ne pas me tromper",
+        "Je laisse un agent autonome rédiger la note complète, normes incluses"
+      ],
+      correct: 1,
+      explain: "Comme pour les références juridiques en Compliance/Legal, les références comptables et fiscales sortant d'une IA doivent être vérifiées à la source primaire (IFRS Foundation, BOI, expert-comptable). L'IA peut suggérer une piste, jamais signer la référence. Éviter toute référence = trop conservateur. Agent autonome sur de la doctrine comptable = inadmissible."
+    }
+  ],
+  'm5-p5': [
+    {
+      q: "Vous rédigez un article de blog sur un sujet stratégique pour HiPay. Quelle méthode produit un contenu qui ne sent PAS l'IA ?",
+      opts: [
+        "Demander à Gemini Advanced de générer l'article complet, relire vite, publier",
+        "Cadrage humain (sujet + angle + exemples HiPay) → Deep Research → Canvas pour premier jet avec banlist explicite → réécriture manuelle d'au moins 30% du texte (voix, angle, exemples)",
+        "Demander à l'IA de varier le style pour \'ne pas faire IA\'",
+        "Rédiger à la main de bout en bout, l'IA n'apporte rien sur le contenu"
+      ],
+      correct: 1,
+      explain: "Le contenu qui sent l'IA vient de 3 causes : pas de cadrage humain (angle générique), pas de banlist (mots-marker), pas de réécriture (perfection trop propre). Le bon workflow combine les 3 contre-mesures. Demander à l'IA de \'varier le style\' = elle ne sait pas vraiment, elle produit un autre style également reconnaissable. Rédiger 100% manuel = perdre 60% du temps pour 0% de gain qualité."
+    },
+    {
+      q: "Vous préparez le lancement d'une feature avec 5 livrables à produire (page produit, one-pager Sales, post LinkedIn CMO, script CSM, FAQ Support). Quelle séquence ?",
+      opts: [
+        "Générer les 5 livrables en série avec Gemini Advanced, relire, publier",
+        "Réunion de cadrage cross-fonctionnelle (PM/Sales/CSM/Support, 1h) pour aligner messages → IA pour adapter le même message validé à chaque format → personnalisation manuelle finale par livrable",
+        "Laisser un agent autonome produire les 5 livrables en parallèle",
+        "Rédiger les 5 livrables à la main pour ne pas se tromper"
+      ],
+      correct: 1,
+      explain: "Sur un lancement multi-format, l'enjeu est l'alignement des messages, pas la production unitaire. Réunion de cadrage = investissement à plus haut ROI. Puis l'IA adapte le même message validé à chaque format (sa force). Personnalisation manuelle finale = garde la voix de chaque livrable. Générer en série sans cadrage = incohérence inter-livrables. Agent autonome sur un lancement = incident garanti. Tout à la main = perte de temps sans gain qualité."
     }
   ],
   'm5-p2': [
