@@ -1552,6 +1552,64 @@
     word-break: break-word;
     line-height: 1.65;
   }
+
+  /* ============ PARCOURS MÉTIERS V2 ============ */
+  .parcours-nav {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 40px;
+    margin-bottom: 56px;
+  }
+  .parcours-nav-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .parcours-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .parcours-nav li { font-size: 15px; color: var(--ink); line-height: 1.5; }
+  .parcours-nav a { color: var(--accent); text-decoration: none; }
+  .parcours-nav a:hover { text-decoration: underline; }
+  .tag-soon {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .parcours-block {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 2px solid var(--line-strong);
+  }
+  .parcours-block-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: .06em;
+    margin-bottom: 12px;
+  }
+  .sous-metier {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .encart-court {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .encart-court h4 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--ink); }
 </style>
 </head>
 <body>
@@ -1625,7 +1683,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="section-num">00 — L'éléphant dans la pièce</span>
+        <span class="section-num">00 — Pas de tabou !</span>
         <h2 class="section-title">Pourquoi <em>former</em> le robot qui va vous remplacer ?</h2>
       </div>
       <p class="section-intro">
@@ -5047,515 +5105,584 @@ Liste les améliorations à faire en moins de 5 lignes, puis donne-moi la versio
 <section class="lesson" id="metiers" style="background:var(--bg-soft)">
   <div class="lesson-wrap">
     <div class="lesson-meta">Module 05 · Parcours métiers</div>
-    <h2>Votre <em>quotidien</em>, augmenté.</h2>
-    <p class="lead">5 spécialisations. Pour chacune : ce que l'IA prend, ce qui devient votre nouvelle valeur, et 2 à 3 "Gems" — des assistants spécialisés que vous pouvez créer en 3 minutes sur Claude, ChatGPT ou Gemini.</p>
+    <h2>L'IA dans <em>votre métier</em>.</h2>
+    <p class="lead">Ce module détaille comment l'IA s'utilise concrètement dans chacun des grands métiers de HiPay. Chaque parcours : contexte, transformations avant/après, workflows réels, Gems prêts à l'emploi, cas pratique et checklist. Cible : au moins 2 actions à mettre en place dès cette semaine.</p>
 
-    <div class="metiers-nav">
-      <button class="metier-tab active" data-metier="rh">RH & Talent</button>
-      <button class="metier-tab" data-metier="sales">Sales & AM</button>
-      <button class="metier-tab" data-metier="finance">Finance & Ops</button>
-      <button class="metier-tab" data-metier="manager">Managers</button>
-      <button class="metier-tab" data-metier="tech">Tech & Produit</button>
+    <div class="parcours-nav">
+      <div class="parcours-nav-label">Les 7 parcours</div>
+      <ul>
+        <li>💼 <strong><a href="#parcours-business">Parcours 1 — Business &amp; Commercial</a></strong> — Sales/BD, Account Management, Pre-Sales, Customer Success, Partnerships</li>
+        <li>🎧 <strong>Parcours 2 — Support &amp; Service Client</strong> — Support technique, Customer Service, Onboarding <span class="tag-soon">en cours</span></li>
+        <li>⚖️ <strong>Parcours 3 — Risk, Compliance &amp; Legal</strong> — Legal, Compliance, Risk Management, DPO/Privacy <span class="tag-soon">en cours</span></li>
+        <li>💰 <strong>Parcours 4 — Finance &amp; Ops</strong> — Finance, Comptabilité, Operations, Procurement <span class="tag-soon">en cours</span></li>
+        <li>📣 <strong>Parcours 5 — Marketing, Produit &amp; Communication</strong> — Marketing, Product, Product Marketing, Communication <span class="tag-soon">en cours</span></li>
+        <li>🛠️ <strong>Parcours 6 — Tech &amp; Engineering</strong> — Engineering, DevOps/SRE, Data, QA/Security <span class="tag-soon">en cours</span></li>
+        <li>👥 <strong>Parcours 7 — People &amp; Internal</strong> — RH/Talent, People Ops, IT interne <span class="tag-soon">en cours</span></li>
+      </ul>
     </div>
 
-    <!-- RH -->
-    <div class="metier-panel active" data-metier="rh">
-      <div class="metier-header">
-        <h3>RH & <em>Talent</em></h3>
-        <p class="lead">"Arrêtez de trier des CVs. Devenez les business partners qui construisent la culture."</p>
+    <!-- ============ PARCOURS 1 — BUSINESS & COMMERCIAL ============ -->
+    <div class="parcours-block" id="parcours-business">
+      <div class="parcours-block-label">💼 Parcours 1 · Business &amp; Commercial · 6-8 min</div>
+      <h2>Business &amp; <em>Commercial</em></h2>
+      <p class="lead">Le métier où l'IA donne le plus de gains de productivité immédiats — à condition de ne pas tomber dans le piège du commercial automatisé qui se voit à 10 km.</p>
+
+      <h3>Contexte général de la catégorie</h3>
+      <p>Vous êtes en première ligne avec les clients et les prospects. Vous passez énormément de temps en <strong>rédaction, recherche, préparation, suivi</strong> : mails de prospection, briefs RDV, comptes-rendus, propositions commerciales, QBR, scoring de comptes, suivi de pipe. Tout ça est massivement accéléré par l'IA.</p>
+      <p>Mais le métier Business repose sur <strong>la relation humaine et la personnalisation</strong>. Un commercial qui envoie 50 messages générés en série, ça se voit, ça se sent, ça décrédibilise — et ça brûle des prospects qu'on aurait pu signer.</p>
+      <div class="callout good">
+        <span class="callout-label">La règle d'or Business</span>
+        L'IA fait le travail de fond (préparation, structure, synthèse), vous gardez la couche humaine de personnalisation et la décision finale.
       </div>
 
-      <div class="compare">
-        <div class="compare-col before">
-          <h5>Ce que l'IA prend</h5>
-          <ul>
-            <li>Pré-screening de 100 CVs sur des critères objectifs (compétences, années d'expé)</li>
-            <li>Rédaction d'offres d'emploi génériques</li>
-            <li>Mails de refus, accusés de réception, relances candidats</li>
-            <li>Réponses aux FAQ internes répétitives (congés, RTT, formation)</li>
-            <li>Première trame de comptes-rendus d'entretien annuel</li>
-          </ul>
-        </div>
-        <div class="compare-col after">
-          <h5>Votre nouvelle valeur</h5>
-          <ul>
-            <li>Entretiens profonds pour valider le culture fit (irremplaçable)</li>
-            <li>Stratégie de marque employeur sur les canaux où sont vos talents</li>
-            <li>Coaching des managers sur la gestion de conflit</li>
-            <li>Plans de carrière personnalisés</li>
-            <li>Détection des signaux faibles d'engagement / désengagement</li>
-          </ul>
-        </div>
-      </div>
+      <h3>Pièges transverses à la catégorie Business</h3>
 
-      <h3>3 Gems pour le pôle RH</h3>
-      <div class="gems">
-        <div class="gem">
-          <div class="gem-num">Gem 01</div>
-          <h4>L'Aimant à Talents</h4>
-          <div class="fn">Fonction · Fiche de poste → offre attractive</div>
-          <p class="why">Les fiches copiées-collées n'attirent plus personne en 2026. Cette offre doit raconter une histoire, pas lister des prérequis.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es Lead Recruteur chez HiPay (fintech B2B payment, scale-up FR). Je te donne un brief de poste. Tu dois rédiger une offre d'emploi en 4 parties :
-1. L'accroche — pourquoi ce job est unique (1 paragraphe punchy)
-2. Tes missions — verbes d'action, pas de jargon
-3. Le profil idéal — 4-5 critères concrets, soft + hard skills
-4. Ce qu'on t'offre — package + culture + perspectives
+      <h4>Piège 1 — Les messages "sentent l'IA"</h4>
+      <p>L'IA a tendance à générer des messages avec une structure trop propre, des formulations un peu pompeuses, un ton un peu trop pro. Les clients B2B aguerris le voient en 5 secondes.</p>
+      <p><strong>Bonne pratique :</strong></p>
+      <ul>
+        <li>Toujours <strong>réinjecter une touche personnelle</strong> (anecdote, observation précise, formulation qui vous ressemble)</li>
+        <li>Demander à l'IA de <strong>briser</strong> la perfection : <em>"Ton conversationnel, pas trop bien rédigé, comme si je l'avais tapé entre deux meetings"</em></li>
+        <li>Éviter les expressions marker-IA : <em>"j'espère que vous allez bien"</em>, <em>"je me permets de vous contacter"</em>, <em>"n'hésitez pas à"</em>, <em>"dans le cadre de notre démarche"</em></li>
+      </ul>
 
-Ton : dynamique, moderne, tutoiement. Pas de buzzwords creux. Maximum 350 mots."
+      <h4>Piège 2 — Données clients dans des outils non validés</h4>
+      <p>Coller un nom de prospect, un nom de compte, des montants de deal, une stratégie de négociation dans un outil IA non validé HiPay = exfiltration de données commerciales sensibles.</p>
+      <p><strong>Bonne pratique :</strong> utiliser <strong>uniquement Gemini Advanced</strong>, <strong>Claude.ai Team</strong> (pilote), ou <strong>DUST</strong> (pilote). Pas de ChatGPT perso, pas de Mistral perso, pas de Notion AI sur des comptes nominatifs réels.</p>
+      <!-- À VÉRIFIER : liste des outils validés HiPay — à confirmer avec IT/Sécurité avant publication -->
+
+      <h4>Piège 3 — Promettre ce que l'IA invente</h4>
+      <p>Vous demandez à l'IA de synthétiser ce que fait HiPay sur un cas client — elle peut inventer une feature ou un SLA qui n'existe pas. Si vous le promettez au client sans vérifier, vous engagez l'entreprise sur du vent.</p>
+      <p><strong>Bonne pratique :</strong> tout ce qui touche aux <strong>capacités produit, SLA, prix, conditions contractuelles</strong> sortant d'une IA doit être recoupé avec la documentation officielle (Confluence Produit) <strong>avant</strong> envoi au client.</p>
+
+      <h4>Piège 4 — Agents qui agissent sur le CRM</h4>
+      <p>Tentation : laisser un agent autonome mettre à jour le CRM, créer des opportunités, envoyer des mails de relance. Risque : un agent mal cadré peut polluer le pipe, surfacturer des prospects, ou contacter un compte qu'on ne devait pas toucher.</p>
+      <p><strong>Bonne pratique :</strong> l'IA <strong>prépare</strong> (drafte le mail, génère la note CRM, identifie les comptes à relancer), un humain <strong>exécute</strong>. Pour de l'automatisation, passer par n8n avec des étapes de validation explicites, pas par un agent autonome qui agit seul.</p>
+
+      <!-- SOUS-MÉTIER 1.1 — SALES / BUSINESS DEVELOPMENT -->
+      <div class="sous-metier" id="sous-metier-sales-bd">
+        <div class="lesson-meta">Sous-métier 1.1 · Sales / Business Development</div>
+        <h3>Sales / <em>Business Development</em></h3>
+        <p class="lead">Vous avez 30 comptes à travailler en parallèle. L'IA ne fera pas de meilleurs commerciaux à votre place — mais elle vous fait gagner 10 heures par semaine sur la préparation, que vous remettez en temps client.</p>
+
+        <p>Vous gérez un portefeuille de prospects et de comptes à un stade précoce. Votre temps est mangé par : la recherche en amont, la rédaction de séquences de prospection, la préparation des RDV, le suivi des comptes pas mûrs. L'IA déplace radicalement le ratio temps de prépa / temps client. Sur un compte que vous travailliez avant en 90 minutes de prépa, vous descendez à 25-30 minutes.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Recherche compte avant RDV</h5>
+            <p><strong>Avant :</strong> 45-60 minutes de LinkedIn + site web + recherche presse + lecture des dernières actus pour comprendre un compte.</p>
+            <p><strong>Après :</strong> 15 minutes. Deep Research (Gemini Advanced) — modèle économique, actualités 12 derniers mois, stack technique payment, signaux d'achat. Vous arrivez <strong>mieux préparé</strong> en moins de temps.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Séquences de prospection personnalisées</h5>
+            <p><strong>Avant :</strong> 20 prospects à attaquer cette semaine. Soit séquence générique (taux de réponse faible), soit personnalisation manuelle (4-5 heures).</p>
+            <p><strong>Après :</strong> 45 minutes. Vous donnez à Gemini Advanced les 20 profils anonymisés + 1 trame + un fait précis observé sur chacun. L'IA génère 20 séquences personnalisées. Vous relisez et ajustez 2-3 mots par message.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 3 — Compte-rendu après chaque RDV</h5>
+            <p><strong>Avant :</strong> 20-30 minutes après chaque RDV pour écrire un CR propre dans le CRM. Ou pas du tout, parce que pas le temps — et le compte se perd.</p>
+            <p><strong>Après :</strong> 5 minutes. Vous dictez vos notes brutes (vocal ou bullet points), l'IA structure en CR propre : décisions, prochaines étapes, deadlines, points sensibles, données chiffrées évoquées. Vous copiez dans le CRM. <strong>Conséquence inattendue :</strong> vous faites enfin tous vos CR, parce que ce n'est plus une corvée.</p>
+          </div>
+          <div class="compare-col after" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+            <div style="font-size:2.5rem">⏱️</div>
+            <div style="font-size:1.8rem;font-weight:700;color:var(--good)">−60 min</div>
+            <div style="font-size:13px;color:var(--ink-soft);text-align:center">de prépa par RDV<br>en moyenne</div>
           </div>
         </div>
 
-        <div class="gem">
-          <div class="gem-num">Gem 02</div>
-          <h4>Le Médiateur</h4>
-          <div class="fn">Fonction · Trames d'entretiens difficiles</div>
-          <p class="why">Annoncer un refus de promotion, gérer un conflit d'équipe, dire à quelqu'un que sa perf décroche. L'empathie demande de l'énergie ; l'IA donne la structure neutre.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un coach RH bienveillant, formé à la Communication Non Violente (CNV). Je vais te décrire une situation difficile (annonce, conflit, mauvaise nouvelle). Propose-moi un script d'entretien ou un mail en suivant strictement la méthode CNV :
-- Observation factuelle (sans jugement)
-- Sentiment exprimé
-- Besoin identifié
-- Demande claire et négociable
+        <h4>Workflow réel — "Préparer un premier RDV DAF en 25 minutes"</h4>
+        <p><strong>Contexte :</strong> vous avez décroché un premier appel avec le DAF d'une scale-up SaaS B2B (50-200 pers., volumes en croissance). RDV demain matin.</p>
 
-Évite les formules toutes faites. Garde un ton humain, posé."
+        <p><strong>Étape 1 — Deep Research sur l'entreprise (10 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Deep Research — Étape 1</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Recherche approfondie sur l'entreprise [NOM]. Je suis Sales dans une fintech B2B de paiement, j'ai un RDV avec leur DAF demain. Identifie : modèle économique (B2B / B2C, SaaS / autre, ticket moyen estimé), actualités 12 derniers mois (levées, partenariats, lancements produit, expansions géographiques), stack technique payment si publique, signaux d'achat probables (croissance internationale, multi-devises, churn payment, fraude). Source chaque info. Si tu hésites sur un fait, dis-le.</pre>
+        </div>
+
+        <p><strong>Étape 2 — Synthèse angle commercial (5 min)</strong> — en Canvas à partir du rapport Deep Research :</p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Canvas — Étape 2</span>
+          <button class="copy-btn">Copier</button>
+          <pre>À partir de ce rapport, propose 3 angles d'entrée commerciaux différents pour HiPay (fintech B2B paiement). Pour chaque angle : la douleur probable du DAF, la question d'ouverture associée, la preuve à apporter si la conversation s'engage.</pre>
+        </div>
+
+        <p><strong>Étape 3 — Préparation des questions (5 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt — Étape 3</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Génère 8 questions ouvertes à poser au DAF : 3 sur leur situation actuelle de paiement, 3 sur leur trajectoire 12 mois, 2 questions exploratoires sur leurs douleurs cachées. Évite les questions fermées ou trop commerciales.</pre>
+        </div>
+
+        <div class="callout warn">
+          <span class="callout-label">Garde-fou</span>
+          Rien dans Gemini Advanced ne remplace de demander à votre AE ou à Marketing si HiPay a déjà eu un contact avec ce compte. Faites cette vérif en parallèle — 30 secondes pour éviter de débouler sur un compte déjà travaillé.
+        </div>
+
+        <h4>Gems Sales / BD</h4>
+        <div class="gem-block" data-gem-id="5.1.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.1.1</span>
+            <span class="gem-block-title">Recherche compte avant RDV commercial</span>
+            <button class="gem-copy-btn">Copier</button>
           </div>
+          <pre>Tu es Sales dans une fintech B2B européenne de paiement.
+
+J'ai un RDV avec [TYPE DE CONTACT — DAF / CTO / VP Eng / Head of Payments] de l'entreprise [NOM ENTREPRISE — secteur].
+
+À partir des informations publiques que tu peux trouver, identifie :
+1. Modèle économique probable (B2B/B2C, SaaS/Marketplace/autre, ticket moyen estimé)
+2. Actualités 12 derniers mois (levées, partenariats, lancements, expansions, recrutements clés en finance/tech)
+3. Stack technique payment si publique
+4. Signaux d'achat probables pour un service de paiement B2B (croissance internationale, multi-devises, taux de fraude, churn)
+5. 3 angles d'entrée commerciaux possibles (avec douleur probable + question d'ouverture associée)
+6. 5 questions ouvertes à poser pendant le RDV
+
+Source chaque information. Si tu hésites sur un fait, dis-le clairement plutôt que d'inventer.</pre>
         </div>
 
-        <div class="gem">
-          <div class="gem-num">Gem 03</div>
-          <h4>Le Synthétiseur d'Entretien</h4>
-          <div class="fn">Fonction · Verbatim → compte-rendu structuré</div>
-          <p class="why">Vous sortez d'un entretien d'1h, vous avez 30 min avant le suivant. L'IA structure les notes brutes en CR partageable au manager.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu reçois des notes brutes d'entretien (RH ou évaluation annuelle). Produis un compte-rendu structuré en 5 sections :
-1. Points forts observés (3-5 bullets)
-2. Axes de développement identifiés (3-5 bullets, formulation constructive)
-3. Aspirations exprimées par la personne
-4. Engagements pris pendant l'entretien (manager / RH / collaborateur)
-5. Risques ou alertes à surveiller (rétention, surcharge, etc.)
-
-Anonymise les noms. Ton factuel et neutre. Maximum 400 mots."
+        <div class="gem-block" data-gem-id="5.1.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.1.2</span>
+            <span class="gem-block-title">Séquence de prospection personnalisée à partir d'un fait observé</span>
+            <button class="gem-copy-btn">Copier</button>
           </div>
-        </div>
-      </div>
-    </div>
+          <pre>Tu es Sales dans une fintech B2B européenne de paiement.
 
-    <!-- SALES -->
-    <div class="metier-panel" data-metier="sales">
-      <div class="metier-header">
-        <h3>Sales & <em>Account Managers</em></h3>
-        <p class="lead">"L'IA prépare le terrain et vos munitions. C'est vous qui tirez et qui signez le deal."</p>
-      </div>
+Pour chaque prospect dans la liste ci-dessous, je te donne :
+- son rôle et son entreprise (sans son nom)
+- UN fait précis et récent observé (post LinkedIn, actu boîte, recrutement, info publique)
 
-      <div class="compare">
-        <div class="compare-col before">
-          <h5>Ce que l'IA prend</h5>
-          <ul>
-            <li>Rédaction de 50 mails de prospection à froid</li>
-            <li>Saisie / mise à jour CRM après chaque call</li>
-            <li>Recherche d'infos sur un prospect avant un RDV</li>
-            <li>Préparation des supports QBR à partir des data</li>
-            <li>Première réponse à un appel d'offres / RFP standard</li>
-          </ul>
-        </div>
-        <div class="compare-col after">
-          <h5>Votre nouvelle valeur</h5>
-          <ul>
-            <li>Relations de confiance C-Level (les CFO ne signent pas avec une IA)</li>
-            <li>Lecture politique du compte (qui décide, qui bloque, qui influence)</li>
-            <li>Analyse des data de paiement client → propositions d'up-sell ciblées</li>
-            <li>Négo finale : levée d'objections, défense des marges, closing</li>
-            <li>Account planning stratégique sur 12-24 mois</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>3 Gems pour Sales & AM</h3>
-      <div class="gems">
-        <div class="gem">
-          <div class="gem-num">Gem 01</div>
-          <h4>Le Sniper</h4>
-          <div class="fn">Fonction · Brise-glace ultra-personnalisé</div>
-          <p class="why">En finir avec le "Dear [Name]" qui finit en spam. La première phrase doit prouver que vous avez fait vos devoirs.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un Top Performer Sales B2B chez HiPay (payment fintech). Je te copie le profil LinkedIn ou le site corporate d'un prospect. Rédige un email de prospection de maximum 100 mots.
-
-Règle d'or absolue : la PREMIÈRE phrase doit parler de LUI / SON entreprise / SON actualité — jamais de HiPay. Trouve un angle non-évident (post LinkedIn récent, recrutement, levée de fonds, nouvelle implantation, étude de cas publique).
-
-Structure :
-1. Hook personnalisé (1 phrase)
-2. Pont vers le problème qu'on résout (1 phrase)
-3. Preuve sociale ou chiffre concret (1 phrase)
-4. CTA clair (proposition de créneau précis)
-
-Pas de superlatifs. Pas de 'leader de'. Pas de 'révolution'."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 02</div>
-          <h4>L'Avocat du Diable</h4>
-          <div class="fn">Fonction · Simulateur de négociation</div>
-          <p class="why">Être prêt avant le call C-Level. Tester ses arguments contre un sparring partner qui ne fait pas de cadeau.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu vas jouer le rôle d'un Directeur des Achats e-commerce d'une enseigne retail française, 800M€ de CA, sceptique vis-à-vis des nouveaux fournisseurs PSP. Tu es pressé, tu connais le marché, tu cherches à baisser les prix de 15-20%.
-
-Procédure :
-1. Tu lances une objection difficile, réaliste, basée sur des arguments réels (prix, dépendance, switching cost, sécurité, conformité PCI-DSS, performance, support).
-2. J'y réponds.
-3. Tu critiques ma réponse (qu'est-ce qui manque, ce qui sonne faux, ce qu'un vrai acheteur exploiterait).
-4. Tu enchaînes avec l'objection suivante, plus difficile.
-
-Garde ton rôle jusqu'à la fin. Sois exigeant. Mon job c'est de m'améliorer."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 03</div>
-          <h4>Le Préparateur de Call</h4>
-          <div class="fn">Fonction · Brief client en 5 min</div>
-          <p class="why">Avant chaque call AM, vous avez besoin d'un brief structuré. Données CRM brutes → angles d'attaque.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu vas recevoir des notes brutes sur un compte client (historique transactionnel anonymisé, dernières interactions, tickets support). Produis un brief de préparation de call en 5 sections :
-
-1. Météo du compte (vert / orange / rouge + 1 phrase d'explication)
-2. Top 3 sujets à aborder en priorité, par ordre d'importance business
-3. Risques de churn identifiés (signaux faibles)
-4. Opportunités d'up-sell ou cross-sell (avec angle d'accroche)
-5. Questions ouvertes à poser pour mieux comprendre leur roadmap
-
-Format : bullets, maximum 250 mots, vocabulaire business sans jargon technique."
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FINANCE -->
-    <div class="metier-panel" data-metier="finance">
-      <div class="metier-header">
-        <h3>Finance, Ops & <em>Compliance</em></h3>
-        <p class="lead">"Arrêtez de saisir des données. Devenez les conseillers stratégiques qui donnent du sens aux chiffres."</p>
-      </div>
-
-      <div class="compare">
-        <div class="compare-col before">
-          <h5>Ce que l'IA prend</h5>
-          <ul>
-            <li>RechercheV / VLOOKUP pour réconcilier des transactions</li>
-            <li>Extraction d'infos depuis des documents juridiques, KYC, contrats</li>
-            <li>Compilation hebdo des chiffres pour le reporting</li>
-            <li>Synthèse de mémos réglementaires de 40 pages</li>
-            <li>Traduction de jargon juridique pour les équipes non-spécialistes</li>
-          </ul>
-        </div>
-        <div class="compare-col after">
-          <h5>Votre nouvelle valeur</h5>
-          <ul>
-            <li>Enquête sur des anomalies financières complexes (vrai travail Risk)</li>
-            <li>Conseil au board sur la stratégie de conformité</li>
-            <li>Interprétation business des data — recommandations actionnables</li>
-            <li>Anticipation des évolutions réglementaires européennes (DORA, MiCA, AI Act)</li>
-            <li>Dialogue exigeant avec auditeurs externes et régulateurs</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>3 Gems pour Finance, Ops & Compliance</h3>
-      <div class="gems">
-        <div class="gem">
-          <div class="gem-num">Gem 01</div>
-          <h4>Le Traducteur de Jargon</h4>
-          <div class="fn">Fonction · Vulgarisateur juridique / technique</div>
-          <p class="why">Personne ne lit les mémos de 40 pages. Si vous voulez qu'une équipe Sales applique une nouvelle règle compliance, traduisez-la.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un expert vulgarisateur réglementaire et financier. Je te fournis un texte légal, un mémo compliance ou un extrait réglementaire. Explique-le pour qu'un commercial ou un opérationnel de 25 ans le comprenne instantanément.
-
-Structure stricte :
-1. L'idée principale en 1 phrase (essentiel : pas de jargon)
-2. Les 3 impacts opérationnels concrets sur leur quotidien
-3. Ce qu'ils doivent changer DÈS DEMAIN matin (actions concrètes)
-4. Une analogie simple pour faire passer l'idée (un objet, une situation de vie courante)
-
-Ton : pédagogique, direct, sans condescendance. Jamais plus de 300 mots."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 02</div>
-          <h4>L'Extracteur</h4>
-          <div class="fn">Fonction · Données non-structurées → CSV propre</div>
-          <p class="why">Avant d'automatiser, il faut structurer. Cet assistant transforme des emails, tickets ou PDF en données exploitables.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Je vais te coller du texte non-structuré (emails, tickets support, extraits de contrats). Ton rôle : extraire les informations clés au format CSV strict (séparateur virgule, première ligne = en-têtes).
-
-Colonnes à extraire (à adapter selon le contexte) :
-- Nom de l'entreprise / merchant
-- Motif de la demande / nature du problème
-- Niveau d'urgence (1=faible, 2=moyen, 3=critique)
-- Date mentionnée (format YYYY-MM-DD)
-- Montant éventuel
-- Statut / état (ouvert, traité, en attente)
+Tu génères une séquence de 3 messages email :
+- Message 1 : ouverture sur le fait observé (PAS sur HiPay), 4-6 lignes max, ton conversationnel
+- Message 2 : J+5, apporte une vraie valeur (un benchmark, une question pointue), 5-7 lignes
+- Message 3 : J+10, prise de congé propre, 3-4 lignes, sans relance lourde
 
 Règles :
-- Aucune phrase d'introduction ou de politesse
-- Si une info est absente : écris 'N/A'
-- Anonymise systématiquement les noms de personnes (remplace par 'Personne 1', 'Personne 2'...)"
-          </div>
+- Pas de "j'espère que vous allez bien", "je me permets", "n'hésitez pas à"
+- Ton "comme si je l'avais tapé entre deux meetings"
+- Chaque message commence par le fait observé reformulé, pas par moi/HiPay
+- Pas de promesse de feature précise (je validerai à la main)
+
+Format de sortie : tableau avec une ligne par prospect, colonnes = Message 1 / Message 2 / Message 3.
+
+Prospects :
+[COLLER LA LISTE]</pre>
         </div>
 
-        <div class="gem">
-          <div class="gem-num">Gem 03</div>
-          <h4>L'Auditeur Critique</h4>
-          <div class="fn">Fonction · Stress-test de raisonnement financier</div>
-          <p class="why">Avant de présenter un dossier au board ou à un auditeur, le passer à l'épreuve de l'avocat du diable.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un Senior Auditor externe expérimenté, exigeant, qui audite régulièrement des établissements de paiement et des fintechs supervisés par l'ACPR. Tu n'es pas hostile mais tu es rigoureux et tu ne laisses rien passer.
-
-Je vais te présenter une analyse financière, un dossier de conformité ou une argumentation. Ton rôle :
-1. Identifier les 3 points faibles méthodologiques (où le raisonnement est fragile, où les hypothèses sont implicites)
-2. Pointer les données manquantes critiques qu'un régulateur exigerait
-3. Anticiper les 3 questions difficiles qu'un membre du board posera
-4. Proposer comment renforcer le dossier avant présentation
-
-Ton : professionnel, précis, factuel. Pas de complaisance."
+        <div class="gem-block" data-gem-id="5.1.1.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.1.3</span>
+            <span class="gem-block-title">Compte-rendu de RDV commercial à partir de notes brutes</span>
+            <button class="gem-copy-btn">Copier</button>
           </div>
+          <pre>Tu es Sales dans une fintech B2B européenne de paiement.
+
+Voici mes notes brutes prises pendant un RDV avec [TYPE DE CONTACT] de [NOM ENTREPRISE] :
+
+[COLLER LES NOTES BRUTES]
+
+Structure-les en un compte-rendu CRM propre, avec ces sections :
+1. Contexte du RDV (date, participants, durée, objectif)
+2. Ce qu'on a appris (situation actuelle du prospect, douleurs identifiées, projets 12 mois)
+3. Données chiffrées évoquées (volumes, taux, montants — si mentionnés)
+4. Signaux d'achat / signaux de blocage
+5. Prochaines étapes engagées (avec deadline)
+6. Points à creuser / à valider en interne HiPay
+
+Sois factuel. Ne romance pas. Si une info est ambiguë dans mes notes, marque-la [À CONFIRMER]. Ne génère pas de "feeling" ou d'interprétation que je n'aurais pas écrite.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-sales-bd">
+          <div class="lesson-checklist-title">Checklist Sales / BD</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> Je fais 100% de mes prépas de RDV avec Deep Research + Canvas (&gt;15 min de gain par RDV)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes séquences de prospection partent toujours d'un fait observé précis, pas de "vous êtes une scale-up en croissance"</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je fais un CR CRM après chaque RDV, en 5 minutes max</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Je ne colle <strong>jamais</strong> de nom de prospect réel ou de montant de deal dans un outil IA non validé HiPay</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Les promesses produit/SLA dans mes mails sont <strong>toutes</strong> vérifiées avant envoi</label>
         </div>
       </div>
+      <!-- /SOUS-MÉTIER 1.1 -->
+
+      <!-- SOUS-MÉTIER 1.2 — ACCOUNT MANAGEMENT -->
+      <div class="sous-metier" id="sous-metier-am">
+        <div class="lesson-meta">Sous-métier 1.2 · Account Management</div>
+        <h3>Account <em>Management</em></h3>
+        <p class="lead">L'AM vit dans la durée. L'IA vous aide à ne rien lâcher sur des comptes que vous suivez depuis 18 mois et où chaque détail compte.</p>
+
+        <p>Vous gérez un portefeuille de comptes existants. Votre temps est mangé par : la préparation de QBR, le suivi des engagements, la cartographie des stakeholders, la détection des signaux faibles (churn-risk, upsell potentiel). C'est un métier de <strong>mémoire longue</strong> : ce qui s'est dit il y a 8 mois compte aujourd'hui. L'IA déplace deux choses : la <strong>synthèse de l'historique</strong> (au lieu de relire 6 mois de mails, vous demandez à NotebookLM un résumé) et la <strong>préparation des QBR</strong> (au lieu de 3-4 heures, 1h30).</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Préparation d'un QBR trimestriel</h5>
+            <p><strong>Avant :</strong> 3-4 heures pour rassembler les KPIs, relire les CR depuis le dernier QBR, identifier ce qui a bougé, structurer le deck.</p>
+            <p><strong>Après :</strong> 1 heure 30. Les KPIs viennent toujours de la BI/Excel. La <strong>structuration narrative</strong>, la <strong>synthèse des CR</strong>, et le <strong>draft du discours associé à chaque slide</strong> se font en 30 minutes avec Gemini Advanced + Canvas.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Détection des signaux de churn-risk</h5>
+            <p><strong>Avant :</strong> vous regardez vos comptes au feeling. Un signal faible (baisse de volumes, contact qui ne répond plus, ticket support tendu) passe sous le radar des semaines.</p>
+            <p><strong>Après :</strong> un Gem tourné 1× par semaine sur les 5 comptes les plus sensibles — vous donnez : volumes mensuels (anonymisés), historique des échanges, tickets support récents. Il remonte les signaux faibles à creuser.</p>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">Transformation 3 — Mails de cadrage post-réunion</span>
+          <strong>Avant :</strong> un mail de cadrage prend 15-20 min (retrouver le contexte exact). <strong>Après :</strong> 5 minutes. Vous brieffez Gemini Advanced sur le contexte (anonymisé), 3 variantes (plus ferme, plus chaleureuse, plus courte), vous choisissez, vous personnalisez 2-3 phrases, vous envoyez.
+        </div>
+
+        <h4>Workflow réel — "Préparer un QBR trimestriel en 1h30"</h4>
+        <p><strong>Étape 1 — Extraction des KPIs (15 min)</strong> : volumes traités, taux d'autorisation, taux de fraude, tickets support ouverts/résolus, NPS si dispo, comparaison vs trimestre précédent. Depuis votre BI/CRM — pas depuis l'IA.</p>
+        <p><strong>Étape 2 — Synthèse de l'historique compte (15 min, NotebookLM)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt NotebookLM — Étape 2</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Synthétise les 3 mois écoulés sur ce compte : 1) engagements pris des deux côtés et leur statut, 2) incidents techniques notables et leur résolution, 3) sujets revenus plusieurs fois (positifs ou négatifs), 4) sujets ouverts non résolus à date.</pre>
+        </div>
+        <p><strong>Étape 3 — Structuration du deck (30 min, Canvas)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Canvas — Étape 3</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es Account Manager dans une fintech B2B de paiement. Aide-moi à structurer un deck de QBR (10-12 slides) pour le compte [NOM ANONYMISÉ — secteur]. Voici les KPIs du trimestre [coller], voici l'historique [coller la synthèse Notebook]. Propose une trame en 5 blocs : 1) Récap engagements précédents, 2) Performance trimestre, 3) Sujets ouverts, 4) Roadmap 90 jours, 5) Discussion stratégique. Pour chaque slide : titre + 3-5 bullets de contenu. Sois factuel, pas marketing.</pre>
+        </div>
+        <p><strong>Étape 4 — Draft du discours associé (15 min)</strong></p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Canvas — Étape 4</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Pour chaque slide ci-dessus, propose-moi 3-4 phrases que je peux dire à l'oral pour introduire la slide. Ton : factuel, posé, pas vendeur. Format : titre slide + paragraphe oral.</pre>
+        </div>
+        <p><strong>Étape 5 — Validation et personnalisation (15 min)</strong> : vous relisez, vous virez les formules génériques, vous ajoutez les anecdotes spécifiques au compte (qui ne peuvent pas venir de l'IA).</p>
+
+        <h4>Gems Account Management</h4>
+        <div class="gem-block" data-gem-id="5.1.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.2.1</span>
+            <span class="gem-block-title">Synthèse trimestrielle d'un compte (à partir de Notebook)</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Account Manager dans une fintech B2B européenne de paiement.
+
+Je dois préparer un QBR pour un compte. Voici les informations dont tu disposes (anonymisées : pas de noms personnels).
+
+[COLLER : extraits des CR de meetings, mails de cadrage, tickets support, engagements actés]
+
+Synthétise sur les 3 derniers mois :
+1. Engagements pris (côté HiPay / côté client) et leur statut (tenu / en cours / pas tenu)
+2. Incidents techniques notables et leur résolution
+3. Sujets revenus plusieurs fois (positifs ou négatifs)
+4. Sujets ouverts non résolus à date
+5. Évolution du sentiment global du compte (objectif : factuel basé sur les échanges, pas une interprétation libre)
+
+Format : 5 sections, bullet points, factuel. Si une info est ambiguë, marque [À CLARIFIER].</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.1.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.2.2</span>
+            <span class="gem-block-title">Détection des signaux faibles de churn-risk</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Account Manager senior en fintech B2B européenne de paiement.
+
+Voici les éléments dont je dispose sur un compte (anonymisé) :
+- Volumes mensuels 12 derniers mois : [COLLER LA SÉRIE]
+- Historique des 5 derniers échanges (CR de meetings, mails) : [COLLER, anonymisé]
+- Tickets support ouverts dans les 3 derniers mois : [COLLER]
+- Contacts principaux et leurs derniers signes de vie : [COLLER]
+
+Identifie :
+1. Les signaux faibles de churn-risk (baisse volumes, silence d'un contact clé, ton qui se tend, ticket non résolu qui traîne)
+2. Pour chaque signal : son intensité estimée (faible / moyen / fort)
+3. Les questions à poser dans le prochain point pour creuser
+4. Les angles d'upsell ou de rétention envisageables (sans inventer de feature HiPay)
+
+Sois prudent : préfère "signal à creuser" à "churn-risk confirmé". Ne déclenche pas la panique sur des éléments faibles.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.1.2.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.2.3</span>
+            <span class="gem-block-title">Mail de cadrage post-réunion</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Account Manager dans une fintech B2B européenne de paiement.
+
+Je viens d'avoir une réunion avec un client. Voici le contexte (anonymisé) :
+- Type de réunion : [point hebdo / QBR / escalade / autre]
+- Sujets abordés : [COLLER]
+- Engagements pris côté HiPay : [COLLER]
+- Engagements pris côté client : [COLLER]
+- Points ouverts non tranchés : [COLLER]
+
+Rédige un mail de cadrage à envoyer dans les 24h, structuré :
+1. Récap des engagements HiPay (avec deadline)
+2. Récap des engagements client (avec deadline)
+3. Points ouverts et qui en est responsable
+4. Prochaine étape engagée
+
+Règles :
+- Pas de "merci pour cet échange enrichissant", pas de formules creuses
+- Ton professionnel mais direct
+- Max 200 mots
+- Génère 2 variantes : une plus formelle, une plus directe</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-am">
+          <div class="lesson-checklist-title">Checklist Account Management</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> J'ai un Notebook par compte stratégique (top 10-20), alimenté en continu</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes QBR sont préparés avec Canvas, en 1h30 max</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je tourne un Gem de détection churn-risk sur mes comptes sensibles 1× par semaine</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Mes mails de cadrage partent dans les 24h après chaque meeting</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="4"> Je n'invente jamais de roadmap produit dans un mail client — je vérifie avec PM avant</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 1.2 -->
+
+      <!-- SOUS-MÉTIER 1.3 — CUSTOMER SUCCESS -->
+      <div class="sous-metier" id="sous-metier-csm">
+        <div class="lesson-meta">Sous-métier 1.3 · Customer Success</div>
+        <h3>Customer <em>Success</em></h3>
+        <p class="lead">CSM = adoption + rétention + expansion. L'IA vous donne du temps pour faire les 3 au lieu de juste réagir aux tickets.</p>
+
+        <p>Vous êtes responsable de l'adoption et du succès des clients après le go-live. Votre temps est tiraillé entre : onboarding des nouveaux clients, animation des clients existants (revue d'usage, formation, sessions de cadrage), résolution des frictions, identification des expansions. L'IA décale beaucoup de la rédaction-synthèse-formation vers du temps humain.</p>
+
+        <h4>Avant / Après IA — 3 transformations concrètes</h4>
+        <div class="compare">
+          <div class="compare-col before">
+            <h5>Transformation 1 — Formation client personnalisée</h5>
+            <p><strong>Avant :</strong> vous adaptez à la main un deck de formation pour chaque nouveau client (45-60 min).</p>
+            <p><strong>Après :</strong> 15 min. Un Gem prend en entrée le secteur du client, son use case principal, sa stack technique, et adapte les exemples du deck à son contexte. Vous validez et ajustez.</p>
+          </div>
+          <div class="compare-col after">
+            <h5>Transformation 2 — Synthèse de l'usage produit avant revue mensuelle</h5>
+            <p><strong>Avant :</strong> 45 min de fouille dans les dashboards + relecture des tickets pour préparer une revue d'usage.</p>
+            <p><strong>Après :</strong> 15 min. KPIs depuis la BI (manuel), historique depuis le Notebook compte. Gemini Advanced synthétise : ce qui marche, ce qui ne décolle pas, les frictions récurrentes.</p>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">Transformation 3 — Documentation d'un cas d'usage client</span>
+          <strong>Avant :</strong> vous savez qu'un client fait quelque chose d'intéressant avec HiPay, mais documenter pour partager avec Sales/Produit prend 30-45 min. <strong>Après :</strong> 10 min. Vous brieffez Gemini Advanced sur le cas (anonymisé si nécessaire), il sort une fiche structurée : contexte, besoin initial, solution mise en place, résultats observés, frictions restantes.
+        </div>
+
+        <h4>Workflow réel — "Revue d'usage mensuelle d'un compte en 30 min"</h4>
+        <p><strong>Étape 1 — Extraction des KPIs d'usage (10 min)</strong> : volumes mensuels par moyen de paiement, taux d'autorisation, taux de fraude, features actives vs activables, sessions support du mois. Depuis votre BI.</p>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt NotebookLM — Étape 2 (5 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Dans les 30 derniers jours sur ce compte : quels sont les sujets récurrents ? Quelles features mentionnées par le client ne sont pas encore activées ? Quels engagements HiPay ont une deadline ce mois ?</pre>
+        </div>
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Canvas — Étape 3 (10 min)</span>
+          <button class="copy-btn">Copier</button>
+          <pre>Tu es CSM dans une fintech B2B européenne de paiement. À partir des KPIs d'usage et de l'historique ci-dessous, structure ma revue mensuelle en 4 blocs : 1) Ce qui décolle (preuves chiffrées), 2) Ce qui ne décolle pas (et hypothèses), 3) Frictions récurrentes vues côté support, 4) Opportunités d'expansion identifiables. Pour chaque bloc : 2-3 points clés + 1 question à poser au client.</pre>
+        </div>
+
+        <h4>Gems Customer Success</h4>
+        <div class="gem-block" data-gem-id="5.1.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.3.1</span>
+            <span class="gem-block-title">Adaptation d'un deck de formation client au contexte</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es CSM dans une fintech B2B européenne de paiement.
+
+Voici les caractéristiques du client à former :
+- Secteur : [...]
+- Taille (effectif) : [...]
+- Use case principal HiPay : [...]
+- Stack technique (si pertinent) : [...]
+- Maturité paiement (débutant / intermédiaire / avancé) : [...]
+
+Voici le deck de formation générique HiPay :
+[COLLER LES TITRES ET MESSAGES CLÉS DES SLIDES]
+
+Pour chaque slide :
+1. Garde le titre et le message clé
+2. Adapte les exemples au secteur et au use case du client (remplace les exemples génériques par des exemples plausibles dans son secteur)
+3. Si une slide est peu pertinente pour ce client, signale-le (sans la supprimer — c'est moi qui décide)
+4. Propose une question d'engagement à poser à la fin de chaque slide
+
+Format : tableau Slide / Adaptation proposée / Question d'engagement.</pre>
+        </div>
+
+        <div class="gem-block" data-gem-id="5.1.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 5.1.3.2</span>
+            <span class="gem-block-title">Documentation d'un cas d'usage client pour partage interne</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es CSM dans une fintech B2B européenne de paiement.
+
+Je veux documenter un cas d'usage client intéressant pour le partager avec Sales et Produit en interne.
+
+Informations (anonymisées) :
+- Secteur du client : [...]
+- Taille / volumes : [...]
+- Contexte initial / problème à résoudre : [...]
+- Solution mise en place avec HiPay : [...]
+- Résultats observés (chiffrés si possible) : [...]
+- Points de friction restants ou besoins exprimés non couverts : [...]
+
+Rédige une fiche cas d'usage interne, structurée :
+1. Titre (court, descriptif, sans nom client)
+2. Contexte (3-4 lignes)
+3. Besoin initial (3-4 lignes)
+4. Solution mise en place (5-7 lignes)
+5. Résultats (bullet points, chiffrés)
+6. Frictions restantes / Améliorations souhaitées (bullet points)
+7. Pourquoi c'est intéressant pour Sales / pour Produit (2 lignes chacun)
+
+Ton : factuel, pas marketing, anonymisable.</pre>
+        </div>
+
+        <div class="lesson-checklist" data-checklist="m5-csm">
+          <div class="lesson-checklist-title">Checklist Customer Success</div>
+          <label class="checklist-item"><input type="checkbox" data-idx="0"> J'ai un Gem d'adaptation de mon deck de formation, je l'utilise pour chaque nouveau client</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="1"> Mes revues d'usage mensuelles prennent 30 min max</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="2"> Je documente au moins 1 cas d'usage par mois pour partage interne (Sales + Produit)</label>
+          <label class="checklist-item"><input type="checkbox" data-idx="3"> Les KPIs viennent toujours de la BI, l'IA ne fait que la mise en forme narrative</label>
+        </div>
+      </div>
+      <!-- /SOUS-MÉTIER 1.3 -->
+
+      <!-- ENCARTS COURTS — PRE-SALES & PARTNERSHIPS -->
+      <h3>Pre-Sales &amp; Partnerships — Accès rapide</h3>
+
+      <div class="encart-court">
+        <h4>🔧 Pré-Sales (Solution Engineering)</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Drafter une réponse RFP/RFI</strong> à partir d'un repository de réponses existantes (NotebookLM avec les RFP des 12 derniers mois) : économie de 50-60% sur la première version, à valider sur les claims techniques avec Engineering.</li>
+          <li><strong>Préparer une démo personnalisée</strong> au secteur du prospect (Gemini Advanced génère un scénario démo cohérent avec le use case probable).</li>
+          <li><strong>Synthétiser un POC</strong> en compte-rendu technique propre à partir des notes brutes pendant les sessions.</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Pre-Sales</span>
+          Les claims techniques (latences, taux d'autorisation, conformité réglementaire, certifications) doivent être <strong>systématiquement</strong> validés avec Engineering ou Risk avant envoi au prospect. L'IA peut inventer un chiffre crédible mais faux.
+          <!-- À VÉRIFIER : certifications actuelles HiPay (PCI-DSS niveau, PSD2 readiness) — ne pas mentionner de niveau spécifique sans vérification Compliance -->
+        </div>
+        <div class="gem-block" data-gem-id="5.1.ps.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Pre-Sales</span>
+            <span class="gem-block-title">Réponse à une question RFI</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Pre-Sales Engineer dans une fintech B2B européenne de paiement.
+
+Voici une question d'un prospect dans une RFI :
+[COLLER LA QUESTION]
+
+Voici les éléments de réponse internes HiPay disponibles :
+[COLLER les extraits de doc / RFP précédentes]
+
+Rédige une réponse claire (8-15 lignes), structurée :
+1. Réponse directe à la question (1-2 lignes)
+2. Comment HiPay le fait techniquement (3-5 lignes)
+3. Preuves / certifications / SLA associés (si pertinent)
+4. Limites ou conditions s'il y en a
+
+Si tu ne trouves pas la réponse dans les éléments fournis, ÉCRIS : "[À COMPLÉTER : pas d'info dans les sources, demander à Engineering / Risk]". Ne devine jamais sur les chiffres techniques ou les certifications.</pre>
+        </div>
+      </div>
+
+      <div class="encart-court">
+        <h4>🤝 Partnerships</h4>
+        <p><strong>Usages à fort gain immédiat :</strong></p>
+        <ul>
+          <li><strong>Cartographier l'écosystème</strong> d'un partenaire potentiel (Deep Research sur leurs intégrations existantes, leur stratégie payment, leurs concurrents).</li>
+          <li><strong>Rédiger des brief Partnerships internes</strong> à partir d'échanges informels.</li>
+          <li><strong>Préparer un comité de pilotage partenaire</strong> avec synthèse des actions et engagements depuis le dernier copil.</li>
+        </ul>
+        <div class="callout warn" style="margin-top:16px">
+          <span class="callout-label">Piège spécifique Partnerships</span>
+          La rédaction de contrats partenariats reste <strong>100% Legal</strong>. L'IA peut aider Partnerships à clarifier les objectifs business et les KPIs avant brief Legal, mais ne touche pas au contrat.
+        </div>
+        <div class="gem-block" data-gem-id="5.1.pa.1" style="margin-top:20px">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem Partnerships</span>
+            <span class="gem-block-title">Cartographie d'un partenaire potentiel</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es Partnerships Manager dans une fintech B2B européenne de paiement.
+
+Voici les informations sur un partenaire potentiel :
+- Nom du partenaire : [...]
+- Type (ISV / agrégateur / consulting / techno / autre) : [...]
+- Hypothèse de valeur pour HiPay : [...]
+- Hypothèse de valeur pour eux : [...]
+
+À partir de la recherche publique :
+1. Quelles sont leurs 5 intégrations payment majeures actuelles ?
+2. Quels sont leurs concurrents directs (pour HiPay) déjà partenaires ?
+3. Quels signaux récents (12 derniers mois) suggèrent qu'ils ouvrent leur stratégie payment ?
+4. Quelles seraient 3 angles d'entrée pour une première conversation Partnerships ?
+
+Source chaque info. Si tu hésites, dis-le.</pre>
+        </div>
+      </div>
+
+      <!-- CAS PRATIQUE TRANSVERSE — CATÉGORIE BUSINESS -->
+      <div class="case-study" data-case="case-5-p1">
+        <span class="case-study-label">CAS PRATIQUE · Catégorie Business</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Account Manager chez HiPay. Vous suivez un compte stratégique (~25% de votre portefeuille). Le DAF de ce client vous écrit :</p>
+          <p><em>"On revoit nos contrats payment d'ici fin Q1. Pouvez-vous me confirmer par écrit que vous supportez nativement la PSD3, que vos taux d'autorisation sur les cartes US sont &gt; 95%, et que vous avez la certification PCI-DSS niveau 1 ? On a besoin de ça pour notre commission de renouvellement."</em></p>
+          <p>Vous avez 48h pour répondre.</p>
+          <!-- À VÉRIFIER : certifications et taux d'autorisation HiPay — à confirmer avec Compliance/Engineering avant publication du cas -->
+        </div>
+        <p class="case-study-question"><strong>Quelle approche est la meilleure ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous brieffez Gemini Advanced sur l'entreprise et votre offre, il drafte la réponse complète, vous relisez et envoyez.</button>
+          <button class="cs-option">B) Vous rédigez un mail court de prise en compte (&lt;24h), puis lancez en parallèle : vérif Pre-Sales/Engineering sur la PSD3, extraction BI sur les taux US, vérif Compliance sur le PCI-DSS. Vous brieffez ensuite Gemini pour structurer la réponse finale avec les éléments validés.</button>
+          <button class="cs-option">C) Vous laissez un agent Cowork générer la réponse en pure autonomie, en lui donnant accès au Notebook compte.</button>
+          <button class="cs-option">D) Vous demandez un délai d'une semaine pour traiter le sujet "sérieusement" en interne.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Bonne réponse : B</strong></p>
+          <p>Le mail demande <strong>3 engagements écrits sur des points techniques/réglementaires</strong>. Toute erreur engage HiPay contractuellement. Un mail court de prise en compte rassure immédiatement le client. La vérif technique se fait en parallèle avec trois experts différents — plus rapide et plus fiable que solo. Gemini Advanced peut ensuite <strong>structurer</strong> la réponse finale à partir des éléments validés (gain 30-40 min sur la mise en forme), mais ne <strong>génère pas</strong> les claims techniques.</p>
+          <ul>
+            <li><strong>A est dangereux :</strong> Gemini peut totalement halluciner "Oui, PSD3 supportée" ou "Oui, PCI-DSS niveau 1". Vous engagez HiPay sur du faux. Risque contractuel majeur.</li>
+            <li><strong>C est hors de question :</strong> agent autonome qui répond seul à un mail engageant sur des éléments réglementaires = scénario d'incident grave.</li>
+            <li><strong>D est un signal négatif :</strong> 1 semaine de délai sur un mail à enjeu. 48h structurées valent mieux.</li>
+          </ul>
+          <p><strong>À retenir :</strong> sur les sujets engageants (contrat, réglementaire, technique chiffré), l'IA structure mais ne génère pas les claims. Ce qui sort de votre mail doit avoir été validé par les bons experts en interne.</p>
+        </div>
+      </div>
+
+      <!-- MINI-QUIZ — CATÉGORIE BUSINESS -->
+      <div class="quiz" data-quiz="m5-p1">
+        <div class="quiz-head">
+          <h3>Quiz · Parcours Business &amp; Commercial</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <!-- CHECKLIST GLOBALE — CATÉGORIE BUSINESS -->
+      <div class="lesson-checklist" data-checklist="m5-p1-global">
+        <div class="lesson-checklist-title">Checklist globale — Catégorie Business</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Mes séquences de prospection partent toujours d'un fait précis observé, jamais d'un message générique varié à la marge</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je fais une vérif interne (Pre-Sales / Engineering / Compliance) avant tout engagement écrit sur des claims techniques ou réglementaires</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Je fais un CR CRM après chaque RDV, en 5 min max avec l'IA</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> J'ai un Notebook par compte stratégique, alimenté en continu</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Aucun agent autonome n'agit sur mon CRM ni n'envoie de mail à un prospect/client en mon nom</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="5"> Les données nominatives prospects/clients ne sortent <strong>jamais</strong> vers un outil IA non validé (uniquement Gemini Advanced / Claude.ai Team / DUST)</label>
+      </div>
+
     </div>
+    <!-- /PARCOURS 1 — BUSINESS & COMMERCIAL -->
 
-    <!-- MANAGER -->
-    <div class="metier-panel" data-metier="manager">
-      <div class="metier-header">
-        <h3>Le <em>grand shift</em> manager</h3>
-        <p class="lead">"Si l'exécution prend 2x moins de temps, la réflexion doit être doublée. L'IA élève le niveau d'exigence."</p>
-      </div>
-
-      <div class="compare">
-        <div class="compare-col before">
-          <h5>Ce que l'IA prend</h5>
-          <ul>
-            <li>Compilation des KPIs équipe pour la réunion du lundi</li>
-            <li>Répartition des petites tâches répétitives</li>
-            <li>Première trame de 10 évaluations annuelles à partir des notes</li>
-            <li>Comptes-rendus de réunion et synthèse d'action items</li>
-            <li>Reformulation de mails internes pour adapter le ton</li>
-          </ul>
-        </div>
-        <div class="compare-col after">
-          <h5>Votre nouvelle valeur</h5>
-          <ul>
-            <li>1-to-1 réels pour débloquer les vrais problèmes (humains, politiques, structurels)</li>
-            <li>Vision à 6-18 mois et alignement stratégique de l'équipe</li>
-            <li>Vraies conversations sur plans de carrière, mobilité, montée en compétences</li>
-            <li>Coaching individualisé (vous devenez le multiplicateur de votre équipe)</li>
-            <li>Décisions difficiles (réorganisations, recrutements clés, départs)</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Le playbook du manager IA-augmenté</h3>
-      <ol>
-        <li><strong>Lead by example.</strong> Soyez le premier à l'utiliser visiblement. Dites en réunion : "J'ai fait tourner le CR par notre Gem, voici les 3 actions principales." Ça normalise.</li>
-        <li><strong>Fixez le cadre.</strong> Rappelez la règle d'anonymisation au quotidien. Vous êtes les gardiens de la donnée — pas l'IT.</li>
-        <li><strong>Valorisez le "comment".</strong> En point individuel, demandez systématiquement : "Comment as-tu utilisé l'IA sur ce dossier ?" Vous valorisez l'usage intelligent, pas la quantité.</li>
-      </ol>
-
-      <h3>3 Gems pour managers</h3>
-      <div class="gems">
-        <div class="gem">
-          <div class="gem-num">Gem 01</div>
-          <h4>Le Traducteur d'OKRs</h4>
-          <div class="fn">Fonction · Objectif vague → Key Results mesurables</div>
-          <p class="why">La tâche que tous les managers détestent en début de trimestre : transformer "Augmenter le CA" en sous-objectifs concrets.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un coach en management certifié méthode OKR (Objectives and Key Results, version Google / John Doerr). Je te donne l'objectif annuel de mon département. Tu dois proposer :
-
-- 3 Objectifs trimestriels découpés (ambitieux mais réalistes)
-- Pour chaque Objectif, 3 Key Results
-- Chaque Key Result DOIT obligatoirement inclure un chiffre cible et une date butoir
-
-Règles strictes :
-- Pas de Key Results 'vanity' (genre 'augmenter la satisfaction')
-- Toujours mesurable et binaire (atteint / non atteint)
-- 70% d'atteinte = bon score (les OKRs doivent être stretch)
-
-Pose-moi les questions nécessaires si l'objectif initial est trop vague."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 02</div>
-          <h4>Le Préparateur de 1-to-1</h4>
-          <div class="fn">Fonction · Notes brutes → angles de discussion</div>
-          <p class="why">Vous avez 6 1-to-1 dans la semaine. Pas le temps de bien les préparer un par un. L'IA structure les angles à creuser.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu m'aides à préparer un 1-to-1 manager / collaborateur. Je vais te donner :
-- Le contexte (poste, ancienneté, sujets récents)
-- Mes observations des dernières semaines
-- Ce que je sais de ses aspirations
-
-Tu produis :
-1. 3 questions ouvertes à poser en début (pour lui laisser de l'espace)
-2. 2 sujets que JE dois aborder activement (feedback, alerte, décision)
-3. 1 sujet sensible à manier avec délicatesse (si pertinent)
-4. Une question de carrière / développement à creuser
-5. Un risque à surveiller (engagement, surcharge, conflit naissant)
-
-Format : punchy, actionnable. Pas de remplissage."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 03</div>
-          <h4>Le Mirroir Stratégique</h4>
-          <div class="fn">Fonction · Sparring partner pour décisions difficiles</div>
-          <p class="why">Avant un arbitrage important (recrutement, réorganisation, priorisation), se faire challenger.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un coach exécutif senior, ex-COO d'une scale-up de 500 personnes. Tu connais les pièges classiques du management. Tu n'es pas là pour valider mes intuitions — tu es là pour les stress-tester.
-
-Je te présente une décision difficile que je dois prendre. Tu réagis en 4 temps :
-1. Reformulation : qu'est-ce que je suis VRAIMENT en train de me demander (le sujet sous le sujet)
-2. Trois questions que je n'ai pas posées et qui changeraient la décision
-3. Les 2 biais cognitifs qui pourraient être en train de me piéger
-4. Une option C que je n'ai pas envisagée
-
-Sois direct. Pas de langue de bois. Si ma décision est mauvaise, dis-le."
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TECH -->
-    <div class="metier-panel" data-metier="tech">
-      <div class="metier-header">
-        <h3>Tech & <em>Produit</em></h3>
-        <p class="lead">"Du codeur au validateur. Du PM faiseur au PM architecte. Le bond de productivité est réel — la responsabilité aussi."</p>
-      </div>
-
-      <div class="compare">
-        <div class="compare-col before">
-          <h5>Ce que l'IA prend</h5>
-          <ul>
-            <li>Génération de code boilerplate (CRUD, tests unitaires, fixtures)</li>
-            <li>Documentation technique de fonctions / endpoints</li>
-            <li>Rédaction initiale de User Stories et critères d'acceptation</li>
-            <li>Refactoring de code legacy, traduction entre langages</li>
-            <li>Synthèse de logs et premier diagnostic de bugs</li>
-          </ul>
-        </div>
-        <div class="compare-col after">
-          <h5>Votre nouvelle valeur</h5>
-          <ul>
-            <li>Architecture système et décisions de stack</li>
-            <li>Code review critique (l'IA produit du code qui marche, pas forcément qui scale)</li>
-            <li>Discovery produit profonde (PM : passer plus de temps avec les users)</li>
-            <li>Trade-offs business / technique / time-to-market</li>
-            <li>Sécurité, performance, observabilité — la "qualité non-fonctionnelle"</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>3 Gems pour Tech & Produit</h3>
-      <div class="gems">
-        <div class="gem">
-          <div class="gem-num">Gem 01</div>
-          <h4>Le Code Reviewer Sceptique</h4>
-          <div class="fn">Fonction · PR review augmentée</div>
-          <p class="why">Avant de merger, faire passer le code par un reviewer qui ne fait pas confiance. Surtout pour le code généré par IA.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un Staff Engineer senior qui review une PR. Tu es bienveillant mais rigoureux. Tu ne lâches RIEN sur :
-- Sécurité (injection, secrets en dur, validation des inputs)
-- Edge cases (null, vide, valeurs extrêmes, timeouts, race conditions)
-- Performance (complexité algorithmique, N+1 queries, allocations inutiles)
-- Maintenabilité (nommage, séparation des responsabilités, tests)
-- Observabilité (logs structurés, métriques, traces)
-
-Pour chaque problème identifié :
-1. Sévérité (BLOCKER / MAJOR / MINOR / NIT)
-2. Localisation précise dans le code
-3. Pourquoi c'est un problème (avec un exemple concret de cas où ça casse)
-4. Suggestion de correction (snippet de code)
-
-Ne te contente JAMAIS de dire 'looks good'. Trouve au moins 3 améliorations."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 02</div>
-          <h4>Le Spec Writer</h4>
-          <div class="fn">Fonction · Idée produit → User Story complète</div>
-          <p class="why">Une bonne user story = la moitié du dev bien fait. L'IA ne remplace pas la discovery, mais elle structure la spec.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un Senior Product Manager dans une fintech B2B. Je te donne une idée de feature (parfois vague). Tu produis une spec complète prête à être prise en charge par une feature team.
-
-Format strict :
-1. **User story** au format 'En tant que [persona], je veux [action] afin de [bénéfice]'
-2. **Contexte business** (2-3 phrases : pourquoi maintenant)
-3. **Critères d'acceptation** au format Given / When / Then (5 à 8 cas)
-4. **Edge cases & cas d'erreur** à traiter explicitement
-5. **Hors-scope** (ce qu'on ne fait PAS dans cette story — crucial)
-6. **Dépendances** identifiées (équipes, systèmes, données)
-7. **3 questions ouvertes** que je dois aller valider avec qui (UX, Tech, Compliance, etc.)
-
-Sois précis. Pas de remplissage. Si la demande est trop vague, pose 3 questions de clarification AVANT de produire la spec."
-          </div>
-        </div>
-
-        <div class="gem">
-          <div class="gem-num">Gem 03</div>
-          <h4>Le Debugger Méthodique</h4>
-          <div class="fn">Fonction · Bug confus → diagnostic structuré</div>
-          <p class="why">Devant un bug bizarre, on a tendance à partir dans tous les sens. L'IA force une méthode rigoureuse.</p>
-          <div class="prompt-box">
-            <span class="prompt-label">Prompt système</span>
-            <button class="copy-btn">Copier</button>
-"Tu es un Senior SRE / Debugger expert. Je vais te décrire un bug ou te donner des logs. Tu vas suivre méthodiquement la procédure suivante AVANT de proposer une fix :
-
-1. **Reformulation** du symptôme observé en 1 phrase factuelle
-2. **Reproductibilité** : quelles conditions semblent nécessaires pour déclencher ?
-3. **Hypothèses** : 3 causes possibles, classées de la plus probable à la moins probable
-4. **Tests de discrimination** : pour chaque hypothèse, quel test rapide permet de la confirmer ou l'éliminer ?
-5. **Premier diagnostic** : ta meilleure estimation (avec niveau de confiance %)
-6. **Recommandation immédiate** : action prioritaire (mitigation court terme + investigation à mener)
-
-JAMAIS de fix proposé sans avoir d'abord identifié la cause racine. Si le contexte manque, demande PRÉCISÉMENT ce qu'il te faut comme info supplémentaire."
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- QUIZ RÉCAPITULATIF PARCOURS MÉTIERS -->
     <div class="quiz" data-quiz="m4">
       <div class="quiz-head">
-        <h3>Quiz · Parcours métiers</h3>
+        <h3>Quiz récapitulatif · Parcours métiers</h3>
         <span class="quiz-counter">4 questions</span>
       </div>
       <div class="quiz-body"></div>
@@ -5566,7 +5693,6 @@ JAMAIS de fix proposé sans avoir d'abord identifié la cause racine. Si le cont
     </div>
   </div>
 </section>
-
 <!-- ============ MODULE 5 — ALLER PLUS LOIN ============ -->
 <section class="lesson" id="aller-loin">
   <div class="lesson-wrap">
@@ -6479,6 +6605,30 @@ const QUIZZES = {
       ],
       correct: 1,
       explain: "L'absence de consigne d'honnêteté est la source principale d'hallucinations sur les sujets sensibles. Le modèle, par défaut, préfère inventer plutôt qu'admettre une limite. Ajouter 'si tu n'es pas sûr, dis-le' est probablement la consigne avec le meilleur ratio impact / effort de tout le prompting."
+    }
+  ],
+  'm5-p1': [
+    {
+      q: "Vous voulez personnaliser 30 messages de prospection avec Gemini Advanced. Quelle approche évite le piège 'messages qui sentent l'IA' ?",
+      opts: [
+        "Donner à l'IA juste le nom + entreprise de chaque prospect et lui dire de personnaliser",
+        "Donner à l'IA un fait précis observé sur chaque prospect (post LinkedIn, actu, recrutement) et commencer le message par ce fait",
+        "Demander à l'IA de générer 30 versions différentes du même message pour 'varier'",
+        "Laisser l'IA générer le message complet sans aucun input personnalisé"
+      ],
+      correct: 1,
+      explain: "Le piège 'sent l'IA' vient de la généricité. La personnalisation se construit en donnant à l'IA des éléments précis (UNE observation par prospect) et en lui demandant de commencer par cet élément. Coller juste nom + entreprise = l'IA invente et ça se voit. Varier la formulation d'un même message générique = toujours générique."
+    },
+    {
+      q: "Un prospect demande par mail de confirmer que HiPay supporte la PSD3 et a une certification PCI-DSS niveau 1. Que faites-vous ?",
+      opts: [
+        "Je demande à Gemini Advanced de drafter la réponse complète et je l'envoie",
+        "Je rédige un mail court de prise en compte sous 24h, je fais vérifier par les experts internes (Pre-Sales, Compliance), puis je structure la réponse finale avec Gemini Advanced",
+        "Je laisse un agent Cowork répondre en autonomie pour aller vite",
+        "Je copie-colle la dernière RFI de HiPay sans rien vérifier"
+      ],
+      correct: 1,
+      explain: "Les claims techniques/réglementaires engagent contractuellement HiPay. Une réponse hallucinée par l'IA peut créer un litige. Le bon réflexe : mail court de prise en compte, vérif parallèle avec les experts internes, puis structuration finale (où l'IA aide à la mise en forme, pas à inventer les faits). Agent autonome sur un sujet engageant = à proscrire."
     }
   ],
   m4: [
