@@ -3314,90 +3314,892 @@ Format de sortie :
 <!-- ============ MODULE 3 — PERMIS ============ -->
 <section class="lesson" id="permis" style="background:var(--bg-soft)">
   <div class="lesson-wrap">
-    <div class="lesson-meta">Module 03 · Sécurité & Éthique</div>
+    <div class="lesson-meta">Module 03 · Sécurité & Conformité</div>
     <h2>Le permis de <em>conduire</em>.</h2>
-    <p class="lead">L'IA est une voiture rapide. Sans permis, on tue quelqu'un. Voici les règles qui ne se négocient pas chez HiPay.</p>
+    <p class="lead">Cinq leçons pour utiliser l'IA largement — sans bombe à retardement. Classification, anonymisation, réglementation, réflexes.</p>
 
-    <h3>La règle d'or : on ne donne jamais les clés de la maison</h3>
-    <p>Tout ce que vous tapez dans un prompt peut, selon l'outil, finir dans les logs du fournisseur, dans l'entraînement de la prochaine version du modèle, ou simplement être stocké quelque part. Donc :</p>
-    <ul>
-      <li><strong>Jamais</strong> de PII clients (Personally Identifiable Information : nom + email + montant + ID).</li>
-      <li><strong>Jamais</strong> de mots de passe, clés API, tokens d'accès, certificats.</li>
-      <li><strong>Jamais</strong> de données financières brutes non agrégées (transactions individuelles, IBAN).</li>
-      <li><strong>Jamais</strong> de contenu sous NDA strict (contrats clients, négociations en cours).</li>
-      <li><strong>Jamais</strong> de code propriétaire HiPay sur un outil grand public non validé par l'IT.</li>
-    </ul>
+    <!-- ===== LEÇON 3.1 ===== -->
+    <div id="lesson-3-1">
+      <div class="lesson-meta" style="margin-top:0">Leçon 3.1 · Pourquoi la sécurité, pas pour vous embêter</div>
+      <p class="lead"><em>L'objectif n'est pas de vous interdire l'IA. C'est de vous permettre de l'utiliser largement sans bombe à retardement.</em></p>
 
-    <div class="callout warn">
-      <span class="callout-label">Le test du journaliste</span>
-      <p>Avant d'envoyer quoi que ce soit à une IA, posez-vous la question : <em>"Si un journaliste découvrait ce prompt demain dans une fuite de données, est-ce que ça ferait la une ?"</em> Si oui, anonymisez ou n'envoyez pas.</p>
-    </div>
+      <h3>Le malentendu à dissiper</h3>
+      <p>Beaucoup de collaborateurs pensent que les règles de sécurité IA chez HiPay sont :</p>
+      <ul>
+        <li>Soit <strong>trop strictes</strong> ("on ne peut rien faire, autant ne pas l'utiliser")</li>
+        <li>Soit <strong>inutiles</strong> ("c'est juste un outil, ça n'arrive jamais")</li>
+      </ul>
+      <p>Les deux sont faux. Les règles existent parce que <strong>trois types de risques sont réels</strong> :</p>
+      <ol>
+        <li><strong>Risque réglementaire</strong> : RGPD, PSD2, PCI-DSS, AI Act. HiPay est une fintech européenne, ces textes nous obligent. Les sanctions peuvent atteindre plusieurs millions d'euros.</li>
+        <li><strong>Risque commercial</strong> : si un merchant apprend que ses données sont passées dans un outil grand public, il peut partir. Plusieurs cas connus dans l'industrie.</li>
+        <li><strong>Risque opérationnel</strong> : une fuite de données interne (stratégie, RH, financier) peut donner un avantage à un concurrent ou créer un incident interne.</li>
+      </ol>
+      <p>L'objectif des règles n'est <strong>pas</strong> de vous empêcher d'utiliser l'IA. C'est de vous permettre de l'utiliser <strong>largement et sans risque</strong>. Les règles sont conçues pour 99% des usages.</p>
 
-    <h3>Le jeu des 7 erreurs : où sont les bombes ?</h3>
-    <div class="prompt-box">
-      <span class="prompt-label">❌ Prompt dangereux — repérez les 3 problèmes</span>
-"Rédige un mail pour le client <span class="tag">Jean Dupont</span> de l'entreprise <span class="tag">Carrefour</span>, concernant son CA de <span class="tag">2,3M€</span>, sa demande d'intégration sur le mot de passe <span class="tag">HiPay2024!</span> et son contrat signé hier."
-    </div>
-    <p><strong>Les 3 bombes :</strong> nom + entreprise (PII), CA précis (donnée commerciale sensible), mot de passe (catastrophe). Version correcte :</p>
-    <div class="prompt-box">
-      <span class="prompt-label">✓ Prompt anonymisé</span>
-"Rédige un mail pour [Client] de [Entreprise retail FR], concernant son volume annuel (catégorie : grand compte), sa demande d'intégration technique et la signature récente de son contrat."
-    </div>
+      <h3>Le cas qui a tout changé : Samsung 2023</h3>
+      <!-- SOURCE: affaire largement documentée dans la presse tech 2023 -->
+      <p>En 2023, des ingénieurs Samsung ont collé du code source confidentiel dans ChatGPT pour le débugger. Trois fois, dans des contextes différents. Le code, propriété de Samsung, s'est retrouvé dans les logs d'OpenAI.</p>
+      <p>Conséquence : Samsung a interdit en interne ChatGPT immédiatement après. L'affaire est devenue référence dans l'industrie.</p>
+      <p>Ce cas montre deux choses essentielles :</p>
+      <ul>
+        <li><strong>L'erreur peut venir de gens compétents</strong> qui ne pensaient pas à mal. Les ingénieurs Samsung voulaient gagner du temps. Ils n'imaginaient pas l'impact.</li>
+        <li><strong>Une fois la donnée envoyée, on ne peut plus la récupérer.</strong> OpenAI n'allait pas "désapprendre" ce qu'ils avaient vu.</li>
+      </ul>
+      <p>C'est pour ça qu'on raisonne en <strong>prévention</strong>, pas en réparation.</p>
 
-    <h3>RGPD : ce que ça change pour vous</h3>
-    <p>Le Règlement Général sur la Protection des Données pose plusieurs principes fondamentaux. Pour vos usages IA au quotidien, voici les 4 à maîtriser en priorité :</p>
-    <ul>
-      <li><strong>Minimisation</strong> — ne traiter que les données strictement nécessaires.</li>
-      <li><strong>Finalité</strong> — utiliser les données pour ce à quoi elles ont été collectées, pas autre chose.</li>
-      <li><strong>Transparence</strong> — la personne concernée doit savoir qu'une IA est utilisée pour la traiter.</li>
-      <li><strong>Droit à l'oubli</strong> — possibilité de supprimer les données sur demande.</li>
-    </ul>
-    <p>Pour un payment institution comme HiPay, la barre est <em class="highlight">plus haute encore</em> : on est sous DSP2, sous supervision ACPR, et nos clients merchants nous confient leurs propres données clients. Ce n'est pas optionnel.</p>
+      <h3>Le triangle des arbitrages</h3>
+      <p>Quand vous utilisez l'IA, vous arbitrez constamment entre trois choses :</p>
+      <ul>
+        <li><strong>Utilité</strong> : ce que l'IA peut vous apporter (gain de temps, qualité)</li>
+        <li><strong>Sensibilité</strong> : ce que vous risquez à exposer (données, infos confidentielles)</li>
+        <li><strong>Outil</strong> : le niveau de protection du canal utilisé (grand public vs pro/Enterprise)</li>
+      </ul>
+      <p>La règle simple : <strong>plus c'est sensible, plus l'outil doit être protégé</strong>. Une info publique peut aller partout. Une info confidentielle ne peut aller que sur un outil validé HiPay.</p>
 
-    <h3>L'AI Act européen — ce qu'il faut savoir</h3>
-    <p>Entré en vigueur progressivement depuis 2024, l'AI Act classe les usages de l'IA en 4 niveaux de risque :</p>
-    <dl>
-      <div class="definition">
-        <dt>Inacceptable</dt>
-        <dd><strong>Interdit.</strong> Scoring social, manipulation comportementale, surveillance biométrique de masse.</dd>
+      <h3>Le bon état d'esprit</h3>
+      <p>Pas la peur. Pas la naïveté. La <strong>conscience</strong>.</p>
+      <div class="callout">
+        <span class="callout-label">La question à se poser avant de coller</span>
+        <p><em>"Avant de coller, je me demande : si cette information fuitait demain, est-ce que ça poserait problème ?"</em></p>
+        <p>Si oui, vérifiez l'outil. Sinon, allez-y. C'est ce réflexe — pas un manuel de 80 pages — qui vous protège dans 99% des cas.</p>
       </div>
-      <div class="definition">
-        <dt>Élevé</dt>
-        <dd>Très encadré (audits, documentation, supervision humaine). Tout ce qui touche au scoring crédit, RH, infrastructures critiques.</dd>
-      </div>
-      <div class="definition">
-        <dt>Limité</dt>
-        <dd>Obligations de <strong>transparence</strong>. Si un chatbot répond à votre client, il doit le dire.</dd>
-      </div>
-      <div class="definition">
-        <dt>Minime</dt>
-        <dd>Libre, mais bonnes pratiques recommandées. La majorité des usages bureautiques de l'IA tombent ici.</dd>
-      </div>
-    </dl>
 
-    <h3>Biais : la machine n'est pas neutre</h3>
-    <p>Un LLM apprend sur des données humaines, donc <strong>il reproduit les biais humains</strong>. Trois biais à surveiller :</p>
-    <ul>
-      <li><strong>Biais de représentation</strong> — sur-représentation de certains groupes (hommes, anglophones, occidentaux) dans les données d'entraînement.</li>
-      <li><strong>Biais cognitifs</strong> — l'IA tend à confirmer ce que vous semblez vouloir entendre (effet "yes-man").</li>
-      <li><strong>Biais d'autorité</strong> — vous tendez à croire l'IA parce qu'elle parle avec assurance. C'est faux.</li>
-    </ul>
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Les règles ne sont pas là pour vous embêter mais pour vous protéger (et protéger HiPay).</li>
+        <li>Le cas Samsung montre que l'erreur vient des bons profils, par négligence ordinaire.</li>
+        <li>Le réflexe à acquérir : "si ça fuitait, est-ce un problème ?". Si oui, outil validé. Sinon, libre.</li>
+      </ul>
 
-    <div class="callout good">
-      <span class="callout-label">Pratique HiPay</span>
-      <p>Quand vous demandez à l'IA un avis ou une recommandation, demandez-lui <strong>systématiquement</strong> un contre-argument : <em>"Maintenant donne-moi 3 raisons pour lesquelles cette analyse pourrait être fausse."</em> Vous tuez 80% des biais d'un coup.</p>
+      <details class="bonus">
+        <summary>Ce que disent les politiques HiPay (en gros)</summary>
+        <div class="bonus-body">
+          <!-- À VÉRIFIER : contenu à valider avec la DPO / Compliance HiPay avant publication — liste d'outils validés et principes exacts à confirmer -->
+          <p>HiPay a une politique interne sur l'usage de l'IA. Les principes en sont :</p>
+          <ol>
+            <li><strong>Outils validés</strong> : seuls les outils approuvés (Gemini Advanced HiPay, Claude.ai Team, DUST Enterprise, n8n) peuvent être utilisés avec des données HiPay non-publiques.</li>
+            <li><strong>Pas de données identifiantes clients</strong> dans un outil non-validé. Jamais.</li>
+            <li><strong>Pas de PII (données personnelles identifiantes)</strong> sans anonymisation préalable, même sur outil validé, sauf nécessité claire.</li>
+            <li><strong>Code source</strong> propriétaire : uniquement outils validés et configurés (Claude Code, Cursor avec configuration HiPay).</li>
+            <li><strong>Traçabilité</strong> : tout usage IA pour une décision importante doit pouvoir être retracé.</li>
+          </ol>
+          <p>La politique complète est sur Confluence (espace GenAI). En cas de doute, le canal <code>#ai-support</code> est le bon point d'entrée.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-3-1">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vendredi, 17h30. Vous devez préparer un brief pour lundi matin. Votre boss veut un état des lieux sur "notre stratégie face au concurrent X qui vient de lever 200M€". Vous avez une note interne de 12 pages avec les analyses stratégiques, les scénarios de réponse, et les hypothèses chiffrées.</p>
+          <p>Vous pensez à demander à une IA de la résumer.</p>
+        </div>
+        <p class="case-study-question"><strong>Quel est le bon réflexe ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Coller la note dans Gemini perso (vous y êtes connecté), demander un résumé en 1 page.</button>
+          <button class="cs-option">B) Vérifier que vous êtes connecté à votre licence Gemini Advanced HiPay (compte pro), et coller la note là.</button>
+          <button class="cs-option">C) Anonymiser la note (retirer les chiffres, le nom du concurrent, les noms internes), puis utiliser votre licence Gemini Advanced HiPay.</button>
+          <button class="cs-option">D) Ne pas utiliser d'IA. Faire le résumé à la main.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B (suffisant) ou C (encore plus prudent). A est interdit. D est trop conservateur.</strong></p>
+          <ul>
+            <li><strong>A est interdit</strong> : Gemini perso (compte gratuit) peut réutiliser vos prompts pour entraîner les modèles. Coller une note stratégique HiPay dans un outil grand public, c'est exposer la stratégie de l'entreprise potentiellement à des tiers.</li>
+            <li><strong>B est correct</strong> : votre licence Gemini Advanced HiPay est un outil validé. L'engagement pro associé à cette licence dit que vos données ne sont pas réutilisées pour entraîner.</li>
+            <li><strong>C est la "bonne pratique extra"</strong> : si la note contient des éléments vraiment sensibles, anonymiser ce qui n'est pas nécessaire au résumé est encore mieux.</li>
+            <li><strong>D est trop conservateur</strong> : refuser l'IA sur les sujets stratégiques alors qu'un outil validé existe, c'est se priver de gains de productivité importants.</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : outil validé HiPay = principe de base. Anonymiser = couche supplémentaire de prudence quand le contenu est particulièrement sensible.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="3.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.1.1</span>
+            <span class="gem-block-title">Vérification rapide avant de coller</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Avant de coller le texte suivant dans une IA, aide-moi à évaluer le risque :
+
+[COLLEZ LE TEXTE]
+
+Pour chaque type de risque, donne ton avis (oui / non / à clarifier) :
+1. Contient-il des données personnelles identifiantes (nom + email, etc.) ?
+2. Contient-il des données financières non publiques (montants précis, chiffres internes) ?
+3. Contient-il des références client / merchant identifiables ?
+4. Contient-il du code source ou des informations techniques sensibles ?
+5. Contient-il des éléments stratégiques (concurrents, positionnement, négociations) ?
+
+Conclus avec : outil grand public OK / outil validé HiPay obligatoire / anonymiser d'abord.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="3.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.1.2</span>
+            <span class="gem-block-title">Reformulation pour anonymiser</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un texte. Réécris-le en remplaçant TOUS les éléments identifiants par des variables génériques, tout en gardant le sens et la cohérence.
+
+Remplacements à faire :
+- Noms de personnes → "Personne A", "Personne B"
+- Entreprises → "Société X", "Concurrent Y"
+- Adresses email → "[email]"
+- Numéros de cartes / IDs → "[ID]"
+- Montants précis → "un montant à 6 chiffres", "X €"
+- Dates précises → "Q1 2026", "mois dernier"
+
+Texte à anonymiser :
+[COLLEZ LE TEXTE]</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m3-1">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 3.1</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m3-1">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je comprends pourquoi les règles de sécurité IA existent</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> J'ai le réflexe "si ça fuitait, est-ce un problème ?"</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je connais le cas Samsung et ce qu'il enseigne</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais où trouver la politique HiPay et où demander en cas de doute</label>
+      </div>
     </div>
+    <!-- /lesson-3-1 -->
 
-    <h3>Souveraineté et sobriété</h3>
-    <p>Deux questions qui montent en 2026 :</p>
-    <ul>
-      <li><strong>Souveraineté</strong> — vos données partent-elles aux USA ? En Chine ? Pour HiPay, l'IT a validé un set d'outils avec résidence européenne des données. <em class="highlight">Restez dans ce périmètre.</em></li>
-      <li><strong>Sobriété numérique</strong> — une session LLM consomme davantage d'énergie qu'une navigation web standard. Les ordres de grandeur exacts varient selon les études et les modèles, mais la direction est claire : soyez précis dans vos prompts (méthode CODE), évitez les boucles infinies, ne re-générez pas 15 fois.<!-- SOURCE: aucun chiffre précis défendable — la stat "10x vs recherche Google" circule mais n'est pas fiable. Formulation qualitative uniquement. --></li>
-    </ul>
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 3.2 ===== -->
+    <div id="lesson-3-2">
+      <div class="lesson-meta" style="margin-top:0">Leçon 3.2 · Classification des données : ce qu'on peut mettre, ce qu'on ne peut PAS</div>
+      <p class="lead"><em>Toutes les données ne sont pas égales. Quatre niveaux, trois minutes pour les comprendre, des années à protéger HiPay si vous les retenez.</em></p>
+
+      <h3>Les 4 niveaux de classification</h3>
+      <!-- À VÉRIFIER : les 4 niveaux décrits ici sont des niveaux génériques fintech — à aligner avec la politique de classification interne HiPay si elle existe formellement -->
+      <p>Chez HiPay (comme dans la plupart des fintechs), les données se classent en 4 niveaux. Ce sont ces niveaux qui déterminent <strong>ce que vous pouvez coller dans une IA</strong>.</p>
+
+      <h4 style="margin:24px 0 8px;color:var(--good)">Niveau 1 — Publique</h4>
+      <p><strong>Définition</strong> : information accessible à n'importe qui à l'extérieur de HiPay.</p>
+      <p><strong>Exemples</strong> : votre fiche produit publiée sur le site, communiqués de presse, posts LinkedIn, descriptions de poste.</p>
+      <p><strong>Ce que vous pouvez en faire</strong> : <strong>tout, partout</strong>. Même Gemini perso, ChatGPT gratuit, n'importe quoi.</p>
+
+      <h4 style="margin:24px 0 8px">Niveau 2 — Interne</h4>
+      <p><strong>Définition</strong> : information qui n'est pas confidentielle mais qu'on ne diffuse pas à l'extérieur sans réfléchir.</p>
+      <p><strong>Exemples</strong> : organigrammes internes, procédures opérationnelles non confidentielles, comptes-rendus de réunion d'équipe, drafts de communication.</p>
+      <p><strong>Ce que vous pouvez en faire</strong> : <strong>outil validé HiPay uniquement</strong> (Gemini Advanced, Claude.ai Team, DUST). Pas Gemini perso, pas ChatGPT gratuit.</p>
+
+      <h4 style="margin:24px 0 8px;color:var(--warn)">Niveau 3 — Confidentielle</h4>
+      <p><strong>Définition</strong> : information qui ferait du tort à HiPay si elle fuitait.</p>
+      <p><strong>Exemples</strong> : stratégie commerciale, négociations en cours, dossiers RH (recrutements, sorties, performance), chiffres financiers non publics, audits internes.</p>
+      <p><strong>Ce que vous pouvez en faire</strong> : <strong>outil validé HiPay</strong>, et <strong>anonymisez</strong> ce qui peut l'être avant.</p>
+
+      <h4 style="margin:24px 0 8px;color:#e05050">Niveau 4 — Secrète / Hautement Sensible</h4>
+      <p><strong>Définition</strong> : information dont la fuite causerait un dommage majeur (réglementaire, commercial ou réputationnel).</p>
+      <p><strong>Exemples</strong> : données clients identifiables (numéros de cartes, IBAN, identifiants merchants croisés), clés API, secrets cryptographiques, code source critique, données PCI-DSS ou PSD2.</p>
+      <p><strong>Ce que vous pouvez en faire</strong> : <strong>rien dans une IA générale</strong>. Ces données ne sortent pas des systèmes prévus pour les héberger. En cas de doute, ne pas utiliser d'IA — demander Compliance ou <code>#ai-support</code>.</p>
+
+      <h3>Le tableau récap à mémoriser</h3>
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line-strong)">
+            <th style="text-align:left;padding:10px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Niveau</th>
+            <th style="text-align:left;padding:10px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Exemples</th>
+            <th style="text-align:center;padding:10px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Outil public</th>
+            <th style="text-align:center;padding:10px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Outil HiPay</th>
+            <th style="text-align:left;padding:10px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Anony&shy;misation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:10px 12px;vertical-align:top;color:var(--good);font-weight:600">1. Publique</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Site web, comm presse</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top">✅</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top">✅</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Non nécessaire</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:10px 12px;vertical-align:top;font-weight:600">2. Interne</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Procédures non confidentielles</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top;color:var(--warn)">❌</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top">✅</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Non nécessaire</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:10px 12px;vertical-align:top;color:var(--warn);font-weight:600">3. Confidentielle</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Stratégie, RH, finance</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top;color:var(--warn)">❌</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top">✅</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">Recommandée</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;vertical-align:top;color:#e05050;font-weight:600">4. Secrète</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">PCI-DSS, données clients, clés</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top;color:var(--warn)">❌</td>
+            <td style="padding:10px 12px;text-align:center;vertical-align:top;color:var(--warn)">❌</td>
+            <td style="padding:10px 12px;color:var(--ink-soft);vertical-align:top">N/A</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Les pièges courants</h3>
+      <p><strong>Piège 1 — Croiser sans s'en rendre compte.</strong> Un nom seul n'est pas sensible. Un email seul non plus. Un montant seul non plus. <strong>Mais les trois ensemble identifient une personne et exposent une transaction.</strong> Le RGPD raisonne par croisement. Réflexe : si vous combinez plusieurs infos qui ensemble identifient une personne ou une transaction, vous êtes en niveau 4 — même si chaque info prise séparément serait niveau 2.</p>
+      <p><strong>Piège 2 — "C'est juste un exemple".</strong> Vous voulez illustrer un problème, vous prenez un cas client réel "pour faire concret". Mauvaise idée. Soit vous prenez <strong>un cas inventé</strong>, soit vous <strong>anonymisez totalement</strong>.</p>
+      <p><strong>Piège 3 — Le code "non sensible".</strong> Du code interne qui semble basique peut révéler votre architecture, vos choix techniques, vos vulnérabilités. Le code source HiPay est en niveau 3 par défaut, et certains modules sont en niveau 4 (paiement, auth, secrets management).</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>4 niveaux : publique, interne, confidentielle, secrète.</li>
+        <li>Niveau 1 va partout, niveau 4 ne va nulle part (en IA).</li>
+        <li>Quand c'est confidentiel mais pas secret : outil validé HiPay + anonymisation quand possible.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Comment savoir le niveau d'un document HiPay ?</summary>
+        <div class="bonus-body">
+          <p>Certains documents portent un marquage explicite. Mais beaucoup ne sont pas marqués. Trois questions pour classer un document non marqué :</p>
+          <ol>
+            <li><strong>Est-ce que je le partagerais sans réfléchir à un collègue dans le couloir, à un fournisseur, à un client ?</strong>
+              <ul>
+                <li>Tout le monde → Niveau 1</li>
+                <li>Collègues seulement → Niveau 2</li>
+                <li>Quelques personnes choisies → Niveau 3</li>
+                <li>Personne sans validation → Niveau 4</li>
+              </ul>
+            </li>
+            <li><strong>Quel impact si ça arrivait dans la presse ?</strong> Aucun → 1-2 / Embarrassant → 3 / Grave → 4</li>
+            <li><strong>Quel impact si un concurrent y avait accès ?</strong> Aucun → 1-2 / Avantage marginal → 3 / Avantage majeur → 4</li>
+          </ol>
+          <p>En cas de doute persistant : prenez le niveau supérieur. Le coût d'une sur-protection est bien moindre qu'une fuite.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-3-2">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <!-- À VÉRIFIER : noms de merchants fictifs (Galleries du Nord, Maison Lambert, Tech4Pay) — vérifier qu'aucun ne correspond à un vrai client HiPay -->
+          <p>Vous recevez par mail interne ce compte-rendu de votre boss : <em>"Réunion de la semaine : décision validée de proposer une remise commerciale exceptionnelle à 3 de nos top merchants (Galleries du Nord, Maison Lambert, Tech4Pay) pour les fidéliser face à l'offensive du concurrent X. Montants : 12k€, 8k€, 5k€ respectivement. À déployer avant fin du mois."</em></p>
+          <p>Vous voulez utiliser une IA pour reformuler ce compte-rendu en mail à envoyer à votre équipe.</p>
+        </div>
+        <p class="case-study-question"><strong>Quel niveau et quel outil ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Niveau 2 (interne). Gemini Advanced HiPay suffit.</button>
+          <button class="cs-option">B) Niveau 3 (confidentielle). Gemini Advanced HiPay + anonymisation.</button>
+          <button class="cs-option">C) Niveau 4 (secrète). Ne pas utiliser d'IA, rédiger à la main.</button>
+          <button class="cs-option">D) Niveau 1 (publique). Tout outil OK.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B (niveau 3, confidentielle).</strong></p>
+          <ul>
+            <li>Pas niveau 1 : ce compte-rendu ne va clairement pas sur le site public.</li>
+            <li>Pas niveau 2 : il contient des éléments stratégiques sensibles (offensive concurrente, remises individuelles, noms de merchants).</li>
+            <li>Pas niveau 4 : ce ne sont pas des données personnelles clients, ni des éléments soumis à PCI-DSS.</li>
+          </ul>
+          <p><strong>Conclusion — niveau 3. Bonne pratique</strong> : 1) outil validé HiPay (Gemini Advanced, pas perso) ; 2) anonymiser les noms de merchants ("Merchant A", "B", "C") — l'IA reformulera aussi bien ; 3) les montants peuvent être conservés s'ils sont utiles, ou remplacés si non nécessaires. Vous remettez les vrais noms à la main après.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="3.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.2.1</span>
+            <span class="gem-block-title">Classification rapide d'un document</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Aide-moi à classer le document suivant selon les 4 niveaux HiPay :
+- Niveau 1 (Publique) : accessible à tous
+- Niveau 2 (Interne) : interne HiPay non confidentiel
+- Niveau 3 (Confidentielle) : préjudiciable si fuite
+- Niveau 4 (Secrète) : dommage majeur si fuite
+
+Document :
+[COLLEZ ICI]
+
+Donne :
+1. Le niveau que tu recommandes
+2. Pourquoi (quels éléments te font conclure)
+3. Quel outil utiliser pour traiter ce document
+4. Quels éléments anonymiser avant traitement
+
+Si tu hésites entre deux niveaux, choisis le plus élevé.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="3.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.2.2</span>
+            <span class="gem-block-title">Identifier les éléments sensibles dans un texte</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un texte. Liste tous les éléments potentiellement sensibles à identifier avant de l'utiliser avec une IA :
+
+[COLLEZ LE TEXTE]
+
+Pour chaque élément, indique :
+- Le type (nom de personne, montant, identifiant, donnée client, etc.)
+- Le niveau de sensibilité (1 à 4)
+- Comment l'anonymiser (proposition de remplacement)
+
+Ne reformule pas le texte, liste juste les éléments à surveiller.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m3-2">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 3.2</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m3-2">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les 4 niveaux de classification de données HiPay</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais ce que je peux coller dans quel outil pour chaque niveau</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je suis attentif au piège du croisement (plusieurs infos faibles = info forte)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> En cas de doute, je classe au niveau supérieur</label>
+      </div>
+    </div>
+    <!-- /lesson-3-2 -->
+
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 3.3 ===== -->
+    <div id="lesson-3-3">
+      <div class="lesson-meta" style="margin-top:0">Leçon 3.3 · Anonymiser pour utiliser plus</div>
+      <p class="lead"><em>L'anonymisation est le levier qui vous permet d'utiliser l'IA sur 90% de vos cas. Cinq minutes pour apprendre à le faire bien.</em></p>
+
+      <h3>Pourquoi anonymiser change tout</h3>
+      <p>Anonymiser un texte avant de le donner à une IA, c'est :</p>
+      <ul>
+        <li><strong>Élargir massivement</strong> ce que vous pouvez traiter</li>
+        <li><strong>Réduire le risque</strong> à un niveau quasi nul</li>
+        <li>Permettre à l'IA de <strong>faire aussi bien son travail</strong> (reformuler, résumer, traduire) sans avoir besoin des vraies données</li>
+      </ul>
+      <p>L'erreur classique : penser que pour résumer un mail, l'IA a "besoin" de connaître le vrai nom du client. <strong>Non.</strong> Elle a besoin de la structure et du sens. Pas de l'identité.</p>
+
+      <h3>Les 6 catégories à anonymiser</h3>
+      <ol>
+        <li><strong>Noms de personnes</strong> → "Personne A", "M. X", "le client", "le manager"</li>
+        <li><strong>Adresses email</strong> → "[email1]", "[email manager]", "[email client]"</li>
+        <li><strong>Numéros et identifiants</strong> → "[ID]", "[numéro de carte]", "[référence transaction]"</li>
+        <li><strong>Entreprises identifiables</strong> → "Société X", "le concurrent Y", "le partenaire Z"</li>
+        <li><strong>Montants précis</strong> → "un montant à 5 chiffres", "X €", "un montant supérieur à Y k€"</li>
+        <li><strong>Dates précises</strong> → "Q1 2026", "le mois dernier", "récemment"</li>
+      </ol>
+
+      <h3>La méthode en 3 étapes</h3>
+      <p><strong>Étape 1 — Identifier.</strong> Avant de coller, repérez tous les éléments à anonymiser. Astuce : Gemini peut le faire pour vous avec le Gem 3.2.2 vu en leçon précédente.</p>
+      <p><strong>Étape 2 — Remplacer.</strong> Remplacez chaque élément par une variable. <strong>Soyez cohérent</strong> : si "Jean Dupont" devient "Personne A", utilisez "Personne A" partout dans le texte.</p>
+      <p><strong>Étape 3 — Vérifier puis traiter.</strong> Relisez votre version anonymisée. Si vous comprenez encore tout le contexte (sans connaître les vrais noms), l'IA aussi. Si la version anonymisée est devenue incompréhensible, vous êtes allé trop loin.</p>
+
+      <h3>Exemple complet : avant / après</h3>
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Texte original</h5>
+          <p style="font-size:14px;line-height:1.6"><em>"Bonjour, suite à notre échange avec Marc Dupond (marc.dupond@galleriesdunord.fr, directeur achats), nous proposons une remise de 12 800€ sur le contrat annuel des Galleries du Nord (ID merchant 4892). Cette remise doit être validée avant le 15 mars 2026."</em></p>
+        </div>
+        <div class="compare-col after">
+          <h5>Texte anonymisé</h5>
+          <p style="font-size:14px;line-height:1.6"><em>"Bonjour, suite à notre échange avec [Contact A] ([email A], [rôle A]), nous proposons une remise d'un montant à 5 chiffres sur le contrat annuel de [Merchant A] ([ID]). Cette remise doit être validée avant [date limite]."</em></p>
+        </div>
+      </div>
+      <p>L'IA peut maintenant reformuler, traduire, décliner en versions — <strong>sans jamais voir</strong> les Galleries du Nord, Marc Dupond, ni le montant exact. Vous remettez les vrais noms à la main après.</p>
+
+      <h3>Les pièges courants de l'anonymisation</h3>
+      <p><strong>Piège 1 — L'anonymisation trop légère.</strong> Vous anonymisez le nom de la personne mais laissez le nom du client et le montant. Insuffisant. L'anonymisation est tout-ou-rien sur les éléments sensibles.</p>
+      <p><strong>Piège 2 — L'anonymisation incohérente.</strong> Vous démarrez l'anonymisation puis lâchez. Soit on anonymise systématiquement, soit pas du tout.</p>
+      <p><strong>Piège 3 — L'anonymisation qui casse le sens.</strong> Trop de variables et vous ne comprenez plus rien, l'IA non plus. Anonymisez <strong>ce qui doit l'être</strong>, gardez la structure et la logique.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>L'anonymisation élargit massivement votre périmètre d'usage de l'IA.</li>
+        <li>6 catégories à connaître : noms, emails, IDs, entreprises, montants, dates.</li>
+        <li>Soyez cohérent et complet : tout ou rien sur les éléments sensibles.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Quand l'anonymisation ne suffit pas</summary>
+        <div class="bonus-body">
+          <p>Dans certains cas, même une anonymisation parfaite ne protège pas suffisamment.</p>
+          <p><strong>1. Le contexte trahit l'identité.</strong> Vous parlez d'un <em>"merchant à 80M€ de volume annuel, secteur retail mode, basé en région parisienne"</em>. Même si vous l'appelez "Merchant A", il y a probablement 2-3 candidats reconnaissables dans le marché. Si l'identité est dérivable du contexte, vous n'avez pas vraiment anonymisé.</p>
+          <p><strong>2. Les patterns récurrents.</strong> Si vous utilisez une IA souvent pour des cas similaires, les patterns finissent par former une image de votre business. Sur un outil validé HiPay, ce n'est pas un problème majeur. Sur un outil grand public, c'est plus problématique.</p>
+          <p><strong>3. Les obligations spécifiques.</strong> PCI-DSS, PSD2, RGPD ont leurs propres règles. Pour les données de cartes, ne pas utiliser d'IA du tout est souvent la bonne approche, même anonymisée.</p>
+          <p>En cas de doute sur un cas particulier : <code>#ai-support</code> ou directement la DPO HiPay.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-3-3">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <!-- À VÉRIFIER : noms fictifs (Mode & Style, Bistrot Lambert) — vérifier qu'aucun ne correspond à un vrai client HiPay -->
+          <p>Vous devez préparer une note de fin de mois pour votre directrice avec Gemini Advanced (outil validé). Éléments : 4 nouveaux contrats signés (3 PME, 1 grand compte), le grand compte "Mode &amp; Style" à 245k€/an signé le 18/03, 2 incidents techniques (3h d'indisponibilité cumulée), une résiliation de "Bistrot Lambert" (50k€/an, changement d'orientation), Sales à 108% d'objectif.</p>
+        </div>
+        <p class="case-study-question"><strong>Comment anonymisez-vous avant de coller dans Gemini Advanced ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Je colle tel quel, c'est un outil validé.</button>
+          <button class="cs-option">B) Je remplace tous les noms par "Client A", "Client B" mais je garde les chiffres.</button>
+          <button class="cs-option">C) J'anonymise noms + chiffres précis ("contrat à 6 chiffres", "résiliation d'un client à 5 chiffres"), je garde la structure.</button>
+          <button class="cs-option">D) Je n'utilise pas d'IA, c'est trop sensible.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C.</strong></p>
+          <ul>
+            <li><strong>A est trop léger</strong> : même sur outil validé, principe de minimisation. Pour rédiger une note de structure, l'IA n'a pas besoin de "Mode &amp; Style 245k€".</li>
+            <li><strong>B est insuffisant</strong> : anonymiser les noms en gardant les montants précis ne sert à rien — "un nouveau contrat à 245k€/an" identifie probablement le client si quelqu'un connaît le marché.</li>
+            <li><strong>C est la bonne approche</strong> : "un contrat grand compte signé à 6 chiffres", "une résiliation d'un client à 5 chiffres". L'IA rédige aussi bien. Vous remettez les vrais chiffres à la main.</li>
+            <li><strong>D est trop conservateur</strong> : sur outil validé HiPay avec anonymisation, le risque est très faible.</li>
+          </ul>
+          <p><strong>Reformulation anonymisée à donner à Gemini</strong> : <em>"Rédige-moi une note de fin de mois structurée. Éléments : 4 nouveaux contrats (3 PME + 1 grand compte), 1 grand compte signé pour un montant à 6 chiffres, 2 incidents techniques cumulant 3h d'indisponibilité, 1 résiliation d'un client à 5 chiffres pour changement d'orientation, Sales à 108% d'objectif. Ton factuel, 1 page max."</em></p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="3.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.3.1</span>
+            <span class="gem-block-title">Anonymisation automatique d'un texte</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un texte. Anonymise-le complètement en remplaçant TOUS les éléments identifiants par des variables génériques, tout en conservant la structure et le sens.
+
+Règles :
+- Noms de personnes → "Personne A", "Personne B" (cohérent dans tout le texte)
+- Emails → "[email A]", "[email B]"
+- Entreprises / clients → "Société X", "Client Y", "Merchant Z"
+- Montants précis → "un montant à X chiffres" ou "[montant]"
+- Dates précises → "Q1 2026" ou "[date]"
+- Identifiants → "[ID-1]", "[ID-2]"
+- Lieux précis → "Région X", "Pays Y"
+
+Texte original :
+[COLLEZ ICI]
+
+Donne-moi la version anonymisée prête à utiliser dans une IA.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="3.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.3.2</span>
+            <span class="gem-block-title">Vérifier qu'un texte est suffisamment anonymisé</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un texte qui doit être anonymisé. Indique-moi :
+
+1. Est-il suffisamment anonymisé pour être utilisé dans une IA ?
+2. Quels éléments restent identifiants (directement ou par croisement) ?
+3. Quelles modifications recommandes-tu ?
+
+Texte :
+[COLLEZ ICI]
+
+Sois strict : si un élément pourrait permettre d'identifier la personne, l'entreprise ou la transaction par déduction, signale-le.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m3-3">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 3.3</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m3-3">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les 6 catégories d'éléments à anonymiser</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je maîtrise la méthode en 3 étapes (identifier, remplacer, vérifier)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais quand l'anonymisation suffit et quand elle ne suffit pas</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'utilise les Gems d'anonymisation pour gagner du temps</label>
+      </div>
+    </div>
+    <!-- /lesson-3-3 -->
+
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 3.4 ===== -->
+    <div id="lesson-3-4">
+      <div class="lesson-meta" style="margin-top:0">Leçon 3.4 · RGPD, AI Act, PSD2 : ce qu'il faut retenir</div>
+      <p class="lead"><em>Pas un cours de droit. Juste l'essentiel pour comprendre pourquoi certaines règles existent et ne pas se tromper.</em></p>
+
+      <h3>Pourquoi ce sujet vous concerne</h3>
+      <p>HiPay est une fintech européenne. Trois cadres réglementaires structurent notre quotidien et impactent <strong>directement</strong> l'usage de l'IA :</p>
+      <ul>
+        <li><strong>RGPD</strong> : la protection des données personnelles</li>
+        <li><strong>AI Act</strong> : la régulation européenne spécifique à l'IA (en application progressive depuis 2024-2026)</li>
+        <li><strong>PSD2 / PCI-DSS / ACPR</strong> : les règles propres au paiement</li>
+      </ul>
+      <p>Vous n'avez pas besoin de devenir juriste. Vous avez besoin de <strong>savoir quand vous approchez d'une ligne rouge</strong> et de demander conseil.</p>
+
+      <h3>RGPD en 3 minutes (les bases qui comptent pour vous)</h3>
+      <!-- SOURCE: Règlement (UE) 2016/679 en vigueur depuis mai 2018 — fait largement public -->
+      <p>Le RGPD protège les <strong>données personnelles</strong> des résidents européens.</p>
+      <p><strong>Ce qui est "donnée personnelle"</strong> : tout ce qui permet d'identifier directement ou indirectement une personne physique (pas une entreprise).</p>
+      <ul>
+        <li>Nom, prénom, email, téléphone : oui</li>
+        <li>Adresse IP, identifiant unique : oui</li>
+        <li>Photo, voix : oui</li>
+        <li>Croisement de plusieurs infos qui ensemble identifient : oui</li>
+      </ul>
+      <p><strong>Ce que ça implique pour l'IA</strong> :</p>
+      <ol>
+        <li><strong>Pas de données personnelles dans un outil non-validé.</strong> Coller un email client dans ChatGPT grand public, c'est techniquement un transfert de données personnelles vers un sous-traitant non couvert par votre politique.</li>
+        <li><strong>Principe de minimisation</strong> : ne traitez que ce qui est nécessaire. Pour reformuler un mail, l'IA n'a pas besoin du nom du destinataire.</li>
+        <li><strong>Droit à l'oubli</strong> : si un client demande la suppression de ses données, vérifiez qu'elles ne traînent pas dans des logs d'outils IA. D'où l'importance des outils validés (logs maîtrisés).</li>
+      </ol>
+
+      <h3>AI Act : ce qui change en 2026</h3>
+      <!-- SOURCE: Règlement (UE) 2024/1689 sur l'IA, applicable progressivement depuis 2024 — fait public ; détails d'application précis à vérifier avec la DPO HiPay -->
+      <p>L'AI Act est la régulation européenne spécifique à l'IA, en application progressive depuis 2024. Ce qu'il faut retenir :</p>
+      <ul>
+        <li>L'AI Act <strong>classe les usages IA par niveau de risque</strong> : minimal, limité, élevé, inacceptable.</li>
+        <li><strong>Usages élevés</strong> (recrutement, scoring crédit, etc.) sont soumis à des obligations strictes : transparence, traçabilité, supervision humaine.</li>
+        <li><strong>Usages minimal / limité</strong> (la majorité de vos usages quotidiens : rédaction, résumé) ont peu d'obligations spécifiques.</li>
+        <li>HiPay peut être concernée par des usages "élevés" sur certaines fonctions (anti-fraude, scoring).</li>
+      </ul>
+      <p>Pour vous au quotidien : si vous utilisez l'IA pour des décisions qui impactent un humain (recrutement, validation merchant, score de risque), <strong>demandez à votre manager ou Compliance</strong> si l'usage entre dans le périmètre AI Act élevé.</p>
+
+      <h3>PSD2, PCI-DSS, ACPR : le monde du paiement</h3>
+      <!-- SOURCE: Directive (UE) 2015/2366 (PSD2) — fait public -->
+      <ul>
+        <li><strong>PSD2</strong> : la directive européenne sur les services de paiement. Elle impose notamment l'authentification forte et la sécurité des données de paiement.</li>
+        <li><strong>PCI-DSS</strong> : le standard de sécurité pour les acteurs qui traitent des données de cartes bancaires. Très strict.</li>
+        <li><strong>ACPR</strong> : l'autorité de contrôle française des banques et assurances. HiPay est sous sa supervision.</li>
+      </ul>
+      <p><strong>Ce que ça implique pour l'IA chez HiPay</strong> :</p>
+      <ul>
+        <li><strong>Aucune donnée de carte</strong> (PAN, CVV, date d'expiration) ne doit jamais transiter par un outil IA. Même validé. C'est PCI-DSS.</li>
+        <li>Les usages IA touchant à la <strong>détection de fraude</strong> ou au <strong>scoring de risque</strong> doivent être documentés et auditables (exigence ACPR).</li>
+        <li>Les traces d'usage IA (logs) sur des sujets sensibles peuvent être demandées en audit.</li>
+      </ul>
+
+      <h3>Le bon réflexe juridique</h3>
+      <p>Trois questions à vous poser :</p>
+      <ol>
+        <li><strong>Est-ce que ce que je traite concerne une personne physique identifiable ?</strong> → RGPD à respecter.</li>
+        <li><strong>Est-ce que l'IA va influencer une décision sur un humain ?</strong> → Possible AI Act, vérifier.</li>
+        <li><strong>Est-ce que ce sont des données de paiement ?</strong> → PSD2 / PCI-DSS, à ne pas traiter en IA générale.</li>
+      </ol>
+      <div class="callout warn">
+        <span class="callout-label">Cette leçon ne remplace pas un avis juridique</span>
+        <p>Les éléments présentés ici sont une vulgarisation pour vous donner les bons réflexes. Pour tout cas concret à fort enjeu, contactez Compliance / DPO HiPay. Ils sont là pour ça.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>RGPD : protège les personnes physiques identifiables. Outil validé obligatoire si données perso.</li>
+        <li>AI Act : classe les usages par risque. Décisions sur humains = à vérifier.</li>
+        <li>PSD2 / PCI-DSS / ACPR : monde du paiement. Données de carte = jamais en IA.</li>
+        <li>En cas de doute : Compliance / <code>#ai-support</code>. C'est leur métier.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Les sanctions, en vrai</summary>
+        <div class="bonus-body">
+          <!-- SOURCE: registre public CNIL et autorités européennes — ordres de grandeur publics -->
+          <!-- À VÉRIFIER : montants AI Act en cours d'évolution selon l'application progressive du règlement — confirmer avec la DPO HiPay -->
+          <p><strong>RGPD</strong> : sanctions plafonnées à 4% du chiffre d'affaires mondial ou 20M€ (le plus élevé des deux). Les amendes effectives vont de quelques dizaines de milliers d'euros (petits manquements) à plusieurs centaines de millions d'euros (cas majeurs : Meta, Amazon, etc.).</p>
+          <p><strong>AI Act</strong> : sanctions plafonnées à 7% du chiffre d'affaires mondial ou 35M€ pour les violations les plus graves. Montants à confirmer avec la DPO HiPay au fur et à mesure de l'application du règlement.</p>
+          <p><strong>PSD2 / PCI-DSS</strong> : pas d'amende directe pour la plupart des manquements, mais risque de perte de l'agrément, suspension de prestation par les partenaires bancaires, et perte de confiance merchants.</p>
+          <p>L'enjeu n'est pas seulement l'amende. C'est aussi la <strong>réputation</strong> et la <strong>capacité opérationnelle</strong>. Pour une fintech, perdre la confiance des régulateurs ou des partenaires bancaires peut être pire qu'une amende.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-3-4">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes au RH. Vous testez une idée : utiliser Gemini Advanced pour <strong>présélectionner les candidatures</strong> reçues pour un poste. L'IA classerait les CV en "très adapté", "adapté", "peu adapté" selon des critères que vous lui donneriez.</p>
+          <p>Quelles sont les questions à se poser avant de mettre ça en place ?</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle est la bonne approche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Aucune, c'est juste un assistant, et l'outil est validé.</button>
+          <button class="cs-option">B) Vérifier que les candidats sont informés que l'IA intervient dans le tri, et que la décision finale est humaine.</button>
+          <button class="cs-option">C) Vérifier RGPD (CV = données personnelles), AI Act (recrutement = potentiellement usage élevé), et avoir une supervision humaine claire.</button>
+          <button class="cs-option">D) Ne pas faire ça, c'est interdit.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C.</strong></p>
+          <ul>
+            <li><strong>A est dangereux</strong> : "outil validé" ne dispense pas des obligations réglementaires sur le contenu.</li>
+            <li><strong>B est nécessaire mais incomplet</strong> : la transparence et la décision humaine finale sont des obligations AI Act, mais il y a d'autres dimensions.</li>
+            <li><strong>C est la bonne approche</strong> : RGPD (CV = données personnelles), AI Act (recrutement est classé usage élevé, avec obligations documentation, traçabilité, supervision humaine), supervision humaine obligatoire pour la décision finale.</li>
+            <li><strong>D est trop conservateur</strong> : ce n'est pas interdit, c'est encadré. Beaucoup d'entreprises le font légalement.</li>
+          </ul>
+          <p><strong>Concrètement</strong> : avant de lancer, échangez avec votre DPO / Compliance. Ils valideront que la politique de confidentialité candidats mentionne l'usage IA, qu'il existe une procédure de supervision humaine, et que la méthode est documentée (pour audit AI Act éventuel). Avec ces 3 conditions, l'usage est légal et utile.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="3.4.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.4.1</span>
+            <span class="gem-block-title">Diagnostic réglementaire d'un usage IA</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je veux mettre en place l'usage IA suivant : [DÉCRIVEZ L'USAGE]
+
+Aide-moi à identifier les points réglementaires à vérifier :
+
+1. RGPD : données personnelles impliquées ? Risques ?
+2. AI Act : niveau de risque probable (minimal, limité, élevé) ? Obligations ?
+3. Sectoriel (si fintech / paiement) : PSD2, PCI-DSS, ACPR pertinents ?
+4. Supervision humaine : prévue et suffisante ?
+5. Transparence : information des personnes concernées ?
+
+Conclus avec : feu vert / vigilance (préciser quoi) / à discuter avec Compliance avant.
+
+Note : ta réponse ne remplace pas un avis juridique. Je consulterai Compliance HiPay avant déploiement si nécessaire.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="3.4.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.4.2</span>
+            <span class="gem-block-title">Préparer une demande à Compliance</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je dois consulter notre Compliance / DPO sur l'usage IA suivant : [DÉCRIVEZ]
+
+Aide-moi à formuler une demande claire et structurée :
+1. Description courte de l'usage (3-4 lignes)
+2. Données traitées (types + sensibilité)
+3. Outil utilisé (et son statut validé/non validé HiPay)
+4. Décision impactée (humaine, semi-automatisée, automatisée)
+5. Questions précises sur lesquelles je veux leur avis
+
+Format : mail court et clair, pas plus de 15 lignes.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m3-4">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 3.4</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m3-4">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je comprends les bases du RGPD et son impact sur l'usage IA</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais reconnaître un usage potentiellement "élevé" au sens AI Act</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais qu'aucune donnée de carte ne passe par une IA (PCI-DSS)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais quand demander conseil à Compliance / DPO</label>
+      </div>
+    </div>
+    <!-- /lesson-3-4 -->
+
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 3.5 ===== -->
+    <div id="lesson-3-5">
+      <div class="lesson-meta" style="margin-top:0">Leçon 3.5 · Le jeu des 7 erreurs</div>
+      <p class="lead"><em>Synthèse pratique. 7 situations courantes que vous allez croiser : reconnaissez l'erreur, corrigez-la.</em></p>
+
+      <h3>7 situations — repérez l'erreur et la correction</h3>
+      <p>Cette leçon est un exercice. Pas de théorie. Pour chaque situation, identifiez ce qui cloche et comment le corriger.</p>
+
+      <h4 style="margin:24px 0 6px">Situation 1</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Je colle un mail client dans Gemini pour le résumer. Je suis connecté à mon Gmail perso (compte Gemini gratuit), mais c'est juste pour un résumé, donc ça va."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur</strong> : compte Gemini perso (gratuit), pas votre licence Gemini Advanced HiPay. La version gratuite peut réutiliser vos données pour entraîner.</p>
+      <p><strong style="color:var(--good)">Correction</strong> : vérifier en haut à droite que vous êtes bien connecté avec votre compte pro HiPay (licence Gemini Advanced). Si vous ne savez pas comment vérifier, demandez sur <code>#ai-support</code>.</p>
+
+      <h4 style="margin:24px 0 6px">Situation 2</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Je dois préparer une note RH sur 3 candidats en cours. Je colle leurs CV dans Gemini Advanced pour avoir un draft de synthèse."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur</strong> : CV = données personnelles (RGPD) + recrutement = potentiel usage AI Act élevé. Coller tel quel même sur outil validé pose plusieurs problèmes.</p>
+      <p><strong style="color:var(--good)">Correction</strong> : anonymiser les CV (noms → Candidat A/B/C, écoles → "École X"), garder la décision finale humaine, documenter la méthode si c'est un usage récurrent, vérifier que la politique candidat HiPay couvre l'usage IA.</p>
+
+      <h4 style="margin:24px 0 6px">Situation 3</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Un merchant me transfère son extrait Kbis et un IBAN. Je veux que Gemini vérifie que tout est cohérent avant que je valide."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur</strong> : IBAN = donnée bancaire sensible. L'ensemble identifie clairement la transaction et le merchant.</p>
+      <p><strong style="color:var(--good)">Correction</strong> : pas d'IBAN dans Gemini, même Advanced. C'est un identifiant bancaire — à traiter avec les outils de validation prévus à cet effet. Pour des vérifications de cohérence administrative, les outils internes sont mieux adaptés.</p>
+
+      <h4 style="margin:24px 0 6px">Situation 4</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Je dois écrire un article public LinkedIn sur nos résultats du trimestre. Je veux l'aide de Gemini."</blockquote>
+      <p><strong style="color:var(--good)">Aucune erreur.</strong> C'est un cas légitime, données niveau 1 (publique). Gemini perso ou Advanced, peu importe (autant utiliser votre licence pro pour avoir accès à Canvas, Deep Research, etc.).</p>
+
+      <h4 style="margin:24px 0 6px">Situation 5</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Un collègue me partage sur Slack le brouillon de la roadmap Q3 de l'entreprise. Je colle directement dans Claude pour avoir des suggestions d'amélioration."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur</strong> : roadmap = niveau 3 (confidentielle, stratégique). Coller sans anonymisation est un risque, même sur outil validé.</p>
+      <p><strong style="color:var(--good)">Correction</strong> : vérifier que Claude utilisé est bien Claude.ai Team (licence pilote HiPay, pas perso). Anonymiser ce qui est sensible (noms de projets, montants d'investissement, partenaires identifiables). Demander des suggestions sur la structure et le raisonnement, pas sur les détails identifiants.</p>
+
+      <h4 style="margin:24px 0 6px">Situation 6</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Mon manager me demande de mettre en place un workflow n8n qui envoie un mail automatique aux merchants dont le volume baisse de plus de 20% en un mois."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur potentielle</strong> : automatisation impliquant des données client + décision automatisée. Pas nécessairement bloquant, mais à cadrer.</p>
+      <p><strong style="color:var(--good)">Correction</strong> : vérifier que le workflow ne déclenche pas d'envoi à un client sensible sans validation humaine, tester sur un petit nombre avant de scaler, documenter le critère (baisse 20%) pour qu'il ne soit pas considéré comme "décision IA opaque".</p>
+
+      <h4 style="margin:24px 0 6px">Situation 7</h4>
+      <blockquote style="margin:0 0 8px;padding:12px 16px;border-left:3px solid var(--line);font-style:italic;color:var(--ink-soft);font-size:14px">"Une fonctionnalité de notre produit utilise un LLM pour suggérer des réponses au support merchant. C'est de l'usage interne, pas besoin de prévenir les merchants."</blockquote>
+      <p><strong style="color:var(--warn)">Erreur</strong> : si le LLM influence ou produit une communication adressée au merchant, <strong>les merchants doivent en être informés</strong> (transparence AI Act + RGPD).</p>
+      <p><strong style="color:var(--good)">Correction</strong> : mentionner dans la politique merchant ou les CGV que l'IA est utilisée dans le support, préciser que la décision finale reste humaine, permettre au merchant de demander une réponse humaine s'il le souhaite.</p>
+
+      <h3>Synthèse : les 7 réflexes à garder</h3>
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line-strong)">
+            <th style="text-align:left;padding:8px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500;width:36px">#</th>
+            <th style="text-align:left;padding:8px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Réflexe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">1</td><td style="padding:10px 12px;color:var(--ink-soft)">Toujours vérifier le compte connecté (Gemini perso vs Gemini Advanced HiPay)</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">2</td><td style="padding:10px 12px;color:var(--ink-soft)">Anonymiser systématiquement les données personnelles, même sur outil validé</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">3</td><td style="padding:10px 12px;color:var(--ink-soft)">Aucune donnée bancaire / carte / IBAN dans une IA générale</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">4</td><td style="padding:10px 12px;color:var(--ink-soft)">Niveau 1 (publique) = liberté totale</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">5</td><td style="padding:10px 12px;color:var(--ink-soft)">Niveau 3 (confidentielle) = outil validé + anonymisation</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">6</td><td style="padding:10px 12px;color:var(--ink-soft)">Décisions automatisées impactant un humain = à cadrer (AI Act)</td></tr>
+          <tr><td style="padding:10px 12px;font-family:var(--mono);color:var(--accent)">7</td><td style="padding:10px 12px;color:var(--ink-soft)">Usage IA dans un service client = transparence obligatoire</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Les erreurs sont presque toujours <strong>petites et ordinaires</strong> : compte mal connecté, anonymisation oubliée, automatisation sans cadrage.</li>
+        <li>Le bon réflexe : 3 secondes de check avant de coller / lancer.</li>
+        <li>En cas de doute, <code>#ai-support</code> ou Compliance. <strong>C'est gratuit, ça vous protège.</strong></li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Comment construire votre propre check-list de sécurité ?</summary>
+        <div class="bonus-body">
+          <p>Une check-list personnelle de 30 secondes pour vos usages les plus fréquents. <strong>Avant chaque session IA, demandez-vous :</strong></p>
+          <ol>
+            <li><strong>Compte</strong> : suis-je sur ma licence Gemini Advanced HiPay (pas Gemini perso gratuit) ?</li>
+            <li><strong>Outil</strong> : l'outil que j'utilise est-il validé pour le type de données que je vais coller ?</li>
+            <li><strong>Contenu</strong> : ai-je anonymisé ce qui devait l'être ?</li>
+            <li><strong>Objectif</strong> : la décision finale restera-t-elle de moi (humaine), ou suis-je en train de mettre en place une automatisation qui pourrait être problématique ?</li>
+          </ol>
+          <p>Si vous répondez OK aux 4, allez-y sans hésiter. Si vous bloquez sur l'une, prenez 1 minute pour corriger avant de coller.</p>
+          <p>Cette check-list devient <strong>automatique en quelques semaines d'usage</strong>. Au début vous y pensez, après vous l'appliquez sans y réfléchir.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-3-5">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Account Manager. Vous voulez préparer un récap de votre portefeuille pour votre revue avec votre directeur commercial. Vous avez : les chiffres de 18 merchants (volumes, marges, incidents), les noms et fonctions de 18 contacts merchants, 3 négociations en cours avec des montants précis, vos propres notes manuscrites scannées.</p>
+          <p>Vous voulez utiliser Gemini Advanced pour vous aider à structurer la présentation.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle est l'approche la plus correcte ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Je colle tout dans Gemini Advanced, c'est un outil validé.</button>
+          <button class="cs-option">B) J'anonymise tous les noms et chiffres, je colle dans Gemini Advanced.</button>
+          <button class="cs-option">C) Je structure d'abord la trame à la main (sans données précises), puis je demande à Gemini de m'aider à formuler la trame elle-même, pas les chiffres précis.</button>
+          <button class="cs-option">D) Je ne fais rien avec l'IA, c'est trop sensible.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C (avec B en alternative valide).</strong></p>
+          <ul>
+            <li><strong>A est trop léger</strong> : même sur outil validé, principe de minimisation. Coller 18 fiches merchants avec noms, contacts, montants, c'est exposer toute la cartographie client.</li>
+            <li><strong>B est correct</strong> : anonymiser puis utiliser Gemini Advanced fonctionne. Vous remettez les vrais noms et chiffres à la main après.</li>
+            <li><strong>C est encore plus efficace</strong> : vous séparez la <strong>structuration</strong> (où l'IA aide) de la <strong>donnée précise</strong> (où elle n'apporte rien). Vous demandez à Gemini "comment structurer une revue de portefeuille de 18 merchants pour un directeur commercial ?" — il vous donne un canevas. Vous remplissez les vraies données dans votre tableur.</li>
+            <li><strong>D est trop conservateur</strong> : Gemini peut vraiment aider à formuler une trame, à proposer des angles, à éviter les oublis.</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : séparez l'<strong>aide à la pensée</strong> (canevas, structure, formulation) de l'<strong>aide au traitement de données</strong> (analyse, croisement). La première n'a pas besoin de vos vraies données.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="3.5.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.5.1</span>
+            <span class="gem-block-title">Check-list rapide avant d'utiliser l'IA</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je m'apprête à utiliser une IA pour la tâche suivante :
+
+[DÉCRIVEZ LA TÂCHE]
+
+Avec le contenu suivant :
+
+[COLLEZ OU DÉCRIVEZ LE CONTENU]
+
+Aide-moi à vérifier en 30 secondes :
+
+1. Compte connecté : à vérifier moi-même (HiPay Advanced vs Gemini perso)
+2. Outil approprié : est-ce le bon outil pour ce niveau de sensibilité ?
+3. Anonymisation : qu'est-ce que je dois absolument anonymiser avant de coller ?
+4. Décision impactée : y a-t-il une décision sur un humain ou un client qui mériterait une vigilance particulière ?
+
+Réponds en moins de 10 lignes, va à l'essentiel.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="3.5.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 3.5.2</span>
+            <span class="gem-block-title">Reconnaître mes erreurs récurrentes</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici les 5 dernières utilisations IA que j'ai faites (ou un échantillon) :
+
+1. [Cas 1]
+2. [Cas 2]
+3. [Cas 3]
+4. [Cas 4]
+5. [Cas 5]
+
+Pour chacune, identifie :
+- Le niveau de sensibilité des données traitées
+- Si l'outil utilisé était approprié
+- Si l'anonymisation aurait été pertinente
+- Les améliorations possibles pour la prochaine fois
+
+Sois concret et pragmatique. Ne me dis pas seulement "c'était risqué", explique comment faire mieux.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m3-5">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 3.5</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m3-5">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je reconnais les 7 erreurs courantes</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> J'ai ma check-list 30 secondes avant chaque session IA</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je distingue "aide à la pensée" et "traitement de données"</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais que la transparence vis-à-vis des clients est obligatoire quand l'IA les concerne</label>
+      </div>
+    </div>
+    <!-- /lesson-3-5 -->
+
+    <hr class="lesson-sep">
 
     <div class="quiz" data-quiz="m2">
       <div class="quiz-head">
-        <h3>Quiz · Sécurité & Éthique</h3>
+        <h3>Quiz récapitulatif · Sécurité & Conformité</h3>
         <span class="quiz-counter">4 questions</span>
       </div>
       <div class="quiz-body"></div>
@@ -4634,6 +5436,126 @@ const QUIZZES = {
       ],
       correct: 1,
       explain: "Automatiser la partie mécanique (collecte, mise en forme), garder la main sur la partie jugement (recommandations, validation, envoi). C'est l'équilibre humain × machine. Tout automatiser perd le contrôle qualité. Tout manuel n'utilise pas le levier. Une appli dédiée serait sur-dimensionnée."
+    }
+  ],
+  'm3-1': [
+    {
+      q: "Pourquoi les règles d'usage de l'IA chez HiPay existent-elles ?",
+      opts: [
+        "Pour empêcher les collaborateurs d'utiliser l'IA",
+        "Pour permettre un usage large mais sans risque réglementaire, commercial ou opérationnel",
+        "Parce que la direction n'aime pas l'IA",
+        "Pour faire comme les autres entreprises"
+      ],
+      correct: 1,
+      explain: "Les règles sont conçues pour permettre l'usage de l'IA dans 99% des cas, en évitant les 1% qui peuvent vraiment poser problème (fuites de données, sanctions réglementaires, incidents commerciaux). Ce n'est pas une interdiction déguisée, c'est un cadre pour utiliser sans bombe à retardement."
+    },
+    {
+      q: "Le cas Samsung 2023 illustre principalement quel risque ?",
+      opts: [
+        "Le risque que l'IA invente du contenu",
+        "Le risque qu'une donnée sensible collée dans un outil grand public ne puisse plus être récupérée",
+        "Le risque que l'IA remplace les développeurs",
+        "Le risque de panne d'un outil IA"
+      ],
+      correct: 1,
+      explain: "Le cas Samsung illustre exactement le problème de la donnée sortie qui ne peut plus être rattrapée. Des ingénieurs compétents ont collé du code source dans ChatGPT pour le débugger. Une fois envoyé, OpenAI ne va pas 'désapprendre'. C'est pour ça qu'on raisonne en prévention, pas en réparation."
+    }
+  ],
+  'm3-2': [
+    {
+      q: "Vous avez un mail interne contenant des chiffres financiers non publics et le nom de 2 clients. Quel niveau et quel outil ?",
+      opts: [
+        "Niveau 1 (publique), tout outil OK",
+        "Niveau 2 (interne), outil validé HiPay sans anonymisation",
+        "Niveau 3 (confidentielle), outil validé HiPay + anonymisation des noms et chiffres",
+        "Niveau 4 (secrète), ne pas utiliser d'IA"
+      ],
+      correct: 2,
+      explain: "Mélange de chiffres financiers non publics + noms de clients = niveau 3 confidentielle. Outil validé HiPay (pas perso) ET anonymisation. Vous gardez la structure du mail, vous remplacez les éléments sensibles par des variables. L'IA fait son travail, vos données restent protégées."
+    },
+    {
+      q: "Une information seule n'est pas sensible, mais croisée à d'autres elle l'est. Comment classer le tout ?",
+      opts: [
+        "Au niveau le plus bas (le moins sensible)",
+        "À la moyenne des niveaux",
+        "Au niveau le plus haut (le plus sensible)",
+        "Ça dépend du nombre d'informations croisées"
+      ],
+      correct: 2,
+      explain: "Le principe de croisement : ce qui identifie une personne ou une transaction quand on combine plusieurs infos est traité au niveau de sensibilité le plus élevé. Le RGPD raisonne en termes d'identifiabilité. Un nom seul (faible) + un email (faible) + un montant (faible) ensemble = identification d'une transaction = niveau élevé."
+    }
+  ],
+  'm3-3': [
+    {
+      q: "Vous anonymisez un texte. Quelle approche est la bonne ?",
+      opts: [
+        "Remplacer juste les noms, garder les montants exacts",
+        "Anonymiser de façon cohérente : tous les éléments sensibles avec des variables systématiques",
+        "Anonymiser au hasard quelques éléments",
+        "Remplacer tout par des variables, même la structure"
+      ],
+      correct: 1,
+      explain: "L'anonymisation efficace est cohérente : si vous anonymisez, vous le faites sur tous les éléments sensibles, partout dans le texte, avec des variables claires. Garder des montants exacts identifie souvent le client par déduction. Anonymiser au hasard ne protège rien. Remplacer la structure rend le texte incompréhensible."
+    },
+    {
+      q: "Pourquoi anonymiser même sur un outil validé HiPay ?",
+      opts: [
+        "Parce que la politique l'oblige toujours",
+        "Pour appliquer le principe de minimisation : ne donner à l'outil que ce qui est nécessaire",
+        "Parce que les outils validés ne sont pas vraiment sûrs",
+        "Pour gagner du temps"
+      ],
+      correct: 1,
+      explain: "Principe de minimisation des données : même sur un outil sûr, on ne lui donne que ce qui est nécessaire à la tâche. Pour rédiger un mail, l'IA n'a pas besoin de connaître le vrai nom du client ou le montant exact. C'est une couche de prudence supplémentaire qui coûte peu et protège beaucoup."
+    }
+  ],
+  'm3-4': [
+    {
+      q: "Qu'est-ce qui peut être considéré comme une 'donnée personnelle' au sens du RGPD ?",
+      opts: [
+        "Uniquement les noms et prénoms",
+        "Tout ce qui permet d'identifier directement ou indirectement une personne physique",
+        "Les coordonnées (email, téléphone)",
+        "Les données de cartes bancaires uniquement"
+      ],
+      correct: 1,
+      explain: "Le RGPD raisonne en termes d'identifiabilité. Tout ce qui permet d'identifier une personne directement (nom, email) ou indirectement (croisement de plusieurs infos, adresse IP, identifiants uniques) est une donnée personnelle. C'est pour ça qu'on parle d'anonymisation : casser la chaîne d'identification."
+    },
+    {
+      q: "Vous voulez utiliser une IA pour aider à scorer la fraude potentielle sur des transactions. Sous quel(s) cadre(s) ça tombe ?",
+      opts: [
+        "Rien de spécial, c'est de l'usage interne",
+        "RGPD uniquement",
+        "AI Act (potentiellement usage élevé) + PSD2 + supervision ACPR",
+        "Seulement PCI-DSS"
+      ],
+      correct: 2,
+      explain: "Scoring de fraude = décision automatisée potentielle sur transactions = AI Act probablement usage élevé. Données de paiement = PSD2. HiPay supervisée par ACPR = obligations documentation et traçabilité. C'est un cas où plusieurs cadres se croisent et où Compliance / DPO doivent être impliqués dès la conception."
+    }
+  ],
+  'm3-5': [
+    {
+      q: "Vous voulez utiliser une IA pour vous aider à structurer une revue stratégique de portefeuille. Que faire en priorité ?",
+      opts: [
+        "Coller toutes les données dans l'IA pour qu'elle ait le contexte complet",
+        "Demander à l'IA de structurer la trame, sans lui donner les données précises",
+        "Anonymiser toutes les données puis tout coller",
+        "Ne pas utiliser d'IA, c'est trop sensible"
+      ],
+      correct: 1,
+      explain: "Pour les usages 'aide à la pensée' (structurer, formuler, organiser), l'IA n'a pas besoin de vos vraies données. Demandez-lui le canevas, vous remplissez avec les vrais chiffres dans votre outil personnel. C'est plus simple, plus rapide, et plus sûr que d'anonymiser méthodiquement."
+    },
+    {
+      q: "Une fonctionnalité de votre produit utilise un LLM pour générer automatiquement des réponses au support client. Quel est le réflexe obligatoire ?",
+      opts: [
+        "Aucun, c'est de l'usage interne",
+        "Informer les clients que l'IA est utilisée, permettre un recours humain",
+        "Faire valider par l'équipe Tech",
+        "Documenter le code"
+      ],
+      correct: 1,
+      explain: "Quand l'IA influence ou produit une communication adressée à un client, la transparence est obligatoire (AI Act, RGPD). Informer dans les CGV ou la politique de confidentialité, et permettre un recours humain. Ne pas faire ça expose à des sanctions et à une perte de confiance des clients."
     }
   ],
   m2: [
