@@ -1330,6 +1330,164 @@
 
   /* Visibility utilities for filtered lib */
   .hidden { display: none !important; }
+
+  /* ===== BONUS DÉPLIABLE ===== */
+  details.bonus {
+    margin: 32px 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  details.bonus summary {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  details.bonus summary::-webkit-details-marker { display: none; }
+  details.bonus summary::before {
+    content: "▶";
+    font-size: 10px;
+    color: var(--accent);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  details.bonus[open] summary::before { transform: rotate(90deg); }
+  details.bonus summary:hover { background: var(--bg-card); }
+  details.bonus .bonus-body {
+    padding: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  details.bonus .bonus-body p + p,
+  details.bonus .bonus-body p + ul,
+  details.bonus .bonus-body ul + p { margin-top: 10px; }
+
+  /* ===== CAS PRATIQUE ===== */
+  .case-study {
+    margin: 32px 0;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .case-study-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .case-study-prompt {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .case-study-prompt p + p { margin-top: 8px; }
+  .case-study-prompt strong { color: var(--ink); }
+  .case-study-question { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
+  .cs-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .cs-option {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    font-family: var(--sans);
+    line-height: 1.5;
+  }
+  .cs-option:hover:not(:disabled) { background: var(--bg-soft); border-color: var(--line-strong); }
+  .cs-option:disabled { cursor: default; opacity: 0.6; }
+  .cs-option.cs-selected { border-color: var(--accent); opacity: 1; }
+  .cs-reveal-btn {
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: background 0.15s;
+    margin-bottom: 0;
+  }
+  .cs-reveal-btn:hover { background: var(--bg); }
+  .cs-answer {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .cs-answer p + p,
+  .cs-answer p + ul,
+  .cs-answer ul + p { margin-top: 10px; }
+  .cs-answer strong { color: var(--ink); }
+  .cs-answer ul { padding-left: 20px; }
+  .cs-answer li { margin-bottom: 4px; }
+
+  /* ===== LESSON CHECKLIST ===== */
+  .lesson-checklist {
+    margin: 32px 0 0;
+    padding: 20px;
+    background: var(--bg-soft);
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+  .lesson-checklist-title {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+  }
+  .cl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 5px 0;
+    line-height: 1.5;
+    transition: color 0.15s;
+  }
+  .cl-item:hover { color: var(--ink); }
+  .cl-item input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--good);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+  .cl-item.cl-checked { color: var(--ink); }
+
+  /* ===== LESSON SEPARATOR ===== */
+  .lesson-sep {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 52px 0;
+  }
 </style>
 </head>
 <body>
@@ -1530,88 +1688,535 @@
   <div class="lesson-wrap">
     <div class="lesson-meta">Module 01 · Fondamentaux</div>
     <h2>Comprendre <em>vraiment</em> ce qu'est l'IA.</h2>
-    <p class="lead">Avant de l'utiliser, démystifions. En finir avec les mythes et avec les arnaqueurs LinkedIn qui parlent de "révolution cognitive" sans savoir ce qu'est un token.</p>
+    <p class="lead">Cinq leçons courtes. Des réflexes concrets. Pour utiliser l'IA sans naïveté ni méfiance excessive.</p>
 
-    <h3>L'IA, c'est quoi exactement ?</h3>
-    <p>L'<strong>Intelligence Artificielle</strong> est un terme parapluie qui désigne tout système informatique capable d'effectuer des tâches qui, traditionnellement, nécessitaient l'intelligence humaine. Le concept est ancien — Alan Turing pose ses bases en 1950 — mais ce qui change tout depuis 2022, c'est l'IA Générative (GenAI).</p>
-    <p>Pour comprendre où vous mettez les pieds, il faut distinguer 4 niveaux :</p>
+    <!-- ===== LEÇON 1.1 ===== -->
+    <div id="lesson-1-1">
+      <div class="lesson-meta" style="margin-top:0">Leçon 1.1 · C'est quoi vraiment l'IA ?</div>
 
-    <dl>
-      <div class="definition">
-        <dt>Machine Learning</dt>
-        <dd>Algorithmes qui <strong>apprennent à partir de données</strong> sans être explicitement programmés. Exemple : détection de fraude par carte bancaire chez HiPay. On lui montre 10 millions de transactions, il apprend les patterns suspects.</dd>
-      </div>
-      <div class="definition">
-        <dt>Deep Learning</dt>
-        <dd>Sous-ensemble du ML qui utilise des <strong>réseaux de neurones profonds</strong> (plusieurs couches). C'est ce qui permet la reconnaissance d'images, la traduction automatique, et... les LLM.</dd>
-      </div>
-      <div class="definition">
-        <dt>IA Générative (GenAI)</dt>
-        <dd>L'IA qui <strong>produit du contenu nouveau</strong> : texte, code, images, vidéo, audio. ChatGPT, Claude, Gemini, Midjourney sont des GenAI. C'est elle qui fait peur, c'est elle qui change votre quotidien.</dd>
-      </div>
-      <div class="definition">
-        <dt>Agents</dt>
-        <dd>Une GenAI qui <strong>agit</strong> en autonomie : elle planifie, utilise des outils (web, code, API), corrige ses erreurs. Pas juste répondre — exécuter. C'est la frontière de 2026.</dd>
-      </div>
-      <div class="definition">
-        <dt>RAG</dt>
-        <dd>Retrieval-Augmented Generation. Une GenAI <strong>branchée sur des documents externes</strong> — votre base de connaissances interne, vos contrats, vos procédures. Elle répond depuis vos vraies sources (qu'elle peut citer) plutôt que depuis sa mémoire d'entraînement générique. Résultat : beaucoup moins d'hallucinations sur les sujets propres à HiPay. Exemple chez HiPay : DUST.</dd>
-      </div>
-    </dl>
+      <h3>Le mot "IA" sert à tout, et c'est le problème</h3>
+      <p>Quand quelqu'un dit "on a mis de l'IA" dans un produit, ça peut désigner trois choses très différentes :</p>
+      <ul>
+        <li>Un algorithme de tri inventé il y a 30 ans</li>
+        <li>Un modèle qui reconnaît une signature sur une photo</li>
+        <li>Un assistant qui rédige des mails en langage naturel (ce qui a explosé depuis 2022)</li>
+      </ul>
+      <p>Les trois s'appellent "IA". Aucun n'a les mêmes capacités, les mêmes risques, ni le même prix.</p>
+      <p><strong>Premier réflexe à acquérir</strong> : quand on vous parle d'IA, demandez <em>"de quel type d'IA on parle, concrètement ?"</em>. Vous verrez que celui qui en parle ne sait souvent pas répondre. C'est déjà une information.</p>
 
-    <h3>Comment fonctionne un LLM (Large Language Model) ?</h3>
-    <p>Un LLM comme Claude ou GPT-5 est entraîné sur des téraoctets de texte (livres, sites, code) pour apprendre une seule chose : <em class="highlight">prédire le mot suivant le plus probable</em> à partir d'un contexte. Tout ce que vous voyez — réponses brillantes, code fonctionnel, analyses fines — émerge de cette mécanique simple, à très grande échelle.</p>
+      <h3>Ce que fait vraiment ChatGPT, Claude ou Gemini</h3>
+      <p>Imaginez un stagiaire qui a lu <strong>énormément</strong> : tout Internet, tous les livres numérisés, tout le code public. Il a une mémoire phénoménale, écrit vite, code, traduit 40 langues.</p>
+      <p>Mais ce stagiaire a trois défauts qui changent tout :</p>
+      <ol>
+        <li><strong>Il n'a jamais mis les pieds chez HiPay.</strong> Vos merchants, vos procédures, vos noms de produits, il ne les connaît pas — sauf si vous lui dites dans la conversation.</li>
+        <li><strong>Quand il ne sait pas, il invente — avec aplomb.</strong> Il ne dira jamais "je ne sais pas". Il préférera donner une réponse fausse avec assurance. C'est ce qu'on appelle une <strong>hallucination</strong>.</li>
+        <li><strong>Il a "fini ses études" il y a quelques mois.</strong> L'actu récente, il ne la connaît pas. Sauf si on le branche au web.</li>
+      </ol>
+      <p>Cette image suffit à comprendre 90% de ce que vous allez faire avec lui. Et surtout, à comprendre <strong>pourquoi vous devez le relire</strong>.</p>
 
-    <div class="callout">
-      <span class="callout-label">Concept clé · Tokens</span>
-      <p>Un LLM ne lit pas des mots, il lit des <strong>tokens</strong> (≈ syllabes ou morceaux de mots). "Anthropic" = 2 tokens. "HiPay paiement" = environ 3-4 tokens. Chaque modèle a une <strong>fenêtre de contexte</strong> limitée — par exemple, plusieurs centaines de milliers de tokens pour les modèles récents de Claude (ce qui représente des centaines de pages). Au-delà, il "oublie" le début.<!-- SOURCE: documentation Anthropic — la fenêtre de contexte exacte évolue par version de modèle, ne pas citer de chiffre précis sans vérification à date --></p>
+      <div class="callout">
+        <span class="callout-label">La règle des 3 secondes</span>
+        <p>Avant d'envoyer un texte généré par IA à un client, un collègue, votre boss : <strong>3 secondes</strong> pour vous demander "est-ce que je signerais ça de mon nom ?". Si oui, envoyez. Si non, retravaillez. L'IA produit le brouillon. Vous restez l'auteur.</p>
+      </div>
+
+      <h3>Pourquoi tout le monde en parle maintenant</h3>
+      <!-- SOURCE: ChatGPT lancé le 30 novembre 2022 — fait historique vérifiable -->
+      <p>L'IA existe depuis 70 ans. Ce qui a changé en 2022 : <strong>n'importe qui peut l'utiliser sans être ingénieur.</strong> Avant, l'IA tournait dans les coulisses (votre filtre anti-spam, votre GPS, votre détection de fraude bancaire). Depuis 2022, elle est devant vous, dans une fenêtre de chat.</p>
+      <p>Ce changement explique pourquoi on en parle d'un coup. Ce n'est pas une révolution technologique soudaine — c'est une révolution <strong>d'accessibilité</strong>. Et c'est ça qui change votre quotidien pro.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>"IA" désigne plusieurs choses très différentes. Demandez toujours de quoi on parle exactement.</li>
+        <li>Les outils que vous utilisez (Gemini, Claude, ChatGPT) sont des stagiaires brillants mais qui inventent quand ils ne savent pas.</li>
+        <li>Toujours relire avant d'envoyer. Non-négociable.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Pour aller plus loin : pourquoi les IA inventent ?</summary>
+        <div class="bonus-body">
+          <p>Les modèles type Gemini, Claude ou ChatGPT (qu'on appelle des <strong>LLM</strong> — Large Language Models) fonctionnent en <strong>prédisant le mot suivant le plus probable</strong>, un mot après l'autre, en fonction de ce qui vient d'être dit. C'est tout.</p>
+          <p>Quand ils "raisonnent", ils n'ont pas vraiment réfléchi : ils ont produit du texte qui <em>ressemble</em> à un raisonnement parce qu'ils ont vu beaucoup de raisonnements pendant leur entraînement. Le résultat peut être juste — ou être <strong>plausible et faux</strong>.</p>
+          <p>C'est exactement pour ça qu'ils hallucinent : quand la suite la plus probable est une phrase qui <em>ressemble</em> à une bonne réponse, le modèle la produit, même si le contenu est inventé. Il ne ment pas volontairement — il prédit, sans savoir s'il dit vrai.</p>
+          <p>D'où la règle : <strong>vérifiez systématiquement les chiffres, les noms propres, les références juridiques</strong> dans toute production IA.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-1-1">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Votre boss vous demande un rapide état des lieux sur "les évolutions récentes du PSD2". Vous demandez à Gemini : <em>"Donne-moi un résumé des évolutions récentes du PSD2 en Europe en 2025-2026."</em></p>
+          <p>Gemini vous répond avec un texte fluide et confiant, qui cite <em>"le rapport ABE/EBA/2025/14 du 12 mars 2025 portant amendement de l'article 97"</em>.</p>
+          <!-- À VÉRIFIER : la référence ABE/EBA/2025/14 est fictive — exemple pédagogique intentionnel pour illustrer le signal d'hallucination -->
+        </div>
+        <p class="case-study-question"><strong>Que faites-vous ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous copiez directement la réponse dans votre mail. Gemini est fiable, le ton est pro.</button>
+          <button class="cs-option">B) Vous vérifiez d'abord si ce rapport ABE existe vraiment avant d'envoyer quoi que ce soit.</button>
+          <button class="cs-option">C) Vous reformulez avec vos mots, sans vérifier les sources — votre boss verra bien si c'est faux.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B.</strong></p>
+          <p>Une <strong>référence trop précise</strong> sur un sujet de niche (numéro de rapport, date exacte, article modifié) est un <strong>signal d'alarme classique</strong> d'hallucination. Les LLM aiment produire ce genre de précision parce que ça "fait vrai", mais ils inventent souvent ces détails.</p>
+          <ul>
+            <li><strong>A est dangereux</strong> : vous risquez d'envoyer à votre boss une référence juridique qui n'existe pas. L'IA détruit votre crédibilité en quelques secondes.</li>
+            <li><strong>C est pire</strong> : reformuler avec vos mots ne vérifie rien. Si le rapport est inventé, votre version le sera aussi.</li>
+            <li><strong>B est la bonne pratique</strong> : 30 secondes de recherche sur le site de l'EBA suffisent. Si le rapport existe, vous gagnez en crédibilité. Sinon, vous évitez le ridicule.</li>
+          </ul>
+          <p><strong>Règle générale</strong> : plus une référence est précise, plus il faut la vérifier. C'est contre-intuitif, mais c'est vrai.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m1-1">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 1.1</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m1-1">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais que "IA" désigne plusieurs choses très différentes</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais qu'un LLM peut inventer quand il ne sait pas (hallucination)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je vérifie systématiquement les chiffres, références et noms propres dans une réponse IA</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je m'applique la "règle des 3 secondes" avant d'envoyer un texte généré par IA</label>
+      </div>
     </div>
+    <!-- /lesson-1-1 -->
 
-    <h3>Pourquoi les LLM "hallucinent"</h3>
-    <p>Un LLM ne <em>sait</em> rien. Il <em>prédit</em>. Quand il ne connaît pas la réponse mais que la suite la plus probable est une phrase qui ressemble à une réponse... il invente avec aplomb. C'est ce qu'on appelle une <strong>hallucination</strong>.</p>
-    <ul>
-      <li>Il peut inventer un article de loi, une citation, une URL, une jurisprudence.</li>
-      <li>Il sera <em>convaincant</em> et confiant. C'est ce qui rend ça dangereux.</li>
-      <li>Plus le domaine est niche (médecine, droit, code interne), plus le risque est élevé.</li>
-    </ul>
+    <hr class="lesson-sep">
 
-    <div class="callout warn">
-      <span class="callout-label">Règle d'or HiPay</span>
-      <p>Tout ce qui sort d'un LLM <strong>doit être vérifié</strong> avant utilisation externe. L'IA est un brouillon génial, jamais un livrable final. Si vous l'envoyez à un client sans relire, c'est <em>votre</em> erreur, pas la sienne.</p>
+    <!-- ===== LEÇON 1.2 ===== -->
+    <div id="lesson-1-2">
+      <div class="lesson-meta" style="margin-top:0">Leçon 1.2 · Le bon outil pour la bonne tâche</div>
+      <p class="lead"><em>En 2026, vous avez une boîte à outils IA. Apprendre à choisir le bon, c'est la moitié du gain de productivité.</em></p>
+
+      <h3>Le réflexe à acquérir : "quel outil pour quoi ?"</h3>
+      <p>Vous n'avez pas "une IA". Vous avez une <strong>boîte à outils</strong>. Chacun fait quelque chose de différent. Apprendre à choisir le bon outil pour la bonne tâche évite 90% des mauvaises expériences avec l'IA.</p>
+      <p>Quatre questions à se poser <strong>avant</strong> d'ouvrir un outil :</p>
+      <ol>
+        <li><strong>Je veux une réponse, ou je veux une action ?</strong> Réponse → un assistant (Gemini, Claude). Action → un agent (Cowork, Claude in Chrome, Claude Code).</li>
+        <li><strong>Mes données sont-elles sensibles ?</strong> Non → n'importe quel outil disponible. Oui → uniquement un outil validé HiPay.</li>
+        <li><strong>L'IA doit-elle connaître des infos internes HiPay ?</strong> Non → n'importe quel outil grand public suffit. Oui → DUST (quand déployé), ou vous fournissez vous-même le contexte dans la conversation.</li>
+        <li><strong>Vais-je répéter cette tâche souvent ?</strong> Une fois → faites-la à la main dans un chat. Souvent → pensez à un workflow n8n.</li>
+      </ol>
+
+      <h3>Les 4 grandes familles d'outils</h3>
+      <p><strong>Les assistants</strong> (Gemini, Claude.ai). Vous leur parlez, ils répondent. Vous lisez, vous décidez quoi faire ensuite. <strong>Ils ne font rien tout seuls</strong>, donc ils ne cassent rien. C'est le point d'entrée par défaut.</p>
+      <p><strong>Les agents</strong> (Cowork sur votre poste, Claude in Chrome dans votre navigateur, Claude Code pour les devs). Vous donnez un objectif, ils enchaînent des actions concrètes : ouvrir des fichiers, remplir des formulaires, écrire du code, envoyer des requêtes. <strong>Ils peuvent faire des choses pour vous — et faire des bêtises à votre place.</strong> Toujours vérifier ce qu'ils ont le droit de faire avant de les lancer.</p>
+      <p><strong>Les outils connectés à vos données</strong> (DUST). C'est un assistant <strong>branché sur vos documents internes</strong>. La différence avec Gemini ou Claude seuls : il sait répondre sur HiPay parce qu'il a accès à vos sources. Il cite ses extraits, donc vous pouvez vérifier.</p>
+      <p><strong>Les automatisations</strong> (n8n). Pas une IA en soi, mais un orchestrateur qui peut <strong>appeler une IA dans une chaîne d'étapes</strong>. Idéal pour automatiser ce que vous faites chaque semaine.</p>
+
+      <h3>Trois exemples du quotidien</h3>
+      <ul>
+        <li><strong>Résumer un mail pour ma boss</strong> → Gemini, en 30 secondes. Pas besoin de plus.</li>
+        <li><strong>Retrouver une procédure interne dans 200 docs HiPay</strong> → DUST (quand déployé). Gemini seul ne connaît pas vos procédures, il inventera.</li>
+        <li><strong>Faire la même opération sur 50 lignes Excel</strong> → demander à Gemini de générer le tableau corrigé. Si c'est 5000 lignes, il est temps de penser à n8n + IA.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="callout-label">La règle des 3 répétitions</span>
+        <p>Si vous faites la même tâche IA pour la 3ᵉ fois, c'est le signal pour réfléchir à un workflow automatisé. Demandez sur <code>#ai-support</code> ou à la <code>#ai-taskforce</code> — il existe peut-être déjà un workflow n8n pour ça.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Assistant pour répondre, agent pour agir, DUST pour vos données internes, n8n pour répéter.</li>
+        <li>Sensibilité des données = critère n°1. Si c'est sensible, outil validé HiPay, point.</li>
+        <li>Une tâche faite 3 fois mérite d'être automatisée.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Assistant ou agent : la différence en pratique</summary>
+        <div class="bonus-body">
+          <p>La différence entre assistant et agent est la plus importante à comprendre, parce qu'elle change votre niveau de vigilance.</p>
+          <p><strong>Avec un assistant</strong> (Gemini, Claude.ai chat) : vous tapez, il répond. Vous lisez et vous décidez ce que vous en faites. Si la réponse est mauvaise, vous fermez l'onglet, fin de l'histoire. <strong>Aucune action n'est faite dans le monde réel.</strong></p>
+          <p><strong>Avec un agent</strong> (Cowork, Claude in Chrome, Claude Code) : vous donnez un objectif, l'agent <strong>exécute</strong> vraiment des actions — il déplace des fichiers, envoie des mails, commit du code. Si vous ne l'arrêtez pas, il continue.</p>
+          <p>Conséquence : avant de lancer un agent, posez-vous toujours deux questions : Qu'est-ce qu'il peut faire ? (limitez son périmètre.) Qu'est-ce qui se passe si je ferme le laptop pendant qu'il travaille ? Si vous ne savez pas répondre, ne le lancez pas encore.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-1-2">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Account Manager. Vous devez préparer un point de suivi pour 12 merchants. Pour chacun : un résumé de leur activité du trimestre, 3 points de discussion, un email d'invitation. Toutes les infos existent dans Confluence et vos outils internes.</p>
+        </div>
+        <p class="case-study-question"><strong>Comment vous attaquez ça ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Ouvrir Gemini et lui dire "fais-moi un point de suivi pour mes 12 merchants".</button>
+          <button class="cs-option">B) Ouvrir Claude.ai, coller le nom des 12 merchants, demander le résumé. Itérer par merchant.</button>
+          <button class="cs-option">C) Demander à DUST (accès Confluence) de préparer le résumé pour chaque merchant. Personnaliser les drafts à la main.</button>
+          <button class="cs-option">D) Préparer un workflow n8n qui automatise toute la chaîne, à relancer chaque trimestre.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Les deux bonnes réponses sont C (cette fois-ci) et D (pour la prochaine fois).</strong></p>
+          <ul>
+            <li><strong>A est mauvais</strong> : Gemini seul ne connaît pas vos merchants, il va inventer des données plausibles mais fausses.</li>
+            <li><strong>B est mieux mais lent</strong> : Claude.ai seul ne connaît pas non plus vos merchants. Multiplier ça par 12 prend des heures.</li>
+            <li><strong>C est la bonne pratique pour la 1ʳᵉ fois</strong> : DUST va piocher dans Confluence, vous donner les vraies données, citer les sources. Vous gardez la main sur la personnalisation.</li>
+            <li><strong>D est la bonne réflexion pour le long terme</strong> : si vous faites ça chaque trimestre, un workflow n8n vous fera gagner des heures à chaque fois.</li>
+          </ul>
+          <p><strong>Règle générale</strong> : pour une tâche ponctuelle, l'outil le plus adapté. Pour une tâche récurrente, un workflow qui combine plusieurs outils.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m1-2">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 1.2</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m1-2">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais distinguer un assistant (répond) d'un agent (agit)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais quand utiliser un LLM seul vs un outil branché sur les données HiPay (DUST)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je me pose les 4 questions de choix d'outil avant de démarrer une tâche</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'identifie une tâche répétitive et je sais qu'elle mérite une automatisation</label>
+      </div>
     </div>
+    <!-- /lesson-1-2 -->
 
-    <h3>Le marché en 2026 : qui fait quoi ?</h3>
+    <hr class="lesson-sep">
 
-    <h4>Les Pure Players (créateurs de modèles)</h4>
-    <ul>
-      <li><strong>Anthropic (Claude)</strong> — Focus sécurité, qualité d'écriture, code. Modèle utilisé par HiPay pour l'usage interne.</li>
-      <li><strong>OpenAI (GPT-5, o-series)</strong> — Le plus connu, écosystème ChatGPT large.</li>
-      <li><strong>Google DeepMind (Gemini)</strong> — Intégré à Workspace, contexte ultra-long.</li>
-      <li><strong>Mistral</strong> — Acteur européen, modèles open-weight.</li>
-    </ul>
-    <h4>Les Hyperscalers (cloud qui hébergent)</h4>
-    <ul>
-      <li><strong>Microsoft Azure OpenAI</strong>, <strong>AWS Bedrock</strong>, <strong>Google Cloud Vertex AI</strong>.</li>
-      <li>Ils servent les mêmes modèles + des garanties entreprise (résidence des données, conformité).</li>
-    </ul>
+    <!-- ===== LEÇON 1.3 ===== -->
+    <div id="lesson-1-3">
+      <div class="lesson-meta" style="margin-top:0">Leçon 1.3 · Comment ne pas se faire avoir</div>
+      <p class="lead"><em>L'IA invente quand elle ne sait pas. Apprendre à le détecter en 10 secondes change tout.</em></p>
 
-    <h3>Ce que l'IA n'est PAS</h3>
-    <ul>
-      <li><strong>Ce n'est pas une conscience.</strong> Pas de désirs, pas d'intentions, pas de "réveil de Skynet".</li>
-      <li><strong>Ce n'est pas une base de connaissances à jour.</strong> Un LLM a une date de coupure ; pour l'actu il faut le brancher au web.</li>
-      <li><strong>Ce n'est pas déterministe.</strong> La même question peut donner 5 réponses différentes (paramètre "température").</li>
-      <li><strong>Ce n'est pas magique.</strong> Pas de prompt, pas de résultat. Garbage in, garbage out.</li>
-    </ul>
+      <h3>Le problème : l'IA ne dit jamais "je ne sais pas"</h3>
+      <p>Sauf cas particuliers, un LLM (Gemini, Claude, ChatGPT) préfère <strong>inventer une réponse plausible</strong> plutôt qu'admettre qu'il ne sait pas. Ce n'est pas une intention de tromper — c'est sa façon de fonctionner. Il prédit le texte le plus probable, même quand ce texte est faux.</p>
+      <p>C'est ce qu'on appelle une <strong>hallucination</strong>. Et c'est le risque numéro un pour votre crédibilité.</p>
 
-    <div class="callout good">
-      <span class="callout-label">Ce qu'il faut retenir</span>
-      <p>L'IA est un <strong>collaborateur stagiaire ultra-rapide et sans expérience de votre entreprise</strong>. Brillant, instantané, infatigable — mais qui invente quand il ne sait pas, et qui ne connaît rien à HiPay tant que vous ne le briefez pas.</p>
+      <h3>Signal 1 — Une référence trop précise sur un sujet niche</h3>
+      <p><em>"Selon l'article 12-3 du règlement n°2019/4523 du 8 mai 2019..."</em></p>
+      <p>Plus une référence est précise (numéro, date, article modifié), plus elle est suspecte sur un sujet pointu. Les LLM aiment produire ce type de détails parce que ça "fait vrai". À vérifier systématiquement.</p>
+
+      <h3>Signal 2 — Un chiffre rond et confiant</h3>
+      <p><em>"78% des fintechs européennes utilisent maintenant l'IA pour le scoring."</em></p>
+      <p>Si vous ne reconnaissez pas la source du chiffre, considérez-le comme fabriqué. Les vraies études citent leurs sources et donnent souvent des fourchettes. Les chiffres inventés sont ronds, précis, sans source.</p>
+
+      <h3>Signal 3 — Un nom propre que vous ne connaissez pas</h3>
+      <p><em>"Selon Marie Dupont, directrice innovation chez X..."</em></p>
+      <p>Les LLM inventent parfois des personnes entières, ou attribuent des citations à des personnes qui ne les ont jamais dites. Si vous citez quelqu'un dans un document pro, vérifiez que la personne existe et que la citation est réelle.</p>
+
+      <h3>Le bon réflexe : forcer l'honnêteté du modèle</h3>
+      <p>Les modèles sont biaisés vers la <strong>complaisance</strong> — ils préfèrent vous faire plaisir qu'admettre une limite. Vous pouvez compenser avec une simple instruction dans votre prompt :</p>
+      <div class="callout">
+        <span class="callout-label">Phrase à mémoriser</span>
+        <p><em>"Si tu n'as pas l'information ou si tu n'es pas sûr, dis-le clairement plutôt que de deviner. Cite tes sources quand c'est possible."</em></p>
+      </div>
+      <p>Cette phrase, mise au début ou à la fin de vos prompts sensibles, change réellement la qualité des réponses. Beaucoup de gens ne la mettent jamais.</p>
+
+      <h3>La règle minimale</h3>
+      <ol>
+        <li><strong>Lire en entier</strong> avant d'envoyer (oui, vraiment).</li>
+        <li><strong>Vérifier</strong> tous les chiffres, dates, noms propres, références juridiques.</li>
+        <li><strong>Reformuler</strong> au moins partiellement avec vos mots — pour vérifier que vous comprenez ce que vous envoyez.</li>
+      </ol>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>L'IA ment quand elle ne sait pas, sans le faire exprès.</li>
+        <li>Méfiez-vous des références trop précises, des chiffres ronds, des noms propres.</li>
+        <li>Ajoutez "Si tu n'es pas sûr, dis-le" dans vos prompts. Ça change la qualité.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Pourquoi les modèles récents hallucinent moins (et pourquoi ça reste un problème)</summary>
+        <div class="bonus-body">
+          <p>Les modèles 2024-2026 hallucinent moins que ceux de 2022-2023. Trois raisons :</p>
+          <ul>
+            <li><strong>L'entraînement par feedback humain</strong> (RLHF) leur a appris à dire plus souvent "je ne suis pas sûr".</li>
+            <li><strong>Les recherches web intégrées</strong> (Gemini avec Search, Claude avec ses outils) permettent au modèle d'aller vérifier au lieu d'inventer.</li>
+            <li><strong>Les modes "raisonnement"</strong> prennent plus de temps avant de répondre, ce qui réduit les approximations rapides.</li>
+          </ul>
+          <p><strong>Mais</strong> : les hallucinations restent fréquentes sur les sujets niches, les données récentes, les domaines spécialisés (juridique, médical, finance pointue). Plus c'est niche, plus la probabilité est élevée.</p>
+          <p><strong>Conclusion pratique</strong> : ne considérez jamais qu'un modèle "récent" est devenu infaillible. La vigilance reste la même.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-1-3">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous préparez une note interne sur "les bonnes pratiques RGPD pour la collecte de données clients dans le paiement". Vous demandez à Gemini un résumé. Il répond (extrait) :</p>
+          <p><em>"Selon les recommandations CNIL n°2024-127 du 14 mars 2024, complétant la délibération SAN-2023-018, les responsables de traitement doivent désormais documenter explicitement la base légale de chaque collecte dans un registre central conformément à l'article 30 du RGPD. La CNIL a sanctionné en 2024 trois acteurs du paiement européens pour défaut de documentation, dont un à hauteur de 4,3 millions d'euros."</em></p>
+          <!-- À VÉRIFIER : recommandation CNIL n°2024-127 et sanction à 4,3M€ sont des exemples fictifs illustrant une hallucination typique — ne pas utiliser hors contexte pédagogique -->
+        </div>
+        <p class="case-study-question"><strong>Qu'est-ce que vous faites ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous reprenez le texte dans votre note. C'est bien écrit et la CNIL est connue.</button>
+          <button class="cs-option">B) Vous vérifiez sur le site de la CNIL si la recommandation n°2024-127 du 14 mars 2024 existe vraiment. Vous vérifiez aussi la sanction à 4,3M€.</button>
+          <button class="cs-option">C) Vous gardez l'idée générale (documenter la base légale) sans citer les références précises.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B. Si la vérification échoue, alors C.</strong></p>
+          <p>Trois signaux d'alarme dans cet extrait : une référence très précise sur un sujet juridique pointu, un chiffre confiant sans source nommée, une affirmation factuelle sur trois sanctions sans nommer les acteurs.</p>
+          <ul>
+            <li><strong>A est dangereux</strong> : citer une recommandation CNIL qui n'existe pas dans une note interne, c'est une faute professionnelle.</li>
+            <li><strong>B est la bonne pratique</strong> : 5 minutes de vérification sur le site de la CNIL. Si ça existe, parfait. Sinon, vous corrigez.</li>
+            <li><strong>C est une porte de sortie acceptable</strong> : si vous ne pouvez pas vérifier, gardez l'idée générale sans citer les détails potentiellement inventés.</li>
+          </ul>
+          <p><strong>Astuce</strong> : pour ce type de question juridique, ajoutez "Cite uniquement des sources que tu peux vérifier précisément. Si tu n'es pas sûr d'une référence, dis-le." dans votre prompt.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m1-3">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 1.3</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m1-3">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je reconnais les 3 signaux d'alarme d'une hallucination</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je vérifie systématiquement les références précises sur des sujets pointus</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'utilise la phrase "Si tu n'es pas sûr, dis-le" dans mes prompts sensibles</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je relis intégralement tout texte IA avant de l'utiliser</label>
+      </div>
     </div>
+    <!-- /lesson-1-3 -->
 
-    <!-- QUIZ M1 -->
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 1.4 ===== -->
+    <div id="lesson-1-4">
+      <div class="lesson-meta" style="margin-top:0">Leçon 1.4 · Vos données et l'IA : les règles d'or</div>
+      <p class="lead"><em>Avant le Module 3 qui ira plus loin, voici les 4 règles minimales à connaître par cœur. Aucun outil ne vous protégera si vous ne les suivez pas.</em></p>
+
+      <h3>La question à se poser avant de coller quoi que ce soit</h3>
+      <div class="callout warn">
+        <span class="callout-label">Réflexe de base</span>
+        <p><em>"Si ce texte fuitait demain dans la presse ou chez un concurrent, ça me poserait un problème ?"</em></p>
+        <p>Si la réponse est oui, <strong>n'utilisez pas un outil grand public</strong> sans avoir vérifié sa politique. Utilisez un outil validé HiPay ou ne l'utilisez pas du tout.</p>
+      </div>
+
+      <h3>Les 4 règles minimales</h3>
+
+      <h4>Règle 1 — Ne JAMAIS coller dans un outil non validé</h4>
+      <ul>
+        <li>Numéros de carte bancaire, identifiants merchants sensibles, clés API</li>
+        <li>Données personnelles identifiantes de clients (nom + email + autre info croisée)</li>
+        <li>Documents marqués "Confidentiel" ou "Interne strict"</li>
+        <li>Code source propriétaire sensible</li>
+        <li>Stratégie commerciale, chiffres financiers non publics, dossiers RH</li>
+      </ul>
+      <p>En cas de doute, demandez sur <code>#ai-support</code> ou abstenez-vous.</p>
+
+      <h4>Règle 2 — Comprendre la différence "grand public" vs "Enterprise"</h4>
+      <!-- SOURCE: politique de données Google Workspace / Anthropic Team — engagement contractuel de non-réutilisation pour les offres Enterprise, vérifiable dans les DPA respectifs -->
+      <p>Les versions <strong>grand public</strong> (Gemini perso, ChatGPT gratuit) peuvent réutiliser vos conversations pour entraîner leurs futurs modèles — souvent par défaut. Les versions <strong>Enterprise</strong> (Gemini Workspace HiPay, Claude.ai Team, DUST Enterprise) s'engagent contractuellement à <strong>ne pas réutiliser</strong> vos conversations.</p>
+      <p><strong>Règle pratique</strong> : à HiPay, utilisez les versions validées. Si vous ne savez pas si la vôtre est validée, demandez avant de coller quoi que ce soit de sensible.</p>
+
+      <h4>Règle 3 — Anonymiser quand vous pouvez</h4>
+      <p>Si vous devez travailler sur un cas client, <strong>anonymisez</strong>. Remplacez les noms, montants, identifiants par des variables :</p>
+      <p><em>"Le merchant DUPONT a vendu 47K€ en novembre"</em> → <em>"Le merchant A a vendu un montant moyen le mois dernier"</em></p>
+      <p>L'IA fait aussi bien son travail sur des données anonymisées. Vous perdez 5 minutes à anonymiser, vous gagnez en sécurité.</p>
+
+      <h4>Règle 4 — Tout ce que vous tapez peut être lu plus tard</h4>
+      <p>Même sur un outil validé, considérez que <strong>les logs existent</strong>. Un admin technique ou un audit légal peut, dans certaines circonstances, accéder à vos prompts. N'écrivez pas dans un prompt IA quelque chose que vous n'écririez pas dans un mail interne.</p>
+
+      <div class="callout warn">
+        <span class="callout-label">Pas de panique, mais pas de naïveté</span>
+        <p>Ces règles ne sont pas là pour vous décourager d'utiliser l'IA. Elles sont là pour que vous puissiez l'utiliser <strong>largement, mais sans bombe à retardement</strong>. Le Module 3 (Sécurité) approfondit ces points, avec les spécificités fintech (PSD2, PCI-DSS, ACPR).</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Pas d'infos vraiment sensibles dans un outil grand public. Jamais.</li>
+        <li>Sur HiPay, utilisez les versions validées. En cas de doute, <code>#ai-support</code>.</li>
+        <li>Quand vous le pouvez, anonymisez. Ça ne coûte presque rien et ça protège.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Le cas Samsung 2023 : pourquoi cette règle est sérieuse</summary>
+        <div class="bonus-body">
+          <!-- SOURCE: incident Samsung / ChatGPT 2023 — largement documenté dans la presse tech (Bloomberg, The Verge, etc.) -->
+          <p>En 2023, des ingénieurs de Samsung ont collé du code source confidentiel dans ChatGPT pour le débugger. Trois fois. Le code, propriété de Samsung, s'est retrouvé dans les logs d'OpenAI — théoriquement utilisable pour entraîner de futurs modèles.</p>
+          <p>Samsung a interdit en interne l'usage de ChatGPT immédiatement après. L'affaire a fait jurisprudence dans l'industrie : la plupart des grands groupes ont depuis mis en place des politiques claires sur "ce qu'on peut coller dans une IA grand public".</p>
+          <p>Le cas Samsung montre deux choses : l'erreur peut venir de <strong>gens compétents</strong> qui ne pensaient pas à mal. Et une fois la donnée envoyée, <strong>on ne peut plus la récupérer</strong>.</p>
+          <p>C'est exactement pour ça qu'on ne raisonne pas en <em>"est-ce que ça va vraiment poser problème ?"</em> mais en <em>"est-ce que je peux me permettre ce risque ?"</em>.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-1-4">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes au support. Un merchant écrit : <em>"J'ai constaté que la transaction du 14/03 de mon client Jean Martineau (email jmartineau@example.fr, ID merchant 4892, montant 8 247,50€) n'a pas été créditée sur mon compte HiPay..."</em></p>
+          <p>Vous voulez utiliser Gemini pour préparer une réponse polie et structurée.</p>
+        </div>
+        <p class="case-study-question"><strong>Votre approche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Coller le mail tel quel dans Gemini perso et demander une réponse pro.</button>
+          <button class="cs-option">B) Anonymiser le mail (nom, email, ID, montant masqués) avant de le coller dans Gemini.</button>
+          <button class="cs-option">C) Utiliser Gemini Workspace HiPay (version Enterprise) et coller le mail tel quel.</button>
+          <button class="cs-option">D) Ne pas utiliser d'IA du tout : rédiger la réponse à la main.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>Les bonnes réponses sont B et C. D est valide mais inutilement lent.</strong></p>
+          <ul>
+            <li><strong>A est interdit</strong> : Gemini perso peut réutiliser vos prompts. Coller le nom, l'email, l'ID merchant et le montant d'un vrai client, c'est une fuite de données. Vous engagez la responsabilité de HiPay.</li>
+            <li><strong>B est une bonne pratique</strong> : remplacez tout ce qui identifie un humain ou une transaction réelle par des variables. Gemini fait aussi bien son boulot sans les vraies données.</li>
+            <li><strong>C est aussi correct</strong> : sur Gemini Workspace HiPay, l'engagement Enterprise dit que vos données ne sont pas réutilisées pour entraîner. Même là, principe de minimisation : n'y mettez que ce qui est nécessaire.</li>
+            <li><strong>D est trop conservateur</strong> : refuser toute IA n'est pas la bonne réponse en 2026.</li>
+          </ul>
+          <p><strong>À retenir</strong> : "outil validé HiPay" ne veut pas dire "tout est permis". Anonymiser ce qui n'est pas nécessaire reste la meilleure pratique, partout.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m1-4">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 1.4</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m1-4">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les types de données à NE JAMAIS coller dans une IA grand public</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je distingue version grand public (à éviter pour le pro) et version Enterprise (validée HiPay)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je réflexe-anonymise quand je peux (variables au lieu de noms / chiffres)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais que <code>#ai-support</code> existe pour répondre à mes doutes</label>
+      </div>
+    </div>
+    <!-- /lesson-1-4 -->
+
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 1.5 ===== -->
+    <div id="lesson-1-5">
+      <div class="lesson-meta" style="margin-top:0">Leçon 1.5 · Les 5 bons réflexes pour démarrer demain</div>
+      <p class="lead"><em>Synthèse opérationnelle. Si vous appliquez ces 5 réflexes, vous êtes déjà au-dessus de la moyenne.</em></p>
+
+      <h3>Réflexe 1 — Décrire ce que vous voulez, pas ce que vous savez</h3>
+      <p>Mauvais prompt : <em>"L'IA dans la fintech."</em></p>
+      <p>Bon prompt : <em>"Rédige-moi un résumé de 15 lignes sur l'impact de l'IA dans la fintech européenne en 2025-2026, à destination de mon Comex. Ton factuel, pas marketing. Si tu n'es pas sûr d'un chiffre, dis-le."</em></p>
+      <p>Plus vous <strong>précisez ce que vous voulez en sortie</strong> (longueur, ton, destinataire, format), meilleure est la réponse. C'est probablement le levier qui a le plus d'impact.</p>
+
+      <h3>Réflexe 2 — Donner un rôle au modèle</h3>
+      <p><em>"Tu es un juriste spécialisé en RGPD. Relis ce texte et identifie les zones à risque."</em></p>
+      <p>Cette simple précision oriente fortement la qualité de la réponse. Variantes utiles : <em>"Tu es un Account Manager senior. Aide-moi à préparer..."</em>, <em>"Tu es un développeur Python expérimenté. Revue ce code..."</em></p>
+
+      <h3>Réflexe 3 — Itérer plutôt que tout demander d'un coup</h3>
+      <p>L'erreur classique : écrire un prompt énorme avec 10 demandes, recevoir une réponse moyenne sur tout, abandonner. La bonne pratique : commencer par un prompt simple, voir la réponse, <strong>dire ce qu'on veut changer</strong>. <em>"C'est bien, mais raccourcis de moitié."</em> / <em>"Ajoute un paragraphe sur X."</em></p>
+      <p>L'IA n'est pas un moteur de recherche. C'est un brouillon vivant que vous éditez en parlant.</p>
+
+      <h3>Réflexe 4 — Forcer l'honnêteté</h3>
+      <p>À la fin de tout prompt sensible (chiffres, références, sujet pointu), ajoutez :</p>
+      <div class="callout">
+        <span class="callout-label">Phrase à mémoriser</span>
+        <p><em>"Si tu n'es pas sûr ou si tu n'as pas l'information, dis-le clairement plutôt que de deviner."</em></p>
+        <p>Une seule phrase, énorme impact sur la fiabilité.</p>
+      </div>
+
+      <h3>Réflexe 5 — Toujours relire avant d'envoyer</h3>
+      <p>C'est la règle des 3 secondes : <em>"est-ce que je signerais ça de mon nom ?"</em>. Si oui, envoyez. Si non, retravaillez. L'IA produit le brouillon. <strong>Vous restez l'auteur.</strong></p>
+
+      <div class="callout good">
+        <span class="callout-label">Cadeau bonus : un prompt qui marche à tous les coups</span>
+        <p><em>"Tu es [rôle]. Je dois [objectif]. Voici le contexte : [contexte]. Rédige [type de sortie] de [longueur] en [ton]. Si tu n'es pas sûr de quelque chose, dis-le. Cite tes sources quand c'est possible."</em></p>
+        <p>Copiez ce template, remplissez les crochets, vous avez 80% du travail de prompting fait.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Précisez ce que vous voulez en sortie (longueur, ton, format, destinataire).</li>
+        <li>Donnez un rôle au modèle. Itérez. Forcez l'honnêteté.</li>
+        <li>Vous restez l'auteur. Toujours.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Le framework C.O.D.E pour structurer vos prompts</summary>
+        <div class="bonus-body">
+          <p>Vous verrez ce framework détaillé dans le <strong>Module 4 — Méthode CODE</strong>, mais voici l'essentiel pour commencer dès maintenant.</p>
+          <p><strong>C — Contexte</strong> : qui êtes-vous, pour qui, dans quelle situation ? <em>"Je suis Account Manager chez HiPay. Je prépare un point avec un merchant qui veut négocier ses frais."</em></p>
+          <p><strong>O — Objectif</strong> : qu'est-ce que vous voulez précisément ? <em>"Liste-moi 5 arguments pour défendre le pricing actuel."</em></p>
+          <p><strong>D — Détails / contraintes</strong> : longueur, format, ton, limites. <em>"En bullet points, 1-2 phrases par argument, ton factuel."</em></p>
+          <p><strong>E — Exemples / format de sortie</strong> (optionnel mais puissant). <em>"Format : 'Argument : [phrase]. Réponse au merchant : [phrase].'"</em></p>
+          <p>Appliqué à toute requête, ce framework transforme des prompts vagues en prompts qui marchent. Le Module 4 décompose chaque lettre avec des exemples détaillés.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-1-5">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous voulez préparer un brief pour un nouveau commercial qui rejoint HiPay. Vous tapez dans Gemini : <em>"Brief sur le marché du paiement pour un nouveau commercial."</em></p>
+          <p>La réponse est générique, longue, pleine de banalités.</p>
+        </div>
+        <p class="case-study-question"><strong>Que faites-vous ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Vous prenez quand même la réponse, vous reformulez à la main, ça ira.</button>
+          <button class="cs-option">B) Vous repartez de zéro avec un prompt beaucoup plus précis : rôle, contexte, objectif, longueur, ton.</button>
+          <button class="cs-option">C) Vous demandez à Gemini de "faire mieux", il devinera ce que vous voulez.</button>
+          <button class="cs-option">D) Vous concluez que Gemini n'est pas bon pour cet usage.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B.</strong></p>
+          <p>Le prompt initial était trop vague. Gemini ne peut pas deviner : un commercial HiPay spécifiquement, sur le marché européen du paiement, en 1 page, factuel, centré sur les enjeux 2026.</p>
+          <p>Un meilleur prompt : <em>"Tu es Head of Sales HiPay. Tu prépares un brief de 1 page pour un nouveau commercial. Décris en 5-7 bullet points les enjeux clés du marché européen du paiement en 2026 : tendances, concurrents, ce qui change. Ton factuel, pas marketing. Cible : quelqu'un qui connaît bien la vente mais découvre le paiement."</em></p>
+          <ul>
+            <li><strong>A</strong> : retravailler 80% d'un mauvais brouillon est plus long que repartir avec un bon prompt.</li>
+            <li><strong>C</strong> : "fais mieux" est un prompt vide, le modèle ne saura pas quoi améliorer.</li>
+            <li><strong>D</strong> est faux : Gemini fait très bien ce travail, à condition d'être guidé.</li>
+          </ul>
+          <p><strong>Règle générale</strong> : si la réponse est mauvaise, le prompt l'était probablement aussi. Précisez et recommencez.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m1-5">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 1.5</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m1-5">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je précise toujours ce que je veux en sortie (longueur, ton, format)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je donne un rôle au modèle quand c'est pertinent</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'itère plutôt que de tout demander d'un coup</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'ajoute "si tu n'es pas sûr, dis-le" dans mes prompts sensibles</label>
+        <label class="cl-item"><input type="checkbox" data-idx="4"> Je relis tout avant d'envoyer — la règle des 3 secondes</label>
+      </div>
+    </div>
+    <!-- /lesson-1-5 -->
+
+    <hr class="lesson-sep">
+
+    <!-- QUIZ RÉCAPITULATIF MODULE 1 -->
     <div class="quiz" data-quiz="m1">
       <div class="quiz-head">
-        <h3>Quiz · Fondamentaux</h3>
+        <h3>Quiz récapitulatif · Module 01</h3>
         <span class="quiz-counter">5 questions</span>
       </div>
       <div class="quiz-body"></div>
@@ -2846,6 +3451,126 @@ const QUIZZES = {
       explain: "La différence critique est la politique de traitement des données. Dans le cadre Enterprise/business (outils validés HiPay), les fournisseurs s'engagent à ne pas utiliser vos conversations pour entraîner leurs modèles. Sur les versions grand public gratuites, cette garantie n'existe pas par défaut — c'est pourquoi vous ne devez utiliser que les outils validés par l'IT pour vos usages professionnels."
     }
   ],
+  'm1-1': [
+    {
+      q: "Quand un LLM (Gemini, Claude, ChatGPT) ne sait pas répondre, que fait-il généralement ?",
+      opts: [
+        "Il dit clairement \"je ne sais pas\"",
+        "Il invente une réponse plausible avec assurance",
+        "Il refuse de répondre",
+        "Il vous redirige vers un humain"
+      ],
+      correct: 1,
+      explain: "Les LLM sont biaisés vers la complaisance : ils préfèrent donner une réponse qui paraît bonne plutôt qu'avouer une limite. C'est ce qu'on appelle une hallucination. Astuce : vous pouvez forcer l'honnêteté en ajoutant dans votre prompt \"Si tu n'es pas sûr, dis-le clairement plutôt que de deviner.\""
+    },
+    {
+      q: "Vous demandez à Gemini un résumé d'un sujet juridique. Il cite \"l'article 12-3 du règlement n°2019/4523 du 8 mai 2019\". Que faites-vous ?",
+      opts: [
+        "Je fais confiance, la référence a l'air sérieuse",
+        "Je vérifie systématiquement avant d'utiliser cette référence",
+        "Je supprime la référence et je garde le reste",
+        "Je redemande à Gemini si c'est sûr"
+      ],
+      correct: 1,
+      explain: "Une référence très précise sur un sujet de niche est un signal d'alarme typique d'hallucination. Les LLM produisent volontiers ce genre de détails parce que ça 'fait vrai'. À vérifier toujours — surtout en juridique, en chiffré, et sur les noms propres."
+    }
+  ],
+  'm1-2': [
+    {
+      q: "Vous devez retrouver une procédure interne HiPay dans une trentaine de documents Confluence. Quel outil utilisez-vous en priorité ?",
+      opts: [
+        "Gemini, en lui collant tous les documents",
+        "Claude.ai, parce qu'il est meilleur en recherche",
+        "DUST (quand déployé), qui indexe vos sources internes et cite les extraits",
+        "Un agent Cowork, qui va lire les fichiers un par un"
+      ],
+      correct: 2,
+      explain: "DUST est conçu exactement pour ça : un assistant connecté à vos sources internes, qui cherche, répond, et cite les passages. Coller tous les documents dans Gemini coûte cher et perd les instructions clés. Claude.ai a les mêmes limites que Gemini sur vos données internes. Un agent serait surdimensionné."
+    },
+    {
+      q: "Quelle est la différence opérationnelle clé entre un assistant et un agent ?",
+      opts: [
+        "L'agent utilise un modèle plus puissant",
+        "L'agent peut exécuter des actions concrètes (fichiers, code, mails), pas seulement répondre",
+        "L'assistant est gratuit, l'agent est payant",
+        "Il n'y a pas de vraie différence en pratique"
+      ],
+      correct: 1,
+      explain: "L'assistant répond, vous décidez. L'agent agit directement dans le monde réel. C'est cette capacité d'action qui rend les agents plus puissants ET plus risqués : un agent qui se trompe peut casser des choses (supprimer un fichier, envoyer un mail). Toujours vérifier son périmètre avant de le lancer."
+    }
+  ],
+  'm1-3': [
+    {
+      q: "Vous demandez à Gemini un point sur un sujet juridique. Il vous donne un texte qui cite \"l'article 12-3 du règlement n°2019/4523 du 8 mai 2019\". Quel est le bon réflexe ?",
+      opts: [
+        "Faire confiance, la référence a l'air sérieuse",
+        "Vérifier systématiquement avant de l'utiliser",
+        "Supprimer la référence et garder le reste",
+        "Redemander à Gemini si c'est sûr"
+      ],
+      correct: 1,
+      explain: "Une référence très précise sur un sujet de niche est un signal d'alarme typique d'hallucination. Les LLM produisent ce genre de détails parce que ça 'fait vrai'. Demander au modèle 'tu es sûr ?' ne sert à rien — il vous confirmera avec aplomb. Seule la vérification externe permet de trancher."
+    },
+    {
+      q: "Quelle phrase, ajoutée dans votre prompt, réduit le plus efficacement les hallucinations ?",
+      opts: [
+        "\"Sois précis et exact\"",
+        "\"Donne-moi des sources fiables\"",
+        "\"Si tu n'es pas sûr d'une information, dis-le clairement plutôt que de deviner\"",
+        "\"Réponds en mode expert\""
+      ],
+      correct: 2,
+      explain: "Demander au modèle d'admettre son ignorance fonctionne réellement. Les modèles sont biaisés vers la complaisance — ils préfèrent inventer pour vous faire plaisir. Cette instruction explicite contrebalance ce biais. Les phrases vagues comme 'sois précis' ou 'mode expert' n'ont aucun effet réel."
+    }
+  ],
+  'm1-4': [
+    {
+      q: "Vous voulez utiliser Gemini pour reformuler un mail interne contenant des chiffres financiers non publics. Que faites-vous ?",
+      opts: [
+        "Je colle tel quel dans Gemini, c'est juste un outil de reformulation",
+        "Je remplace les chiffres sensibles par des variables (X €, Y%) avant de coller",
+        "Je n'utilise pas d'IA, c'est trop risqué",
+        "Je colle dans Gemini puis je supprime ma conversation après"
+      ],
+      correct: 1,
+      explain: "Anonymiser ce qui n'est pas strictement nécessaire est la bonne pratique de base. Gemini reformule aussi bien avec ou sans les vrais chiffres. Supprimer une conversation après coup ne supprime pas ce qui est déjà dans les logs. Refuser toute IA est trop conservateur."
+    },
+    {
+      q: "Quelle est la principale différence pratique entre une version 'grand public' et une version 'Enterprise' d'un outil IA ?",
+      opts: [
+        "L'Enterprise est plus performante techniquement",
+        "L'Enterprise ne réutilise pas vos données pour entraîner ses modèles",
+        "L'Enterprise a plus de fonctionnalités",
+        "Il n'y a pas vraiment de différence pratique"
+      ],
+      correct: 1,
+      explain: "Le vrai engagement d'une version Enterprise, c'est contractuel : pas de réutilisation de vos conversations pour entraîner. Côté performance technique, c'est souvent le même modèle. Côté fonctionnalités, ça dépend. Mais c'est la garantie de confidentialité qui justifie l'usage pro."
+    }
+  ],
+  'm1-5': [
+    {
+      q: "Vous obtenez une réponse IA décevante (trop générique, trop longue, à côté du sujet). Quel est le meilleur réflexe ?",
+      opts: [
+        "Retravailler manuellement la réponse",
+        "Demander à l'IA de 'faire mieux'",
+        "Reformuler votre prompt en précisant rôle, contexte, objectif, contraintes",
+        "Changer d'outil IA"
+      ],
+      correct: 2,
+      explain: "Une réponse décevante vient presque toujours d'un prompt trop vague. Précisez ce que vous voulez : qui parle, à qui, pour quoi faire, dans quel format, avec quelles limites. Le retravail manuel et le 'fais mieux' sont des pertes de temps. Changer d'outil ne résout rien si le prompt est mauvais."
+    },
+    {
+      q: "Parmi ces 4 prompts, lequel est le mieux structuré ?",
+      opts: [
+        "Aide-moi avec un mail.",
+        "Rédige un mail professionnel.",
+        "Tu es Account Manager. Rédige un mail de relance à un merchant qui n'a pas répondu depuis 10 jours. Ton ferme mais courtois, 6-8 lignes max.",
+        "Mail pour un merchant SVP."
+      ],
+      correct: 2,
+      explain: "Le bon prompt précise un rôle, un objectif clair, un contexte (10 jours sans réponse), un ton, et une longueur. Les trois autres sont trop vagues et produiront du contenu générique. La précision dans le prompt est le levier n°1 de qualité."
+    }
+  ],
   m1: [
     {
       q: "Qu'est-ce qu'une hallucination dans un LLM ?",
@@ -3072,6 +3797,7 @@ let state = {
   quizScores: {},      // { m1: 3, m2: 4, ... } correct count per quiz
   promptsCopied: [],   // array of prompt titles copied
   tasksDone: {},       // { t1: true, t2: true... }
+  checklists: {},      // { 'm1-1': [true, false, ...], ... } per-lesson checklist state
 };
 
 async function loadState() {
@@ -3293,9 +4019,9 @@ function bindChecklist() {
 // PROGRESS RENDER
 // ============================================
 function renderProgress() {
-  // Modules completed = quizzes done (5 quizzes total, but we have 4 quiz blocks + module 5 = mission)
-  const quizDone = Object.keys(state.quizScores).length;
-  const modCount = quizDone; // proxy
+  // Modules completed = only the 5 top-level module quizzes (lesson quizzes m1-1…m1-5 excluded)
+  const MODULE_QUIZ_IDS = ['m_outils', 'm1', 'm2', 'm3', 'm4'];
+  const modCount = MODULE_QUIZ_IDS.filter(id => id in state.quizScores).length;
   const modTotal = 5;
   document.getElementById('stat-modules').innerHTML = `${modCount}<small>/${modTotal}</small>`;
   document.getElementById('bar-modules').style.width = `${Math.min(100, (modCount/modTotal)*100)}%`;
@@ -3342,6 +4068,51 @@ function bindReveal() {
 }
 
 // ============================================
+// CAS PRATIQUE
+// ============================================
+function initCaseStudies() {
+  document.querySelectorAll('.case-study').forEach(cs => {
+    const opts = cs.querySelectorAll('.cs-option');
+    const answer = cs.querySelector('.cs-answer');
+    const revealBtn = cs.querySelector('.cs-reveal-btn');
+
+    function reveal(selectedOpt) {
+      if (answer) answer.hidden = false;
+      opts.forEach(o => { o.disabled = true; });
+      if (selectedOpt) selectedOpt.classList.add('cs-selected');
+      if (revealBtn) revealBtn.hidden = true;
+    }
+
+    opts.forEach(opt => opt.addEventListener('click', () => reveal(opt)));
+    if (revealBtn) revealBtn.addEventListener('click', () => reveal(null));
+  });
+}
+
+// ============================================
+// LESSON CHECKLISTS
+// ============================================
+function initChecklists() {
+  document.querySelectorAll('.lesson-checklist').forEach(cl => {
+    const id = cl.dataset.checklist;
+    const boxes = cl.querySelectorAll('input[type="checkbox"]');
+    const saved = (state.checklists && state.checklists[id]) || [];
+
+    boxes.forEach((cb, i) => {
+      cb.checked = !!saved[i];
+      if (cb.checked) cb.closest('.cl-item').classList.add('cl-checked');
+      cb.addEventListener('change', () => {
+        const label = cb.closest('.cl-item');
+        label.classList.toggle('cl-checked', cb.checked);
+        if (!state.checklists) state.checklists = {};
+        if (!state.checklists[id]) state.checklists[id] = [];
+        state.checklists[id][i] = cb.checked;
+        saveState();
+      });
+    });
+  });
+}
+
+// ============================================
 // INIT
 // ============================================
 async function init() {
@@ -3353,6 +4124,8 @@ async function init() {
   bindLibFilters();
   bindChecklist();
   bindReveal();
+  initCaseStudies();
+  initChecklists();
 
   // re-bind copy on dynamically inserted lib cards
   document.getElementById('lib-grid').addEventListener('click', () => {
