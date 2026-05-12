@@ -1,0 +1,3412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formation IA — HiPay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0E12;
+    --bg-soft: #15151B;
+    --bg-card: #1A1A22;
+    --bg-elevated: #22222C;
+    --ink: #F4F1EA;
+    --ink-soft: #B8B4AB;
+    --ink-faint: #6E6A60;
+    --accent: #6F5BFF;
+    --accent-soft: #3E2DFF;
+    --warn: #FF7A3D;
+    --good: #5BFFB1;
+    --line: rgba(244, 241, 234, 0.08);
+    --line-strong: rgba(244, 241, 234, 0.18);
+    --serif: 'Fraunces', 'Instrument Serif', Georgia, serif;
+    --serif-it: 'Instrument Serif', 'Fraunces', Georgia, serif;
+    --sans: 'Inter Tight', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02", "cv11";
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ NAV ============ */
+  nav.topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(14, 14, 18, 0.72);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-mark {
+    display: inline-block;
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 6px;
+    position: relative;
+  }
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    background: var(--bg);
+    border-radius: 2px;
+  }
+  .brand small {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-left: 4px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -4px;
+    height: 1px;
+    background: var(--accent);
+    transition: right 0.3s ease;
+  }
+  .nav-links a:hover::after { right: 0; }
+  .progress-pill {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line-strong);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .progress-pill .dot {
+    width: 6px; height: 6px;
+    background: var(--good);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--good);
+  }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    nav.topbar { padding: 12px 18px; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 80px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(111, 91, 255, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: var(--ink-faint);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero h1 .strike {
+    position: relative;
+    color: var(--ink-faint);
+  }
+  .hero h1 .strike::after {
+    content: "";
+    position: absolute;
+    left: -2%; right: -2%;
+    top: 52%;
+    height: 4px;
+    background: var(--warn);
+    transform: rotate(-2deg);
+  }
+  .hero-lead {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 48px;
+    line-height: 1.55;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+  }
+  .btn-ghost:hover {
+    border-color: var(--ink);
+  }
+  .btn .arrow {
+    transition: transform 0.2s;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-side {
+    position: relative;
+  }
+  .hero-quote {
+    font-family: var(--serif-it);
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+    margin-bottom: 32px;
+  }
+  .hero-quote cite {
+    display: block;
+    margin-top: 16px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-style: normal;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; gap: 60px; padding-top: 100px; }
+    .hero-quote { font-size: 22px; }
+  }
+
+  /* ============ SECTIONS ============ */
+  section.block {
+    padding: 100px 32px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    max-width: 800px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .section-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    line-height: 1.55;
+  }
+
+  /* ============ ELEPHANT (Why) ============ */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .why-card {
+    background: var(--bg);
+    padding: 48px 36px;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .why-card:hover { background: var(--bg-card); }
+  .why-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .why-card h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .why-card h3 em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .why-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .why-card .tag {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  @media (max-width: 860px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Scale of value */
+  .scale {
+    margin-top: 80px;
+    padding: 48px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+  }
+  .scale-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .scale-bar {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.5fr;
+    gap: 4px;
+    height: 80px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .scale-seg {
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .scale-seg-1 { background: rgba(255, 122, 61, 0.25); color: var(--warn); }
+  .scale-seg-2 { background: rgba(111, 91, 255, 0.2); color: #B4A8FF; }
+  .scale-seg-3 { background: rgba(91, 255, 177, 0.2); color: var(--good); }
+  .scale-seg strong {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+  }
+  .scale-seg span {
+    font-family: var(--mono);
+    font-size: 10px;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .scale-foot {
+    color: var(--ink-faint);
+    font-size: 13px;
+    font-style: italic;
+    font-family: var(--serif-it);
+  }
+
+  /* ============ MODULES OVERVIEW ============ */
+  .modules-list {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .module-row {
+    background: var(--bg);
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    align-items: center;
+    gap: 32px;
+    transition: background 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .module-row:hover { background: var(--bg-card); }
+  .module-num {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .module-content h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .module-content p {
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .module-meta {
+    display: flex;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .module-arrow {
+    font-size: 24px;
+    color: var(--ink-faint);
+    transition: transform 0.2s, color 0.2s;
+  }
+  .module-row:hover .module-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
+  .module-completed {
+    color: var(--good);
+    font-family: var(--mono);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  @media (max-width: 760px) {
+    .module-row { grid-template-columns: 1fr; gap: 12px; padding: 28px; }
+    .module-meta, .module-arrow { display: none; }
+  }
+
+  /* ============ CONTENT LESSONS ============ */
+  .lesson {
+    padding: 100px 32px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .lesson-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .lesson-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .lesson-meta::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .lesson h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .lesson h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .lesson h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .lesson h4 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .lesson p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .lesson p strong { color: var(--ink); font-weight: 600; }
+  .lesson p em.highlight {
+    font-style: normal;
+    background: rgba(111, 91, 255, 0.18);
+    color: var(--ink);
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  .lesson ul, .lesson ol {
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    padding-left: 24px;
+  }
+  .lesson ul li, .lesson ol li {
+    margin-bottom: 8px;
+  }
+  .lesson ul li::marker { color: var(--accent); }
+  .lesson .lead {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  /* Key concept callout */
+  .callout {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 28px 32px;
+    border-radius: 0 12px 12px 0;
+    margin: 32px 0;
+  }
+  .callout-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .callout p { font-size: 16px; margin-bottom: 0; color: var(--ink); }
+  .callout.warn { border-left-color: var(--warn); }
+  .callout.warn .callout-label { color: var(--warn); }
+  .callout.good { border-left-color: var(--good); }
+  .callout.good .callout-label { color: var(--good); }
+
+  /* Definition box */
+  .definition {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    margin-top: 24px;
+  }
+  .definition:last-of-type { border-bottom: 1px solid var(--line); }
+  .definition dt {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .definition dd {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  @media (max-width: 720px) {
+    .definition { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* Comparison table */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+  .compare-col {
+    background: var(--bg-card);
+    padding: 32px;
+  }
+  .compare-col.before { border-top: 3px solid var(--warn); }
+  .compare-col.after { border-top: 3px solid var(--good); }
+  .compare-col h5 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .compare-col.before h5 { color: var(--warn); }
+  .compare-col.after h5 { color: var(--good); }
+  .compare-col ul { padding-left: 18px; font-size: 15px; }
+  .compare-col ul li { margin-bottom: 10px; }
+  @media (max-width: 720px) {
+    .compare { grid-template-columns: 1fr; }
+  }
+
+  /* Code block / prompt */
+  .prompt-box {
+    background: #0A0A0E;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.65;
+    color: #E0DCD2;
+    margin: 24px 0;
+    position: relative;
+    overflow-x: auto;
+  }
+  .prompt-box .prompt-label {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+  }
+  .prompt-box .copy-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.15s;
+  }
+  .prompt-box .copy-btn:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+  .prompt-box .copy-btn.copied {
+    background: var(--good);
+    color: var(--bg);
+    border-color: var(--good);
+  }
+  .prompt-box em {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .prompt-box .tag {
+    color: var(--warn);
+    font-weight: 600;
+  }
+
+  /* CODE method diagram */
+  .code-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 32px 0;
+  }
+  .code-letter {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 28px 20px;
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+  .code-letter:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .code-letter .big {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .code-letter h6 {
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .code-letter p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .code-letter .ex {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-style: italic;
+    line-height: 1.4;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .code-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ============ MÉTIERS TABS ============ */
+  .metiers-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 48px;
+    background: var(--bg-card);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .metier-tab {
+    flex: 1;
+    min-width: 140px;
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    padding: 14px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .metier-tab:hover { color: var(--ink); background: var(--bg-elevated); }
+  .metier-tab.active {
+    background: var(--accent);
+    color: var(--ink);
+  }
+  .metier-panel { display: none; }
+  .metier-panel.active { display: block; animation: fadeUp 0.4s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .metier-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .metier-header h3 {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .metier-header h3 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .metier-header .lead {
+    font-family: var(--serif-it);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  @media (max-width: 760px) {
+    .metier-header { grid-template-columns: 1fr; gap: 16px; }
+    .metier-header h3 { font-size: 36px; }
+  }
+
+  /* Gem cards */
+  .gems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .gem {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .gem:hover { border-color: var(--line-strong); }
+  .gem::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  .gem-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
+  .gem h4 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .gem .fn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .gem .why {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: var(--serif-it);
+  }
+  @media (max-width: 760px) {
+    .gems { grid-template-columns: 1fr; }
+  }
+
+  /* ============ QUIZ ============ */
+  .quiz {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 48px;
+    margin: 60px 0;
+  }
+  .quiz-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .quiz-head h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .quiz-counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .quiz-q {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .quiz-opt {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    padding: 16px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    text-align: left;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .quiz-opt:hover { border-color: var(--accent); background: var(--bg-card); }
+  .quiz-opt .marker {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+  }
+  .quiz-opt.correct { border-color: var(--good); background: rgba(91, 255, 177, 0.08); }
+  .quiz-opt.correct .marker { background: var(--good); color: var(--bg); border-color: var(--good); }
+  .quiz-opt.wrong { border-color: var(--warn); background: rgba(255, 122, 61, 0.08); }
+  .quiz-opt.wrong .marker { background: var(--warn); color: var(--bg); border-color: var(--warn); }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback {
+    padding: 18px 22px;
+    border-radius: 10px;
+    background: var(--bg-elevated);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--accent);
+    display: none;
+    margin-top: 18px;
+  }
+  .quiz-feedback.show { display: block; animation: fadeUp 0.3s; }
+  .quiz-feedback strong { color: var(--ink); }
+  .quiz-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .quiz-score {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .quiz-score strong {
+    color: var(--good);
+    font-size: 18px;
+    font-family: var(--serif);
+  }
+
+  /* ============ PROMPT LIBRARY ============ */
+  .lib-filter {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .lib-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.15s;
+  }
+  .lib-chip:hover { color: var(--ink); border-color: var(--line-strong); }
+  .lib-chip.active { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+  .lib-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .lib-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.2s;
+  }
+  .lib-card:hover { border-color: var(--line-strong); }
+  .lib-card .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 14px;
+    padding: 3px 10px;
+    background: rgba(111, 91, 255, 0.12);
+    border-radius: 999px;
+  }
+  .lib-card h5 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .lib-card .desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    font-style: italic;
+    font-family: var(--serif-it);
+  }
+  @media (max-width: 720px) {
+    .lib-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ PROGRESS DASH ============ */
+  .progress-section {
+    background: var(--bg-soft);
+  }
+  .progress-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .pcard {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pcard-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .pcard-num small { font-size: 16px; color: var(--ink-faint); }
+  .pcard-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 12px;
+  }
+  .pcard-bar {
+    margin-top: 16px;
+    height: 4px;
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .pcard-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+  @media (max-width: 760px) {
+    .progress-cards { grid-template-columns: 1fr 1fr; }
+  }
+
+  .checklist {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .check-row {
+    background: var(--bg-card);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .check-row:hover { background: var(--bg-elevated); }
+  .check-box {
+    width: 20px; height: 20px;
+    border: 1px solid var(--line-strong);
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-row.done .check-box {
+    background: var(--good);
+    border-color: var(--good);
+  }
+  .check-row.done .check-box::after {
+    content: "✓";
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .check-row.done .check-label {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+  }
+  .check-label {
+    flex: 1;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .check-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--bg-soft);
+    padding: 60px 32px 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+  .footer-brand p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 16px;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+  .footer-col h6 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-base {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  @media (max-width: 760px) {
+    .footer-wrap { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* Mission card */
+  .mission-card {
+    background: linear-gradient(135deg, rgba(111, 91, 255, 0.15), rgba(111, 91, 255, 0.04));
+    border: 1px solid rgba(111, 91, 255, 0.35);
+    border-radius: 20px;
+    padding: 56px;
+    text-align: center;
+    margin: 60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-card::before {
+    content: "MISSION";
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+  }
+  .mission-card h3 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .mission-card h3 em { font-style: italic; color: var(--accent); }
+  .mission-card p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 28px;
+  }
+
+  /* Smooth reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Visibility utilities for filtered lib */
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="topbar">
+  <div class="brand">
+    <span class="brand-mark"></span>
+    Formation IA <small>HiPay</small>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#why">Le pari</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#fondamentaux">Théorie</a></li>
+    <li><a href="#outils">Outils</a></li>
+    <li><a href="#methode">Méthode CODE</a></li>
+    <li><a href="#metiers">Métiers</a></li>
+    <li><a href="#bibliotheque">Prompts</a></li>
+    <li><a href="#progression">Progression</a></li>
+  </ul>
+  <div class="progress-pill">
+    <span class="dot"></span>
+    <span id="nav-progress">0 / 24 complétés</span>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">Programme interne · 2026</div>
+    <h1>
+      Faites <em>le double</em><br>
+      en deux fois <span class="strike">moins</span> de temps.
+    </h1>
+    <p class="hero-lead">
+      Ce n'est ni un catalogue de formation, ni un cours de prompt engineering trouvé sur YouTube. C'est le programme interne HiPay pour passer de "j'ai peur d'être remplacé" à "je sais où je crée de la valeur que l'IA ne peut pas créer".
+    </p>
+    <div class="hero-cta">
+      <a href="#parcours" class="btn btn-primary">
+        Commencer le parcours <span class="arrow">→</span>
+      </a>
+      <a href="#why" class="btn btn-ghost">
+        D'abord, parlons franchement
+      </a>
+    </div>
+  </div>
+  <aside class="hero-side">
+    <blockquote class="hero-quote">
+      "On a tous vu les gros titres alarmistes. La vraie question n'est pas <em>si</em> l'IA va changer votre job, mais <em>quel niveau</em> de votre job elle va absorber — et lequel vous restera."
+      <cite>— Le pitch de cette formation</cite>
+    </blockquote>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Modules</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Métiers</div>
+      </div>
+      <div>
+        <div class="stat-num">24</div>
+        <div class="stat-label">Étapes</div>
+      </div>
+    </div>
+  </aside>
+</header>
+
+<!-- ============ WHY / ELEPHANT ============ -->
+<section class="block" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">00 — L'éléphant dans la pièce</span>
+        <h2 class="section-title">Pourquoi <em>former</em> le robot qui va vous remplacer ?</h2>
+      </div>
+      <p class="section-intro">
+        On commence par là parce que c'est la question que vous vous posez. Si on ne répond pas honnêtement à ça, le reste ne sert à rien.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="tag">01</span>
+        <div class="why-icon">A</div>
+        <h3>L'IA prend ce que <em>personne n'aimait faire</em></h3>
+        <p>Saisie, copier-coller, reformatage, screening de CV par mots-clés, synthèses de réunions. Le travail que personne n'a jamais réclamé. Le "labeur invisible" qui peut représenter une part très significative de vos semaines de travail.<!-- SOURCE: estimations qualitatives — éviter tout chiffre précis sans étude nommée et récente --></p>
+      </div>
+      <div class="why-card">
+        <span class="tag">02</span>
+        <div class="why-icon">B</div>
+        <h3>L'IA <em>amplifie</em> ce qui vous rend bon</h3>
+        <p>Elle ne remplace pas votre jugement, votre culture client, votre lecture politique d'une négo. Elle vous donne 2h de cerveau supplémentaires par jour pour exercer ces choses-là vraiment.</p>
+      </div>
+      <div class="why-card">
+        <span class="tag">03</span>
+        <div class="why-icon">C</div>
+        <h3>Ce qui reste, c'est <em>irremplaçable</em></h3>
+        <p>Empathie, stratégie, esprit critique, capacité à closer un deal C-level, à débloquer un conflit dans une équipe. Là où vous étiez bon, l'IA vous rend redoutable. Là où vous étiez moyen, elle rend votre poste questionnable.</p>
+      </div>
+    </div>
+
+    <div class="scale">
+      <div class="scale-title">L'échelle de valeur — ce qui change concrètement dans votre semaine</div>
+      <div class="scale-bar">
+        <div class="scale-seg scale-seg-1">
+          <strong>Niveau 1 · La saisie</strong>
+          <span>Absorbé par l'IA</span>
+        </div>
+        <div class="scale-seg scale-seg-2">
+          <strong>Niveau 2 · La technique</strong>
+          <span>Assisté par l'IA (0 → 80%)</span>
+        </div>
+        <div class="scale-seg scale-seg-3">
+          <strong>Niveau 3 · L'humain</strong>
+          <span>Votre zone irremplaçable (80 → 100%)</span>
+        </div>
+      </div>
+      <p class="scale-foot">L'objectif de ce programme : vous faire passer plus de temps sur le niveau 3, en transférant à l'IA tout ce qui est niveau 1 et la moitié du niveau 2.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARCOURS OVERVIEW ============ -->
+<section class="block" id="parcours">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">01 — Le parcours</span>
+        <h2 class="section-title">6 modules, <em>une promesse</em>.</h2>
+      </div>
+      <p class="section-intro">
+        Vous pouvez tout faire dans l'ordre (3 à 5h cumulées), ou sauter directement au module métier qui vous concerne. Votre progression est sauvegardée localement, sans compte à créer.
+      </p>
+    </div>
+
+    <div class="modules-list" id="modules-list">
+      <a href="#fondamentaux" class="module-row" data-module="fondamentaux">
+        <div class="module-num">01</div>
+        <div class="module-content">
+          <h3>Comprendre l'IA</h3>
+          <p>Démystifier les buzzwords (LLM, RAG, Agents, GenAI) et comprendre ce que la machine fait vraiment sous le capot.</p>
+        </div>
+        <div class="module-meta"><span>~45 min</span><span>5 leçons</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+      <a href="#outils" class="module-row" data-module="outils">
+        <div class="module-num">02</div>
+        <div class="module-content">
+          <h3>Vos outils : lequel, pour quoi</h3>
+          <p>Matrice de décision, fiches par outil, chat vs agent vs RAG vs orchestrateur. Enterprise vs grand public.</p>
+        </div>
+        <div class="module-meta"><span>~30 min</span><span>5 fiches</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+      <a href="#permis" class="module-row" data-module="permis">
+        <div class="module-num">03</div>
+        <div class="module-content">
+          <h3>Le permis de conduire</h3>
+          <p>Sécurité, données sensibles, RGPD, AI Act. Ce qu'on ne fait jamais. Ce qu'on fait toujours.</p>
+        </div>
+        <div class="module-meta"><span>~30 min</span><span>4 leçons</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+      <a href="#methode" class="module-row" data-module="methode">
+        <div class="module-num">04</div>
+        <div class="module-content">
+          <h3>La méthode CODE</h3>
+          <p>Le framework HiPay pour parler à l'IA comme à un stagiaire ultra-compétent. Le moment "aha".</p>
+        </div>
+        <div class="module-meta"><span>~40 min</span><span>5 leçons</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+      <a href="#metiers" class="module-row" data-module="metiers">
+        <div class="module-num">05</div>
+        <div class="module-content">
+          <h3>Parcours métiers</h3>
+          <p>5 spécialisations : RH, Sales/AM, Finance/Ops, Managers, Tech/Produit. Chacune avec ses Gems prêts à installer.</p>
+        </div>
+        <div class="module-meta"><span>~60 min</span><span>5 parcours</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+      <a href="#aller-loin" class="module-row" data-module="aller-loin">
+        <div class="module-num">06</div>
+        <div class="module-content">
+          <h3>Aller plus loin</h3>
+          <p>Du Gem à l'agent autonome. Automatisation (n8n), construction de ses propres assistants, communauté AI Champions.</p>
+        </div>
+        <div class="module-meta"><span>~30 min</span><span>5 leçons</span></div>
+        <div class="module-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 1 — FONDAMENTAUX ============ -->
+<section class="lesson" id="fondamentaux">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 01 · Fondamentaux</div>
+    <h2>Comprendre <em>vraiment</em> ce qu'est l'IA.</h2>
+    <p class="lead">Avant de l'utiliser, démystifions. En finir avec les mythes et avec les arnaqueurs LinkedIn qui parlent de "révolution cognitive" sans savoir ce qu'est un token.</p>
+
+    <h3>L'IA, c'est quoi exactement ?</h3>
+    <p>L'<strong>Intelligence Artificielle</strong> est un terme parapluie qui désigne tout système informatique capable d'effectuer des tâches qui, traditionnellement, nécessitaient l'intelligence humaine. Le concept est ancien — Alan Turing pose ses bases en 1950 — mais ce qui change tout depuis 2022, c'est l'IA Générative (GenAI).</p>
+    <p>Pour comprendre où vous mettez les pieds, il faut distinguer 4 niveaux :</p>
+
+    <dl>
+      <div class="definition">
+        <dt>Machine Learning</dt>
+        <dd>Algorithmes qui <strong>apprennent à partir de données</strong> sans être explicitement programmés. Exemple : détection de fraude par carte bancaire chez HiPay. On lui montre 10 millions de transactions, il apprend les patterns suspects.</dd>
+      </div>
+      <div class="definition">
+        <dt>Deep Learning</dt>
+        <dd>Sous-ensemble du ML qui utilise des <strong>réseaux de neurones profonds</strong> (plusieurs couches). C'est ce qui permet la reconnaissance d'images, la traduction automatique, et... les LLM.</dd>
+      </div>
+      <div class="definition">
+        <dt>IA Générative (GenAI)</dt>
+        <dd>L'IA qui <strong>produit du contenu nouveau</strong> : texte, code, images, vidéo, audio. ChatGPT, Claude, Gemini, Midjourney sont des GenAI. C'est elle qui fait peur, c'est elle qui change votre quotidien.</dd>
+      </div>
+      <div class="definition">
+        <dt>Agents</dt>
+        <dd>Une GenAI qui <strong>agit</strong> en autonomie : elle planifie, utilise des outils (web, code, API), corrige ses erreurs. Pas juste répondre — exécuter. C'est la frontière de 2026.</dd>
+      </div>
+      <div class="definition">
+        <dt>RAG</dt>
+        <dd>Retrieval-Augmented Generation. Une GenAI <strong>branchée sur des documents externes</strong> — votre base de connaissances interne, vos contrats, vos procédures. Elle répond depuis vos vraies sources (qu'elle peut citer) plutôt que depuis sa mémoire d'entraînement générique. Résultat : beaucoup moins d'hallucinations sur les sujets propres à HiPay. Exemple chez HiPay : DUST.</dd>
+      </div>
+    </dl>
+
+    <h3>Comment fonctionne un LLM (Large Language Model) ?</h3>
+    <p>Un LLM comme Claude ou GPT-5 est entraîné sur des téraoctets de texte (livres, sites, code) pour apprendre une seule chose : <em class="highlight">prédire le mot suivant le plus probable</em> à partir d'un contexte. Tout ce que vous voyez — réponses brillantes, code fonctionnel, analyses fines — émerge de cette mécanique simple, à très grande échelle.</p>
+
+    <div class="callout">
+      <span class="callout-label">Concept clé · Tokens</span>
+      <p>Un LLM ne lit pas des mots, il lit des <strong>tokens</strong> (≈ syllabes ou morceaux de mots). "Anthropic" = 2 tokens. "HiPay paiement" = environ 3-4 tokens. Chaque modèle a une <strong>fenêtre de contexte</strong> limitée — par exemple, plusieurs centaines de milliers de tokens pour les modèles récents de Claude (ce qui représente des centaines de pages). Au-delà, il "oublie" le début.<!-- SOURCE: documentation Anthropic — la fenêtre de contexte exacte évolue par version de modèle, ne pas citer de chiffre précis sans vérification à date --></p>
+    </div>
+
+    <h3>Pourquoi les LLM "hallucinent"</h3>
+    <p>Un LLM ne <em>sait</em> rien. Il <em>prédit</em>. Quand il ne connaît pas la réponse mais que la suite la plus probable est une phrase qui ressemble à une réponse... il invente avec aplomb. C'est ce qu'on appelle une <strong>hallucination</strong>.</p>
+    <ul>
+      <li>Il peut inventer un article de loi, une citation, une URL, une jurisprudence.</li>
+      <li>Il sera <em>convaincant</em> et confiant. C'est ce qui rend ça dangereux.</li>
+      <li>Plus le domaine est niche (médecine, droit, code interne), plus le risque est élevé.</li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="callout-label">Règle d'or HiPay</span>
+      <p>Tout ce qui sort d'un LLM <strong>doit être vérifié</strong> avant utilisation externe. L'IA est un brouillon génial, jamais un livrable final. Si vous l'envoyez à un client sans relire, c'est <em>votre</em> erreur, pas la sienne.</p>
+    </div>
+
+    <h3>Le marché en 2026 : qui fait quoi ?</h3>
+
+    <h4>Les Pure Players (créateurs de modèles)</h4>
+    <ul>
+      <li><strong>Anthropic (Claude)</strong> — Focus sécurité, qualité d'écriture, code. Modèle utilisé par HiPay pour l'usage interne.</li>
+      <li><strong>OpenAI (GPT-5, o-series)</strong> — Le plus connu, écosystème ChatGPT large.</li>
+      <li><strong>Google DeepMind (Gemini)</strong> — Intégré à Workspace, contexte ultra-long.</li>
+      <li><strong>Mistral</strong> — Acteur européen, modèles open-weight.</li>
+    </ul>
+    <h4>Les Hyperscalers (cloud qui hébergent)</h4>
+    <ul>
+      <li><strong>Microsoft Azure OpenAI</strong>, <strong>AWS Bedrock</strong>, <strong>Google Cloud Vertex AI</strong>.</li>
+      <li>Ils servent les mêmes modèles + des garanties entreprise (résidence des données, conformité).</li>
+    </ul>
+
+    <h3>Ce que l'IA n'est PAS</h3>
+    <ul>
+      <li><strong>Ce n'est pas une conscience.</strong> Pas de désirs, pas d'intentions, pas de "réveil de Skynet".</li>
+      <li><strong>Ce n'est pas une base de connaissances à jour.</strong> Un LLM a une date de coupure ; pour l'actu il faut le brancher au web.</li>
+      <li><strong>Ce n'est pas déterministe.</strong> La même question peut donner 5 réponses différentes (paramètre "température").</li>
+      <li><strong>Ce n'est pas magique.</strong> Pas de prompt, pas de résultat. Garbage in, garbage out.</li>
+    </ul>
+
+    <div class="callout good">
+      <span class="callout-label">Ce qu'il faut retenir</span>
+      <p>L'IA est un <strong>collaborateur stagiaire ultra-rapide et sans expérience de votre entreprise</strong>. Brillant, instantané, infatigable — mais qui invente quand il ne sait pas, et qui ne connaît rien à HiPay tant que vous ne le briefez pas.</p>
+    </div>
+
+    <!-- QUIZ M1 -->
+    <div class="quiz" data-quiz="m1">
+      <div class="quiz-head">
+        <h3>Quiz · Fondamentaux</h3>
+        <span class="quiz-counter">5 questions</span>
+      </div>
+      <div class="quiz-body"></div>
+      <div class="quiz-actions">
+        <span class="quiz-score">Score : <strong>—</strong></span>
+        <button class="btn btn-ghost quiz-restart">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 2 — OUTILS ============ -->
+<section class="lesson" id="outils">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 02 · Vos outils</div>
+    <h2>Lequel, <em>pour quoi</em>, et quand.</h2>
+    <p class="lead">La première question n'est pas "comment bien prompter". C'est "quel outil pour cette tâche ?" Huit outils dans votre écosystème HiPay — chacun a un rôle précis. Voici la carte.</p>
+
+    <h3>Enterprise vs grand public : la distinction qui change tout</h3>
+    <p>Avant la matrice, un point fondamental. Tous les outils ne se comportent pas de la même façon sur la question critique : <strong>vos conversations servent-elles à entraîner le modèle ?</strong></p>
+
+    <div class="compare">
+      <div class="compare-col before">
+        <h5>⚠️ Versions grand public (usage perso)</h5>
+        <ul>
+          <li>ChatGPT gratuit, Claude.ai gratuit, Gemini sans compte pro</li>
+          <li>Par défaut, vos échanges peuvent alimenter les modèles futurs — vérifiez les paramètres de chaque service</li>
+          <li>Non validés par l'IT HiPay pour un usage professionnel</li>
+          <li><strong>Interdit</strong> : toute donnée professionnelle HiPay, même anonymisée</li>
+        </ul>
+      </div>
+      <div class="compare-col after">
+        <h5>✓ Outils validés HiPay (Enterprise)</h5>
+        <ul>
+          <li>Gemini en mode usage interne, Claude.ai PRO, n8n, DUST</li>
+          <li>Les fournisseurs s'engagent contractuellement à ne pas entraîner leurs modèles sur vos données<!-- SOURCE: politique Google Workspace for Business + Anthropic usage policy pour comptes payants — à reconfirmer à chaque mise à jour des CGU et renouvellement de contrat HiPay --></li>
+          <li>Données isolées du pool public</li>
+          <li>Restez dans ce périmètre — en cas de doute : <strong>#ai-support</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-label">Règle d'or</span>
+      <p>Si vous n'êtes pas sûr qu'un outil est dans le périmètre validé HiPay, posez la question sur <strong>#ai-support</strong> avant d'y mettre quoi que ce soit de professionnel. Le bon outil utilisé à mauvais escient vaut le mauvais outil.</p>
+    </div>
+
+    <h3>La matrice de décision — quelle situation, quel outil ?</h3>
+    <p>Ce tableau couvre 80 % des cas. Ce n'est pas une règle absolue — c'est un point de départ.</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:28px 0;font-size:15px">
+      <thead>
+        <tr style="border-bottom:2px solid var(--line-strong)">
+          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Situation</th>
+          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Outil recommandé</th>
+          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Pourquoi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Rédiger, reformuler, brainstormer au quotidien</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Gemini</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--good)">DISPONIBLE POUR TOUS</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Accessible à toute la société, Gems disponibles. Votre premier réflexe pour 80 % des tâches.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Analyser un document long : contrat, rapport, spec 50+ pages</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude.ai PRO</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent)">PILOTE → COURANT</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Fenêtre de contexte très étendue, reconnu pour l'analyse structurée. Préférez-le à Gemini sur les documents volumineux.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Chercher une procédure ou un document interne HiPay</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">DUST</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent)">PILOTE → COURANT</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">RAG sur votre base interne. Répond depuis vos vrais docs — pas depuis la mémoire générique du modèle.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Automatiser une tâche récurrente (rapport, alerte, synchro)</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">n8n</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--good)">DISPONIBLE, DÉPLOYÉ</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Orchestre vos outils (Slack, Gmail, HubSpot…) avec ou sans IA. Tourne sans vous.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Actions complexes dans le navigateur web</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude in Chrome</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">POPULATIONS CIBLÉES</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Agent navigateur : lit les pages, extrait, interagit. Pour les flux web multi-étapes.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Déléguer une suite de tâches dans vos applications bureau</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Cowork</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">POPULATIONS CIBLÉES</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Agent desktop sur Claude PRO : voit votre écran, agit dans vos applications.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Écrire, revoir ou débugger du code</td>
+          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude Code ou Cursor</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">DÉVELOPPEURS</span></td>
+          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Optimisés pour le contexte technique : accès au code, terminal, PR review.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Les 5 modes d'interaction avec l'IA</h3>
+    <p>Derrière ces outils, il y a 5 façons fondamentalement différentes d'interagir avec l'IA. Comprendre la différence, c'est savoir pourquoi on choisit l'un plutôt que l'autre.</p>
+
+    <dl>
+      <div class="definition">
+        <dt>Chat</dt>
+        <dd><strong>Vous demandez, l'IA répond.</strong> Mode conversationnel. Pas d'autonomie — l'IA attend votre prochaine question à chaque étape. <em>Outils HiPay : Gemini, Claude.ai en mode conversation standard.</em></dd>
+      </div>
+      <div class="definition">
+        <dt>Agent</dt>
+        <dd><strong>L'IA planifie et agit.</strong> Elle décompose un objectif complexe en sous-tâches, utilise des outils (navigateur, fichiers, applications), corrige ses erreurs en cours de route. Vous supervisez — elle exécute. <em>Outils HiPay : Cowork (desktop), Claude in Chrome (web).</em></dd>
+      </div>
+      <div class="definition">
+        <dt>RAG</dt>
+        <dd><strong>L'IA répond depuis VOS documents.</strong> RAG = Retrieval-Augmented Generation. Elle consulte en temps réel une base de connaissances connectée et génère une réponse ancrée dans vos vraies sources — qu'elle peut citer. Résultat : moins d'hallucinations sur les sujets propres à HiPay. <em>Outil HiPay : DUST.</em></dd>
+      </div>
+      <div class="definition">
+        <dt>Terminal</dt>
+        <dd><strong>L'IA dans votre environnement de développement.</strong> Accès direct au code, aux fichiers, à l'exécution. Très puissant — et réservé aux développeurs capables d'évaluer et valider ce que l'IA produit. <em>Outil HiPay : Claude Code.</em></dd>
+      </div>
+      <div class="definition">
+        <dt>Orchestrateur</dt>
+        <dd><strong>L'IA comme une brique dans un workflow automatisé.</strong> L'outil d'automatisation déclenche l'IA, récupère le résultat, le passe à l'outil suivant — sans vous. Le cerveau (LLM) + le muscle (workflow). <em>Outil HiPay : n8n qui appelle Gemini ou Claude via API.</em></dd>
+      </div>
+    </dl>
+
+    <h3>Exemple de workflow multi-outils chez HiPay</h3>
+    <div class="callout good">
+      <span class="callout-label">Exemple · Veille réglementaire semi-automatisée</span>
+      <p>
+        <strong>1. n8n</strong> surveille quotidiennement les publications de l'ACPR et de l'ABE.<br>
+        <strong>2. Gemini ou Claude</strong> (via API dans n8n) analyse chaque nouveau document et en extrait les points impactants pour HiPay.<br>
+        <strong>3. n8n</strong> poste automatiquement le résumé structuré dans <strong>#ai-news</strong> sur Slack.<br>
+        <strong>4. DUST</strong> (quand disponible) permet à l'équipe Compliance d'interroger ces documents directement en langage naturel.
+      </p>
+    </div>
+
+    <h3>Fiches de référence par outil</h3>
+    <p>Pour chaque outil disponible chez HiPay : à quoi ça sert, quand l'utiliser, quand ne pas l'utiliser, et les vigilances spécifiques.</p>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Gemini</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(91,255,177,0.12);color:var(--good);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Disponible pour tous</span>
+      </div>
+      <p><strong>Ce que c'est :</strong> LLM conversationnel de Google, déployé sur votre compte HiPay en mode usage interne. Accès aux Gems (assistants personnalisés).</p>
+      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> rédaction, reformulation, résumé, brainstorming, traduction, analyse de texte, création de Gems métiers. C'est le premier réflexe pour la grande majorité des tâches du quotidien.</p>
+      <p style="margin-top:12px"><strong>Limites :</strong> moins adapté que Claude sur les très longs documents. Pas conçu pour interroger votre base interne HiPay (c'est le rôle de DUST).</p>
+      <p style="margin-top:12px"><strong>Protection des données :</strong> En mode usage interne HiPay, Google s'engage à ne pas utiliser vos conversations pour entraîner ses modèles.<!-- SOURCE: politique Google Workspace for Business — à reconfirmer à chaque renouvellement du contrat HiPay et mise à jour des CGU Google --></p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Claude.ai PRO</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(111,91,255,0.12);color:var(--accent);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Pilote → courant</span>
+      </div>
+      <p><strong>Ce que c'est :</strong> LLM d'Anthropic. Reconnu pour la qualité d'analyse sur des documents longs et des tâches structurées, ainsi que pour la nuance dans la rédaction complexe.</p>
+      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> analyser des contrats ou des specs de plusieurs dizaines de pages, rédiger des communications sensibles, structurer un raisonnement complexe, itérer sur un contenu de haute qualité.</p>
+      <p style="margin-top:12px"><strong>Limites :</strong> accès actuellement limité au pilote. Pas d'intégrations directes dans Google Workspace.</p>
+      <p style="margin-top:12px"><strong>Protection des données :</strong> Sur la licence PRO, Anthropic s'engage à ne pas utiliser vos conversations pour entraîner les modèles, par défaut.<!-- SOURCE: Anthropic usage policy pour comptes payants — à reconfirmer à chaque mise à jour de la politique Anthropic --></p>
+      <p style="margin-top:12px"><strong>Accès :</strong> En pilote. Demandez sur <strong>#ai-taskforce</strong> si votre profil correspond.</p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">DUST</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(111,91,255,0.12);color:var(--accent);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Pilote → courant</span>
+      </div>
+      <p><strong>Ce que c'est :</strong> Une plateforme RAG connectée à votre base de connaissances interne HiPay — procédures, politiques, templates, documentation produit. L'IA répond depuis vos vraies sources, pas depuis sa mémoire générique.</p>
+      <p style="margin-top:12px"><strong>La différence critique avec Gemini/Claude :</strong> DUST cite ses sources. Vous savez d'où vient la réponse. C'est ce qui élimine le risque d'hallucination sur les sujets spécifiques à HiPay.</p>
+      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> retrouver une procédure interne, valider une politique RH, comprendre un processus métier HiPay, chercher un template ou un contrat-type.</p>
+      <p style="margin-top:12px"><strong>Statut :</strong> En pilote. Suivez <strong>#ai-taskforce</strong> pour les annonces de déploiement. Consultez aussi l'<a href="https://hipay.atlassian.net/wiki/spaces/genai/overview" style="color:var(--accent)">espace Confluence GenAI</a>.</p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">n8n</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(91,255,177,0.12);color:var(--good);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Disponible, déployé</span>
+      </div>
+      <p><strong>Ce que c'est :</strong> Un orchestrateur de workflows d'automatisation. Ce n'est pas un LLM — c'est la "colle" qui connecte vos outils entre eux (Slack, Gmail, HubSpot, Jira, n'importe quelle API) et peut y injecter de l'IA au passage.</p>
+      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> automatiser des tâches récurrentes qui impliquent plusieurs applications, créer des alertes intelligentes, construire des pipelines de traitement données.</p>
+      <p style="margin-top:12px"><strong>Vigilance :</strong> Les workflows automatisés ne doivent pas faire transiter de données clients non agrégées sans validation de la Compliance.</p>
+      <p style="margin-top:12px"><strong>Ressources HiPay :</strong>
+        <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/359858179/n8n+Best+Practices+Guide" style="color:var(--accent)">Guide Best Practices n8n</a> ·
+        <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/704708616/Radar+Automation+IA+Efficacit+HiPay" style="color:var(--accent)">Radar Automation</a>
+      </p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Claude Code &amp; Cursor</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(255,122,61,0.12);color:var(--warn);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Développeurs uniquement</span>
+      </div>
+      <p><strong>Claude Code :</strong> Claude dans votre terminal, avec accès direct au codebase — génération, refactoring, debugging, documentation. <strong>Cursor :</strong> IDE avec IA intégrée pour l'autocomplétion en contexte.</p>
+      <p style="margin-top:12px"><strong>Règle absolue :</strong> jamais de secrets, clés API ou credentials dans le contexte. Code review humaine obligatoire avant tout merge — l'IA produit du code qui marche, pas nécessairement du code sécurisé ou qui respecte vos conventions.</p>
+      <p style="margin-top:12px"><strong>Ressource :</strong> <a href="https://drive.google.com/drive/folders/1JNaX7HiJJQr7QPdLW-Szk0L3Aboc0GTR" style="color:var(--accent)">Vidéos internes Cursor</a></p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Cowork &amp; Claude in Chrome</h4>
+        <span style="font-family:var(--mono);font-size:10px;background:rgba(110,106,96,0.15);color:var(--ink-faint);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Populations ciblées</span>
+      </div>
+      <p><strong>Cowork :</strong> agent desktop sur Claude PRO. Voit votre écran, peut agir dans vos applications bureau pour exécuter des tâches complexes multi-étapes. <strong>Claude in Chrome :</strong> agent navigateur. Lit les pages web, extrait des informations, interagit avec des formulaires.</p>
+      <p style="margin-top:12px"><strong>Vigilance spécifique agents :</strong> L'agent voit votre écran et le contenu de vos pages. Ne lancez jamais de session agent sur un espace affichant des données clients identifiées. Supervisez les actions en temps réel — l'autonomie ne dispense pas du contrôle.</p>
+      <p style="margin-top:12px"><strong>Accès :</strong> Sur profil spécifique. Contactez <strong>#ai-taskforce</strong>.</p>
+    </div>
+
+    <div class="callout good" style="margin-top:32px">
+      <span class="callout-label">La progression naturelle chez HiPay</span>
+      <p>
+        <strong>Maintenant, pour tous :</strong> Gemini et n8n.<br>
+        <strong>Bientôt courant :</strong> Claude.ai PRO et DUST.<br>
+        <strong>Sur profil spécifique :</strong> Cowork, Claude in Chrome.<br>
+        <strong>Développeurs :</strong> Claude Code, Cursor.<br><br>
+        Si vous n'avez pas encore accès à un outil : c'est normal, les déploiements sont progressifs. Suivez l'<a href="https://hipay.atlassian.net/wiki/spaces/genai/overview" style="color:var(--accent)">espace Confluence GenAI</a> et le canal <strong>#ai-taskforce</strong> pour les annonces.
+      </p>
+    </div>
+
+    <div class="quiz" data-quiz="m_outils">
+      <div class="quiz-head">
+        <h3>Quiz · Vos outils</h3>
+        <span class="quiz-counter">4 questions</span>
+      </div>
+      <div class="quiz-body"></div>
+      <div class="quiz-actions">
+        <span class="quiz-score">Score : <strong>—</strong></span>
+        <button class="btn btn-ghost quiz-restart">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 3 — PERMIS ============ -->
+<section class="lesson" id="permis" style="background:var(--bg-soft)">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 03 · Sécurité & Éthique</div>
+    <h2>Le permis de <em>conduire</em>.</h2>
+    <p class="lead">L'IA est une voiture rapide. Sans permis, on tue quelqu'un. Voici les règles qui ne se négocient pas chez HiPay.</p>
+
+    <h3>La règle d'or : on ne donne jamais les clés de la maison</h3>
+    <p>Tout ce que vous tapez dans un prompt peut, selon l'outil, finir dans les logs du fournisseur, dans l'entraînement de la prochaine version du modèle, ou simplement être stocké quelque part. Donc :</p>
+    <ul>
+      <li><strong>Jamais</strong> de PII clients (Personally Identifiable Information : nom + email + montant + ID).</li>
+      <li><strong>Jamais</strong> de mots de passe, clés API, tokens d'accès, certificats.</li>
+      <li><strong>Jamais</strong> de données financières brutes non agrégées (transactions individuelles, IBAN).</li>
+      <li><strong>Jamais</strong> de contenu sous NDA strict (contrats clients, négociations en cours).</li>
+      <li><strong>Jamais</strong> de code propriétaire HiPay sur un outil grand public non validé par l'IT.</li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="callout-label">Le test du journaliste</span>
+      <p>Avant d'envoyer quoi que ce soit à une IA, posez-vous la question : <em>"Si un journaliste découvrait ce prompt demain dans une fuite de données, est-ce que ça ferait la une ?"</em> Si oui, anonymisez ou n'envoyez pas.</p>
+    </div>
+
+    <h3>Le jeu des 7 erreurs : où sont les bombes ?</h3>
+    <div class="prompt-box">
+      <span class="prompt-label">❌ Prompt dangereux — repérez les 3 problèmes</span>
+"Rédige un mail pour le client <span class="tag">Jean Dupont</span> de l'entreprise <span class="tag">Carrefour</span>, concernant son CA de <span class="tag">2,3M€</span>, sa demande d'intégration sur le mot de passe <span class="tag">HiPay2024!</span> et son contrat signé hier."
+    </div>
+    <p><strong>Les 3 bombes :</strong> nom + entreprise (PII), CA précis (donnée commerciale sensible), mot de passe (catastrophe). Version correcte :</p>
+    <div class="prompt-box">
+      <span class="prompt-label">✓ Prompt anonymisé</span>
+"Rédige un mail pour [Client] de [Entreprise retail FR], concernant son volume annuel (catégorie : grand compte), sa demande d'intégration technique et la signature récente de son contrat."
+    </div>
+
+    <h3>RGPD : ce que ça change pour vous</h3>
+    <p>Le Règlement Général sur la Protection des Données pose plusieurs principes fondamentaux. Pour vos usages IA au quotidien, voici les 4 à maîtriser en priorité :</p>
+    <ul>
+      <li><strong>Minimisation</strong> — ne traiter que les données strictement nécessaires.</li>
+      <li><strong>Finalité</strong> — utiliser les données pour ce à quoi elles ont été collectées, pas autre chose.</li>
+      <li><strong>Transparence</strong> — la personne concernée doit savoir qu'une IA est utilisée pour la traiter.</li>
+      <li><strong>Droit à l'oubli</strong> — possibilité de supprimer les données sur demande.</li>
+    </ul>
+    <p>Pour un payment institution comme HiPay, la barre est <em class="highlight">plus haute encore</em> : on est sous DSP2, sous supervision ACPR, et nos clients merchants nous confient leurs propres données clients. Ce n'est pas optionnel.</p>
+
+    <h3>L'AI Act européen — ce qu'il faut savoir</h3>
+    <p>Entré en vigueur progressivement depuis 2024, l'AI Act classe les usages de l'IA en 4 niveaux de risque :</p>
+    <dl>
+      <div class="definition">
+        <dt>Inacceptable</dt>
+        <dd><strong>Interdit.</strong> Scoring social, manipulation comportementale, surveillance biométrique de masse.</dd>
+      </div>
+      <div class="definition">
+        <dt>Élevé</dt>
+        <dd>Très encadré (audits, documentation, supervision humaine). Tout ce qui touche au scoring crédit, RH, infrastructures critiques.</dd>
+      </div>
+      <div class="definition">
+        <dt>Limité</dt>
+        <dd>Obligations de <strong>transparence</strong>. Si un chatbot répond à votre client, il doit le dire.</dd>
+      </div>
+      <div class="definition">
+        <dt>Minime</dt>
+        <dd>Libre, mais bonnes pratiques recommandées. La majorité des usages bureautiques de l'IA tombent ici.</dd>
+      </div>
+    </dl>
+
+    <h3>Biais : la machine n'est pas neutre</h3>
+    <p>Un LLM apprend sur des données humaines, donc <strong>il reproduit les biais humains</strong>. Trois biais à surveiller :</p>
+    <ul>
+      <li><strong>Biais de représentation</strong> — sur-représentation de certains groupes (hommes, anglophones, occidentaux) dans les données d'entraînement.</li>
+      <li><strong>Biais cognitifs</strong> — l'IA tend à confirmer ce que vous semblez vouloir entendre (effet "yes-man").</li>
+      <li><strong>Biais d'autorité</strong> — vous tendez à croire l'IA parce qu'elle parle avec assurance. C'est faux.</li>
+    </ul>
+
+    <div class="callout good">
+      <span class="callout-label">Pratique HiPay</span>
+      <p>Quand vous demandez à l'IA un avis ou une recommandation, demandez-lui <strong>systématiquement</strong> un contre-argument : <em>"Maintenant donne-moi 3 raisons pour lesquelles cette analyse pourrait être fausse."</em> Vous tuez 80% des biais d'un coup.</p>
+    </div>
+
+    <h3>Souveraineté et sobriété</h3>
+    <p>Deux questions qui montent en 2026 :</p>
+    <ul>
+      <li><strong>Souveraineté</strong> — vos données partent-elles aux USA ? En Chine ? Pour HiPay, l'IT a validé un set d'outils avec résidence européenne des données. <em class="highlight">Restez dans ce périmètre.</em></li>
+      <li><strong>Sobriété numérique</strong> — une session LLM consomme davantage d'énergie qu'une navigation web standard. Les ordres de grandeur exacts varient selon les études et les modèles, mais la direction est claire : soyez précis dans vos prompts (méthode CODE), évitez les boucles infinies, ne re-générez pas 15 fois.<!-- SOURCE: aucun chiffre précis défendable — la stat "10x vs recherche Google" circule mais n'est pas fiable. Formulation qualitative uniquement. --></li>
+    </ul>
+
+    <div class="quiz" data-quiz="m2">
+      <div class="quiz-head">
+        <h3>Quiz · Sécurité & Éthique</h3>
+        <span class="quiz-counter">4 questions</span>
+      </div>
+      <div class="quiz-body"></div>
+      <div class="quiz-actions">
+        <span class="quiz-score">Score : <strong>—</strong></span>
+        <button class="btn btn-ghost quiz-restart">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 3 — MÉTHODE CODE ============ -->
+<section class="lesson" id="methode">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 04 · Le code de la route</div>
+    <h2>La méthode <em>C.O.D.E</em>.</h2>
+    <p class="lead">Parlez à l'IA comme à un stagiaire ultra-compétent mais qui ne connaît rien à votre entreprise. La différence entre un prompt qui fait pschitt et un prompt qui vous fait gagner 1h n'est pas dans l'outil. Elle est dans la formulation.</p>
+
+    <h3>Les 4 piliers du prompt qui marche</h3>
+
+    <div class="code-grid">
+      <div class="code-letter">
+        <div class="big">C</div>
+        <h6>Contexte</h6>
+        <p>Qui es-tu ? Dans quelle situation sommes-nous ?</p>
+        <span class="ex">"Tu es Account Manager chez HiPay, en charge de comptes retail FR..."</span>
+      </div>
+      <div class="code-letter">
+        <div class="big">O</div>
+        <h6>Objectif</h6>
+        <p>Quel est le verbe d'action exact ?</p>
+        <span class="ex">"Rédige / Analyse / Compare / Synthétise / Propose..."</span>
+      </div>
+      <div class="code-letter">
+        <div class="big">D</div>
+        <h6>Détails</h6>
+        <p>Quel ton, quelle cible, quelles contraintes ?</p>
+        <span class="ex">"Ton rassurant, < 150 mots, pas de jargon technique..."</span>
+      </div>
+      <div class="code-letter">
+        <div class="big">E</div>
+        <h6>Exemple / format</h6>
+        <p>Quel est le format du résultat attendu ?</p>
+        <span class="ex">"Format : intro (2 lignes) + 3 bullets + CTA final"</span>
+      </div>
+    </div>
+
+    <h3>Le crash test : l'effet "aha"</h3>
+    <p>Prenons un cas réel : annoncer 48h de retard sur une intégration technique à un client.</p>
+
+    <div class="compare">
+      <div class="compare-col before">
+        <h5>❌ Le prompt "Recherche Google"</h5>
+        <p style="color:var(--ink-soft);font-style:italic;font-family:var(--serif-it);font-size:15px">"Fais un mail pour dire au client que son intégration technique prend du retard."</p>
+        <p style="font-size:13px;margin-top:16px"><strong>Résultat :</strong> un texte plat, robotique, qui donne l'impression qu'on s'excuse d'exister. Le client le lit en diagonale, perd confiance, et vous appelle pour exiger un point.</p>
+      </div>
+      <div class="compare-col after">
+        <h5>✓ Le prompt C.O.D.E</h5>
+        <p style="color:var(--ink-soft);font-style:italic;font-family:var(--serif-it);font-size:15px">"<strong>(C)</strong> Tu es Lead Tech HiPay. <strong>(O)</strong> Rédige un email client. <strong>(D)</strong> Annonce 48h de retard à cause d'un blocage sur la validation sécu PCI-DSS, ton transparent et maîtrisé, pas de jargon. <strong>(E)</strong> Format : intro + 2 bullets sur les causes + CTA pour un call de cadrage."</p>
+        <p style="font-size:13px;margin-top:16px"><strong>Résultat :</strong> un mail prêt à copier-coller, qui renvoie une image d'expertise et de maîtrise. Le client comprend, accepte, et vous recontacte rassuré.</p>
+      </div>
+    </div>
+
+    <h3>Patterns avancés (à connaître après C.O.D.E)</h3>
+
+    <h4>1. Le "few-shot" : montrer plutôt que dire</h4>
+    <p>Au lieu d'expliquer le ton voulu, donnez-lui 2 exemples du style attendu :</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Pattern few-shot</span>
+"Voici 2 exemples du ton à reproduire :
+Exemple 1 : 'Hello [Prénom], rapide update sur ton intégration...'
+Exemple 2 : 'Salut [Prénom], on a un petit point bloquant côté sécu...'
+
+Sur la base de ce ton, rédige un mail pour annoncer..."
+    </div>
+
+    <h4>2. Le "chain of thought" : faire raisonner étape par étape</h4>
+    <p>Pour les analyses complexes, demandez à l'IA de <em>raisonner avant de conclure</em>. Ça réduit massivement les hallucinations.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Pattern chain of thought</span>
+"Analyse ce churn merchant. Procède étape par étape :
+1. Liste les 3 signaux faibles dans les data
+2. Pour chacun, propose 2 hypothèses d'explication
+3. Classe ces hypothèses par probabilité
+4. Conclus sur l'action prioritaire à mener."
+    </div>
+
+    <h4>3. Le "rôle inversé" : se faire challenger</h4>
+    <p>Le plus puissant. Demandez à l'IA de jouer le rôle de votre adversaire pour vous préparer.</p>
+    <div class="prompt-box">
+      <span class="prompt-label">Pattern adversaire</span>
+"Tu es un Directeur Achats e-commerce sceptique, pressé, qui cherche à baisser les prix. Je suis commercial HiPay et je viens te pitcher notre solution. Joue-moi 3 objections difficiles d'affilée. Après chacune, attends ma réponse, puis critique ma réponse avant la suivante."
+    </div>
+
+    <h3>Les 5 erreurs de prompt qui plombent les résultats</h3>
+    <ol>
+      <li><strong>Le prompt vague</strong> ("écris-moi un truc sur..."). L'IA produit du générique.</li>
+      <li><strong>Le prompt trop long sans structure.</strong> 800 mots de contexte mal organisés = l'IA se perd. Découpez en sections claires.</li>
+      <li><strong>Demander un format sans le décrire</strong> ("fais-moi un beau mail"). Donnez la structure exacte attendue.</li>
+      <li><strong>Pas de feedback loop.</strong> Une seule itération, vous prenez la première réponse. Toujours raffiner en 2-3 tours.</li>
+      <li><strong>Confondre prompt et tâche.</strong> Un bon prompt est une <em>mission</em>, pas une <em>question</em>.</li>
+    </ol>
+
+    <div class="callout good">
+      <span class="callout-label">Mantra à imprimer</span>
+      <p>Si l'IA vous donne une réponse moyenne, ce n'est <strong>jamais</strong> la faute de l'IA. C'est la faute du prompt. Reformulez avec C.O.D.E, ajoutez du contexte, et regardez la différence.</p>
+    </div>
+
+    <h3>Le "mode brouillon" : votre nouveau réflexe</h3>
+    <p>L'IA n'est pas un oracle. C'est un brouillon génial. La meilleure façon de l'utiliser :</p>
+    <ol>
+      <li><strong>Prompt initial</strong> avec C.O.D.E → première réponse</li>
+      <li><strong>Critique</strong> : "Le ton est trop formel, raccourcis le bullet 2, change l'intro pour quelque chose de plus direct"</li>
+      <li><strong>Itération</strong> : 2e version</li>
+      <li><strong>Validation humaine</strong> : vous relisez et finalisez</li>
+    </ol>
+    <p>Temps total : 4-6 minutes pour ce qui prenait 20-30 minutes. Qualité finale supérieure parce que vous avez itéré.</p>
+
+    <div class="quiz" data-quiz="m3">
+      <div class="quiz-head">
+        <h3>Quiz · Méthode CODE</h3>
+        <span class="quiz-counter">4 questions</span>
+      </div>
+      <div class="quiz-body"></div>
+      <div class="quiz-actions">
+        <span class="quiz-score">Score : <strong>—</strong></span>
+        <button class="btn btn-ghost quiz-restart">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 4 — MÉTIERS ============ -->
+<section class="lesson" id="metiers" style="background:var(--bg-soft)">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 05 · Parcours métiers</div>
+    <h2>Votre <em>quotidien</em>, augmenté.</h2>
+    <p class="lead">5 spécialisations. Pour chacune : ce que l'IA prend, ce qui devient votre nouvelle valeur, et 2 à 3 "Gems" — des assistants spécialisés que vous pouvez créer en 3 minutes sur Claude, ChatGPT ou Gemini.</p>
+
+    <div class="metiers-nav">
+      <button class="metier-tab active" data-metier="rh">RH & Talent</button>
+      <button class="metier-tab" data-metier="sales">Sales & AM</button>
+      <button class="metier-tab" data-metier="finance">Finance & Ops</button>
+      <button class="metier-tab" data-metier="manager">Managers</button>
+      <button class="metier-tab" data-metier="tech">Tech & Produit</button>
+    </div>
+
+    <!-- RH -->
+    <div class="metier-panel active" data-metier="rh">
+      <div class="metier-header">
+        <h3>RH & <em>Talent</em></h3>
+        <p class="lead">"Arrêtez de trier des CVs. Devenez les business partners qui construisent la culture."</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Ce que l'IA prend</h5>
+          <ul>
+            <li>Pré-screening de 100 CVs sur des critères objectifs (compétences, années d'expé)</li>
+            <li>Rédaction d'offres d'emploi génériques</li>
+            <li>Mails de refus, accusés de réception, relances candidats</li>
+            <li>Réponses aux FAQ internes répétitives (congés, RTT, formation)</li>
+            <li>Première trame de comptes-rendus d'entretien annuel</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Votre nouvelle valeur</h5>
+          <ul>
+            <li>Entretiens profonds pour valider le culture fit (irremplaçable)</li>
+            <li>Stratégie de marque employeur sur les canaux où sont vos talents</li>
+            <li>Coaching des managers sur la gestion de conflit</li>
+            <li>Plans de carrière personnalisés</li>
+            <li>Détection des signaux faibles d'engagement / désengagement</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3 Gems pour le pôle RH</h3>
+      <div class="gems">
+        <div class="gem">
+          <div class="gem-num">Gem 01</div>
+          <h4>L'Aimant à Talents</h4>
+          <div class="fn">Fonction · Fiche de poste → offre attractive</div>
+          <p class="why">Les fiches copiées-collées n'attirent plus personne en 2026. Cette offre doit raconter une histoire, pas lister des prérequis.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es Lead Recruteur chez HiPay (fintech B2B payment, scale-up FR). Je te donne un brief de poste. Tu dois rédiger une offre d'emploi en 4 parties :
+1. L'accroche — pourquoi ce job est unique (1 paragraphe punchy)
+2. Tes missions — verbes d'action, pas de jargon
+3. Le profil idéal — 4-5 critères concrets, soft + hard skills
+4. Ce qu'on t'offre — package + culture + perspectives
+
+Ton : dynamique, moderne, tutoiement. Pas de buzzwords creux. Maximum 350 mots."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 02</div>
+          <h4>Le Médiateur</h4>
+          <div class="fn">Fonction · Trames d'entretiens difficiles</div>
+          <p class="why">Annoncer un refus de promotion, gérer un conflit d'équipe, dire à quelqu'un que sa perf décroche. L'empathie demande de l'énergie ; l'IA donne la structure neutre.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un coach RH bienveillant, formé à la Communication Non Violente (CNV). Je vais te décrire une situation difficile (annonce, conflit, mauvaise nouvelle). Propose-moi un script d'entretien ou un mail en suivant strictement la méthode CNV :
+- Observation factuelle (sans jugement)
+- Sentiment exprimé
+- Besoin identifié
+- Demande claire et négociable
+
+Évite les formules toutes faites. Garde un ton humain, posé."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 03</div>
+          <h4>Le Synthétiseur d'Entretien</h4>
+          <div class="fn">Fonction · Verbatim → compte-rendu structuré</div>
+          <p class="why">Vous sortez d'un entretien d'1h, vous avez 30 min avant le suivant. L'IA structure les notes brutes en CR partageable au manager.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu reçois des notes brutes d'entretien (RH ou évaluation annuelle). Produis un compte-rendu structuré en 5 sections :
+1. Points forts observés (3-5 bullets)
+2. Axes de développement identifiés (3-5 bullets, formulation constructive)
+3. Aspirations exprimées par la personne
+4. Engagements pris pendant l'entretien (manager / RH / collaborateur)
+5. Risques ou alertes à surveiller (rétention, surcharge, etc.)
+
+Anonymise les noms. Ton factuel et neutre. Maximum 400 mots."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALES -->
+    <div class="metier-panel" data-metier="sales">
+      <div class="metier-header">
+        <h3>Sales & <em>Account Managers</em></h3>
+        <p class="lead">"L'IA prépare le terrain et vos munitions. C'est vous qui tirez et qui signez le deal."</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Ce que l'IA prend</h5>
+          <ul>
+            <li>Rédaction de 50 mails de prospection à froid</li>
+            <li>Saisie / mise à jour CRM après chaque call</li>
+            <li>Recherche d'infos sur un prospect avant un RDV</li>
+            <li>Préparation des supports QBR à partir des data</li>
+            <li>Première réponse à un appel d'offres / RFP standard</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Votre nouvelle valeur</h5>
+          <ul>
+            <li>Relations de confiance C-Level (les CFO ne signent pas avec une IA)</li>
+            <li>Lecture politique du compte (qui décide, qui bloque, qui influence)</li>
+            <li>Analyse des data de paiement client → propositions d'up-sell ciblées</li>
+            <li>Négo finale : levée d'objections, défense des marges, closing</li>
+            <li>Account planning stratégique sur 12-24 mois</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3 Gems pour Sales & AM</h3>
+      <div class="gems">
+        <div class="gem">
+          <div class="gem-num">Gem 01</div>
+          <h4>Le Sniper</h4>
+          <div class="fn">Fonction · Brise-glace ultra-personnalisé</div>
+          <p class="why">En finir avec le "Dear [Name]" qui finit en spam. La première phrase doit prouver que vous avez fait vos devoirs.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un Top Performer Sales B2B chez HiPay (payment fintech). Je te copie le profil LinkedIn ou le site corporate d'un prospect. Rédige un email de prospection de maximum 100 mots.
+
+Règle d'or absolue : la PREMIÈRE phrase doit parler de LUI / SON entreprise / SON actualité — jamais de HiPay. Trouve un angle non-évident (post LinkedIn récent, recrutement, levée de fonds, nouvelle implantation, étude de cas publique).
+
+Structure :
+1. Hook personnalisé (1 phrase)
+2. Pont vers le problème qu'on résout (1 phrase)
+3. Preuve sociale ou chiffre concret (1 phrase)
+4. CTA clair (proposition de créneau précis)
+
+Pas de superlatifs. Pas de 'leader de'. Pas de 'révolution'."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 02</div>
+          <h4>L'Avocat du Diable</h4>
+          <div class="fn">Fonction · Simulateur de négociation</div>
+          <p class="why">Être prêt avant le call C-Level. Tester ses arguments contre un sparring partner qui ne fait pas de cadeau.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu vas jouer le rôle d'un Directeur des Achats e-commerce d'une enseigne retail française, 800M€ de CA, sceptique vis-à-vis des nouveaux fournisseurs PSP. Tu es pressé, tu connais le marché, tu cherches à baisser les prix de 15-20%.
+
+Procédure :
+1. Tu lances une objection difficile, réaliste, basée sur des arguments réels (prix, dépendance, switching cost, sécurité, conformité PCI-DSS, performance, support).
+2. J'y réponds.
+3. Tu critiques ma réponse (qu'est-ce qui manque, ce qui sonne faux, ce qu'un vrai acheteur exploiterait).
+4. Tu enchaînes avec l'objection suivante, plus difficile.
+
+Garde ton rôle jusqu'à la fin. Sois exigeant. Mon job c'est de m'améliorer."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 03</div>
+          <h4>Le Préparateur de Call</h4>
+          <div class="fn">Fonction · Brief client en 5 min</div>
+          <p class="why">Avant chaque call AM, vous avez besoin d'un brief structuré. Données CRM brutes → angles d'attaque.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu vas recevoir des notes brutes sur un compte client (historique transactionnel anonymisé, dernières interactions, tickets support). Produis un brief de préparation de call en 5 sections :
+
+1. Météo du compte (vert / orange / rouge + 1 phrase d'explication)
+2. Top 3 sujets à aborder en priorité, par ordre d'importance business
+3. Risques de churn identifiés (signaux faibles)
+4. Opportunités d'up-sell ou cross-sell (avec angle d'accroche)
+5. Questions ouvertes à poser pour mieux comprendre leur roadmap
+
+Format : bullets, maximum 250 mots, vocabulaire business sans jargon technique."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINANCE -->
+    <div class="metier-panel" data-metier="finance">
+      <div class="metier-header">
+        <h3>Finance, Ops & <em>Compliance</em></h3>
+        <p class="lead">"Arrêtez de saisir des données. Devenez les conseillers stratégiques qui donnent du sens aux chiffres."</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Ce que l'IA prend</h5>
+          <ul>
+            <li>RechercheV / VLOOKUP pour réconcilier des transactions</li>
+            <li>Extraction d'infos depuis des documents juridiques, KYC, contrats</li>
+            <li>Compilation hebdo des chiffres pour le reporting</li>
+            <li>Synthèse de mémos réglementaires de 40 pages</li>
+            <li>Traduction de jargon juridique pour les équipes non-spécialistes</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Votre nouvelle valeur</h5>
+          <ul>
+            <li>Enquête sur des anomalies financières complexes (vrai travail Risk)</li>
+            <li>Conseil au board sur la stratégie de conformité</li>
+            <li>Interprétation business des data — recommandations actionnables</li>
+            <li>Anticipation des évolutions réglementaires européennes (DORA, MiCA, AI Act)</li>
+            <li>Dialogue exigeant avec auditeurs externes et régulateurs</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3 Gems pour Finance, Ops & Compliance</h3>
+      <div class="gems">
+        <div class="gem">
+          <div class="gem-num">Gem 01</div>
+          <h4>Le Traducteur de Jargon</h4>
+          <div class="fn">Fonction · Vulgarisateur juridique / technique</div>
+          <p class="why">Personne ne lit les mémos de 40 pages. Si vous voulez qu'une équipe Sales applique une nouvelle règle compliance, traduisez-la.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un expert vulgarisateur réglementaire et financier. Je te fournis un texte légal, un mémo compliance ou un extrait réglementaire. Explique-le pour qu'un commercial ou un opérationnel de 25 ans le comprenne instantanément.
+
+Structure stricte :
+1. L'idée principale en 1 phrase (essentiel : pas de jargon)
+2. Les 3 impacts opérationnels concrets sur leur quotidien
+3. Ce qu'ils doivent changer DÈS DEMAIN matin (actions concrètes)
+4. Une analogie simple pour faire passer l'idée (un objet, une situation de vie courante)
+
+Ton : pédagogique, direct, sans condescendance. Jamais plus de 300 mots."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 02</div>
+          <h4>L'Extracteur</h4>
+          <div class="fn">Fonction · Données non-structurées → CSV propre</div>
+          <p class="why">Avant d'automatiser, il faut structurer. Cet assistant transforme des emails, tickets ou PDF en données exploitables.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Je vais te coller du texte non-structuré (emails, tickets support, extraits de contrats). Ton rôle : extraire les informations clés au format CSV strict (séparateur virgule, première ligne = en-têtes).
+
+Colonnes à extraire (à adapter selon le contexte) :
+- Nom de l'entreprise / merchant
+- Motif de la demande / nature du problème
+- Niveau d'urgence (1=faible, 2=moyen, 3=critique)
+- Date mentionnée (format YYYY-MM-DD)
+- Montant éventuel
+- Statut / état (ouvert, traité, en attente)
+
+Règles :
+- Aucune phrase d'introduction ou de politesse
+- Si une info est absente : écris 'N/A'
+- Anonymise systématiquement les noms de personnes (remplace par 'Personne 1', 'Personne 2'...)"
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 03</div>
+          <h4>L'Auditeur Critique</h4>
+          <div class="fn">Fonction · Stress-test de raisonnement financier</div>
+          <p class="why">Avant de présenter un dossier au board ou à un auditeur, le passer à l'épreuve de l'avocat du diable.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un Senior Auditor externe expérimenté, exigeant, qui audite régulièrement des établissements de paiement et des fintechs supervisés par l'ACPR. Tu n'es pas hostile mais tu es rigoureux et tu ne laisses rien passer.
+
+Je vais te présenter une analyse financière, un dossier de conformité ou une argumentation. Ton rôle :
+1. Identifier les 3 points faibles méthodologiques (où le raisonnement est fragile, où les hypothèses sont implicites)
+2. Pointer les données manquantes critiques qu'un régulateur exigerait
+3. Anticiper les 3 questions difficiles qu'un membre du board posera
+4. Proposer comment renforcer le dossier avant présentation
+
+Ton : professionnel, précis, factuel. Pas de complaisance."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGER -->
+    <div class="metier-panel" data-metier="manager">
+      <div class="metier-header">
+        <h3>Le <em>grand shift</em> manager</h3>
+        <p class="lead">"Si l'exécution prend 2x moins de temps, la réflexion doit être doublée. L'IA élève le niveau d'exigence."</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Ce que l'IA prend</h5>
+          <ul>
+            <li>Compilation des KPIs équipe pour la réunion du lundi</li>
+            <li>Répartition des petites tâches répétitives</li>
+            <li>Première trame de 10 évaluations annuelles à partir des notes</li>
+            <li>Comptes-rendus de réunion et synthèse d'action items</li>
+            <li>Reformulation de mails internes pour adapter le ton</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Votre nouvelle valeur</h5>
+          <ul>
+            <li>1-to-1 réels pour débloquer les vrais problèmes (humains, politiques, structurels)</li>
+            <li>Vision à 6-18 mois et alignement stratégique de l'équipe</li>
+            <li>Vraies conversations sur plans de carrière, mobilité, montée en compétences</li>
+            <li>Coaching individualisé (vous devenez le multiplicateur de votre équipe)</li>
+            <li>Décisions difficiles (réorganisations, recrutements clés, départs)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Le playbook du manager IA-augmenté</h3>
+      <ol>
+        <li><strong>Lead by example.</strong> Soyez le premier à l'utiliser visiblement. Dites en réunion : "J'ai fait tourner le CR par notre Gem, voici les 3 actions principales." Ça normalise.</li>
+        <li><strong>Fixez le cadre.</strong> Rappelez la règle d'anonymisation au quotidien. Vous êtes les gardiens de la donnée — pas l'IT.</li>
+        <li><strong>Valorisez le "comment".</strong> En point individuel, demandez systématiquement : "Comment as-tu utilisé l'IA sur ce dossier ?" Vous valorisez l'usage intelligent, pas la quantité.</li>
+      </ol>
+
+      <h3>3 Gems pour managers</h3>
+      <div class="gems">
+        <div class="gem">
+          <div class="gem-num">Gem 01</div>
+          <h4>Le Traducteur d'OKRs</h4>
+          <div class="fn">Fonction · Objectif vague → Key Results mesurables</div>
+          <p class="why">La tâche que tous les managers détestent en début de trimestre : transformer "Augmenter le CA" en sous-objectifs concrets.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un coach en management certifié méthode OKR (Objectives and Key Results, version Google / John Doerr). Je te donne l'objectif annuel de mon département. Tu dois proposer :
+
+- 3 Objectifs trimestriels découpés (ambitieux mais réalistes)
+- Pour chaque Objectif, 3 Key Results
+- Chaque Key Result DOIT obligatoirement inclure un chiffre cible et une date butoir
+
+Règles strictes :
+- Pas de Key Results 'vanity' (genre 'augmenter la satisfaction')
+- Toujours mesurable et binaire (atteint / non atteint)
+- 70% d'atteinte = bon score (les OKRs doivent être stretch)
+
+Pose-moi les questions nécessaires si l'objectif initial est trop vague."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 02</div>
+          <h4>Le Préparateur de 1-to-1</h4>
+          <div class="fn">Fonction · Notes brutes → angles de discussion</div>
+          <p class="why">Vous avez 6 1-to-1 dans la semaine. Pas le temps de bien les préparer un par un. L'IA structure les angles à creuser.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu m'aides à préparer un 1-to-1 manager / collaborateur. Je vais te donner :
+- Le contexte (poste, ancienneté, sujets récents)
+- Mes observations des dernières semaines
+- Ce que je sais de ses aspirations
+
+Tu produis :
+1. 3 questions ouvertes à poser en début (pour lui laisser de l'espace)
+2. 2 sujets que JE dois aborder activement (feedback, alerte, décision)
+3. 1 sujet sensible à manier avec délicatesse (si pertinent)
+4. Une question de carrière / développement à creuser
+5. Un risque à surveiller (engagement, surcharge, conflit naissant)
+
+Format : punchy, actionnable. Pas de remplissage."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 03</div>
+          <h4>Le Mirroir Stratégique</h4>
+          <div class="fn">Fonction · Sparring partner pour décisions difficiles</div>
+          <p class="why">Avant un arbitrage important (recrutement, réorganisation, priorisation), se faire challenger.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un coach exécutif senior, ex-COO d'une scale-up de 500 personnes. Tu connais les pièges classiques du management. Tu n'es pas là pour valider mes intuitions — tu es là pour les stress-tester.
+
+Je te présente une décision difficile que je dois prendre. Tu réagis en 4 temps :
+1. Reformulation : qu'est-ce que je suis VRAIMENT en train de me demander (le sujet sous le sujet)
+2. Trois questions que je n'ai pas posées et qui changeraient la décision
+3. Les 2 biais cognitifs qui pourraient être en train de me piéger
+4. Une option C que je n'ai pas envisagée
+
+Sois direct. Pas de langue de bois. Si ma décision est mauvaise, dis-le."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH -->
+    <div class="metier-panel" data-metier="tech">
+      <div class="metier-header">
+        <h3>Tech & <em>Produit</em></h3>
+        <p class="lead">"Du codeur au validateur. Du PM faiseur au PM architecte. Le bond de productivité est réel — la responsabilité aussi."</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Ce que l'IA prend</h5>
+          <ul>
+            <li>Génération de code boilerplate (CRUD, tests unitaires, fixtures)</li>
+            <li>Documentation technique de fonctions / endpoints</li>
+            <li>Rédaction initiale de User Stories et critères d'acceptation</li>
+            <li>Refactoring de code legacy, traduction entre langages</li>
+            <li>Synthèse de logs et premier diagnostic de bugs</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Votre nouvelle valeur</h5>
+          <ul>
+            <li>Architecture système et décisions de stack</li>
+            <li>Code review critique (l'IA produit du code qui marche, pas forcément qui scale)</li>
+            <li>Discovery produit profonde (PM : passer plus de temps avec les users)</li>
+            <li>Trade-offs business / technique / time-to-market</li>
+            <li>Sécurité, performance, observabilité — la "qualité non-fonctionnelle"</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3 Gems pour Tech & Produit</h3>
+      <div class="gems">
+        <div class="gem">
+          <div class="gem-num">Gem 01</div>
+          <h4>Le Code Reviewer Sceptique</h4>
+          <div class="fn">Fonction · PR review augmentée</div>
+          <p class="why">Avant de merger, faire passer le code par un reviewer qui ne fait pas confiance. Surtout pour le code généré par IA.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un Staff Engineer senior qui review une PR. Tu es bienveillant mais rigoureux. Tu ne lâches RIEN sur :
+- Sécurité (injection, secrets en dur, validation des inputs)
+- Edge cases (null, vide, valeurs extrêmes, timeouts, race conditions)
+- Performance (complexité algorithmique, N+1 queries, allocations inutiles)
+- Maintenabilité (nommage, séparation des responsabilités, tests)
+- Observabilité (logs structurés, métriques, traces)
+
+Pour chaque problème identifié :
+1. Sévérité (BLOCKER / MAJOR / MINOR / NIT)
+2. Localisation précise dans le code
+3. Pourquoi c'est un problème (avec un exemple concret de cas où ça casse)
+4. Suggestion de correction (snippet de code)
+
+Ne te contente JAMAIS de dire 'looks good'. Trouve au moins 3 améliorations."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 02</div>
+          <h4>Le Spec Writer</h4>
+          <div class="fn">Fonction · Idée produit → User Story complète</div>
+          <p class="why">Une bonne user story = la moitié du dev bien fait. L'IA ne remplace pas la discovery, mais elle structure la spec.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un Senior Product Manager dans une fintech B2B. Je te donne une idée de feature (parfois vague). Tu produis une spec complète prête à être prise en charge par une feature team.
+
+Format strict :
+1. **User story** au format 'En tant que [persona], je veux [action] afin de [bénéfice]'
+2. **Contexte business** (2-3 phrases : pourquoi maintenant)
+3. **Critères d'acceptation** au format Given / When / Then (5 à 8 cas)
+4. **Edge cases & cas d'erreur** à traiter explicitement
+5. **Hors-scope** (ce qu'on ne fait PAS dans cette story — crucial)
+6. **Dépendances** identifiées (équipes, systèmes, données)
+7. **3 questions ouvertes** que je dois aller valider avec qui (UX, Tech, Compliance, etc.)
+
+Sois précis. Pas de remplissage. Si la demande est trop vague, pose 3 questions de clarification AVANT de produire la spec."
+          </div>
+        </div>
+
+        <div class="gem">
+          <div class="gem-num">Gem 03</div>
+          <h4>Le Debugger Méthodique</h4>
+          <div class="fn">Fonction · Bug confus → diagnostic structuré</div>
+          <p class="why">Devant un bug bizarre, on a tendance à partir dans tous les sens. L'IA force une méthode rigoureuse.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt système</span>
+            <button class="copy-btn">Copier</button>
+"Tu es un Senior SRE / Debugger expert. Je vais te décrire un bug ou te donner des logs. Tu vas suivre méthodiquement la procédure suivante AVANT de proposer une fix :
+
+1. **Reformulation** du symptôme observé en 1 phrase factuelle
+2. **Reproductibilité** : quelles conditions semblent nécessaires pour déclencher ?
+3. **Hypothèses** : 3 causes possibles, classées de la plus probable à la moins probable
+4. **Tests de discrimination** : pour chaque hypothèse, quel test rapide permet de la confirmer ou l'éliminer ?
+5. **Premier diagnostic** : ta meilleure estimation (avec niveau de confiance %)
+6. **Recommandation immédiate** : action prioritaire (mitigation court terme + investigation à mener)
+
+JAMAIS de fix proposé sans avoir d'abord identifié la cause racine. Si le contexte manque, demande PRÉCISÉMENT ce qu'il te faut comme info supplémentaire."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz" data-quiz="m4">
+      <div class="quiz-head">
+        <h3>Quiz · Parcours métiers</h3>
+        <span class="quiz-counter">4 questions</span>
+      </div>
+      <div class="quiz-body"></div>
+      <div class="quiz-actions">
+        <span class="quiz-score">Score : <strong>—</strong></span>
+        <button class="btn btn-ghost quiz-restart">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 5 — ALLER PLUS LOIN ============ -->
+<section class="lesson" id="aller-loin">
+  <div class="lesson-wrap">
+    <div class="lesson-meta">Module 06 · Aller plus loin</div>
+    <h2>Du Gem à <em>l'agent autonome</em>.</h2>
+    <p class="lead">Vous maîtrisez les bases. Voici comment industrialiser : automatisation, agents, et la communauté qui pérennise tout ça en interne.</p>
+
+    <h3>Le pont vers l'automatisation</h3>
+    <p>Un Gem qui écrit un mail, c'est bien. Un Gem qui écrit le mail <em>et</em> l'envoie tous les lundis à 9h pendant que vous prenez votre café, c'est mieux. C'est ce qu'on appelle l'<strong>automatisation IA + workflow</strong>.</p>
+
+    <div class="callout">
+      <span class="callout-label">Le pattern</span>
+      <p><strong>Cerveau (IA) + Muscle (workflow tool).</strong> L'IA décide / rédige / classe. L'outil d'automatisation (n8n, Make, Zapier) exécute en boucle, branche aux systèmes existants (Slack, Gmail, HubSpot, JIRA), et tourne sans vous.</p>
+    </div>
+
+    <h3>Les agents autonomes : la frontière 2026</h3>
+    <p>Un agent IA ne se contente pas de répondre. Il :</p>
+    <ul>
+      <li><strong>Planifie</strong> — découpe un objectif complexe en sous-tâches.</li>
+      <li><strong>Utilise des outils</strong> — recherche web, calculatrice, exécution de code, appel d'API.</li>
+      <li><strong>Itère</strong> — corrige ses erreurs, ajuste sa stratégie.</li>
+      <li><strong>Rend compte</strong> — résume ce qu'il a fait, ce qui a marché, ce qui n'a pas marché.</li>
+    </ul>
+    <p>Exemple concret chez HiPay : un agent qui, sur demande "Prépare-moi le QBR du client X", va chercher les données dans le CRM, génère le PowerPoint, le poste dans Slack, et vous demande validation avant envoi. <em class="highlight">Ce qui prenait 1h prend 4 minutes</em>.</p>
+
+    <h3>Construire ses propres Gems</h3>
+    <p>Sur Claude (Projects), ChatGPT (Custom GPTs) ou Gemini (Gems), vous pouvez créer un assistant spécialisé en 3 étapes :</p>
+    <ol>
+      <li><strong>Nommer</strong> et décrire la fonction (ce qu'il fait, ce qu'il ne fait pas)</li>
+      <li><strong>Coller le prompt système</strong> (les Gems de ce site sont prêts à copier)</li>
+      <li><strong>Ajouter des fichiers de référence</strong> (templates, exemples HiPay, guidelines de marque)</li>
+    </ol>
+    <p>Bonus : vous pouvez le partager avec votre équipe. Un Gem bien fait, c'est 10 personnes qui gagnent 2h/semaine.</p>
+
+    <h3>La communauté AI Champions chez HiPay</h3>
+    <p>Pour que ce programme prenne, il faut des relais. On les appelle les <strong>AI Champions</strong> : 10% de l'effectif, un par équipe, qui :</p>
+    <ul>
+      <li>Animent un rituel hebdomadaire (15-30 min) : Q&A, partage de Gem du mois, retour d'expérience</li>
+      <li>Recensent les cas d'usage qui marchent et ceux qui flopent</li>
+      <li>Remontent les blocages (techniques, formation, sécurité) à la cellule IA</li>
+      <li>Évaluent les nouveaux outils du marché</li>
+    </ul>
+    <p>Si vous voulez être Champion ou en parler à votre manager, contactez la cellule IA sur le canal Slack <code>#ai-taskforce</code>. Pour les questions du quotidien : <code>#ai-support</code>. Pour suivre l'actualité IA : <code>#ai-news</code>.</p>
+
+    <h3>Ce qui vient après</h3>
+    <ul>
+      <li><strong>Modèles spécialisés HiPay</strong> — fine-tunés sur nos données internes (en chantier)</li>
+      <li><strong>RAG sur la base de connaissances interne</strong> — l'IA répond avec nos vrais docs, pas avec ses approximations</li>
+      <li><strong>Agents intégrés dans nos produits</strong> — pour les merchants, pour le support, pour le risque</li>
+      <li><strong>Programme de certification interne</strong> — pour reconnaître les niveaux de maîtrise</li>
+    </ul>
+
+    <div class="mission-card">
+      <h3>Mission pour <em>demain</em></h3>
+      <p>Choisissez UN Gem dans votre parcours métier. Créez-le sur Claude / ChatGPT / Gemini. Utilisez-le sur une tâche que vous deviez faire de toute façon cette semaine. Mesurez le temps gagné.</p>
+      <a href="#bibliotheque" class="btn btn-primary">Aller à la bibliothèque <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIBLIOTHEQUE ============ -->
+<section class="block" id="bibliotheque" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">06 — Bibliothèque de prompts</span>
+        <h2 class="section-title">Tous les <em>Gems</em>, classés par métier.</h2>
+      </div>
+      <p class="section-intro">15 prompts système prêts à copier. Filtrez par catégorie, copiez, collez dans votre outil IA préféré. Ajustez à votre contexte.</p>
+    </div>
+
+    <div class="lib-filter">
+      <button class="lib-chip active" data-filter="all">Tous</button>
+      <button class="lib-chip" data-filter="rh">RH & Talent</button>
+      <button class="lib-chip" data-filter="sales">Sales & AM</button>
+      <button class="lib-chip" data-filter="finance">Finance & Ops</button>
+      <button class="lib-chip" data-filter="manager">Managers</button>
+      <button class="lib-chip" data-filter="tech">Tech & Produit</button>
+    </div>
+
+    <div class="lib-grid" id="lib-grid">
+      <!-- Generated dynamically -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRESSION ============ -->
+<section class="block progress-section" id="progression">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">07 — Votre progression</span>
+        <h2 class="section-title">Où en êtes-<em>vous</em> ?</h2>
+      </div>
+      <p class="section-intro">Votre avancée est sauvegardée localement dans votre navigateur. Aucun compte, aucun tracking. Vous pouvez réinitialiser à tout moment.</p>
+    </div>
+
+    <div class="progress-cards">
+      <div class="pcard">
+        <div class="pcard-num" id="stat-modules">0<small>/5</small></div>
+        <div class="pcard-label">Modules complétés</div>
+        <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-modules" style="width:0%"></div></div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num" id="stat-quiz">0<small>/17</small></div>
+        <div class="pcard-label">Bonnes réponses quiz</div>
+        <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-quiz" style="width:0%"></div></div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num" id="stat-prompts">0<small>/15</small></div>
+        <div class="pcard-label">Prompts copiés</div>
+        <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-prompts" style="width:0%"></div></div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-num" id="stat-check">0<small>/8</small></div>
+        <div class="pcard-label">Missions actives</div>
+        <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-check" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:20px;letter-spacing:-0.02em">Checklist des 8 missions concrètes</h3>
+    <div class="checklist" id="checklist">
+      <div class="check-row" data-task="t1">
+        <div class="check-box"></div>
+        <span class="check-label">Lire le module Fondamentaux et passer le quiz</span>
+        <span class="check-meta">~45 min</span>
+      </div>
+      <div class="check-row" data-task="t2">
+        <div class="check-box"></div>
+        <span class="check-label">Faire le quiz du Permis de Conduire avec 100% de bonnes réponses</span>
+        <span class="check-meta">~15 min</span>
+      </div>
+      <div class="check-row" data-task="t3">
+        <div class="check-box"></div>
+        <span class="check-label">Maîtriser la méthode CODE et tester un prompt avant/après</span>
+        <span class="check-meta">~30 min</span>
+      </div>
+      <div class="check-row" data-task="t4">
+        <div class="check-box"></div>
+        <span class="check-label">Lire le parcours métier qui correspond à votre poste</span>
+        <span class="check-meta">~20 min</span>
+      </div>
+      <div class="check-row" data-task="t5">
+        <div class="check-box"></div>
+        <span class="check-label">Créer votre 1er Gem (Claude / ChatGPT / Gemini)</span>
+        <span class="check-meta">~10 min</span>
+      </div>
+      <div class="check-row" data-task="t6">
+        <div class="check-box"></div>
+        <span class="check-label">Utiliser le Gem sur une vraie tâche pro cette semaine</span>
+        <span class="check-meta">~30 min</span>
+      </div>
+      <div class="check-row" data-task="t7">
+        <div class="check-box"></div>
+        <span class="check-label">Partager 1 prompt qui marche avec un·e collègue</span>
+        <span class="check-meta">~5 min</span>
+      </div>
+      <div class="check-row" data-task="t8">
+        <div class="check-box"></div>
+        <span class="check-label">Rejoindre le canal #ai-champions ou proposer votre 1er retour d'XP</span>
+        <span class="check-meta">~5 min</span>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:flex;justify-content:flex-end;gap:12px">
+      <button class="btn btn-ghost" id="reset-progress">Réinitialiser ma progression</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        Formation IA <small>HiPay</small>
+      </div>
+      <p>Programme interne d'acculturation à l'IA générative. Construit par et pour HiPay. Mis à jour en continu par la cellule IA et la communauté AI Champions.</p>
+    </div>
+    <div class="footer-col">
+      <h6>Navigation</h6>
+      <a href="#why">Pourquoi ce programme</a>
+      <a href="#fondamentaux">Fondamentaux</a>
+      <a href="#permis">Sécurité</a>
+      <a href="#methode">Méthode CODE</a>
+      <a href="#metiers">Parcours métiers</a>
+    </div>
+    <div class="footer-col">
+      <h6>Ressources</h6>
+      <a href="#bibliotheque">Bibliothèque de prompts</a>
+      <a href="#progression">Ma progression</a>
+      <a href="#aller-loin">Aller plus loin</a>
+      <a href="#" onclick="alert('Contactez la cellule IA via Slack #ai-taskforce pour devenir AI Champion')">Devenir AI Champion</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© HiPay · Formation interne · v1.0</span>
+    <span>Construit en interne · Pas de tracking · Pas de cookies</span>
+  </div>
+</footer>
+
+<script>
+// ============================================
+// DATA — Quizzes
+// ============================================
+const QUIZZES = {
+  m_outils: [
+    {
+      q: "200 pages de contrats à analyser pour repérer des clauses non-standard. Quel outil HiPay choisir en priorité ?",
+      opts: [
+        "Gemini — c'est l'outil par défaut accessible à tous",
+        "Claude.ai PRO — fenêtre de contexte étendue, reconnu pour l'analyse structurée de documents longs",
+        "n8n — pour automatiser la lecture des contrats",
+        "DUST — pour interroger les documents internes"
+      ],
+      correct: 1,
+      explain: "Claude.ai PRO est recommandé pour l'analyse de documents volumineux et structurés. Gemini reste le réflexe quotidien, mais pour 200 pages de contrats à analyser en profondeur, Claude.ai PRO est l'outil adapté. DUST est utile pour des documents HiPay déjà indexés dans votre base interne — pas pour analyser un nouveau document entrant."
+    },
+    {
+      q: "Quelle est la différence essentielle entre DUST et Gemini pour répondre à une question sur une procédure interne HiPay ?",
+      opts: [
+        "DUST est plus rapide",
+        "DUST répond depuis vos vrais documents internes et peut citer ses sources — Gemini répond depuis sa mémoire générique",
+        "DUST ne coûte rien",
+        "Il n'y a aucune différence importante"
+      ],
+      correct: 1,
+      explain: "C'est la distinction fondamentale du RAG. DUST va chercher dans vos vrais documents internes HiPay et peut citer la source exacte. Gemini répond depuis sa mémoire d'entraînement générique — il peut très bien halluciner une procédure interne qu'il ne connaît pas."
+    },
+    {
+      q: "L'équipe Ops veut recevoir chaque lundi un résumé IA des tickets support critiques de la semaine. Quel outil est le mieux positionné ?",
+      opts: [
+        "Gemini — accessible à tous, parfait pour la rédaction",
+        "Claude.ai PRO — pour la qualité du résumé",
+        "n8n — pour orchestrer et automatiser ce workflow récurrent",
+        "DUST — pour interroger l'historique des tickets"
+      ],
+      correct: 2,
+      explain: "n8n est l'orchestrateur : il déclenche la tâche chaque lundi, récupère les tickets, appelle un LLM (Gemini ou Claude) pour le résumé, et l'envoie dans Slack — sans intervention humaine. Gemini ou Claude.ai PRO seuls ne peuvent pas automatiser un workflow récurrent."
+    },
+    {
+      q: "Pourquoi les outils HiPay validés (Gemini interne, Claude.ai PRO) sont-ils différents des versions grand public gratuites pour un usage professionnel ?",
+      opts: [
+        "Ils ont une meilleure interface utilisateur",
+        "Les fournisseurs s'engagent contractuellement à ne pas entraîner leurs modèles sur vos données",
+        "Ils sont plus rapides à répondre",
+        "Il n'y a pas de différence en termes de confidentialité"
+      ],
+      correct: 1,
+      explain: "La différence critique est la politique de traitement des données. Dans le cadre Enterprise/business (outils validés HiPay), les fournisseurs s'engagent à ne pas utiliser vos conversations pour entraîner leurs modèles. Sur les versions grand public gratuites, cette garantie n'existe pas par défaut — c'est pourquoi vous ne devez utiliser que les outils validés par l'IT pour vos usages professionnels."
+    }
+  ],
+  m1: [
+    {
+      q: "Qu'est-ce qu'une hallucination dans un LLM ?",
+      opts: [
+        "Un bug technique qui plante l'IA",
+        "Une réponse fausse présentée avec assurance",
+        "Une fonctionnalité expérimentale",
+        "Une attaque de sécurité"
+      ],
+      correct: 1,
+      explain: "Une hallucination est une réponse inventée mais présentée avec aplomb par le LLM. C'est statistique, pas un bug — le modèle prédit la suite la plus probable même quand il ne sait pas."
+    },
+    {
+      q: "Un token dans un LLM, c'est :",
+      opts: [
+        "Un mot complet",
+        "Un caractère",
+        "Un fragment de mot (syllabe ou morceau)",
+        "Une phrase entière"
+      ],
+      correct: 2,
+      explain: "Un token est généralement un fragment de mot. 'Anthropic' = 2 tokens. La fenêtre de contexte d'un modèle se compte en tokens, pas en mots."
+    },
+    {
+      q: "Quelle est la différence entre un Assistant et un Agent ?",
+      opts: [
+        "Aucune, c'est synonyme",
+        "L'Assistant est gratuit, l'Agent est payant",
+        "L'Assistant répond, l'Agent agit (utilise des outils, exécute)",
+        "L'Agent est plus rapide"
+      ],
+      correct: 2,
+      explain: "Un Assistant est réactif : vous demandez, il répond. Un Agent est autonome : il planifie, utilise des outils (web, code, API), corrige ses erreurs, rend compte."
+    },
+    {
+      q: "Quel acteur n'est PAS un 'Pure Player' de modèles IA ?",
+      opts: [
+        "Anthropic",
+        "OpenAI",
+        "AWS",
+        "Mistral"
+      ],
+      correct: 2,
+      explain: "AWS est un Hyperscaler : il héberge des modèles (via Bedrock) mais n'est pas le créateur du modèle de base. Anthropic, OpenAI et Mistral sont des Pure Players."
+    },
+    {
+      q: "Pourquoi un LLM peut donner 2 réponses différentes à la même question ?",
+      opts: [
+        "Il a oublié la première",
+        "À cause du paramètre 'température' qui introduit du hasard",
+        "Il se trompe parfois",
+        "Ça n'arrive jamais"
+      ],
+      correct: 1,
+      explain: "Les LLM sont probabilistes. Le paramètre 'température' contrôle le degré d'aléatoire dans le choix du mot suivant. Température 0 = déterministe, température 1+ = créatif et variable."
+    }
+  ],
+  m2: [
+    {
+      q: "Lequel de ces éléments peut être copié dans un prompt sans risque ?",
+      opts: [
+        "Le mot de passe d'un compte test",
+        "L'IBAN d'un merchant",
+        "Une description anonymisée d'un cas business",
+        "Le CA exact d'un client par son nom"
+      ],
+      correct: 2,
+      explain: "Anonymiser systématiquement. Tout ce qui permet d'identifier une personne ou de causer un préjudice si fuité doit être remplacé par des marqueurs génériques."
+    },
+    {
+      q: "L'AI Act européen classe les usages de l'IA en :",
+      opts: [
+        "2 niveaux (autorisé / interdit)",
+        "4 niveaux de risque (inacceptable / élevé / limité / minime)",
+        "10 catégories sectorielles",
+        "3 zones géographiques"
+      ],
+      correct: 1,
+      explain: "L'AI Act adopte une approche par niveau de risque, avec 4 catégories. La plupart des usages bureautiques tombent en 'risque minime', les usages RH ou scoring crédit en 'risque élevé'."
+    },
+    {
+      q: "Comment réduire au mieux les biais d'une réponse IA ?",
+      opts: [
+        "Lui demander d'être objective",
+        "Toujours utiliser GPT plutôt que Claude",
+        "Lui demander systématiquement le contre-argument",
+        "Augmenter la température"
+      ],
+      correct: 2,
+      explain: "Demander à l'IA de produire un contre-argument tue 80% des biais d'un coup. C'est le réflexe le plus puissant : 'Donne-moi 3 raisons pour lesquelles cette analyse pourrait être fausse.'"
+    },
+    {
+      q: "Le 'test du journaliste' consiste à :",
+      opts: [
+        "Vérifier que l'IA cite ses sources",
+        "Se demander si le prompt ferait scandale en cas de fuite",
+        "Demander un avis à un journaliste tech",
+        "Tester l'IA sur des questions d'actualité"
+      ],
+      correct: 1,
+      explain: "Avant d'envoyer quoi que ce soit à une IA : 'Si un journaliste découvrait ce prompt demain dans une fuite, est-ce que ça ferait la une ?' Si oui, anonymisez."
+    }
+  ],
+  m3: [
+    {
+      q: "Que signifie le 'C' dans la méthode CODE ?",
+      opts: [
+        "Code",
+        "Contexte",
+        "Concis",
+        "Critère"
+      ],
+      correct: 1,
+      explain: "C = Contexte. Qui es-tu (le rôle), dans quelle situation. C'est ce qui transforme un stagiaire générique en stagiaire briefé sur votre métier."
+    },
+    {
+      q: "Quel pattern est le plus efficace pour faire challenger ses idées ?",
+      opts: [
+        "Le few-shot prompting",
+        "Le chain of thought",
+        "Le rôle inversé / avocat du diable",
+        "Le prompt court"
+      ],
+      correct: 2,
+      explain: "Le rôle inversé est redoutable : on fait jouer à l'IA le rôle de l'adversaire ou du sceptique. C'est l'un des usages où l'IA brille le plus."
+    },
+    {
+      q: "Si l'IA vous donne une réponse moyenne, c'est probablement :",
+      opts: [
+        "La faute du modèle, changez d'outil",
+        "La faute du prompt, reformulez avec CODE",
+        "Un problème de température",
+        "Un quota dépassé"
+      ],
+      correct: 1,
+      explain: "Mantra de cette formation : si la réponse est moyenne, c'est presque toujours la faute du prompt. Reformulez avec CODE, ajoutez du contexte, et regardez la différence."
+    },
+    {
+      q: "Le 'mode brouillon' consiste à :",
+      opts: [
+        "Prendre la première réponse de l'IA telle quelle",
+        "Itérer en 2-3 tours puis valider humainement",
+        "Demander 5 versions et choisir la meilleure",
+        "Mélanger plusieurs IA"
+      ],
+      correct: 1,
+      explain: "Mode brouillon = prompt initial + critique + itération + validation humaine. 4-6 min pour ce qui en prenait 20-30, avec une qualité finale supérieure parce qu'on a itéré."
+    }
+  ],
+  m4: [
+    {
+      q: "Pour un Sales, quelle tâche reste irremplaçable par l'IA ?",
+      opts: [
+        "Rédiger des mails de prospection",
+        "Saisir les notes dans le CRM",
+        "Construire une relation de confiance C-Level",
+        "Préparer un brief de compte"
+      ],
+      correct: 2,
+      explain: "Aucun CFO ne signe un contrat à 6 chiffres avec une IA. La confiance, la lecture politique, le closing — c'est là que vit votre valeur de Sales en 2026."
+    },
+    {
+      q: "Pour un Manager IA-augmenté, le principal piège est :",
+      opts: [
+        "Utiliser trop d'outils différents",
+        "Garder le temps gagné pour soi au lieu de l'investir dans son équipe",
+        "Refuser l'IA totalement",
+        "Trop déléguer à l'IA"
+      ],
+      correct: 1,
+      explain: "Si l'IA vous fait gagner 1h/jour mais que vous ne réinvestissez pas ce temps dans des 1-to-1 vrais, du coaching, de la vision — vous devenez juste un manager paresseux. Le shift, c'est de re-investir dans l'humain."
+    },
+    {
+      q: "Quel est l'usage le plus dangereux de l'IA en Finance/Compliance ?",
+      opts: [
+        "Synthétiser un mémo réglementaire",
+        "Vulgariser du jargon pour les équipes",
+        "Présenter au régulateur un raisonnement non vérifié",
+        "Extraire des données d'un PDF"
+      ],
+      correct: 2,
+      explain: "L'IA hallucine. Tout ce qui part vers l'ACPR, un auditeur externe ou un régulateur DOIT être vérifié ligne par ligne. L'IA est un brouillon, jamais un livrable final."
+    },
+    {
+      q: "Pour un dev, l'usage MAL placé de l'IA serait :",
+      opts: [
+        "Générer du code boilerplate",
+        "Faire écrire la documentation",
+        "Merger du code sans review humaine critique",
+        "Refactorer du legacy"
+      ],
+      correct: 2,
+      explain: "L'IA produit du code qui MARCHE, pas forcément qui SCALE, qui est SÉCURISÉ, ou qui suit les conventions de votre codebase. La code review critique reste indispensable, surtout sur le code généré par IA."
+    }
+  ]
+};
+
+// ============================================
+// DATA — Prompt library
+// ============================================
+const LIB = [
+  { cat: 'rh', title: "L'Aimant à Talents", desc: "Fiche de poste brute → offre d'emploi attractive", prompt: "Tu es Lead Recruteur chez HiPay (fintech B2B payment, scale-up FR). Je te donne un brief de poste. Tu dois rédiger une offre d'emploi en 4 parties : 1. L'accroche — pourquoi ce job est unique ; 2. Tes missions — verbes d'action, pas de jargon ; 3. Le profil idéal — 4-5 critères concrets, soft + hard skills ; 4. Ce qu'on t'offre — package + culture + perspectives. Ton dynamique, moderne, tutoiement. Pas de buzzwords creux. Maximum 350 mots." },
+  { cat: 'rh', title: "Le Médiateur", desc: "Annonces difficiles en mode CNV", prompt: "Tu es un coach RH bienveillant, formé à la Communication Non Violente (CNV). Je vais te décrire une situation difficile (annonce, conflit, mauvaise nouvelle). Propose-moi un script d'entretien ou un mail en suivant strictement la méthode CNV : Observation factuelle (sans jugement), Sentiment exprimé, Besoin identifié, Demande claire et négociable. Évite les formules toutes faites. Garde un ton humain, posé." },
+  { cat: 'rh', title: "Le Synthétiseur d'Entretien", desc: "Notes brutes → CR structuré", prompt: "Tu reçois des notes brutes d'entretien (RH ou évaluation annuelle). Produis un compte-rendu structuré en 5 sections : 1. Points forts observés (3-5 bullets) ; 2. Axes de développement identifiés (3-5 bullets, formulation constructive) ; 3. Aspirations exprimées par la personne ; 4. Engagements pris ; 5. Risques ou alertes à surveiller. Anonymise les noms. Ton factuel et neutre. Max 400 mots." },
+  { cat: 'sales', title: "Le Sniper", desc: "Mail de prospection ultra-personnalisé", prompt: "Tu es un Top Performer Sales B2B chez HiPay. Je te copie le profil LinkedIn ou le site corporate d'un prospect. Rédige un email de prospection de maximum 100 mots. Règle d'or : la PREMIÈRE phrase doit parler de LUI / SON entreprise / SON actualité — jamais de HiPay. Trouve un angle non-évident. Structure : Hook personnalisé / Pont vers le problème qu'on résout / Preuve sociale ou chiffre concret / CTA clair. Pas de superlatifs." },
+  { cat: 'sales', title: "L'Avocat du Diable", desc: "Simulateur de négociation client", prompt: "Tu vas jouer le rôle d'un Directeur des Achats e-commerce d'une enseigne retail française, 800M€ de CA, sceptique vis-à-vis des nouveaux PSP. Tu es pressé, tu connais le marché, tu cherches à baisser les prix de 15-20%. Procédure : 1. Tu lances une objection difficile et réaliste ; 2. J'y réponds ; 3. Tu critiques ma réponse ; 4. Tu enchaînes avec l'objection suivante, plus difficile. Garde ton rôle. Sois exigeant." },
+  { cat: 'sales', title: "Le Préparateur de Call", desc: "Brief compte client en 5 minutes", prompt: "Tu vas recevoir des notes brutes sur un compte client (historique transactionnel anonymisé, dernières interactions, tickets support). Produis un brief de préparation de call en 5 sections : 1. Météo du compte (vert/orange/rouge + 1 phrase) ; 2. Top 3 sujets prioritaires ; 3. Risques de churn identifiés ; 4. Opportunités d'up-sell/cross-sell ; 5. Questions ouvertes à poser. Format bullets, max 250 mots, sans jargon technique." },
+  { cat: 'finance', title: "Le Traducteur de Jargon", desc: "Texte réglementaire → version compréhensible", prompt: "Tu es un expert vulgarisateur réglementaire et financier. Je te fournis un texte légal, mémo compliance ou extrait réglementaire. Explique-le pour qu'un commercial de 25 ans le comprenne. Structure : 1. L'idée principale en 1 phrase sans jargon ; 2. Les 3 impacts opérationnels concrets ; 3. Ce qu'ils doivent changer DÈS DEMAIN ; 4. Une analogie simple. Ton pédagogique, direct, jamais plus de 300 mots." },
+  { cat: 'finance', title: "L'Extracteur", desc: "Données non-structurées → CSV propre", prompt: "Je vais te coller du texte non-structuré (emails, tickets support, extraits de contrats). Ton rôle : extraire les informations clés au format CSV strict (séparateur virgule, première ligne = en-têtes). Colonnes : Nom entreprise, Motif demande, Niveau urgence (1-3), Date mentionnée (YYYY-MM-DD), Montant éventuel, Statut. Aucune phrase d'introduction. Si info absente : 'N/A'. Anonymise systématiquement les noms de personnes." },
+  { cat: 'finance', title: "L'Auditeur Critique", desc: "Stress-test de raisonnement financier", prompt: "Tu es un Senior Auditor externe qui audite des établissements de paiement. Tu es rigoureux et tu ne laisses rien passer. Je vais te présenter une analyse financière ou un dossier de conformité. Ton rôle : 1. Identifier les 3 points faibles méthodologiques ; 2. Pointer les données manquantes qu'un régulateur exigerait ; 3. Anticiper les 3 questions difficiles d'un membre du board ; 4. Proposer comment renforcer le dossier. Ton professionnel, précis, factuel. Pas de complaisance." },
+  { cat: 'manager', title: "Le Traducteur d'OKRs", desc: "Objectif vague → Key Results mesurables", prompt: "Tu es un coach en management certifié méthode OKR. Je te donne l'objectif annuel de mon département. Tu proposes : 3 Objectifs trimestriels découpés (ambitieux mais réalistes) ; pour chaque Objectif, 3 Key Results avec chiffre cible ET date butoir. Règles : pas de KR 'vanity', toujours mesurable et binaire, 70% d'atteinte = bon score. Pose les questions nécessaires si l'objectif initial est trop vague." },
+  { cat: 'manager', title: "Le Préparateur de 1-to-1", desc: "Notes brutes → angles de discussion", prompt: "Tu m'aides à préparer un 1-to-1 manager/collaborateur. Je te donne : contexte (poste, ancienneté), mes observations récentes, ce que je sais de ses aspirations. Tu produis : 1. 3 questions ouvertes pour démarrer ; 2. 2 sujets que JE dois aborder ; 3. 1 sujet sensible (si pertinent) ; 4. Une question carrière/développement ; 5. Un risque à surveiller. Format punchy, actionnable, pas de remplissage." },
+  { cat: 'manager', title: "Le Miroir Stratégique", desc: "Sparring partner pour décisions difficiles", prompt: "Tu es un coach exécutif senior, ex-COO d'une scale-up de 500 personnes. Tu n'es pas là pour valider mes intuitions — tu es là pour les stress-tester. Je te présente une décision difficile. Tu réagis en 4 temps : 1. Reformulation : qu'est-ce que je me demande VRAIMENT ; 2. 3 questions que je n'ai pas posées ; 3. Les 2 biais cognitifs qui me piègent peut-être ; 4. Une option C non envisagée. Sois direct. Si ma décision est mauvaise, dis-le." },
+  { cat: 'tech', title: "Le Code Reviewer Sceptique", desc: "PR review augmentée et critique", prompt: "Tu es un Staff Engineer senior qui review une PR. Tu es bienveillant mais rigoureux. Tu ne lâches rien sur : sécurité (injection, secrets, validation inputs), edge cases, performance, maintenabilité, observabilité. Pour chaque problème : Sévérité (BLOCKER/MAJOR/MINOR/NIT), Localisation, Pourquoi avec exemple, Suggestion avec snippet. Trouve au moins 3 améliorations. Jamais 'looks good'." },
+  { cat: 'tech', title: "Le Spec Writer", desc: "Idée produit → User Story complète", prompt: "Tu es un Senior PM dans une fintech B2B. Je te donne une idée de feature. Tu produis une spec complète : 1. User story format 'En tant que X, je veux Y afin de Z' ; 2. Contexte business (pourquoi maintenant) ; 3. Critères d'acceptation Given/When/Then (5-8 cas) ; 4. Edge cases & cas d'erreur ; 5. Hors-scope explicite ; 6. Dépendances ; 7. 3 questions ouvertes à valider. Sois précis. Si trop vague : pose 3 questions de clarification AVANT." },
+  { cat: 'tech', title: "Le Debugger Méthodique", desc: "Bug confus → diagnostic structuré", prompt: "Tu es un Senior SRE expert en debug. Je décris un bug ou te donne des logs. Procédure stricte AVANT toute fix : 1. Reformulation du symptôme en 1 phrase factuelle ; 2. Reproductibilité : quelles conditions semblent nécessaires ; 3. 3 hypothèses classées par probabilité ; 4. Tests de discrimination pour chaque hypothèse ; 5. Premier diagnostic avec niveau de confiance % ; 6. Recommandation immédiate (mitigation + investigation). JAMAIS de fix sans cause racine." }
+];
+
+// ============================================
+// STATE & STORAGE
+// ============================================
+const STORAGE_KEY = 'hipay-formation-ia';
+let state = {
+  quizScores: {},      // { m1: 3, m2: 4, ... } correct count per quiz
+  promptsCopied: [],   // array of prompt titles copied
+  tasksDone: {},       // { t1: true, t2: true... }
+};
+
+async function loadState() {
+  try {
+    const r = await window.storage.get(STORAGE_KEY);
+    if (r && r.value) {
+      const parsed = JSON.parse(r.value);
+      state = { ...state, ...parsed };
+    }
+  } catch (e) {
+    // First visit, no data
+  }
+  renderProgress();
+}
+
+async function saveState() {
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    console.error('Save failed', e);
+  }
+  renderProgress();
+}
+
+// ============================================
+// QUIZ RENDERING
+// ============================================
+function renderQuiz(quizId) {
+  const container = document.querySelector(`[data-quiz="${quizId}"]`);
+  if (!container) return;
+  const body = container.querySelector('.quiz-body');
+  const scoreEl = container.querySelector('.quiz-score strong');
+  const questions = QUIZZES[quizId];
+  let currentScore = 0;
+  let answered = 0;
+
+  body.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const block = document.createElement('div');
+    block.style.marginBottom = '36px';
+    block.innerHTML = `
+      <div class="quiz-q">${idx + 1}. ${q.q}</div>
+      <div class="quiz-options"></div>
+      <div class="quiz-feedback"></div>
+    `;
+    const optsEl = block.querySelector('.quiz-options');
+    const fb = block.querySelector('.quiz-feedback');
+    q.opts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.innerHTML = `<span class="marker">${String.fromCharCode(65 + i)}</span><span>${opt}</span>`;
+      btn.addEventListener('click', () => {
+        if (block.dataset.answered) return;
+        block.dataset.answered = '1';
+        answered++;
+        const correct = i === q.correct;
+        if (correct) {
+          btn.classList.add('correct');
+          currentScore++;
+        } else {
+          btn.classList.add('wrong');
+          optsEl.children[q.correct].classList.add('correct');
+        }
+        Array.from(optsEl.children).forEach(c => c.disabled = true);
+        fb.innerHTML = `<strong>${correct ? '✓ Bonne réponse.' : '✗ Pas tout à fait.'}</strong> ${q.explain}`;
+        fb.classList.add('show');
+        if (scoreEl) scoreEl.textContent = `${currentScore} / ${questions.length}`;
+        if (answered === questions.length) {
+          state.quizScores[quizId] = currentScore;
+          saveState();
+        }
+      });
+      optsEl.appendChild(btn);
+    });
+    body.appendChild(block);
+  });
+
+  // restore prior score display if exists
+  if (state.quizScores[quizId] !== undefined && scoreEl) {
+    scoreEl.textContent = `${state.quizScores[quizId]} / ${questions.length} (précédent)`;
+  }
+
+  // restart button
+  const restartBtn = container.querySelector('.quiz-restart');
+  if (restartBtn) {
+    restartBtn.onclick = () => {
+      delete state.quizScores[quizId];
+      saveState();
+      renderQuiz(quizId);
+    };
+  }
+}
+
+// ============================================
+// PROMPT LIBRARY
+// ============================================
+function renderLibrary(filter = 'all') {
+  const grid = document.getElementById('lib-grid');
+  grid.innerHTML = '';
+  const filtered = filter === 'all' ? LIB : LIB.filter(p => p.cat === filter);
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'lib-card';
+    card.innerHTML = `
+      <span class="tag">${labelOf(p.cat)}</span>
+      <h5>${p.title}</h5>
+      <p class="desc">${p.desc}</p>
+      <div class="prompt-box" style="margin:0">
+        <button class="copy-btn">Copier</button>
+${escapeHtml(p.prompt)}
+      </div>
+    `;
+    const btn = card.querySelector('.copy-btn');
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(p.prompt).then(() => {
+        btn.textContent = 'Copié ✓';
+        btn.classList.add('copied');
+        if (!state.promptsCopied.includes(p.title)) {
+          state.promptsCopied.push(p.title);
+          saveState();
+        }
+        setTimeout(() => {
+          btn.textContent = 'Copier';
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    });
+    grid.appendChild(card);
+  });
+}
+
+function labelOf(cat) {
+  return ({rh:'RH & Talent', sales:'Sales & AM', finance:'Finance & Ops', manager:'Managers', tech:'Tech & Produit'})[cat] || cat;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ============================================
+// COPY BUTTONS (Gems inside lessons)
+// ============================================
+function bindLessonCopy() {
+  document.querySelectorAll('.lesson .prompt-box .copy-btn, .gem .prompt-box .copy-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const box = btn.closest('.prompt-box');
+      // Get text minus the button & label
+      const clone = box.cloneNode(true);
+      clone.querySelectorAll('.copy-btn, .prompt-label').forEach(el => el.remove());
+      const text = clone.textContent.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copié ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copier';
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    });
+  });
+}
+
+// ============================================
+// TABS (Métiers)
+// ============================================
+function bindMetierTabs() {
+  const tabs = document.querySelectorAll('.metier-tab');
+  const panels = document.querySelectorAll('.metier-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.metier;
+      document.querySelector(`.metier-panel[data-metier="${target}"]`).classList.add('active');
+    });
+  });
+}
+
+// ============================================
+// LIB FILTERS
+// ============================================
+function bindLibFilters() {
+  document.querySelectorAll('.lib-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.lib-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      renderLibrary(chip.dataset.filter);
+    });
+  });
+}
+
+// ============================================
+// CHECKLIST
+// ============================================
+function bindChecklist() {
+  document.querySelectorAll('.check-row').forEach(row => {
+    const id = row.dataset.task;
+    if (state.tasksDone[id]) row.classList.add('done');
+    row.addEventListener('click', () => {
+      state.tasksDone[id] = !state.tasksDone[id];
+      row.classList.toggle('done', state.tasksDone[id]);
+      saveState();
+    });
+  });
+  const reset = document.getElementById('reset-progress');
+  if (reset) {
+    reset.addEventListener('click', () => {
+      if (confirm('Réinitialiser votre progression ? Cette action ne peut pas être annulée.')) {
+        state = { quizScores: {}, promptsCopied: [], tasksDone: {} };
+        saveState();
+        location.reload();
+      }
+    });
+  }
+}
+
+// ============================================
+// PROGRESS RENDER
+// ============================================
+function renderProgress() {
+  // Modules completed = quizzes done (5 quizzes total, but we have 4 quiz blocks + module 5 = mission)
+  const quizDone = Object.keys(state.quizScores).length;
+  const modCount = quizDone; // proxy
+  const modTotal = 5;
+  document.getElementById('stat-modules').innerHTML = `${modCount}<small>/${modTotal}</small>`;
+  document.getElementById('bar-modules').style.width = `${Math.min(100, (modCount/modTotal)*100)}%`;
+
+  // Quiz correct answers total
+  const totalQ = Object.values(QUIZZES).reduce((sum, q) => sum + q.length, 0);
+  const correct = Object.values(state.quizScores).reduce((s, n) => s + n, 0);
+  document.getElementById('stat-quiz').innerHTML = `${correct}<small>/${totalQ}</small>`;
+  document.getElementById('bar-quiz').style.width = `${(correct/totalQ)*100}%`;
+
+  // Prompts
+  const promptCount = state.promptsCopied.length;
+  document.getElementById('stat-prompts').innerHTML = `${promptCount}<small>/${LIB.length}</small>`;
+  document.getElementById('bar-prompts').style.width = `${Math.min(100, (promptCount/LIB.length)*100)}%`;
+
+  // Tasks
+  const tasksDone = Object.values(state.tasksDone).filter(Boolean).length;
+  document.getElementById('stat-check').innerHTML = `${tasksDone}<small>/8</small>`;
+  document.getElementById('bar-check').style.width = `${(tasksDone/8)*100}%`;
+
+  // Nav pill
+  const total = modTotal + 8 + LIB.length;
+  const done = modCount + tasksDone + promptCount;
+  const navP = document.getElementById('nav-progress');
+  if (navP) navP.textContent = `${done} / ${total} étapes`;
+}
+
+// ============================================
+// REVEAL ON SCROLL
+// ============================================
+function bindReveal() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section-head, .why-card, .module-row, .lesson-meta, .gem, .pcard, .scale').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+}
+
+// ============================================
+// INIT
+// ============================================
+async function init() {
+  await loadState();
+  Object.keys(QUIZZES).forEach(renderQuiz);
+  renderLibrary('all');
+  bindLessonCopy();
+  bindMetierTabs();
+  bindLibFilters();
+  bindChecklist();
+  bindReveal();
+
+  // re-bind copy on dynamically inserted lib cards
+  document.getElementById('lib-grid').addEventListener('click', () => {
+    setTimeout(bindLessonCopy, 50);
+  });
+}
+
+init();
+</script>
+
+<!--
+=============================================================
+LISTE DE FRAGILITÉ — FORMATION IA HIPAY
+Version 2.0 · Mai 2026
+À relire avant chaque publication / mise à jour majeure.
+=============================================================
+
+1. POLITIQUES DE DONNÉES — À RECONFIRMER À CHAQUE RENOUVELLEMENT
+   - Gemini (usage interne HiPay) : politique Google Workspace for Business de non-entraînement
+     → vérifier à chaque renouvellement du contrat HiPay avec Google
+   - Claude.ai PRO : politique Anthropic pour comptes payants
+     → vérifier sur https://www.anthropic.com/legal/privacy
+   - Ces politiques peuvent changer unilatéralement — aucune garantie éternelle
+
+2. CAPACITÉS TECHNIQUES DES OUTILS — SE PÉRIMENT VITE (à vérifier dans 6 mois)
+   - Fenêtre de contexte Claude : mentionnée qualitativement, mais la valeur exacte évolue
+     par version. Ne pas citer de chiffre précis sans vérification à date.
+   - Gamme de modèles : "GPT-5, o-series", "Gemini", "Claude" — les familles et noms
+     de modèles évoluent tous les 3-6 mois. Vérifier que les noms cités sont toujours
+     d'actualité.
+   - Fonctionnalités Enterprise vs grand public : les offres bougent régulièrement.
+
+3. DÉPLOIEMENTS INTERNES HIPAY — À CONFIRMER AVEC LA CELLULE IA
+   - DUST : "pilote → courant" — mettre à jour le statut dès déploiement effectif
+   - Claude.ai PRO : "pilote → courant" — idem
+   - Cowork et Claude in Chrome : "populations ciblées" — préciser lesquelles
+     quand le déploiement est stabilisé
+   - Canaux Slack (#ai-taskforce, #ai-support, #ai-news) — vérifier que ces canaux
+     existent et sont actifs au moment de la publication
+   - Liens Confluence : vérifier l'accessibilité pour les populations cibles
+
+4. RÉGLEMENTATION — INTERPRÉTATIONS EN COURS D'ÉVOLUTION
+   - AI Act : les textes d'application (actes délégués, guidelines AECIA) sont publiés
+     progressivement. Les exemples donnés (scoring crédit = risque élevé) sont corrects
+     à date mais les interprétations sectorielles peuvent évoluer.
+   - RGPD, DSP2, PCI-DSS, ACPR : pas de citation d'articles précis dans le document.
+     Bonne pratique maintenue — ne pas durcir sans relecture juridique.
+   - DORA, MiCA : mentionnés dans le module Finance comme sujets à suivre.
+     Ne pas ajouter de contenu précis sans validation compliance.
+
+5. AFFIRMATIONS ÉDITORIALES HIPAY À VALIDER EN INTERNE
+   - "10% de l'effectif = AI Champions" — proportion souhaitée ou décidée ?
+   - "Modèles spécialisés HiPay fine-tunés en chantier" (Module 06) — toujours d'actualité ?
+   - "Programme de certification interne" (Module 06) — en préparation ou aspirationnel ?
+
+6. AFFIRMATIONS QUALITATIVES SANS SOURCE (acceptables mais à surveiller)
+   - "labeur invisible peut représenter une part très significative des semaines de travail"
+     → formulation volontairement sans chiffre précis. OK tant qu'on ne cite pas de %
+   - "l'IA ne remplace pas votre jugement" — cadrage éditorial HiPay, pas une loi
+   - Les gains de temps cités dans les exemples de prompts ("4-6 min vs 20-30 min")
+     sont illustratifs, pas des mesures empiriques HiPay
+=============================================================
+-->
+</body>
+</html>
