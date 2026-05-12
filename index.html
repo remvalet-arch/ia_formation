@@ -4214,113 +4214,824 @@ Sois concret et pragmatique. Ne me dis pas seulement "c'était risqué", expliqu
 <!-- ============ MODULE 3 — MÉTHODE CODE ============ -->
 <section class="lesson" id="methode">
   <div class="lesson-wrap">
-    <div class="lesson-meta">Module 04 · Le code de la route</div>
+    <div class="lesson-meta">Module 04 · Méthode CODE & l'art du prompt</div>
     <h2>La méthode <em>C.O.D.E</em>.</h2>
-    <p class="lead">Parlez à l'IA comme à un stagiaire ultra-compétent mais qui ne connaît rien à votre entreprise. La différence entre un prompt qui fait pschitt et un prompt qui vous fait gagner 1h n'est pas dans l'outil. Elle est dans la formulation.</p>
+    <p class="lead">Cinq leçons pour maîtriser l'art du prompt. Anatomie, framework, patterns avancés, itération et 10 erreurs à corriger.</p>
 
-    <h3>Les 4 piliers du prompt qui marche</h3>
+    <!-- ===== LEÇON 4.1 ===== -->
+    <div id="lesson-4-1">
+      <div class="lesson-meta" style="margin-top:0">Leçon 4.1 · Anatomie d'un prompt qui marche</div>
+      <p class="lead"><em>La différence entre une IA qui vous fait gagner du temps et une IA qui vous frustre tient à 30 secondes de prompt en plus. Voici ce qui change tout.</em></p>
 
-    <div class="code-grid">
-      <div class="code-letter">
-        <div class="big">C</div>
-        <h6>Contexte</h6>
-        <p>Qui es-tu ? Dans quelle situation sommes-nous ?</p>
-        <span class="ex">"Tu es Account Manager chez HiPay, en charge de comptes retail FR..."</span>
+      <h3>Un exemple qui dit tout</h3>
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Prompt vague</h5>
+          <p style="font-size:14px;font-style:italic;color:var(--ink-soft)">"Fais-moi un mail pour un client mécontent."</p>
+          <p style="font-size:13px;margin-top:12px">Résultat : un mail générique, ton standard, longueur inconnue. Vous allez devoir tout retravailler.</p>
+        </div>
+        <div class="compare-col after">
+          <h5>Prompt structuré</h5>
+          <p style="font-size:14px;font-style:italic;color:var(--ink-soft)">"Tu es Account Manager dans une fintech B2B. Rédige un mail à un merchant qui s'est plaint d'un incident technique survenu sur son intégration de paiement il y a 3 jours. Objectif : reconnaître l'erreur, expliquer ce qu'on a fait pour résoudre, proposer un appel pour faire le point. Ton : professionnel, direct, sans excuses excessives. Longueur : 8 lignes maximum. En français."</p>
+          <p style="font-size:13px;margin-top:12px">Résultat : un mail directement utilisable. Vous ajustez 2-3 mots et c'est parti.</p>
+        </div>
       </div>
-      <div class="code-letter">
-        <div class="big">O</div>
-        <h6>Objectif</h6>
-        <p>Quel est le verbe d'action exact ?</p>
-        <span class="ex">"Rédige / Analyse / Compare / Synthétise / Propose..."</span>
+      <p>Différence de temps de prompt : 15 secondes. Différence de résultat : 10× plus utilisable.</p>
+
+      <h3>Les 4 ingrédients d'un bon prompt</h3>
+      <ol>
+        <li><strong>Le rôle</strong> — <em>"Tu es [Account Manager / RH / juriste / développeur senior]."</em> Ça oriente le modèle vers un registre, un vocabulaire, des priorités.</li>
+        <li><strong>La tâche</strong> — Soyez <strong>explicite sur le verbe</strong>. "Aide-moi avec X" est trop vague. "Reformule X en plus court" est précis.</li>
+        <li><strong>Le contexte</strong> — Sans contexte, vous obtenez du générique. Avec contexte, vous obtenez du sur-mesure.</li>
+        <li><strong>Les contraintes de sortie</strong> — Longueur, ton, format, langue. Sans contraintes, le modèle choisit. Avec contraintes, vous obtenez ce que vous voulez vraiment.</li>
+      </ol>
+
+      <h3>Le réflexe à acquérir</h3>
+      <p>Avant d'écrire un prompt, demandez-vous 3 questions :</p>
+      <ol>
+        <li><strong>À quoi va ressembler la réponse parfaite ?</strong> (Longueur, format, ton)</li>
+        <li><strong>Qui devrait avoir écrit cette réponse ?</strong> (Quel rôle, quel niveau d'expertise)</li>
+        <li><strong>Qu'est-ce qui rend ma demande spécifique ?</strong> (Le contexte unique)</li>
+      </ol>
+      <p>Ces 30 secondes de réflexion <strong>avant</strong> de prompter valent 10 minutes d'itérations frustrées <strong>après</strong>.</p>
+
+      <h3>Ce qui ne marche pas (et pourquoi)</h3>
+      <p><strong>"Sois précis"</strong> : ne marche pas. Demandez plutôt <em>"développe le point X en 3 sous-points"</em>.</p>
+      <p><strong>"Mode expert"</strong> : ne marche pas. Donnez un rôle expert : <em>"Tu es chercheur en cybersécurité avec 15 ans d'expérience"</em>.</p>
+      <p><strong>"Comme si tu étais un humain"</strong> : ne marche pas. Dites le ton spécifique voulu : <em>"Ton conversationnel, comme un collègue qui m'explique en off"</em>.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Un bon prompt = rôle + tâche + contexte + contraintes de sortie.</li>
+        <li>30 secondes de réflexion avant = 10 minutes d'itérations économisées après.</li>
+        <li>Les phrases magiques ("sois précis", "mode expert") ne marchent pas. Soyez spécifique.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Le test du collègue : votre meilleur indicateur</summary>
+        <div class="bonus-body">
+          <p>Un truc simple pour tester si votre prompt est bon : <strong>imaginez que vous le donnez à un collègue plutôt qu'à une IA</strong>.</p>
+          <p>Si vous écrivez à un collègue <em>"Fais-moi un mail pour un client mécontent"</em>, il va vous demander : quel client ? Mécontent de quoi ? Long ou court ? Quel ton ? Toutes ces questions, le collègue les pose parce qu'il a besoin d'infos. L'IA n'a pas la chance de les poser — elle invente les réponses.</p>
+          <p><strong>Règle pratique</strong> : si votre prompt provoquerait des questions de précision chez un collègue compétent, il provoquera de mauvaises réponses chez une IA. Anticipez les questions.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-4-1">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous voulez utiliser Gemini Advanced pour préparer un compte-rendu d'une réunion d'1h. Vous avez pris des notes en vrac (3 pages). Vous avez 4 options de prompt :</p>
+          <p><strong>A)</strong> <em>"Fais-moi un compte-rendu de réunion."</em><br>
+          <strong>B)</strong> <em>"Rédige un compte-rendu structuré et professionnel à partir des notes ci-dessous."</em><br>
+          <strong>C)</strong> <em>"Tu es chef de projet. Rédige un compte-rendu de la réunion suivante en suivant le format : 1) Présents, 2) Décisions prises, 3) Actions à mener (avec responsable + deadline), 4) Points en suspens. Ton factuel, max 1 page. Notes :"</em><br>
+          <strong>D)</strong> <em>"Compte-rendu professionnel à partir de ces notes, dans un format clair et lisible avec décisions et actions, ton pro et neutre, 1 page."</em></p>
+        </div>
+        <p class="case-study-question"><strong>Lequel donne le meilleur résultat ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Trop minimaliste</button>
+          <button class="cs-option">B) Un peu mieux mais encore vague</button>
+          <button class="cs-option">C) Structuré et précis</button>
+          <button class="cs-option">D) OK mais moins précis que C</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La meilleure réponse est C.</strong></p>
+          <ul>
+            <li><strong>A</strong> : catastrophique. "Fais-moi un compte-rendu" sans les notes. Le modèle invente.</li>
+            <li><strong>B</strong> : correct mais générique. "Structuré et professionnel" laisse beaucoup d'interprétation.</li>
+            <li><strong>C</strong> est optimal : rôle (chef de projet), tâche explicite, format précis (4 sections nommées), contraintes (factuel, max 1 page), données mentionnées.</li>
+            <li><strong>D</strong> : entre B et C. Mieux que B, mais "format clair et lisible" est subjectif.</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : quand vous attendez un format spécifique, <strong>listez-le explicitement</strong> plutôt que d'employer des qualificatifs vagues.</p>
+        </div>
       </div>
-      <div class="code-letter">
-        <div class="big">D</div>
-        <h6>Détails</h6>
-        <p>Quel ton, quelle cible, quelles contraintes ?</p>
-        <span class="ex">"Ton rassurant, < 150 mots, pas de jargon technique..."</span>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="4.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.1.1</span>
+            <span class="gem-block-title">Le prompt-template universel</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Tu es [RÔLE].
+
+Je dois [TÂCHE].
+
+Contexte :
+- [CONTEXTE 1]
+- [CONTEXTE 2]
+- [CONTEXTE 3]
+
+Voici les éléments à traiter :
+[ÉLÉMENTS, OU DOCUMENT, OU DONNÉES]
+
+Format de sortie attendu :
+- [LONGUEUR]
+- [TON]
+- [STRUCTURE : sections, bullets, prose...]
+- [LANGUE]
+
+Si tu n'es pas sûr d'un détail factuel, dis-le plutôt que de le deviner.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.1.2</span>
+            <span class="gem-block-title">Diagnostiquer un prompt qui marche mal</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un prompt que j'ai utilisé et qui m'a donné une réponse décevante :
+
+[COLLEZ VOTRE PROMPT]
+
+Et voici la réponse obtenue :
+
+[COLLEZ LA RÉPONSE]
+
+Aide-moi à identifier ce qui cloche dans le prompt :
+1. Le rôle est-il défini ?
+2. La tâche est-elle explicite et précise ?
+3. Le contexte est-il suffisant ?
+4. Les contraintes de sortie (longueur, ton, format) sont-elles données ?
+
+Puis propose-moi une version réécrite du prompt qui devrait donner un bien meilleur résultat.</pre>
+        </div>
       </div>
-      <div class="code-letter">
-        <div class="big">E</div>
-        <h6>Exemple / format</h6>
-        <p>Quel est le format du résultat attendu ?</p>
-        <span class="ex">"Format : intro (2 lignes) + 3 bullets + CTA final"</span>
+
+      <div class="quiz" data-quiz="m4-1">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 4.1</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m4-1">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les 4 ingrédients d'un bon prompt (rôle, tâche, contexte, contraintes)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je consacre 30 secondes à réfléchir au prompt avant de l'écrire</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'évite les phrases magiques type "sois précis" ou "mode expert"</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'utilise le "test du collègue" pour vérifier que mon prompt est suffisant</label>
       </div>
     </div>
+    <!-- /lesson-4-1 -->
 
-    <h3>Le crash test : l'effet "aha"</h3>
-    <p>Prenons un cas réel : annoncer 48h de retard sur une intégration technique à un client.</p>
+    <hr class="lesson-sep">
 
-    <div class="compare">
-      <div class="compare-col before">
-        <h5>❌ Le prompt "Recherche Google"</h5>
-        <p style="color:var(--ink-soft);font-style:italic;font-family:var(--serif-it);font-size:15px">"Fais un mail pour dire au client que son intégration technique prend du retard."</p>
-        <p style="font-size:13px;margin-top:16px"><strong>Résultat :</strong> un texte plat, robotique, qui donne l'impression qu'on s'excuse d'exister. Le client le lit en diagonale, perd confiance, et vous appelle pour exiger un point.</p>
+    <!-- ===== LEÇON 4.2 ===== -->
+    <div id="lesson-4-2">
+      <div class="lesson-meta" style="margin-top:0">Leçon 4.2 · La méthode CODE en détail</div>
+      <p class="lead"><em>Un framework simple pour structurer tous vos prompts. Quatre lettres, des dizaines de minutes économisées chaque jour.</em></p>
+
+      <h3>Le framework C.O.D.E</h3>
+      <div class="code-grid">
+        <div class="code-letter">
+          <div class="big">C</div>
+          <h6>Contexte</h6>
+          <p>Qui suis-je, dans quelle situation, pour quoi</p>
+          <span class="ex">"Tu es Account Manager dans une fintech B2B..."</span>
+        </div>
+        <div class="code-letter">
+          <div class="big">O</div>
+          <h6>Objectif</h6>
+          <p>Ce que je veux que l'IA produise précisément</p>
+          <span class="ex">"Rédige / Résume / Compare / Analyse / Traduis..."</span>
+        </div>
+        <div class="code-letter">
+          <div class="big">D</div>
+          <h6>Détails</h6>
+          <p>Contraintes, format, longueur, ton</p>
+          <span class="ex">"Ton direct, max 8 lignes, en français, éviter le jargon..."</span>
+        </div>
+        <div class="code-letter">
+          <div class="big">E</div>
+          <h6>Exemples</h6>
+          <p>À quoi devrait ressembler la sortie (optionnel mais puissant)</p>
+          <span class="ex">"Format : 1 accroche + 3 bullets + CTA"</span>
+        </div>
       </div>
-      <div class="compare-col after">
-        <h5>✓ Le prompt C.O.D.E</h5>
-        <p style="color:var(--ink-soft);font-style:italic;font-family:var(--serif-it);font-size:15px">"<strong>(C)</strong> Tu es Lead Tech HiPay. <strong>(O)</strong> Rédige un email client. <strong>(D)</strong> Annonce 48h de retard à cause d'un blocage sur la validation sécu PCI-DSS, ton transparent et maîtrisé, pas de jargon. <strong>(E)</strong> Format : intro + 2 bullets sur les causes + CTA pour un call de cadrage."</p>
-        <p style="font-size:13px;margin-top:16px"><strong>Résultat :</strong> un mail prêt à copier-coller, qui renvoie une image d'expertise et de maîtrise. Le client comprend, accepte, et vous recontacte rassuré.</p>
+
+      <h3>Décomposition lettre par lettre</h3>
+      <p><strong>C — Contexte.</strong> L'arrière-plan de votre demande. Tout ce qui rend votre situation unique. <em>Erreur classique</em> : oublier le contexte parce que "ça va de soi pour moi". Pour vous oui, pour l'IA non.</p>
+      <p><strong>O — Objectif.</strong> Ce que vous voulez que l'IA produise, exprimé en <strong>verbe d'action concret</strong> : rédiger, résumer, comparer, lister, analyser, traduire, reformuler, classer. <em>Erreur classique</em> : "Aide-moi avec ce client" vs "Rédige un mail de relance à ce client en 6 lignes".</p>
+      <p><strong>D — Détails.</strong> Longueur, ton, format, langue, ce qui doit être inclus, ce qui doit être évité. <em>Erreur classique</em> : sous-estimer l'impact des détails. Le même prompt sans vs avec détails produit des résultats incomparables.</p>
+      <p><strong>E — Exemples.</strong> Si vous avez un format ou un style spécifique en tête, <strong>montrez-le</strong>. L'IA "comprend" mieux par l'exemple que par la description. Optionnel pour les formats standards, indispensable pour les formats atypiques.</p>
+
+      <h3>Le prompt C.O.D.E appliqué</h3>
+      <div class="callout">
+        <span class="callout-label">Exemple : mail client mécontent, version C.O.D.E</span>
+        <p><strong>C :</strong> <em>"Tu es Account Manager dans une fintech B2B. Je gère un merchant top 10 (contrat 6 chiffres) qui a subi un incident technique sur son intégration de paiement il y a 3 jours. On a résolu l'incident sous 4h mais il reste mécontent."</em></p>
+        <p><strong>O :</strong> <em>"Rédige un mail à ce merchant."</em></p>
+        <p><strong>D :</strong> <em>"Objectif : reconnaître l'erreur, expliquer ce qu'on a fait, proposer un appel pour faire le point. Ton : professionnel, direct, sans excuses excessives. Longueur : 8 lignes max. En français. Éviter le jargon corporate."</em></p>
+        <p><strong>E :</strong> <em>(facultatif) "Format : 1 paragraphe accroche, 1 paragraphe explication, 1 paragraphe proposition d'appel."</em></p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>C.O.D.E = Contexte / Objectif / Détails / Exemples.</li>
+        <li>Vérifier ces 4 lettres avant de cliquer "Envoyer".</li>
+        <li>Les exemples (E) sont optionnels mais transforment la qualité pour les formats précis.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Quand sauter une lettre du C.O.D.E ?</summary>
+        <div class="bonus-body">
+          <p>Le framework n'est pas un dogme.</p>
+          <p><strong>Tâches très simples</strong> (traduire une phrase) : C.O. suffit.</p>
+          <p><strong>Tâches reproductibles</strong> : C.O.D. suffit si vous connaissez votre format de sortie.</p>
+          <p><strong>Tâches très créatives</strong> (générer 10 idées) : C.O. avec un objectif large — les détails risqueraient de brider la créativité.</p>
+          <p><strong>Quand E est utile</strong> : format atypique ou style difficile à décrire en mots.</p>
+          <p><strong>Règle pratique</strong> : si vous obtenez le bon résultat avec C.O. seul, n'en faites pas plus. Si vous itérez plus de 2 fois pour ajuster, c'est que vous auriez dû mettre D ou E.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-4-2">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous voulez préparer 5 messages de prospection LinkedIn pour des CTO de fintechs européennes. Vous voulez que chaque message soit personnalisé selon le profil, ait un ton humain (pas commercial robotique), et appelle à une réponse simple.</p>
+          <p>Esquissez mentalement votre prompt C.O.D.E avant de voir la version ci-dessous.</p>
+        </div>
+        <button class="cs-reveal-btn">Voir une version C.O.D.E optimale ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>C :</strong> <em>"Tu es Account Executive senior dans une fintech européenne (HiPay) spécialisée dans le paiement en ligne pour les marchands B2C. Je prospecte sur LinkedIn des CTO de fintechs européennes (Series A à C) susceptibles d'avoir besoin de moderniser leur infrastructure paiement."</em></p>
+          <p><strong>O :</strong> <em>"Rédige-moi 5 versions différentes d'un message de prospection LinkedIn, chacune personnalisée pour un profil de CTO différent."</em></p>
+          <p><strong>D :</strong> <em>"Longueur : 4-5 lignes max. Ton : humain, conversationnel, pas commercial robotique. Structure : 1) accroche personnalisée, 2) question ouverte qui invite à la réponse. Éviter : 'j'espère que vous allez bien', 'je me permets de vous contacter', 'j'aimerais vous présenter HiPay'."</em></p>
+          <p><strong>E :</strong> <em>"Format type : 'Salut [prénom], j'ai vu que [observation précise]. Chez HiPay, on bosse avec [contexte]. Curieux de savoir comment vous gérez [aspect précis] de votre côté ?'"</em></p>
+          <p><strong>Méthode généralisable</strong> : pour les tâches itératives (plusieurs versions du même type), investissez dans un bon prompt <strong>une fois</strong>, vous le réutilisez à chaque fois.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="4.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.2.1</span>
+            <span class="gem-block-title">Template C.O.D.E prêt à remplir</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>[C — CONTEXTE]
+Tu es [rôle / expertise].
+Je suis [moi-même / situation].
+On parle de [sujet / situation précise].
+
+[O — OBJECTIF]
+Je veux que tu [verbe d'action] :
+[description précise de ce qui doit être produit]
+
+[D — DÉTAILS]
+- Longueur : [...]
+- Ton : [...]
+- Format : [...]
+- Langue : [...]
+- Doit inclure : [...]
+- Doit éviter : [...]
+
+[E — EXEMPLE (optionnel)]
+Voici le style / format que j'aime :
+[exemple]
+
+[CONTENU À TRAITER]
+[Le texte / les données / les éléments à traiter]</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.2.2</span>
+            <span class="gem-block-title">Améliorer un prompt vague avec C.O.D.E</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>J'ai écrit ce prompt :
+
+[COLLEZ VOTRE PROMPT VAGUE]
+
+Aide-moi à le restructurer selon la méthode C.O.D.E :
+- C (Contexte) : quel rôle, situation, arrière-plan ajouter ?
+- O (Objectif) : quel verbe d'action et quelle précision sur la sortie ?
+- D (Détails) : quelles contraintes (longueur, ton, format) ajouter ?
+- E (Exemple) : un exemple de sortie serait-il utile ?
+
+Donne-moi la version réécrite, prête à utiliser.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m4-2">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 4.2</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m4-2">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les 4 lettres C.O.D.E (Contexte, Objectif, Détails, Exemples)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais quand sauter une lettre (tâches simples / créatives)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'utilise le template C.O.D.E pour mes tâches récurrentes</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais que pour les formats atypiques, un exemple > une description</label>
       </div>
     </div>
+    <!-- /lesson-4-2 -->
 
-    <h3>Patterns avancés (à connaître après C.O.D.E)</h3>
+    <hr class="lesson-sep">
 
-    <h4>1. Le "few-shot" : montrer plutôt que dire</h4>
-    <p>Au lieu d'expliquer le ton voulu, donnez-lui 2 exemples du style attendu :</p>
-    <div class="prompt-box">
-      <span class="prompt-label">Pattern few-shot</span>
-"Voici 2 exemples du ton à reproduire :
-Exemple 1 : 'Hello [Prénom], rapide update sur ton intégration...'
-Exemple 2 : 'Salut [Prénom], on a un petit point bloquant côté sécu...'
+    <!-- ===== LEÇON 4.3 ===== -->
+    <div id="lesson-4-3">
+      <div class="lesson-meta" style="margin-top:0">Leçon 4.3 · 7 patterns avancés qui changent tout</div>
+      <p class="lead"><em>Sept techniques que les utilisateurs avancés appliquent sans même y penser. Chacune transforme la qualité des réponses sur un type de tâche précis.</em></p>
 
-Sur la base de ce ton, rédige un mail pour annoncer..."
+      <h3>C.O.D.E vous donne la structure. Les patterns vous donnent les techniques.</h3>
+
+      <h4 style="margin:24px 0 6px">Pattern 1 — Few-shot (montrer des exemples)</h4>
+      <p>Au lieu de décrire comment vous voulez la sortie, <strong>montrez 2-3 exemples</strong>. Quand l'utiliser : classification, reformulation stylisée, génération en série.</p>
+      <div class="prompt-box">
+        <span class="prompt-label">Few-shot — classification de tickets</span>
+"Classe ces tickets selon 3 niveaux d'urgence : Critique, Important, Standard.
+
+Exemples :
+— 'L'API ne répond plus en production' → Critique
+— 'Documentation peu claire sur l'endpoint X' → Standard
+— 'Merchant XYZ veut un changement de plan' → Important
+
+Maintenant, classe les tickets suivants : [...]"
+      </div>
+
+      <h4 style="margin:24px 0 6px">Pattern 2 — Chain of thought (faire raisonner étape par étape)</h4>
+      <p>Demandez à l'IA de <strong>réfléchir à voix haute</strong> avant de répondre. Quand l'utiliser : problèmes complexes, décisions multi-critères, raisonnements logiques.</p>
+      <div class="prompt-box">
+        <span class="prompt-label">Chain of thought</span>
+"Avant de me donner ta recommandation finale, décompose ton raisonnement étape par étape :
+1. Identifie les critères pertinents
+2. Évalue chaque option sur chaque critère
+3. Pondère les critères selon mon contexte
+4. Conclus avec ta recommandation justifiée"
+      </div>
+
+      <h4 style="margin:24px 0 6px">Pattern 3 — Role play (rôle spécifique)</h4>
+      <p>Donner un rôle précis change ton, vocabulaire, priorités. Combinez avec une personnalité : <em>"Tu es Senior Sales Manager, direct et pragmatique, peu friand de bullshit corporate."</em></p>
+
+      <h4 style="margin:24px 0 6px">Pattern 4 — Auto-critique</h4>
+      <p>Demandez à l'IA d'<strong>évaluer sa propre réponse</strong> : <em>"Une fois ta réponse rédigée, prends le rôle d'un critique externe et identifie 3 points faibles. Puis propose une version améliorée."</em></p>
+
+      <h4 style="margin:24px 0 6px">Pattern 5 — Décomposition (diviser pour régner)</h4>
+      <p>Une tâche complexe se traite mieux en <strong>plusieurs étapes</strong> : <em>"Procédons par étapes. Étape 1 : analyse ce document et identifie les 5 enjeux. Attends ma validation avant la suite."</em></p>
+
+      <h4 style="margin:24px 0 6px">Pattern 6 — Format forcé</h4>
+      <p>Imposez un format de sortie strict pour les sorties que vous allez <strong>réutiliser</strong> : <em>"Réponds STRICTEMENT au format suivant, sans aucun autre texte avant ou après : Action 1 : [phrase] / Responsable : [nom] / Deadline : [date]"</em></p>
+
+      <h4 style="margin:24px 0 6px">Pattern 7 — Forcer l'honnêteté</h4>
+      <p>Ajoutez <strong>explicitement</strong> une consigne d'honnêteté sur tous les prompts à enjeu factuel : <em>"Si tu n'as pas l'information ou si tu n'es pas sûr, dis-le clairement plutôt que de deviner. Ne combles pas les vides factuels."</em></p>
+      <div class="callout good">
+        <span class="callout-label">Le pattern le plus sous-utilisé</span>
+        <p>"Forcer l'honnêteté" est probablement le pattern avec le meilleur ratio impact / effort. À ajouter <strong>systématiquement</strong> sur les sujets juridiques, chiffrés ou avec des références précises.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>7 patterns : few-shot, chain of thought, role play, auto-critique, décomposition, format forcé, forcer l'honnêteté.</li>
+        <li>Tous se combinent : un bon prompt peut en utiliser 3 ou 4 à la fois.</li>
+        <li>"Forcer l'honnêteté" est le moins connu et le plus utile sur les sujets sensibles.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Combiner plusieurs patterns dans un seul prompt</summary>
+        <div class="bonus-body">
+          <!-- SOURCE: méthodes few-shot, chain-of-thought, role-play documentées dans la littérature et la documentation des fournisseurs (Anthropic, OpenAI, Google) -->
+          <p>Les patterns se combinent. Exemple d'un prompt qui en utilise 4 :</p>
+          <p><em>"Tu es DPO senior dans une fintech européenne (Role play). Voici un projet d'usage IA : [description]. Avant de me donner ton avis final, suis ces étapes : 1. Identifie les 3 cadres réglementaires pertinents (Chain of thought). 2. Pour chaque cadre, liste les obligations applicables. 3. Conclus avec : feu vert, vigilance, ou à discuter. Si tu n'es pas sûr d'un point, dis-le clairement (Forcer l'honnêteté). Format de sortie (Format forcé) : ## Cadre 1 / Obligations : [...] / Risques : [...] // ## Recommandation / [Verdict + justification]"</em></p>
+          <p><strong>Conseil pratique</strong> : ne cherchez pas à toujours combiner les 7 patterns. 2-3 bien choisis sur une tâche complexe suffisent largement.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-4-3">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous devez préparer une note d'arbitrage pour votre Comex : choisir entre deux fournisseurs de service (A et B) pour un projet stratégique. Vous avez les fiches techniques des deux, un budget contraint, et 3 jours pour décider.</p>
+        </div>
+        <p class="case-study-question"><strong>Quels patterns utiliser dans votre prompt ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Role play seul</button>
+          <button class="cs-option">B) Few-shot + format forcé</button>
+          <button class="cs-option">C) Chain of thought + auto-critique + forcer l'honnêteté</button>
+          <button class="cs-option">D) Décomposition + role play + format forcé + auto-critique</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La meilleure réponse est D.</strong></p>
+          <ul>
+            <li><strong>Décomposition</strong> : la tâche se divise naturellement (analyser A, analyser B, comparer, recommander).</li>
+            <li><strong>Role play</strong> : "Tu es Directeur Stratégie d'une fintech, tu prépares une note d'arbitrage pour ton Comex." Le ton, le niveau de détail, la priorité aux enjeux business changent radicalement.</li>
+            <li><strong>Format forcé</strong> : un Comex lit vite. 1 page max, sections fixes (Recommandation / Analyse comparative / Risques / Décision attendue).</li>
+            <li><strong>Auto-critique</strong> : "Avant de me livrer ta version finale, prends le rôle d'un membre Comex sceptique et identifie 3 questions difficiles. Ajuste ta note pour anticiper ces questions."</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : pour une tâche à fort enjeu (Comex, juridique, stratégique), combinez 3-4 patterns. Pour une tâche de routine, 1 ou 2 suffisent.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="4.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.3.1</span>
+            <span class="gem-block-title">Chain of Thought + Auto-critique</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>[VOTRE PROMPT NORMAL ICI]
+
+Avant de me donner ta réponse finale :
+
+1. Décompose ton raisonnement étape par étape (ne saute pas d'étape)
+2. Pour chaque étape, indique les hypothèses que tu fais
+3. Une fois ta première version rédigée, prends le rôle d'un critique externe : identifie 2-3 points faibles
+4. Propose une version améliorée qui corrige ces points
+
+Format final attendu :
+## Raisonnement
+[étapes]
+
+## Première version
+[...]
+
+## Critique
+[...]
+
+## Version finale améliorée
+[...]</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.3.2</span>
+            <span class="gem-block-title">Format forcé pour exports</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>[VOTRE PROMPT NORMAL ICI]
+
+IMPORTANT : réponds STRICTEMENT au format suivant, sans aucun texte avant ou après :
+
+[VOTRE FORMAT EXACT, par exemple :]
+
+| Élément | Statut | Action |
+|---------|--------|--------|
+| ...     | ...    | ...    |
+
+Aucun commentaire en dehors du tableau. Aucune introduction. Aucune conclusion.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.3.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.3.3</span>
+            <span class="gem-block-title">Forcer l'honnêteté pour sujets sensibles</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>[VOTRE PROMPT NORMAL ICI]
+
+Règles d'honnêteté strictes pour ta réponse :
+1. Si tu n'as pas l'information, dis "Je n'ai pas cette information de manière fiable" — ne devine pas
+2. Ne cite jamais un article de loi, un chiffre précis, un nom propre dont tu n'es pas sûr
+3. Si tu fais une hypothèse, explicite-la ("Je suppose que...")
+4. Distingue clairement ce qui est factuel établi de ce qui est ton interprétation
+5. Si la question est ambiguë, demande-moi de préciser avant de répondre
+
+Mieux vaut une réponse incomplète mais juste qu'une réponse complète mais douteuse.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m4-3">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 4.3</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m4-3">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je connais les 7 patterns avancés</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais quand utiliser few-shot (classification) vs chain of thought (raisonnement)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'ajoute la consigne d'honnêteté sur mes prompts sensibles</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais combiner 2-3 patterns sur les tâches à fort enjeu</label>
+      </div>
     </div>
+    <!-- /lesson-4-3 -->
 
-    <h4>2. Le "chain of thought" : faire raisonner étape par étape</h4>
-    <p>Pour les analyses complexes, demandez à l'IA de <em>raisonner avant de conclure</em>. Ça réduit massivement les hallucinations.</p>
-    <div class="prompt-box">
-      <span class="prompt-label">Pattern chain of thought</span>
-"Analyse ce churn merchant. Procède étape par étape :
-1. Liste les 3 signaux faibles dans les data
-2. Pour chacun, propose 2 hypothèses d'explication
-3. Classe ces hypothèses par probabilité
-4. Conclus sur l'action prioritaire à mener."
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 4.4 ===== -->
+    <div id="lesson-4-4">
+      <div class="lesson-meta" style="margin-top:0">Leçon 4.4 · Itérer plutôt que tout demander d'un coup</div>
+      <p class="lead"><em>L'IA n'est pas un moteur de recherche. C'est un brouillon vivant que vous éditez en parlant. Apprendre à itérer change votre rapport à l'outil.</em></p>
+
+      <h3>Le malentendu fondamental</h3>
+      <p>Beaucoup de gens utilisent l'IA comme Google : ils tapent leur question, ils prennent la première réponse, ils ferment l'onglet. C'est passer à côté de 80% de la valeur. <strong>L'IA n'est pas un moteur de recherche. C'est une conversation.</strong></p>
+      <p>Le bon usage : vous écrivez un premier prompt, vous recevez une première réponse, vous <strong>dialoguez</strong> pour l'améliorer. <em>"C'est bien, mais raccourcis."</em> / <em>"Reformule le 2e paragraphe en plus direct."</em> / <em>"Ajoute un exemple concret."</em> En 2-3 itérations, vous arrivez à un résultat dix fois meilleur que le premier jet.</p>
+
+      <h3>Le mode "brouillon vivant"</h3>
+      <p>Adoptez cette mentalité : <strong>le premier jet de l'IA est un brouillon. Toujours.</strong></p>
+      <ol>
+        <li>Écrivez un prompt initial (avec C.O.D.E)</li>
+        <li>Identifiez 1-2 choses à améliorer (longueur, ton, manque d'un élément)</li>
+        <li>Dites-le simplement : <em>"Raccourcis de moitié et rends le 2e paragraphe plus direct"</em></li>
+        <li>Itérez jusqu'à satisfaction</li>
+      </ol>
+      <p>C'est plus rapide et plus efficace que de tenter un prompt parfait d'entrée.</p>
+
+      <h3>Les 5 instructions d'itération les plus utiles</h3>
+      <ul>
+        <li><strong>"Raccourcis de [X]%"</strong> — Le premier jet est souvent trop long. <em>"Raccourcis cette réponse de moitié, garde l'essentiel."</em></li>
+        <li><strong>"Reformule en plus [adjectif]"</strong> — Ajuste le ton sans tout regénérer. <em>"Reformule le 2e paragraphe en plus direct, moins formel."</em></li>
+        <li><strong>"Ajoute [élément spécifique]"</strong> — Comble les manques précis. <em>"Ajoute un exemple concret dans le 3e paragraphe."</em></li>
+        <li><strong>"Supprime [élément spécifique]"</strong> — Écarte ce qui ne va pas. <em>"Supprime les références au cadre juridique, c'est hors sujet."</em></li>
+        <li><strong>"Repars sur une autre piste"</strong> — Quand le premier jet est carrément à côté. <em>"Repars complètement. Adopte un ton plus humble, parle à la première personne, garde la structure mais change l'angle."</em></li>
+      </ul>
+
+      <h3>Le piège de l'itération sans fin</h3>
+      <p>Itérer est bien, <strong>itérer sans fin est mauvais</strong>. Trois signaux d'alarme :</p>
+      <ol>
+        <li><strong>Vous itérez plus de 5-6 fois</strong> sans converger → votre prompt initial était mauvais, recommencez avec un meilleur C.O.D.E.</li>
+        <li><strong>Vous "négociez" avec l'IA</strong> sur un détail → plus rapide de corriger à la main.</li>
+        <li><strong>L'IA dégrade la réponse</strong> au lieu de l'améliorer → revenez à la version précédente.</li>
+      </ol>
+      <p><strong>Règle pratique</strong> : 3-4 itérations bien ciblées = très bon résultat. Au-delà, soit votre prompt initial était mauvais, soit vous deviez finir à la main.</p>
+
+      <h3>Canvas (Gemini Advanced) : l'itération sans douleur</h3>
+      <p>Pour les <strong>textes longs</strong>, Gemini Advanced propose Canvas. Vous sélectionnez le paragraphe à modifier, vous dites ce que vous voulez changer, Gemini modifie <strong>uniquement</strong> la sélection. Vous itérez paragraphe par paragraphe sans perdre le reste. Excellent pour les notes, articles, présentations.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>L'IA n'est pas un moteur de recherche, c'est une conversation.</li>
+        <li>Le premier jet est un brouillon. Toujours.</li>
+        <li>3-4 itérations ciblées valent mieux qu'un "super prompt" raté.</li>
+        <li>Au-delà de 5 itérations sans converger, c'est le prompt initial qui était mauvais.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Garder le fil sur les longues conversations</summary>
+        <div class="bonus-body">
+          <p>Sur une conversation longue (10+ échanges), l'IA peut perdre le fil. <strong>Trois techniques :</strong></p>
+          <p><strong>1. Rappeler les consignes clés régulièrement.</strong> <em>"Rappel : tu réponds en français, ton factuel, max 8 lignes."</em> Toutes les 4-5 messages.</p>
+          <p><strong>2. Démarrer une nouvelle conversation pour un nouveau sujet.</strong> Pour un sujet vraiment différent, ouvrir un nouveau chat = repartir propre.</p>
+          <p><strong>3. Résumer périodiquement.</strong> <em>"Avant de continuer, peux-tu résumer en 5 lignes ce sur quoi on a abouti dans cette conversation ?"</em></p>
+          <p>Avec Canvas, cette gymnastique est moins nécessaire — vous travaillez sur un document, pas sur une conversation.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-4-4">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous demandez à Gemini de vous aider à rédiger une présentation pour votre Comex sur "les bénéfices de l'IA générative pour HiPay en 2026". Premier jet : 4 pages, trop générique, plein de phrases du type "l'IA générative révolutionne", "le futur est déjà là". Pas le ton ni la précision attendus.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle stratégie d'itération adopter ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Refaire un super prompt avec encore plus de détails et regénérer du début.</button>
+          <button class="cs-option">B) Itérer paragraphe par paragraphe : "raccourcis de moitié", "supprime les généralités marketing", "ajoute 2 cas d'usage HiPay concrets".</button>
+          <button class="cs-option">C) Demander "fais mieux".</button>
+          <button class="cs-option">D) Tout retravailler à la main, c'est plus rapide.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B (avec Canvas, encore mieux).</strong></p>
+          <ul>
+            <li><strong>A est valide mais inefficace</strong> : 80% de votre premier jet est probablement récupérable.</li>
+            <li><strong>B est optimal</strong> : "Raccourcis de moitié, on a 4 pages pour un Comex, c'est trop" / "Supprime les généralités marketing du type 'révolutionne'" / "Remplace les exemples génériques par 2 cas d'usage concrets pour HiPay". En 3-4 itérations, vous avez quelque chose d'utilisable.</li>
+            <li><strong>C ne marche pas</strong> : "fais mieux" est un prompt vide. Le modèle ne sait pas ce que vous voulez améliorer.</li>
+            <li><strong>D est respectable</strong> mais ne sautez pas l'étape d'itération.</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : votre premier jet n'est jamais le dernier. Prévoyez 3-4 itérations dans votre workflow IA.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="4.4.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.4.1</span>
+            <span class="gem-block-title">Itération guidée sur une réponse décevante</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>La réponse que tu m'as donnée précédemment a 3 problèmes :
+
+1. [PROBLÈME 1 — ex : "trop longue, fais moitié moins"]
+2. [PROBLÈME 2 — ex : "le ton est trop formel, mets-le plus direct"]
+3. [PROBLÈME 3 — ex : "il manque un exemple concret dans la partie X"]
+
+Refais la version en corrigeant CES 3 points, sans toucher au reste qui me convient.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.4.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.4.2</span>
+            <span class="gem-block-title">Demander une critique de sa propre demande</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici la tâche que je veux faire :
+
+[DÉCRIVEZ LA TÂCHE]
+
+Et voici le prompt que j'envisage :
+
+[VOTRE PROMPT]
+
+Avant de l'exécuter, dis-moi :
+1. Quels éléments importants manquent dans ce prompt ?
+2. Quelles ambiguïtés risquent de te faire répondre à côté ?
+3. Quelles contraintes (longueur, ton, format) je devrais ajouter ?
+4. Y a-t-il un exemple qui serait utile pour clarifier ?
+
+Puis propose-moi une version améliorée du prompt.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m4-4">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 4.4</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m4-4">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je traite le premier jet de l'IA comme un brouillon, jamais comme une version finale</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je connais les 5 instructions d'itération (raccourcis, reformule, ajoute, supprime, repars)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais reconnaître quand mon prompt initial était mauvais (&gt;5 itérations sans converger)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'utilise Canvas pour les itérations sur des textes longs</label>
+      </div>
     </div>
+    <!-- /lesson-4-4 -->
 
-    <h4>3. Le "rôle inversé" : se faire challenger</h4>
-    <p>Le plus puissant. Demandez à l'IA de jouer le rôle de votre adversaire pour vous préparer.</p>
-    <div class="prompt-box">
-      <span class="prompt-label">Pattern adversaire</span>
-"Tu es un Directeur Achats e-commerce sceptique, pressé, qui cherche à baisser les prix. Je suis commercial HiPay et je viens te pitcher notre solution. Joue-moi 3 objections difficiles d'affilée. Après chacune, attends ma réponse, puis critique ma réponse avant la suivante."
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 4.5 ===== -->
+    <div id="lesson-4-5">
+      <div class="lesson-meta" style="margin-top:0">Leçon 4.5 · Les 10 erreurs typiques de prompting</div>
+      <p class="lead"><em>Reconnaissez-vous dans ces 10 erreurs ? La plupart des utilisateurs en font 6 ou 7 sans s'en rendre compte. Les corriger transforme votre productivité.</em></p>
+
+      <h3>Les 10 erreurs classées par fréquence</h3>
+
+      <p><strong>Erreur 1 — Prompt trop vague.</strong> <em>"Aide-moi avec ce mail."</em> Pas de rôle, pas d'objectif, pas de contraintes. → Appliquer C.O.D.E.</p>
+      <p><strong>Erreur 2 — Pas de rôle attribué.</strong> Le modèle utilise un ton par défaut (souvent neutre-marketing). → Commencer par <em>"Tu es [rôle précis]"</em>.</p>
+      <p><strong>Erreur 3 — Pas de contraintes de longueur.</strong> Vous obtenez 4 paragraphes là où vous vouliez 4 lignes. → <em>"En X lignes maximum"</em>.</p>
+      <p><strong>Erreur 4 — Phrases magiques inutiles.</strong> <em>"Sois précis"</em>, <em>"mode expert"</em>, <em>"comme si tu étais humain"</em>. Ces phrases ne déclenchent rien. → Remplacer par des consignes concrètes.</p>
+      <p><strong>Erreur 5 — Demander "ton avis".</strong> L'IA va vous donner un avis fade, équilibré, sans prise de position. → Forcer la prise de position : <em>"Quels sont les 3 arguments les plus forts en faveur de X ? Et les 3 contre ?"</em></p>
+      <p><strong>Erreur 6 — Pas de structure de sortie.</strong> <em>"Analyse ce document."</em> → Imposer une structure : <em>"Selon le plan : 1) Résumé, 2) Points clés, 3) Risques, 4) Recommandations."</em></p>
+      <p><strong>Erreur 7 — Instructions au début d'un long contexte.</strong> Le modèle peut perdre les instructions placées avant un long texte (effet "lost in the middle"). → Mettre les instructions clés <strong>à la fin</strong>, juste avant la requête.</p>
+      <p><strong>Erreur 8 — Ne pas itérer.</strong> Premier jet décevant, vous abandonnez. → 80% de la valeur de l'IA vient de l'itération. Le premier jet est toujours un brouillon.</p>
+      <p><strong>Erreur 9 — Pas d'honnêteté forcée sur les sujets sensibles.</strong> Hallucinations garanties sur les sujets pointus. → Ajouter <em>"Si tu n'es pas sûr, dis-le clairement"</em>.</p>
+      <p><strong>Erreur 10 — Tout coller dans le prompt, y compris l'inutile.</strong> Ça dilue les instructions et augmente le risque de "lost in the middle". → Extraire <strong>uniquement ce qui est nécessaire</strong>.</p>
+
+      <h3>La synthèse</h3>
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line-strong)">
+            <th style="text-align:left;padding:8px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500;width:30px">#</th>
+            <th style="text-align:left;padding:8px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Erreur</th>
+            <th style="text-align:left;padding:8px 12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Correction rapide</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">1</td><td style="padding:8px 12px;color:var(--ink-soft)">Prompt trop vague</td><td style="padding:8px 12px;color:var(--ink-soft)">Appliquer C.O.D.E</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">2</td><td style="padding:8px 12px;color:var(--ink-soft)">Pas de rôle</td><td style="padding:8px 12px;color:var(--ink-soft)">Commencer par "Tu es..."</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">3</td><td style="padding:8px 12px;color:var(--ink-soft)">Pas de longueur</td><td style="padding:8px 12px;color:var(--ink-soft)">"En X lignes/mots"</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">4</td><td style="padding:8px 12px;color:var(--ink-soft)">Phrases magiques</td><td style="padding:8px 12px;color:var(--ink-soft)">Consignes concrètes</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">5</td><td style="padding:8px 12px;color:var(--ink-soft)">"Donne-moi ton avis"</td><td style="padding:8px 12px;color:var(--ink-soft)">Forcer la prise de position</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">6</td><td style="padding:8px 12px;color:var(--ink-soft)">Pas de structure</td><td style="padding:8px 12px;color:var(--ink-soft)">Imposer un plan</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">7</td><td style="padding:8px 12px;color:var(--ink-soft)">Instructions au début</td><td style="padding:8px 12px;color:var(--ink-soft)">Instructions à la fin</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">8</td><td style="padding:8px 12px;color:var(--ink-soft)">Ne pas itérer</td><td style="padding:8px 12px;color:var(--ink-soft)">2-3 itérations prévues</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">9</td><td style="padding:8px 12px;color:var(--ink-soft)">Pas d'honnêteté forcée</td><td style="padding:8px 12px;color:var(--ink-soft)">Ajouter la consigne explicite</td></tr>
+          <tr><td style="padding:8px 12px;font-family:var(--mono);color:var(--accent)">10</td><td style="padding:8px 12px;color:var(--ink-soft)">Tout coller</td><td style="padding:8px 12px;color:var(--ink-soft)">Extraire l'essentiel</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>10 erreurs, presque tout le monde en fait 6 ou 7 sans s'en rendre compte.</li>
+        <li>Si vous n'en deviez retenir que 3 : C.O.D.E (erreurs 1-3), forcer l'honnêteté (9), itérer (8).</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Auto-diagnostic : faites le test sur vos derniers prompts</summary>
+        <div class="bonus-body">
+          <p>Récupérez vos 5 derniers prompts utilisés au boulot. Pour chacun, cochez les erreurs présentes (1 à 10). Comptez vos coches sur vos 5 derniers prompts :</p>
+          <ul>
+            <li>6+ erreurs : vous êtes la moyenne</li>
+            <li>3 ou moins : vous êtes déjà avancé</li>
+          </ul>
+          <p><strong>Plan d'action concret</strong> : sur vos 5 prochains prompts, concentrez-vous sur <strong>2 erreurs spécifiques</strong> à corriger (vos plus fréquentes). Le réflexe se construit progressivement.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-4-5">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Un collègue vous montre ce prompt qu'il vient d'utiliser pour générer une note sur la cybersécurité dans le paiement :</p>
+          <p><em>"Donne-moi ton avis sur la cybersécurité dans le paiement. Sois précis et mode expert. Tu peux être un peu long si tu veux. Si tu connais des chiffres et des références, c'est mieux."</em></p>
+          <p>Il vous demande pourquoi la réponse est décevante (générique, sans prise de position, avec des chiffres qui sentent l'invention).</p>
+        </div>
+        <p class="case-study-question"><strong>Combien d'erreurs typiques contient ce prompt ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) 2 erreurs</button>
+          <button class="cs-option">B) 4 erreurs</button>
+          <button class="cs-option">C) 6 erreurs</button>
+          <button class="cs-option">D) 8 erreurs</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C (6 erreurs).</strong></p>
+          <ul>
+            <li><strong>Erreur 1</strong> (vague) : "Donne-moi ton avis sur la cybersécurité dans le paiement" — sujet immense, pas d'angle, pas d'objectif précis.</li>
+            <li><strong>Erreur 2</strong> (pas de rôle) : aucun "Tu es..."</li>
+            <li><strong>Erreur 3</strong> (pas de longueur) : "Tu peux être un peu long si tu veux" est l'inverse d'une contrainte.</li>
+            <li><strong>Erreur 4</strong> (phrases magiques) : "Sois précis et mode expert" — n'a aucun effet réel.</li>
+            <li><strong>Erreur 5</strong> ("avis") : demande d'avis sans cadre, l'IA va sortir un avis fade.</li>
+            <li><strong>Erreur 9</strong> (pas d'honnêteté) : "Si tu connais des chiffres, c'est mieux" — invitation à inventer.</li>
+          </ul>
+          <p><strong>Version corrigée</strong> : <em>"Tu es CISO d'une fintech européenne, tu prépares une note de sensibilisation pour ton Comex (non technique). Rédige une note de 1 page (max 400 mots) sur les 5 risques cyber majeurs pour les acteurs du paiement en 2026, suivant le plan : 1) Risque, 2) Probabilité, 3) Impact, 4) Mitigation. Ton factuel, pas d'alarmisme marketing. Si tu n'es pas sûr d'un chiffre ou d'une source, ne l'invente pas — laisse à compléter."</em></p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="4.5.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.5.1</span>
+            <span class="gem-block-title">Audit de mes 5 derniers prompts</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici 5 prompts que j'ai utilisés récemment :
+
+PROMPT 1 : [...]
+PROMPT 2 : [...]
+PROMPT 3 : [...]
+PROMPT 4 : [...]
+PROMPT 5 : [...]
+
+Pour chacun, identifie :
+1. Les erreurs typiques de prompting parmi les 10 classiques
+2. Le niveau global du prompt (mauvais / moyen / bon / excellent)
+3. Une version corrigée prête à utiliser
+
+À la fin, donne-moi mes 2 erreurs récurrentes les plus fréquentes pour que je m'améliore.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="4.5.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 4.5.2</span>
+            <span class="gem-block-title">Le prompt-checker avant envoi</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Avant d'envoyer le prompt suivant à une IA, fais un check rapide :
+
+[COLLEZ VOTRE PROMPT]
+
+Vérifie :
+1. Y a-t-il un rôle attribué ?
+2. L'objectif est-il un verbe d'action précis ?
+3. Y a-t-il des contraintes (longueur, ton, format) ?
+4. Le contexte est-il suffisant ?
+5. Y a-t-il des phrases magiques inutiles à supprimer ?
+6. Faut-il ajouter une consigne d'honnêteté ?
+
+Liste les améliorations à faire en moins de 5 lignes, puis donne-moi la version améliorée du prompt.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m4-5">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 4.5</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m4-5">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je reconnais les 10 erreurs typiques de prompting</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> J'ai identifié mes 2-3 erreurs récurrentes principales</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> J'utilise systématiquement la consigne d'honnêteté sur les sujets sensibles</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je traque les "phrases magiques" inutiles dans mes prompts</label>
+      </div>
     </div>
+    <!-- /lesson-4-5 -->
 
-    <h3>Les 5 erreurs de prompt qui plombent les résultats</h3>
-    <ol>
-      <li><strong>Le prompt vague</strong> ("écris-moi un truc sur..."). L'IA produit du générique.</li>
-      <li><strong>Le prompt trop long sans structure.</strong> 800 mots de contexte mal organisés = l'IA se perd. Découpez en sections claires.</li>
-      <li><strong>Demander un format sans le décrire</strong> ("fais-moi un beau mail"). Donnez la structure exacte attendue.</li>
-      <li><strong>Pas de feedback loop.</strong> Une seule itération, vous prenez la première réponse. Toujours raffiner en 2-3 tours.</li>
-      <li><strong>Confondre prompt et tâche.</strong> Un bon prompt est une <em>mission</em>, pas une <em>question</em>.</li>
-    </ol>
-
-    <div class="callout good">
-      <span class="callout-label">Mantra à imprimer</span>
-      <p>Si l'IA vous donne une réponse moyenne, ce n'est <strong>jamais</strong> la faute de l'IA. C'est la faute du prompt. Reformulez avec C.O.D.E, ajoutez du contexte, et regardez la différence.</p>
-    </div>
-
-    <h3>Le "mode brouillon" : votre nouveau réflexe</h3>
-    <p>L'IA n'est pas un oracle. C'est un brouillon génial. La meilleure façon de l'utiliser :</p>
-    <ol>
-      <li><strong>Prompt initial</strong> avec C.O.D.E → première réponse</li>
-      <li><strong>Critique</strong> : "Le ton est trop formel, raccourcis le bullet 2, change l'intro pour quelque chose de plus direct"</li>
-      <li><strong>Itération</strong> : 2e version</li>
-      <li><strong>Validation humaine</strong> : vous relisez et finalisez</li>
-    </ol>
-    <p>Temps total : 4-6 minutes pour ce qui prenait 20-30 minutes. Qualité finale supérieure parce que vous avez itéré.</p>
+    <hr class="lesson-sep">
 
     <div class="quiz" data-quiz="m3">
       <div class="quiz-head">
-        <h3>Quiz · Méthode CODE</h3>
+        <h3>Quiz récapitulatif · Méthode CODE</h3>
         <span class="quiz-counter">4 questions</span>
       </div>
       <div class="quiz-body"></div>
@@ -5648,6 +6359,126 @@ const QUIZZES = {
       ],
       correct: 1,
       explain: "Mode brouillon = prompt initial + critique + itération + validation humaine. 4-6 min pour ce qui en prenait 20-30, avec une qualité finale supérieure parce qu'on a itéré."
+    }
+  ],
+  'm4-1': [
+    {
+      q: "Vous obtenez une réponse IA décevante (trop générique, à côté du sujet). Quel est le meilleur réflexe ?",
+      opts: [
+        "Retravailler manuellement la réponse",
+        "Demander à l'IA de 'faire mieux' ou de 'être plus précise'",
+        "Reformuler votre prompt en précisant rôle, contexte, tâche, contraintes",
+        "Changer d'outil IA"
+      ],
+      correct: 2,
+      explain: "Une réponse décevante vient presque toujours d'un prompt trop vague. Précisez ce que vous voulez : qui parle (rôle), à qui (contexte), pour quoi faire (tâche), dans quel format (contraintes). Les phrases magiques comme 'sois précis' ou 'mode expert' n'ont aucun effet réel. Changer d'outil ne résout rien si le prompt est mauvais."
+    },
+    {
+      q: "Parmi ces 4 prompts, lequel est le mieux structuré ?",
+      opts: [
+        "Aide-moi avec un mail.",
+        "Rédige un mail professionnel.",
+        "Tu es Account Manager. Rédige un mail de relance à un merchant qui n'a pas répondu depuis 10 jours. Ton ferme mais courtois, 6-8 lignes max.",
+        "Mail pour un merchant SVP."
+      ],
+      correct: 2,
+      explain: "Le bon prompt précise un rôle, un objectif clair, un contexte (10 jours sans réponse), un ton, et une longueur. Les trois autres sont trop vagues et produiront du contenu générique. La précision dans le prompt est le levier n°1 de qualité."
+    }
+  ],
+  'm4-2': [
+    {
+      q: "Que signifie la lettre D dans C.O.D.E ?",
+      opts: [
+        "Données",
+        "Détails (contraintes de longueur, ton, format)",
+        "Destination (à qui s'adresse la réponse)",
+        "Délai (urgence de la tâche)"
+      ],
+      correct: 1,
+      explain: "D = Détails : toutes les contraintes qui guident le résultat (longueur, ton, format, langue, ce qui doit être inclus, ce qui doit être évité). C'est souvent la lettre qui transforme un prompt moyen en bon prompt."
+    },
+    {
+      q: "Vous voulez une sortie dans un format très spécifique et atypique. Quelle lettre du C.O.D.E est la plus puissante ?",
+      opts: [
+        "C, parce qu'il faut bien poser le contexte",
+        "O, parce qu'il faut un objectif clair",
+        "D, parce que les contraintes guident le format",
+        "E, parce qu'un exemple vaut mille mots de description"
+      ],
+      correct: 3,
+      explain: "Pour un format atypique, l'exemple (E) est plus puissant que la description (D). Le modèle 'comprend' mieux par l'exemple : montrer une sortie type vaut mieux que décrire un format compliqué. Si vous décrivez 5 lignes la structure et que vous obtenez 3 essais ratés, c'est probablement qu'il fallait un exemple."
+    }
+  ],
+  'm4-3': [
+    {
+      q: "Quel pattern est le plus efficace pour réduire les hallucinations sur un sujet factuel pointu ?",
+      opts: [
+        "Few-shot (montrer des exemples)",
+        "Role play (donner un rôle d'expert)",
+        "Forcer l'honnêteté (consigne explicite : 'si tu n'es pas sûr, dis-le')",
+        "Format forcé (imposer un format strict)"
+      ],
+      correct: 2,
+      explain: "Demander explicitement au modèle d'admettre son ignorance fonctionne réellement. Les modèles sont biaisés vers la complaisance — ils préfèrent inventer pour vous faire plaisir. Cette instruction contrebalance ce biais. Le role play 'expert' peut au contraire renforcer l'aplomb du modèle même quand il a tort."
+    },
+    {
+      q: "Vous voulez classer 50 tickets selon une règle qui n'est pas évidente à décrire en mots. Quel pattern privilégier ?",
+      opts: [
+        "Chain of thought, pour que l'IA réfléchisse",
+        "Few-shot, avec 3-5 exemples de classification réussie",
+        "Role play, en lui donnant le rôle de 'classificateur expert'",
+        "Décomposition, en classant 10 par 10"
+      ],
+      correct: 1,
+      explain: "Pour une règle de classification difficile à décrire en mots, les exemples valent mille fois mieux que la description. Le modèle généralise depuis vos exemples mieux qu'il ne comprend une règle abstraite. 3-5 exemples bien choisis + la liste à classer = approche optimale."
+    }
+  ],
+  'm4-4': [
+    {
+      q: "Vous avez itéré 7 fois sur un prompt sans obtenir ce que vous voulez. Que faire ?",
+      opts: [
+        "Itérer encore, finir par converger",
+        "Demander à l'IA 'fais mieux' une dernière fois",
+        "Reconnaître que votre prompt initial était mauvais et recommencer avec un meilleur C.O.D.E",
+        "Tout retravailler à la main, l'IA n'est pas adaptée à ce cas"
+      ],
+      correct: 2,
+      explain: "Au-delà de 5-6 itérations sans converger, ce n'est pas l'itération qui est en cause, c'est le prompt initial. Recommencer avec un meilleur C.O.D.E (rôle, objectif, détails, exemples) sera plus rapide que continuer à patcher. La main est une option de dernier recours, pas la première."
+    },
+    {
+      q: "Vous voulez ajuster un détail dans une réponse longue de l'IA. Quelle approche est la meilleure ?",
+      opts: [
+        "Demander de tout regénérer en ajoutant la nouvelle contrainte",
+        "Indiquer précisément ce que vous voulez changer (paragraphe X, élément Y) et demander la modification ciblée",
+        "Modifier à la main directement",
+        "Demander à l'IA de 'faire mieux'"
+      ],
+      correct: 1,
+      explain: "Une modification ciblée est plus rapide qu'une regénération complète, et préserve ce qui était déjà bien. Avec Canvas (Gemini Advanced), c'est encore plus efficace : sélection du paragraphe + instruction, modification uniquement de la sélection. La main est une option si les itérations ne convergent pas."
+    }
+  ],
+  'm4-5': [
+    {
+      q: "Parmi ces 4 expressions, laquelle est une 'phrase magique' inutile à supprimer de vos prompts ?",
+      opts: [
+        "Réponds en 8 lignes maximum",
+        "Sois précis et en mode expert",
+        "Adopte le rôle de DPO",
+        "Si tu n'es pas sûr, dis-le"
+      ],
+      correct: 1,
+      explain: "'Sois précis et en mode expert' est une formule vide qui n'a aucun effet réel. Le modèle ne change pas son comportement en réponse à ça. Les 3 autres sont des consignes concrètes qui ont un vrai impact : contrainte de longueur, attribution de rôle, demande d'honnêteté."
+    },
+    {
+      q: "Quelle est l'erreur la plus coûteuse en termes de fiabilité, surtout sur des sujets sensibles ?",
+      opts: [
+        "Ne pas attribuer de rôle",
+        "Ne pas forcer l'honnêteté du modèle (ne pas dire 'si tu n'es pas sûr, dis-le')",
+        "Ne pas imposer de structure de sortie",
+        "Coller trop de contexte"
+      ],
+      correct: 1,
+      explain: "L'absence de consigne d'honnêteté est la source principale d'hallucinations sur les sujets sensibles. Le modèle, par défaut, préfère inventer plutôt qu'admettre une limite. Ajouter 'si tu n'es pas sûr, dis-le' est probablement la consigne avec le meilleur ratio impact / effort de tout le prompting."
     }
   ],
   m4: [
