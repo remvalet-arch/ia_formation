@@ -1488,6 +1488,70 @@
     border-top: 1px solid var(--line);
     margin: 52px 0;
   }
+
+  /* ===== GEM BLOCKS (prompts dans les leçons) ===== */
+  .gems-section { margin: 32px 0; }
+  .gems-section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .gem-block {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-card);
+    margin-bottom: 12px;
+  }
+  .gem-block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .gem-block-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .gem-block-title {
+    font-size: 13px;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .gem-copy-btn {
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .gem-copy-btn:hover { background: var(--bg-card); color: var(--ink); border-color: var(--line-strong); }
+  .gem-copy-btn.gem-copied { color: var(--good); border-color: var(--good); }
+  .gem-block pre {
+    margin: 0;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.65;
+  }
 </style>
 </head>
 <body>
@@ -2233,209 +2297,1009 @@
   <div class="lesson-wrap">
     <div class="lesson-meta">Module 02 · Vos outils</div>
     <h2>Lequel, <em>pour quoi</em>, et quand.</h2>
-    <p class="lead">La première question n'est pas "comment bien prompter". C'est "quel outil pour cette tâche ?" Huit outils dans votre écosystème HiPay — chacun a un rôle précis. Voici la carte.</p>
+    <p class="lead">Six leçons pour maîtriser votre boîte à outils HiPay : de la vue d'ensemble jusqu'à l'automatisation.</p>
 
-    <h3>Enterprise vs grand public : la distinction qui change tout</h3>
-    <p>Avant la matrice, un point fondamental. Tous les outils ne se comportent pas de la même façon sur la question critique : <strong>vos conversations servent-elles à entraîner le modèle ?</strong></p>
+    <!-- ===== LEÇON 2.1 ===== -->
+    <div id="lesson-2-1">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.1 · Le panorama de votre boîte à outils HiPay</div>
+      <p class="lead"><em>Voici ce qui est disponible chez HiPay, ce qui arrive bientôt, et ce qui n'est que pour quelques équipes. Pour ne pas perdre de temps à chercher ailleurs.</em></p>
 
-    <div class="compare">
-      <div class="compare-col before">
-        <h5>⚠️ Versions grand public (usage perso)</h5>
-        <ul>
-          <li>ChatGPT gratuit, Claude.ai gratuit, Gemini sans compte pro</li>
-          <li>Par défaut, vos échanges peuvent alimenter les modèles futurs — vérifiez les paramètres de chaque service</li>
-          <li>Non validés par l'IT HiPay pour un usage professionnel</li>
-          <li><strong>Interdit</strong> : toute donnée professionnelle HiPay, même anonymisée</li>
-        </ul>
+      <h3>Ce que vous avez aujourd'hui</h3>
+      <!-- À VÉRIFIER : statuts des outils (pilote / disponible pour tous) — à confirmer avec la #ai-taskforce avant publication -->
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line-strong)">
+            <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Outil</th>
+            <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Pour qui ?</th>
+            <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Pour quoi ?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">Gemini Advanced</strong></td>
+            <td style="padding:12px 16px;color:var(--good);font-family:var(--mono);font-size:11px;vertical-align:top">Tout le monde</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Outil par défaut au quotidien : rédiger, résumer, traduire, brainstormer. Canvas, Deep Research, NotebookLM inclus.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">Claude.ai</strong></td>
+            <td style="padding:12px 16px;color:var(--accent);font-family:var(--mono);font-size:11px;vertical-align:top">Pilote</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Tâches plus exigeantes, longues documents, analyses nuancées, code.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">Cowork</strong></td>
+            <td style="padding:12px 16px;color:var(--accent);font-family:var(--mono);font-size:11px;vertical-align:top">Pilote</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Agent desktop qui agit sur votre poste (fichiers, applications).</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">Claude in Chrome</strong></td>
+            <td style="padding:12px 16px;color:var(--accent);font-family:var(--mono);font-size:11px;vertical-align:top">Pilote</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Agent navigateur (formulaires, recherches multi-onglets).</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">Claude Code / Cursor</strong></td>
+            <td style="padding:12px 16px;color:var(--warn);font-family:var(--mono);font-size:11px;vertical-align:top">Devs uniquement</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Coder, refactorer, déboguer avec IA.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">n8n</strong></td>
+            <td style="padding:12px 16px;color:var(--good);font-family:var(--mono);font-size:11px;vertical-align:top">Disponible</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Automatiser des tâches récurrentes.</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px;vertical-align:top"><strong style="color:var(--ink)">DUST</strong></td>
+            <td style="padding:12px 16px;color:var(--accent);font-family:var(--mono);font-size:11px;vertical-align:top">Pilote</td>
+            <td style="padding:12px 16px;color:var(--ink-soft);vertical-align:top">Chercher dans les sources internes HiPay (Confluence, etc.).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>La règle d'or de la stack HiPay</h3>
+      <p>Pour un collaborateur HiPay non-tech, l'arbre de décision tient en quatre questions :</p>
+      <ol>
+        <li><strong>Vous voulez juste une réponse rapide ?</strong> → Gemini Advanced. Suffit dans 80% des cas.</li>
+        <li><strong>Vous voulez quelque chose de plus poussé (analyse, long document, code) ?</strong> → Si vous avez Claude, Claude. Sinon, Gemini Advanced en mode plus puissant (voir Leçon 2.2).</li>
+        <li><strong>Vous voulez que l'IA fasse l'action à votre place ?</strong> → Cowork (si vous y avez accès). Pas Gemini ni Claude.</li>
+        <li><strong>Vous voulez chercher dans la doc HiPay ?</strong> → DUST (quand il sera ouvert à tous).</li>
+      </ol>
+      <p>Si aucune de ces questions ne couvre votre cas, c'est qu'il faut peut-être un <strong>workflow automatisé</strong> (n8n). On en parle en Leçon 2.6.</p>
+
+      <h3>Trois pièges à éviter dès le départ</h3>
+      <p><strong>Piège 1 — Utiliser un Gemini perso au lieu de votre licence pro.</strong> Vérifiez que vous êtes bien connecté à votre licence <strong>Gemini Advanced</strong> fournie par HiPay (compte pro), pas à un compte Gemini gratuit personnel. Si vous ne savez pas, demandez sur <code>#ai-support</code>.</p>
+      <p><strong>Piège 2 — Croire que tous les outils se valent.</strong> Gemini ≠ Claude ≠ Cowork ≠ DUST. Ce n'est pas une question de "lequel est le meilleur". Ils font des choses <strong>différentes</strong>. Pour résumer un mail, n'importe quel assistant fait l'affaire. Pour automatiser une tâche récurrente, aucun assistant ne fera le travail.</p>
+      <p><strong>Piège 3 — Attendre "l'outil parfait" pour commencer.</strong> Vous avez Gemini Advanced. <strong>Commencez avec ce que vous avez.</strong> 80% de ce que vous allez apprendre est applicable dès aujourd'hui dans Gemini.</p>
+
+      <div class="callout">
+        <span class="callout-label">Où poser une question rapide</span>
+        <p><code>#ai-support</code> (Slack) — pour tout doute sur un outil, une politique, un usage.<br>
+        <code>#ai-taskforce</code> — pour les sujets stratégiques, intégration, projets.<br>
+        <code>#ai-news</code> — pour suivre les nouveautés sans être noyé.</p>
       </div>
-      <div class="compare-col after">
-        <h5>✓ Outils validés HiPay (Enterprise)</h5>
-        <ul>
-          <li>Gemini en mode usage interne, Claude.ai PRO, n8n, DUST</li>
-          <li>Les fournisseurs s'engagent contractuellement à ne pas entraîner leurs modèles sur vos données<!-- SOURCE: politique Google Workspace for Business + Anthropic usage policy pour comptes payants — à reconfirmer à chaque mise à jour des CGU et renouvellement de contrat HiPay --></li>
-          <li>Données isolées du pool public</li>
-          <li>Restez dans ce périmètre — en cas de doute : <strong>#ai-support</strong></li>
-        </ul>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Gemini Advanced est l'outil par défaut universel chez HiPay. Maîtrisez-le en premier.</li>
+        <li>Claude / Cowork / DUST sont en pilote ou complémentaires — utiles mais pas indispensables pour démarrer.</li>
+        <li>En cas de doute sur "lequel utiliser" : <code>#ai-support</code>.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Pourquoi HiPay n'a pas qu'un seul outil IA ?</summary>
+        <div class="bonus-body">
+          <p>Bonne question, et la réponse est utile à comprendre. Aucun outil IA ne fait tout bien. Chaque outil est <strong>optimisé pour un type d'usage</strong> :</p>
+          <ul>
+            <li><strong>Gemini Advanced</strong> est polyvalent, avec des fonctionnalités natives très puissantes (Canvas, Deep Research, NotebookLM).</li>
+            <li><strong>Claude</strong> est particulièrement bon sur les tâches longues, le code, et les analyses nuancées.</li>
+            <li><strong>DUST</strong> est conçu pour exploiter des sources d'entreprise, ce que Gemini et Claude ne savent pas faire seuls.</li>
+            <li><strong>Cowork / Claude in Chrome</strong> sont des agents — ils agissent là où les autres ne font que répondre.</li>
+            <li><strong>n8n</strong> n'est pas une IA mais un orchestrateur — il combine les autres.</li>
+          </ul>
+          <p>Avoir une stack diverse permet de <strong>couvrir tous les cas d'usage</strong> sans s'enfermer chez un seul fournisseur. La stack bouge. La méthode reste.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-2-1">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes RH. Vous devez : (1) préparer un brief sur les bonnes pratiques de management hybride pour vos managers, (2) retrouver une procédure interne de demande de mobilité dans Confluence, (3) reformuler 15 mails de relance candidats, (4) faire une analyse comparative de 3 prestataires de paie sur 4 critères.</p>
+        </div>
+        <p class="case-study-question"><strong>Quel outil pour quelle tâche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Tout dans Gemini Advanced, c'est plus simple.</button>
+          <button class="cs-option">B) 1 → Gemini Advanced ; 2 → DUST ; 3 → workflow n8n ; 4 → Claude si accès, sinon Gemini en mode Thinking.</button>
+          <button class="cs-option">C) 1 → Claude ; 2 → Gemini ; 3 → Cowork ; 4 → DUST.</button>
+          <button class="cs-option">D) Cowork pour tout, c'est un agent qui peut tout faire.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B.</strong></p>
+          <ul>
+            <li><strong>Tâche 1 (brief management hybride)</strong> → Gemini Advanced suffit. Brief général, pas besoin de contexte HiPay précis.</li>
+            <li><strong>Tâche 2 (procédure interne)</strong> → DUST. C'est exactement son cas d'usage : chercher dans Confluence et citer la source. Gemini inventerait.</li>
+            <li><strong>Tâche 3 (15 mails similaires)</strong> → workflow n8n. Faire 15 fois la même tâche à la main est du gâchis.</li>
+            <li><strong>Tâche 4 (analyse comparative)</strong> → Tâche plus exigeante et analytique. Claude si accès, ou Gemini en mode Thinking.</li>
+          </ul>
+          <p><strong>Règle pratique</strong> : la bonne réponse est presque toujours "plusieurs outils". Choisissez celui aligné avec la nature de la tâche.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.1.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.1.1</span>
+            <span class="gem-block-title">Quel outil pour ma tâche ?</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je veux faire la tâche suivante : [DÉCRIVEZ VOTRE TÂCHE].
+
+Aide-moi à choisir parmi les outils suivants disponibles chez HiPay :
+- Gemini Advanced (assistant général, avec Canvas, Deep Research, NotebookLM)
+- Claude.ai (assistant plus avancé, pilote)
+- Cowork (agent qui exécute sur le poste, pilote)
+- DUST (recherche dans les sources internes HiPay, pilote)
+- n8n (automatisation de workflows)
+
+Pour chaque outil pertinent, dis-moi :
+- Si oui ou non il convient à ma tâche
+- Pourquoi
+- Une approche concrète si tu le recommandes
+
+Si tu n'es pas sûr, dis-le.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.1.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.1.2</span>
+            <span class="gem-block-title">Décomposer une tâche multi-outils</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>J'ai la mission suivante : [DÉCRIVEZ LA MISSION].
+
+Décompose-la en sous-tâches concrètes, et pour chaque sous-tâche, indique quel outil de la stack HiPay est le plus pertinent (Gemini Advanced, Claude, Cowork, DUST, n8n).
+
+Format de sortie :
+1. [Sous-tâche] → [Outil] : [Raison]
+2. ...
+
+Cible : moins de 8 sous-tâches. Si la mission est trop large, suggère-moi de la découper avant.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m2-1">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.1</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m2-1">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais ce qui est disponible chez HiPay et pour qui</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je sais que Gemini Advanced est l'outil par défaut universel</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais où poser une question en cas de doute (<code>#ai-support</code>)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais qu'une tâche complexe peut mobiliser plusieurs outils</label>
       </div>
     </div>
+    <!-- /lesson-2-1 -->
 
-    <div class="callout warn">
-      <span class="callout-label">Règle d'or</span>
-      <p>Si vous n'êtes pas sûr qu'un outil est dans le périmètre validé HiPay, posez la question sur <strong>#ai-support</strong> avant d'y mettre quoi que ce soit de professionnel. Le bon outil utilisé à mauvais escient vaut le mauvais outil.</p>
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 2.2 ===== -->
+    <div id="lesson-2-2">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.2 · Léger, lourd, raisonnement : choisir le bon mode</div>
+      <p class="lead"><em>Dans Gemini, dans Claude, dans tous les outils, vous avez plusieurs "modes". Choisir le bon, c'est gagner du temps et de la qualité.</em></p>
+
+      <h3>Le malentendu le plus courant</h3>
+      <p>Quand vous ouvrez Gemini Advanced, vous voyez un menu : Gemini Flash, Gemini Pro, mode Thinking, Deep Research… Dans Claude.ai, c'est Haiku, Sonnet, Opus. Dans ChatGPT, c'est GPT-X "rapide" ou "raisonnement".</p>
+      <p><strong>Ce ne sont pas des versions "meilleures" ou "moins bonnes".</strong> Ce sont des modes <strong>optimisés pour des usages différents</strong>. Choisir le bon, c'est 50% du gain de productivité.</p>
+      <p>L'erreur classique : prendre <strong>le plus puissant pour tout</strong>. Résultats : 30 secondes au lieu de 3 secondes pour une réponse, coût qui explose sur les workflows automatisés (10 à 30× plus cher), et parfois <strong>qualité inférieure</strong> sur des tâches simples — un gros modèle peut sur-réfléchir là où un modèle léger répond direct et juste.</p>
+
+      <h3>Mode 1 — Rapide / Léger</h3>
+      <p><strong>Noms :</strong> Gemini Flash, Claude Haiku, GPT léger.</p>
+      <p><strong>Pour quoi :</strong> réponses courtes, reformulations, traductions, résumés simples, questions factuelles. 5 à 10× plus rapide, coût marginal. Limite : peut manquer de nuance sur les sujets complexes.</p>
+      <p><strong>Règle pratique :</strong> pour 80% du quotidien. <strong>Commencez toujours par là.</strong></p>
+
+      <h3>Mode 2 — Puissant / Lourd</h3>
+      <p><strong>Noms :</strong> Gemini Pro, Claude Sonnet/Opus, GPT puissant.</p>
+      <p><strong>Pour quoi :</strong> analyses nuancées, longs documents, rédaction soignée, code complexe. Meilleure qualité sur les tâches difficiles.</p>
+      <p><strong>Règle pratique :</strong> passez en mode lourd <strong>uniquement quand le mode rapide vous a déçu</strong>, ou quand vous savez d'entrée que la tâche est complexe.</p>
+
+      <h3>Mode 3 — Raisonnement / Thinking / Deep</h3>
+      <p><strong>Noms :</strong> "Thinking mode" Gemini, "Reasoning" Claude, modes "o" chez OpenAI, "Deep Research" Gemini.</p>
+      <p><strong>Pour quoi :</strong> problèmes qui demandent de <strong>réfléchir étape par étape</strong> : math, logique, planification, analyse en plusieurs temps.</p>
+      <p><strong>Limite :</strong> <strong>lent</strong> (parfois 30 sec à 2 min). Inutile sur des tâches simples — un modèle "thinking" qui résume un mail peut vous sortir 3 paragraphes d'analyse au lieu d'une phrase.</p>
+      <p><strong>Règle pratique :</strong> à réserver aux problèmes qui demandent <strong>vraiment</strong> de réfléchir.</p>
+
+      <div class="callout">
+        <span class="callout-label">L'arbre de décision</span>
+        <p><strong>Question rapide / tâche courte</strong> → Mode rapide (Flash, Haiku).<br>
+        <strong>Analyse longue ou nuancée</strong> → Mode lourd (Pro, Sonnet/Opus).<br>
+        <strong>Problème complexe à plusieurs étapes</strong> → Mode raisonnement (Thinking, Deep).<br>
+        <strong>En cas de doute</strong> → Commencez rapide, escaladez si besoin.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>3 modes : rapide, lourd, raisonnement. Chacun pour un usage précis.</li>
+        <li>Le mode "le plus puissant" pour tout = erreur classique.</li>
+        <li>Commencez rapide, escaladez seulement si la réponse est insuffisante.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Le coût caché du "tout en mode puissant"</summary>
+        <div class="bonus-body">
+          <p>Pour un usage individuel ponctuel, choisir un mode lourd au lieu d'un mode rapide ne change pas grand-chose côté facture. Mais il y a deux contextes où le coût explose :</p>
+          <p><strong>Workflows automatisés (n8n) :</strong> un workflow qui appelle un LLM 1000 fois par jour. Si vous configurez Gemini Pro au lieu de Gemini Flash, la facture mensuelle peut passer de 50€ à 500€. Sur un workflow simple, Flash suffit dans 95% des cas.</p>
+          <p><strong>Côté temps, l'impact est immédiat :</strong> Mode rapide : ~2-3 secondes. Mode lourd : ~10-20 secondes. Mode raisonnement : 30 sec à 2 min. Si vous itérez 10 fois (ce qui est normal), la différence devient très sensible.</p>
+          <p><strong>Règle simple :</strong> si vous ne savez pas pourquoi vous prendriez le mode lourd, prenez le rapide.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-2-2">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous avez 4 tâches ce matin : (1) reformuler 5 paragraphes d'une présentation pour qu'ils soient plus directs, (2) analyser un contrat fournisseur de 22 pages et identifier les clauses à risque, (3) planifier une roadmap produit Q3 en croisant 6 contraintes (budget, équipe, dépendances tech, priorités client…), (4) traduire un mail interne en anglais.</p>
+        </div>
+        <p class="case-study-question"><strong>Quel mode utiliser pour chacune ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Tout en mode lourd, pour avoir la meilleure qualité.</button>
+          <button class="cs-option">B) 1 et 4 → mode rapide ; 2 → mode lourd ; 3 → mode raisonnement.</button>
+          <button class="cs-option">C) 1, 2, 3, 4 → mode rapide, pour aller vite.</button>
+          <button class="cs-option">D) Tout en mode raisonnement, c'est le plus intelligent.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B.</strong></p>
+          <ul>
+            <li><strong>Tâches 1 et 4 (reformulation, traduction)</strong> → Mode rapide. Simple et rapide, 3 secondes par tâche.</li>
+            <li><strong>Tâche 2 (contrat de 22 pages)</strong> → Mode lourd. Long document, nuance nécessaire pour les clauses à risque.</li>
+            <li><strong>Tâche 3 (roadmap Q3 avec 6 contraintes)</strong> → Mode raisonnement. Décomposition, croisement, arbitrages. 1-2 min mais vraiment structuré.</li>
+          </ul>
+          <p><strong>A est un gâchis</strong> : mode lourd pour reformuler = 10× plus lent. <strong>D est pire</strong> : 2 min pour traduire un mail. <strong>C rate la qualité</strong> : mode rapide sur la roadmap = superficiel.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.2.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.2.1</span>
+            <span class="gem-block-title">Diagnostic du bon mode à utiliser</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je dois faire la tâche suivante : [DÉCRIVEZ LA TÂCHE].
+
+Aide-moi à choisir entre trois modes :
+- Mode rapide (Gemini Flash / Claude Haiku) : pour les tâches courtes et simples
+- Mode lourd (Gemini Pro / Claude Sonnet ou Opus) : pour les tâches nuancées ou longues
+- Mode raisonnement (Thinking / Deep Research) : pour les problèmes à plusieurs étapes
+
+Indique :
+1. Quel mode tu recommandes et pourquoi
+2. Combien de temps approximatif ça devrait prendre
+3. Si je dois reformuler ma tâche pour qu'elle soit mieux traitée</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.2.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.2.2</span>
+            <span class="gem-block-title">Décomposer une tâche complexe</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>J'ai la tâche suivante qui me semble complexe : [DÉCRIVEZ LA TÂCHE].
+
+Avant de la traiter, décompose-la en sous-étapes claires. Pour chaque sous-étape :
+- L'objectif
+- Le mode IA le plus adapté (rapide / lourd / raisonnement)
+- Le temps estimé
+
+Sortie en liste numérotée. Si une étape ne nécessite pas d'IA, dis-le.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m2-2">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.2</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m2-2">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais qu'il y a 3 grands modes : rapide, lourd, raisonnement</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je commence toujours par le mode rapide et j'escalade si besoin</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais que le mode "le plus puissant pour tout" est une erreur</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je reconnais quand une tâche mérite le mode raisonnement</label>
+      </div>
     </div>
+    <!-- /lesson-2-2 -->
 
-    <h3>La matrice de décision — quelle situation, quel outil ?</h3>
-    <p>Ce tableau couvre 80 % des cas. Ce n'est pas une règle absolue — c'est un point de départ.</p>
+    <hr class="lesson-sep">
 
-    <table style="width:100%;border-collapse:collapse;margin:28px 0;font-size:15px">
-      <thead>
-        <tr style="border-bottom:2px solid var(--line-strong)">
-          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Situation</th>
-          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Outil recommandé</th>
-          <th style="text-align:left;padding:12px 20px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:500">Pourquoi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Rédiger, reformuler, brainstormer au quotidien</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Gemini</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--good)">DISPONIBLE POUR TOUS</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Accessible à toute la société, Gems disponibles. Votre premier réflexe pour 80 % des tâches.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Analyser un document long : contrat, rapport, spec 50+ pages</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude.ai PRO</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent)">PILOTE → COURANT</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Fenêtre de contexte très étendue, reconnu pour l'analyse structurée. Préférez-le à Gemini sur les documents volumineux.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Chercher une procédure ou un document interne HiPay</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">DUST</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent)">PILOTE → COURANT</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">RAG sur votre base interne. Répond depuis vos vrais docs — pas depuis la mémoire générique du modèle.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Automatiser une tâche récurrente (rapport, alerte, synchro)</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">n8n</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--good)">DISPONIBLE, DÉPLOYÉ</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Orchestre vos outils (Slack, Gmail, HubSpot…) avec ou sans IA. Tourne sans vous.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Actions complexes dans le navigateur web</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude in Chrome</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">POPULATIONS CIBLÉES</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Agent navigateur : lit les pages, extrait, interagit. Pour les flux web multi-étapes.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Déléguer une suite de tâches dans vos applications bureau</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Cowork</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">POPULATIONS CIBLÉES</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Agent desktop sur Claude PRO : voit votre écran, agit dans vos applications.</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:16px 20px;color:var(--ink);vertical-align:top;font-family:var(--serif-it);font-style:italic">Écrire, revoir ou débugger du code</td>
-          <td style="padding:16px 20px;vertical-align:top"><strong style="color:var(--ink)">Claude Code ou Cursor</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--ink-faint)">DÉVELOPPEURS</span></td>
-          <td style="padding:16px 20px;color:var(--ink-soft);vertical-align:top">Optimisés pour le contexte technique : accès au code, terminal, PR review.</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- ===== LEÇON 2.3 ===== -->
+    <div id="lesson-2-3">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.3 · Gemini : votre couteau suisse au quotidien</div>
+      <p class="lead"><em>Tout le monde a Gemini chez HiPay. C'est l'outil dans lequel vous devez investir le plus. Voici comment en tirer vraiment parti — y compris ses fonctionnalités méconnues.</em></p>
 
-    <h3>Les 5 modes d'interaction avec l'IA</h3>
-    <p>Derrière ces outils, il y a 5 façons fondamentalement différentes d'interagir avec l'IA. Comprendre la différence, c'est savoir pourquoi on choisit l'un plutôt que l'autre.</p>
+      <h3>Pourquoi Gemini d'abord</h3>
+      <p>Chez HiPay, vous avez tous une <strong>licence Gemini Advanced</strong>, fournie par l'entreprise. C'est l'outil IA disponible pour tout le monde, validé pour un usage professionnel, et suffisant pour 80% du quotidien. Si vous ne devez maîtriser qu'un seul outil, c'est celui-là.</p>
 
-    <dl>
-      <div class="definition">
-        <dt>Chat</dt>
-        <dd><strong>Vous demandez, l'IA répond.</strong> Mode conversationnel. Pas d'autonomie — l'IA attend votre prochaine question à chaque étape. <em>Outils HiPay : Gemini, Claude.ai en mode conversation standard.</em></dd>
+      <div class="callout">
+        <span class="callout-label">Important sur votre licence</span>
+        <!-- À VÉRIFIER : type exact de licence Gemini déployée chez HiPay (Advanced / Business / autre) et conditions d'usage pour les données pro — confirmer avec IT ou DPO -->
+        <p>Votre licence Gemini Advanced est <strong>individuelle et professionnelle</strong>. Elle est <strong>plus protectrice</strong> qu'un compte Gemini gratuit grand public, mais elle <strong>ne donne pas accès</strong> aux intégrations Workspace (Drive, Gmail, Docs, Sheets) — HiPay n'a pas Google Workspace. Vous utilisez Gemini comme une app autonome, sans connexion directe à vos outils Google internes.</p>
       </div>
-      <div class="definition">
-        <dt>Agent</dt>
-        <dd><strong>L'IA planifie et agit.</strong> Elle décompose un objectif complexe en sous-tâches, utilise des outils (navigateur, fichiers, applications), corrige ses erreurs en cours de route. Vous supervisez — elle exécute. <em>Outils HiPay : Cowork (desktop), Claude in Chrome (web).</em></dd>
-      </div>
-      <div class="definition">
-        <dt>RAG</dt>
-        <dd><strong>L'IA répond depuis VOS documents.</strong> RAG = Retrieval-Augmented Generation. Elle consulte en temps réel une base de connaissances connectée et génère une réponse ancrée dans vos vraies sources — qu'elle peut citer. Résultat : moins d'hallucinations sur les sujets propres à HiPay. <em>Outil HiPay : DUST.</em></dd>
-      </div>
-      <div class="definition">
-        <dt>Terminal</dt>
-        <dd><strong>L'IA dans votre environnement de développement.</strong> Accès direct au code, aux fichiers, à l'exécution. Très puissant — et réservé aux développeurs capables d'évaluer et valider ce que l'IA produit. <em>Outil HiPay : Claude Code.</em></dd>
-      </div>
-      <div class="definition">
-        <dt>Orchestrateur</dt>
-        <dd><strong>L'IA comme une brique dans un workflow automatisé.</strong> L'outil d'automatisation déclenche l'IA, récupère le résultat, le passe à l'outil suivant — sans vous. Le cerveau (LLM) + le muscle (workflow). <em>Outil HiPay : n8n qui appelle Gemini ou Claude via API.</em></dd>
-      </div>
-    </dl>
 
-    <h3>Exemple de workflow multi-outils chez HiPay</h3>
-    <div class="callout good">
-      <span class="callout-label">Exemple · Veille réglementaire semi-automatisée</span>
-      <p>
-        <strong>1. n8n</strong> surveille quotidiennement les publications de l'ACPR et de l'ABE.<br>
-        <strong>2. Gemini ou Claude</strong> (via API dans n8n) analyse chaque nouveau document et en extrait les points impactants pour HiPay.<br>
-        <strong>3. n8n</strong> poste automatiquement le résumé structuré dans <strong>#ai-news</strong> sur Slack.<br>
-        <strong>4. DUST</strong> (quand disponible) permet à l'équipe Compliance d'interroger ces documents directement en langage naturel.
-      </p>
+      <h3>Ce que Gemini fait très bien</h3>
+      <ul>
+        <li><strong>Rédaction et reformulation</strong> : mails, notes, comptes-rendus, posts</li>
+        <li><strong>Résumé</strong> de textes que vous lui collez (mails, articles, comptes-rendus)</li>
+        <li><strong>Traduction</strong> rapide et de bonne qualité</li>
+        <li><strong>Brainstorming</strong> : générer 10 idées, étoffer une liste</li>
+        <li><strong>Recherche web</strong> intégrée (Search) : Gemini peut vérifier en ligne et citer ses sources</li>
+        <li><strong>Analyse</strong> d'un document collé ou importé (PDF, image)</li>
+      </ul>
+
+      <h3>Ce que Gemini ne fait PAS chez HiPay</h3>
+      <ul>
+        <li><strong>Pas d'accès à votre Gmail</strong> : vous ne pouvez pas lui dire "résume mon dernier mail de X". Il faut copier-coller.</li>
+        <li><strong>Pas d'accès à votre Drive</strong> : importez manuellement les fichiers dans Gemini ou copiez le texte.</li>
+        <li><strong>Pas de connaissance interne HiPay</strong> : il ne connaît pas vos merchants, procédures, équipes. Pour ça, c'est DUST.</li>
+        <li><strong>Pas d'agent qui exécute des actions</strong> sur votre poste. Pour ça, c'est Cowork.</li>
+      </ul>
+
+      <h3>Les 4 fonctionnalités natives à connaître absolument</h3>
+
+      <h4>1. Le mode Thinking / Raisonnement</h4>
+      <p>Pour les tâches complexes (analyse multi-critères, planification). Le modèle prend son temps, décompose, vérifie. <strong>Quand l'utiliser :</strong> analyse stratégique, problème logique, planification avec contraintes.</p>
+
+      <h4>2. Canvas</h4>
+      <p>Canvas est un <strong>espace de travail itératif</strong> pour rédiger un document long. Vous demandez à Gemini un draft, il l'affiche dans un panneau Canvas. Vous sélectionnez un paragraphe, vous dites <em>"raccourcis ça"</em> ou <em>"reformule en plus direct"</em>. Gemini modifie <strong>uniquement</strong> la sélection. <strong>Quand l'utiliser :</strong> rédaction longue (note, article, présentation).</p>
+
+      <h4>3. Deep Research</h4>
+      <p>Deep Research lance une <strong>vraie recherche multi-sources sur le web</strong>, lit plusieurs dizaines de pages, et produit un rapport structuré avec sources citées. <strong>Quand l'utiliser :</strong> briefs sur des sujets que vous ne connaissez pas, veille marché. <strong>Limite :</strong> c'est lent (vraiment). Lancez, allez faire autre chose, revenez plus tard.</p>
+
+      <h4>4. NotebookLM</h4>
+      <p>La fonctionnalité probablement la plus puissante et la moins connue. NotebookLM est un espace où vous <strong>importez vos propres documents</strong> (PDF, URL, notes texte), et l'IA répond <strong>uniquement à partir de ces sources</strong> avec citations précises. C'est presque un mini-DUST côté personnel.</p>
+      <p><strong>Quand l'utiliser :</strong> analyser un long dossier avec questions ciblées, préparer un brief sur des sources précises, onboarding sur un projet documenté.</p>
+      <p><strong>Limites :</strong> pas d'intégration HiPay (import manuel), limites de taille. <strong>Ne pas y mettre de données confidentielles HiPay</strong> sans confirmer que votre licence couvre cet usage.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Gemini Advanced = outil par défaut chez HiPay. Maîtrisez-le en priorité.</li>
+        <li>Canvas (rédaction itérative), Deep Research (briefs profonds), NotebookLM (vos sources), Thinking (problèmes complexes).</li>
+        <li>Pas d'intégration Workspace chez HiPay : il faut copier-coller ou importer.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>NotebookLM : trois usages concrets qui changent tout</summary>
+        <div class="bonus-body">
+          <p><strong>Usage 1 — Onboarding sur un dossier client.</strong> Vous reprenez un dossier merchant complexe. Vous avez 6 documents (contrat, avenants, rapports d'incidents). Vous les importez dans un Notebook. Vous posez : <em>"Qu'est-ce qui a été décidé sur la question Y lors des 6 derniers mois ?"</em>. NotebookLM cite les passages exacts. Vous gagnez 2 heures de lecture.</p>
+          <p><strong>Usage 2 — Veille structurée sur un sujet.</strong> Vous suivez la régulation paiement ou l'IA dans la fintech. Chaque fois que vous lisez un article intéressant, vous l'ajoutez à votre Notebook. Au bout de 2 mois, 20-30 sources. Vous pouvez interroger l'ensemble : <em>"Quels sont les arguments contradictoires sur X dans mes sources ?"</em></p>
+          <p><strong>Usage 3 — Préparation d'une intervention.</strong> Vous devez intervenir dans une table ronde. Vous importez vos notes et articles de référence. Vous demandez : <em>"Prépare-moi 10 questions probables avec des éléments de réponse argumentés"</em>. Briefé en 30 minutes.</p>
+          <p>Les Notebooks <strong>persistent</strong>. Construire un Notebook sur un sujet est un investissement qui dure.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-2-3">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous recevez un dossier de 60 pages à analyser pour une réunion stratégique dans 3 jours : un rapport de 35 pages d'un cabinet sur le marché du paiement européen, 3 articles de presse (15 pages), un mémo interne HiPay de 10 pages. Vous voulez en tirer un brief de 2 pages pour votre directeur.</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle est la meilleure approche avec Gemini ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Coller tous les documents dans un seul chat Gemini, demander un brief en une fois.</button>
+          <button class="cs-option">B) Faire Deep Research sur le sujet pour avoir un brief général, ignorer les documents.</button>
+          <button class="cs-option">C) Créer un Notebook dans NotebookLM, importer les 3 sources, poser des questions ciblées, utiliser Canvas pour le brief final.</button>
+          <button class="cs-option">D) Lire les 60 pages à la main, c'est plus rigoureux.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C.</strong></p>
+          <ul>
+            <li><strong>A est sous-optimal</strong> : un chat unique avec 60 pages collées va perdre des instructions et ne peut pas citer précisément.</li>
+            <li><strong>B passe à côté</strong> : Deep Research ferait une recherche web générale, mais vous avez déjà vos sources spécifiques. Vous voulez utiliser <em>vos</em> sources, pas ce que dit le web.</li>
+            <li><strong>C est l'approche optimale</strong> : (1) importer les 3 sources, (2) poser des questions ciblées par thème, (3) Gemini cite ses sources, (4) ouvrir Canvas pour rédiger le brief en l'éditant paragraphe par paragraphe.</li>
+            <li><strong>D est respectable mais lent</strong> : 60 pages = 2-3 heures. Avec NotebookLM, même niveau de compréhension en 45 min, avec traçabilité des sources.</li>
+          </ul>
+          <p><strong>Précaution</strong> : le mémo interne HiPay est probablement confidentiel. Avant d'importer dans NotebookLM, vérifier auprès de <code>#ai-support</code> que votre licence couvre cet usage.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.3.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.3.1</span>
+            <span class="gem-block-title">Mail pro rapide</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Rédige un mail à [DESTINATAIRE] pour [OBJECTIF].
+
+Contexte : [3-5 lignes de contexte]
+
+Contraintes :
+- Ton : [professionnel / cordial / ferme]
+- Longueur max : [X lignes]
+- En français / en anglais
+- Inclure : [élément clé à mentionner]
+
+Si tu n'es pas sûr d'un détail factuel, dis-le plutôt que de le deviner.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.3.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.3.2</span>
+            <span class="gem-block-title">Brief de NotebookLM</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>À partir des sources que j'ai importées dans ce Notebook, prépare-moi un brief structuré.
+
+Format attendu :
+1. Synthèse en 5 lignes des points convergents entre les sources
+2. Divergences ou contradictions entre sources (avec citations précises)
+3. 3-5 enjeux principaux qui se dégagent
+4. 5 questions que je devrais me poser ou poser à mon équipe
+5. Sources les plus utiles pour aller plus loin sur chaque enjeu
+
+Cite systématiquement les sources et les passages exacts utilisés.
+Si une question est mal couverte par mes sources, dis-le.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.3.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.3.3</span>
+            <span class="gem-block-title">Lancer un Deep Research efficace</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Lance une recherche approfondie sur le sujet suivant : [SUJET]
+
+Contexte de ma demande : [POURQUOI, À QUI ÇA S'ADRESSE]
+
+Format attendu pour le rapport final :
+1. Résumé exécutif (10 lignes)
+2. Panorama du sujet en 2025-2026 (état actuel)
+3. Acteurs principaux et leurs positions
+4. Tendances et signaux faibles
+5. Implications potentielles pour [DOMAINE / SECTEUR]
+6. Questions ouvertes et sujets à surveiller
+
+Privilégie les sources récentes (moins de 2 ans), reconnues, et de plusieurs perspectives.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m2-3">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.3</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m2-3">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais que ma licence Gemini Advanced est individuelle et pro (pas Workspace)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je connais Canvas pour la rédaction itérative</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je sais utiliser Deep Research pour les briefs sur sujets nouveaux</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'ai compris NotebookLM et son potentiel pour mes propres sources</label>
+        <label class="cl-item"><input type="checkbox" data-idx="4"> Je sais quand utiliser le mode Thinking</label>
+      </div>
     </div>
+    <!-- /lesson-2-3 -->
 
-    <h3>Fiches de référence par outil</h3>
-    <p>Pour chaque outil disponible chez HiPay : à quoi ça sert, quand l'utiliser, quand ne pas l'utiliser, et les vigilances spécifiques.</p>
+    <hr class="lesson-sep">
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Gemini</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(91,255,177,0.12);color:var(--good);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Disponible pour tous</span>
+    <!-- ===== LEÇON 2.4 ===== -->
+    <div id="lesson-2-4">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.4 · Claude &amp; Cowork : tâches poussées et agents</div>
+      <p class="lead"><em>Claude et Cowork sont en pilote chez HiPay. Si vous y avez accès, voici quand les sortir vs rester sur Gemini Advanced.</em></p>
+
+      <h3>Au cas où : qui a Claude / Cowork ?</h3>
+      <p>Pour l'instant, <strong>quelques licences seulement</strong>. Si vous n'en avez pas, <strong>ce n'est pas grave</strong> — Gemini Advanced couvre 80% des besoins. Cette leçon vous prépare au cas où l'accès s'élargit. Si vous voulez tester : <code>#ai-taskforce</code>.</p>
+
+      <h3>Claude vs Gemini : quand choisir lequel ?</h3>
+      <p><strong>Préférez Claude pour :</strong></p>
+      <ul>
+        <li>Les <strong>longs documents</strong> (contrats de 30+ pages, rapports). Claude gère mieux les contextes très longs.</li>
+        <li>Le <strong>code</strong> complexe ou la revue de code. Claude est réputé particulièrement fort là-dessus.</li>
+        <li>L'<strong>écriture longue et soignée</strong> (notes stratégiques, documents structurés).</li>
+        <li>Les <strong>sujets nuancés</strong> où vous voulez une analyse pondérée.</li>
+      </ul>
+      <p><strong>Préférez Gemini Advanced pour :</strong></p>
+      <ul>
+        <li>Les <strong>fonctionnalités natives</strong> : Canvas, Deep Research, NotebookLM.</li>
+        <li>Les <strong>recherches web</strong> (Gemini intègre Search nativement).</li>
+        <li>Le <strong>quotidien rapide</strong> (résumés, mails courts, brainstormings simples).</li>
+        <li><strong>Quand vous ne savez pas</strong> : c'est le réflexe par défaut.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="callout-label">La règle pragmatique</span>
+        <p>Si Gemini vous a déçu sur une tâche complexe et que vous avez Claude, essayez Claude. Et inversement. Les deux modèles "loupent" différemment — comparer 2 sorties peut révéler la meilleure approche.</p>
       </div>
-      <p><strong>Ce que c'est :</strong> LLM conversationnel de Google, déployé sur votre compte HiPay en mode usage interne. Accès aux Gems (assistants personnalisés).</p>
-      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> rédaction, reformulation, résumé, brainstorming, traduction, analyse de texte, création de Gems métiers. C'est le premier réflexe pour la grande majorité des tâches du quotidien.</p>
-      <p style="margin-top:12px"><strong>Limites :</strong> moins adapté que Claude sur les très longs documents. Pas conçu pour interroger votre base interne HiPay (c'est le rôle de DUST).</p>
-      <p style="margin-top:12px"><strong>Protection des données :</strong> En mode usage interne HiPay, Google s'engage à ne pas utiliser vos conversations pour entraîner ses modèles.<!-- SOURCE: politique Google Workspace for Business — à reconfirmer à chaque renouvellement du contrat HiPay et mise à jour des CGU Google --></p>
-    </div>
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Claude.ai PRO</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(111,91,255,0.12);color:var(--accent);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Pilote → courant</span>
+      <h3>Cowork : le grand changement</h3>
+      <p>Cowork n'est <strong>pas un assistant</strong> comme Gemini ou Claude. C'est un <strong>agent qui agit sur votre poste</strong>. Il peut ouvrir vos fichiers, manipuler vos applications, exécuter des actions à votre place.</p>
+      <p><strong>Pour quoi :</strong> reformater 30 fichiers d'un coup, faire la même opération sur 50 lignes d'un Sheet, préparer des dossiers en croisant plusieurs sources locales.</p>
+
+      <h3>Les garde-fous indispensables avec Cowork</h3>
+      <p>C'est un agent. Donc il <strong>peut casser des choses</strong>. Trois règles avant chaque lancement :</p>
+      <ol>
+        <li><strong>Périmètre limité</strong> : ne lui donnez accès qu'aux dossiers / applis nécessaires.</li>
+        <li><strong>Validation des actions destructrices</strong> : Cowork demande confirmation pour les suppressions, vérifiez que c'est activé.</li>
+        <li><strong>Test sur un échantillon</strong> : avant de lui faire renommer 500 fichiers, faites-lui en renommer 5.</li>
+      </ol>
+      <p><strong>Erreur classique</strong> : lancer Cowork sur une tâche, partir prendre un café, revenir et constater qu'il a fait quelque chose d'inattendu. <strong>Restez à côté pendant les premières utilisations.</strong></p>
+
+      <h3>Claude in Chrome : agent navigateur</h3>
+      <p>Variante de Cowork mais dans votre navigateur. Il peut remplir des formulaires, cliquer sur des boutons, naviguer entre onglets, extraire des informations de sites. Mêmes règles de prudence : périmètre limité, validation, échantillon de test.</p>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>Claude : meilleur pour les longs docs, le code, l'écriture soignée.</li>
+        <li>Gemini Advanced : meilleur pour Canvas/Deep Research/NotebookLM, recherche web, quotidien rapide.</li>
+        <li>Cowork = agent qui agit. Pouvoir × risque. Périmètre + test + validation.</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Cursor : la version dev de l'IA agent</summary>
+        <div class="bonus-body">
+          <p><strong>Cursor</strong> est un éditeur de code (basé sur VS Code) avec IA intégrée. Pour les développeurs HiPay, c'est l'équivalent de Cowork mais pour le code : l'IA voit votre repo, comprend votre code, fait des modifications, vous propose des commits.</p>
+          <p><strong>Différence avec Claude Code</strong> : Claude Code est un agent en ligne de commande (terminal). Cursor est un agent dans un éditeur visuel. Les deux sont complémentaires selon les préférences du dev.</p>
+          <p><strong>Pour qui</strong> : développeurs. Pas pour un commercial ou un RH.</p>
+          <p><strong>Ressources</strong> : <a href="https://drive.google.com/drive/folders/1JNaX7HiJJQr7QPdLW-Szk0L3Aboc0GTR" style="color:var(--accent)">Vidéos internes Cursor disponibles sur Drive HiPay</a>.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-2-4">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous devez analyser un contrat fournisseur de 28 pages, identifier les clauses à risque (paiement, RGPD, propriété intellectuelle), et préparer une note de synthèse pour votre direction. Vous avez Gemini Advanced et Claude (pilote).</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche choisissez-vous ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Coller le contrat dans Gemini Advanced, demander une analyse en une fois.</button>
+          <button class="cs-option">B) Importer dans NotebookLM (Gemini) OU coller dans Claude mode Sonnet/Opus — analyse structurée par catégorie de risque, puis note de synthèse séparée.</button>
+          <button class="cs-option">C) Demander à Cowork de lire le PDF et de tout faire en autonomie.</button>
+          <button class="cs-option">D) Lire le contrat à la main pour ne rater aucun détail.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B.</strong></p>
+          <ul>
+            <li><strong>A est OK mais pas optimal</strong> : sur un document long et juridique, Claude ou NotebookLM sont mieux adaptés.</li>
+            <li><strong>B est la meilleure approche</strong> : deux options légitimes — NotebookLM (questions ciblées avec citations précises) ou Claude (excellent sur les longs documents nuancés). En deux étapes (analyse → synthèse), vous gardez la main sur la qualité.</li>
+            <li><strong>C est dangereux</strong> : Cowork est un agent. Pour une analyse pure, vous voulez un assistant, pas un agent.</li>
+            <li><strong>D est lent</strong> : 28 pages = 2 heures. L'IA fait le premier passage en 5-10 min, vous gardez le contrôle sur la décision.</li>
+          </ul>
+          <p><strong>Important</strong> : que vous utilisiez Gemini ou Claude, ce sont des outils d'analyse, pas des décideurs. La décision finale reste à vous et au juriste.</p>
+        </div>
       </div>
-      <p><strong>Ce que c'est :</strong> LLM d'Anthropic. Reconnu pour la qualité d'analyse sur des documents longs et des tâches structurées, ainsi que pour la nuance dans la rédaction complexe.</p>
-      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> analyser des contrats ou des specs de plusieurs dizaines de pages, rédiger des communications sensibles, structurer un raisonnement complexe, itérer sur un contenu de haute qualité.</p>
-      <p style="margin-top:12px"><strong>Limites :</strong> accès actuellement limité au pilote. Pas d'intégrations directes dans Google Workspace.</p>
-      <p style="margin-top:12px"><strong>Protection des données :</strong> Sur la licence PRO, Anthropic s'engage à ne pas utiliser vos conversations pour entraîner les modèles, par défaut.<!-- SOURCE: Anthropic usage policy pour comptes payants — à reconfirmer à chaque mise à jour de la politique Anthropic --></p>
-      <p style="margin-top:12px"><strong>Accès :</strong> En pilote. Demandez sur <strong>#ai-taskforce</strong> si votre profil correspond.</p>
-    </div>
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">DUST</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(111,91,255,0.12);color:var(--accent);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Pilote → courant</span>
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.4.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.4.1</span>
+            <span class="gem-block-title">Analyse d'un long document</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici un document : [COLLEZ LE DOCUMENT].
+
+Analyse-le selon le plan suivant :
+1. Résumé général en 3-5 lignes
+2. Points clés (5-7 bullet points)
+3. Risques ou zones d'attention (avec page / paragraphe précis si possible)
+4. Questions que je devrais poser avant de valider
+
+Si tu n'es pas sûr d'un point, dis-le. Sois factuel et précis.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.4.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.4.2</span>
+            <span class="gem-block-title">Préparer Cowork pour une tâche fichiers</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Avant de lancer Cowork sur la tâche suivante : [DÉCRIVEZ LA TÂCHE]
+
+Décompose-la pour moi en :
+1. Liste des fichiers / dossiers concernés
+2. Actions à effectuer (création / modification / déplacement / suppression)
+3. Risques potentiels (qu'est-ce qui pourrait mal se passer ?)
+4. Méthode de test sur un échantillon avant le lancement complet
+
+Je veux pouvoir valider chaque étape avant de lui laisser la main.</pre>
+        </div>
       </div>
-      <p><strong>Ce que c'est :</strong> Une plateforme RAG connectée à votre base de connaissances interne HiPay — procédures, politiques, templates, documentation produit. L'IA répond depuis vos vraies sources, pas depuis sa mémoire générique.</p>
-      <p style="margin-top:12px"><strong>La différence critique avec Gemini/Claude :</strong> DUST cite ses sources. Vous savez d'où vient la réponse. C'est ce qui élimine le risque d'hallucination sur les sujets spécifiques à HiPay.</p>
-      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> retrouver une procédure interne, valider une politique RH, comprendre un processus métier HiPay, chercher un template ou un contrat-type.</p>
-      <p style="margin-top:12px"><strong>Statut :</strong> En pilote. Suivez <strong>#ai-taskforce</strong> pour les annonces de déploiement. Consultez aussi l'<a href="https://hipay.atlassian.net/wiki/spaces/genai/overview" style="color:var(--accent)">espace Confluence GenAI</a>.</p>
-    </div>
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">n8n</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(91,255,177,0.12);color:var(--good);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Disponible, déployé</span>
+      <div class="quiz" data-quiz="m2-4">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.4</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
       </div>
-      <p><strong>Ce que c'est :</strong> Un orchestrateur de workflows d'automatisation. Ce n'est pas un LLM — c'est la "colle" qui connecte vos outils entre eux (Slack, Gmail, HubSpot, Jira, n'importe quelle API) et peut y injecter de l'IA au passage.</p>
-      <p style="margin-top:12px"><strong>Utilisez-le pour :</strong> automatiser des tâches récurrentes qui impliquent plusieurs applications, créer des alertes intelligentes, construire des pipelines de traitement données.</p>
-      <p style="margin-top:12px"><strong>Vigilance :</strong> Les workflows automatisés ne doivent pas faire transiter de données clients non agrégées sans validation de la Compliance.</p>
-      <p style="margin-top:12px"><strong>Ressources HiPay :</strong>
-        <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/359858179/n8n+Best+Practices+Guide" style="color:var(--accent)">Guide Best Practices n8n</a> ·
-        <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/704708616/Radar+Automation+IA+Efficacit+HiPay" style="color:var(--accent)">Radar Automation</a>
-      </p>
-    </div>
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Claude Code &amp; Cursor</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(255,122,61,0.12);color:var(--warn);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Développeurs uniquement</span>
+      <div class="lesson-checklist" data-checklist="m2-4">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais quand préférer Claude vs Gemini Advanced quand j'ai accès aux deux</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je comprends ce que Cowork peut faire de différent</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je connais les 3 règles de sécurité avant de lancer Cowork (périmètre, test, validation)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je sais que Cursor est niche dev, pas pour mon profil si je ne code pas</label>
       </div>
-      <p><strong>Claude Code :</strong> Claude dans votre terminal, avec accès direct au codebase — génération, refactoring, debugging, documentation. <strong>Cursor :</strong> IDE avec IA intégrée pour l'autocomplétion en contexte.</p>
-      <p style="margin-top:12px"><strong>Règle absolue :</strong> jamais de secrets, clés API ou credentials dans le contexte. Code review humaine obligatoire avant tout merge — l'IA produit du code qui marche, pas nécessairement du code sécurisé ou qui respecte vos conventions.</p>
-      <p style="margin-top:12px"><strong>Ressource :</strong> <a href="https://drive.google.com/drive/folders/1JNaX7HiJJQr7QPdLW-Szk0L3Aboc0GTR" style="color:var(--accent)">Vidéos internes Cursor</a></p>
     </div>
+    <!-- /lesson-2-4 -->
 
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:32px;margin:20px 0">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-        <h4 style="font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.02em;margin:0">Cowork &amp; Claude in Chrome</h4>
-        <span style="font-family:var(--mono);font-size:10px;background:rgba(110,106,96,0.15);color:var(--ink-faint);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.1em">Populations ciblées</span>
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 2.5 ===== -->
+    <div id="lesson-2-5">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.5 · DUST : quand vous avez besoin du contexte HiPay</div>
+      <p class="lead"><em>DUST n'est pas un chatbot. C'est votre mémoire d'entreprise augmentée. Comprendre la différence change tout.</em></p>
+
+      <h3>DUST en une phrase</h3>
+      <p>DUST est un assistant IA <strong>connecté aux sources internes de HiPay</strong> : Confluence, Notion, Drive, et potentiellement d'autres. Il répond à vos questions en cherchant dans <strong>vos</strong> documents, et <strong>cite les passages</strong> qu'il a utilisés.</p>
+      <ul>
+        <li>Gemini / Claude ne <strong>connaissent pas</strong> HiPay. Ils inventent.</li>
+        <li>DUST connaît HiPay parce qu'il a accès à vos sources.</li>
+      </ul>
+      <p>DUST est en <strong>pilote</strong>. Si vous voulez tester pendant le pilote : <code>#ai-taskforce</code>.</p>
+
+      <h3>Les 3 cas où DUST change la vie</h3>
+
+      <h4>Cas 1 — Retrouver une procédure interne</h4>
+      <p><em>"Quelle est notre procédure pour valider une nouvelle relation merchant en zone DACH ?"</em><br>
+      DUST cherche dans Confluence, identifie la procédure officielle, vous la résume et cite le document source. Avec Gemini, vous obtiendriez une procédure plausible mais générique (pas HiPay).</p>
+
+      <h4>Cas 2 — Comprendre un sujet HiPay rapidement</h4>
+      <p>Vous arrivez sur un dossier, vous ne connaissez pas l'historique. Au lieu de poser 5 questions à 5 collègues :<br>
+      <em>"Donne-moi un brief sur le projet [nom] : objectifs, état d'avancement, équipes impliquées, dernières décisions."</em><br>
+      DUST synthétise à partir des sources disponibles. Vous gagnez plusieurs jours de mise en route.</p>
+
+      <h4>Cas 3 — Croiser plusieurs sources</h4>
+      <p><em>"Quels sont les standards de sécurité que nous appliquons sur les intégrations partenaires, et comment ils s'articulent avec notre politique d'audit fournisseur ?"</em><br>
+      DUST peut croiser Confluence + Drive + Notion et vous donner une réponse synthétique avec sources.</p>
+
+      <h3>DUST vs NotebookLM : quelle différence ?</h3>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line-strong)">
+            <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:500"></th>
+            <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:500">NotebookLM</th>
+            <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:500">DUST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:8px 14px;color:var(--ink-soft);font-weight:500">Sources</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Vous les importez manuellement</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Connecté en permanence à Confluence, Drive, Notion HiPay</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:8px 14px;color:var(--ink-soft);font-weight:500">Mise à jour</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Manuelle (vous réimportez)</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Automatique (les sources évoluent, DUST suit)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:8px 14px;color:var(--ink-soft);font-weight:500">Périmètre</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Personnel, par projet</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Collectif, à l'échelle de HiPay</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 14px;color:var(--ink-soft);font-weight:500">Cas idéal</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Analyse d'un dossier précis, veille personnelle</td>
+            <td style="padding:8px 14px;color:var(--ink-soft)">Recherche dans toute la doc d'entreprise</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Les limites à connaître</h3>
+      <p><strong>DUST connaît ce qu'il a indexé. Pas plus.</strong> Si un document n'est pas dans les sources connectées, il ne le verra pas. Vérifiez toujours la date des sources citées — une procédure de 2022 peut être obsolète.</p>
+      <p><strong>DUST peut quand même halluciner.</strong> C'est plus rare qu'un LLM seul, mais ça arrive quand la question est ambiguë ou quand l'info n'existe pas vraiment dans les sources. DUST cite ses sources — <strong>cliquez et vérifiez</strong>.</p>
+      <p><strong>DUST n'est pas un magicien.</strong> Sa qualité de réponse dépend de la qualité de vos sources.</p>
+
+      <div class="callout warn">
+        <span class="callout-label">La règle d'or avec DUST</span>
+        <p>Lisez la réponse. Vérifiez les sources citées. Ne copiez jamais une info DUST dans un document officiel sans avoir cliqué sur au moins une source. C'est ce qui différencie un usage amateur d'un usage pro.</p>
       </div>
-      <p><strong>Cowork :</strong> agent desktop sur Claude PRO. Voit votre écran, peut agir dans vos applications bureau pour exécuter des tâches complexes multi-étapes. <strong>Claude in Chrome :</strong> agent navigateur. Lit les pages web, extrait des informations, interagit avec des formulaires.</p>
-      <p style="margin-top:12px"><strong>Vigilance spécifique agents :</strong> L'agent voit votre écran et le contenu de vos pages. Ne lancez jamais de session agent sur un espace affichant des données clients identifiées. Supervisez les actions en temps réel — l'autonomie ne dispense pas du contrôle.</p>
-      <p style="margin-top:12px"><strong>Accès :</strong> Sur profil spécifique. Contactez <strong>#ai-taskforce</strong>.</p>
-    </div>
 
-    <div class="callout good" style="margin-top:32px">
-      <span class="callout-label">La progression naturelle chez HiPay</span>
-      <p>
-        <strong>Maintenant, pour tous :</strong> Gemini et n8n.<br>
-        <strong>Bientôt courant :</strong> Claude.ai PRO et DUST.<br>
-        <strong>Sur profil spécifique :</strong> Cowork, Claude in Chrome.<br>
-        <strong>Développeurs :</strong> Claude Code, Cursor.<br><br>
-        Si vous n'avez pas encore accès à un outil : c'est normal, les déploiements sont progressifs. Suivez l'<a href="https://hipay.atlassian.net/wiki/spaces/genai/overview" style="color:var(--accent)">espace Confluence GenAI</a> et le canal <strong>#ai-taskforce</strong> pour les annonces.
-      </p>
-    </div>
+      <details class="bonus">
+        <summary>RAG : la technologie derrière DUST</summary>
+        <div class="bonus-body">
+          <p>DUST repose sur une technique appelée <strong>RAG</strong> (Retrieval-Augmented Generation). Le principe :</p>
+          <ol>
+            <li><strong>Indexation</strong> : vos documents sont découpés en morceaux et stockés dans une "base vectorielle".</li>
+            <li><strong>Recherche</strong> : quand vous posez une question, DUST cherche les morceaux les plus pertinents.</li>
+            <li><strong>Génération</strong> : le LLM reçoit votre question <strong>et</strong> ces morceaux. Il répond en s'appuyant dessus.</li>
+          </ol>
+          <p>C'est ce qui permet à DUST de répondre sur des documents que le modèle n'a jamais vus, de citer ses sources précises, et de mettre à jour ses connaissances sans réentraîner le modèle. Conséquence : si la recherche échoue (mauvaise indexation, doc mal écrit), la génération sera mauvaise aussi. RAG est plus fiable qu'un LLM seul, mais il <strong>n'efface pas</strong> le risque d'hallucination.</p>
+        </div>
+      </details>
 
+      <div class="case-study" data-case="case-2-5">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous arrivez en réunion. Votre boss vous dit : <em>"On a une demande spéciale d'un gros merchant sur les conditions d'audit PCI-DSS. C'est quoi notre position là-dessus ?"</em> Vous avez 30 minutes. Vous avez accès à Gemini Advanced, Claude (pilote), DUST (pilote).</p>
+        </div>
+        <p class="case-study-question"><strong>Quelle approche ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Demander à Gemini : "Quelle est la position de HiPay sur les audits PCI-DSS ?"</button>
+          <button class="cs-option">B) Demander à DUST : "Quelle est notre politique sur les audits PCI-DSS pour les merchants ?", puis cliquer sur les sources pour valider.</button>
+          <button class="cs-option">C) Demander à Claude la même chose.</button>
+          <button class="cs-option">D) Parcourir Confluence à la main pour trouver la politique.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est B (avec D en plan B si DUST ne donne rien).</strong></p>
+          <ul>
+            <li><strong>A est dangereux</strong> : Gemini ne connaît pas la politique HiPay. Il va générer une réponse plausible mais inventée. Si vous citez ça à votre boss et que c'est faux, vous êtes mal.</li>
+            <li><strong>C est aussi mauvais</strong> : même problème. Claude ne connaît pas HiPay.</li>
+            <li><strong>B est la bonne approche</strong> : DUST cherche dans vos sources internes. Si la politique existe dans Confluence, il la trouvera et la citera. Cliquer sur les sources reste obligatoire.</li>
+            <li><strong>D est respectable mais long</strong> : parcourir Confluence à la main en 30 min est faisable mais lent. DUST fait ça en 30 secondes.</li>
+          </ul>
+          <p><strong>Astuce</strong> : si DUST ne trouve rien, c'est aussi une <strong>information utile</strong>. Vous dites à votre boss : <em>"DUST ne trouve pas de politique formalisée — c'est peut-être un sujet à clarifier avec Compliance."</em></p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.5.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.5.1</span>
+            <span class="gem-block-title">Question contextuelle à DUST</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Recherche dans la documentation HiPay :
+
+[VOTRE QUESTION PRÉCISE]
+
+Format de réponse :
+1. Réponse synthétique en 3-5 lignes
+2. Sources citées (avec date du document)
+3. Points où tu n'es pas sûr ou où les sources sont anciennes
+4. Questions complémentaires à poser à des humains si nécessaire
+
+Si tu ne trouves pas d'information fiable dans les sources, dis-le clairement.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.5.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.5.2</span>
+            <span class="gem-block-title">Onboarding rapide sur un projet</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Donne-moi un brief sur le projet / sujet : [NOM DU PROJET].
+
+Inclus :
+1. Objectif principal et contexte
+2. État d'avancement actuel
+3. Équipes impliquées et points de contact
+4. Décisions importantes prises récemment
+5. Risques ou points de vigilance connus
+
+Cite les sources et leur date pour chaque point.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.5.3">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.5.3</span>
+            <span class="gem-block-title">Comparaison de deux politiques</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Compare nos deux documents / politiques suivants :
+
+- [Politique 1 ou nom de document 1]
+- [Politique 2 ou nom de document 2]
+
+Pour chaque thème commun, indique :
+- Ce que dit la politique 1
+- Ce que dit la politique 2
+- Différences notables
+- Cohérence ou contradictions éventuelles
+
+Cite les sources et signale les zones où les politiques sont silencieuses sur un sujet.</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m2-5">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.5</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m2-5">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais ce que DUST fait que Gemini ou Claude ne savent pas faire</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> J'utilise DUST pour toutes les questions qui demandent du contexte HiPay</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je distingue DUST (collectif) et NotebookLM (personnel)</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> Je vérifie systématiquement les sources citées par DUST</label>
+        <label class="cl-item"><input type="checkbox" data-idx="4"> Je sais qu'une absence de réponse DUST est aussi une information utile</label>
+      </div>
+    </div>
+    <!-- /lesson-2-5 -->
+
+    <hr class="lesson-sep">
+
+    <!-- ===== LEÇON 2.6 ===== -->
+    <div id="lesson-2-6">
+      <div class="lesson-meta" style="margin-top:0">Leçon 2.6 · n8n : passer du manuel au répétable</div>
+      <p class="lead"><em>Si vous faites trois fois la même chose, ce n'est plus à vous de la faire. n8n est l'outil HiPay pour automatiser intelligemment.</em></p>
+
+      <h3>n8n en une phrase</h3>
+      <p>n8n est un <strong>orchestrateur de workflows</strong>. Il enchaîne des étapes (récupérer des données, appeler une IA, envoyer un message, mettre à jour une base) <strong>automatiquement</strong>, selon un déclencheur (horaire, événement, demande).</p>
+      <p>Comparé aux autres outils : Gemini, Claude, DUST sont des <strong>assistants</strong>. Vous leur demandez quelque chose, vous attendez la réponse. n8n est un <strong>automate</strong>. Vous le configurez une fois, il tourne tout seul.</p>
+
+      <h3>Quand penser à n8n</h3>
+      <p>La règle simple : <strong>si vous faites trois fois la même tâche IA</strong>, c'est le signal.</p>
+      <ul>
+        <li>Chaque lundi matin, vous générez le rapport hebdo → n8n peut le faire automatiquement</li>
+        <li>Vous traitez 50 mails de support avec une réponse similaire → n8n peut générer 50 drafts personnalisés</li>
+        <li>Vous voulez être alerté quand un certain type de ticket apparaît → n8n peut surveiller et notifier</li>
+        <li>Vous reformatez des données entre deux outils → n8n peut faire le pont</li>
+      </ul>
+
+      <h3>Comment ça marche (sans rentrer dans la tech)</h3>
+      <p>Un workflow n8n est une <strong>suite d'étapes</strong> :</p>
+      <div class="callout">
+        <span class="callout-label">Exemple de workflow</span>
+        <p style="font-family:var(--mono);font-size:13px;line-height:2">
+          [Déclencheur : tous les vendredis à 16h]<br>
+          → [Récupérer les tickets clos de la semaine via API]<br>
+          → [Envoyer la liste à un LLM (Gemini ou Claude) avec un prompt]<br>
+          → [Mettre le résumé en forme]<br>
+          → [Poster sur Slack #equipe-xxx]
+        </p>
+        <p>Vous configurez ce workflow <strong>une fois</strong>. Ensuite, chaque vendredi à 16h, ça tourne automatiquement.</p>
+      </div>
+
+      <h3>Ce que vous pouvez faire vous-même vs déléguer</h3>
+      <p><strong>Vous pouvez configurer seul</strong> (avec de la motivation) : workflows simples (1-3 étapes), notifications conditionnelles, drafts générés par IA.</p>
+      <p><strong>Il vaut mieux déléguer</strong> : workflows complexes avec branchements, workflows qui touchent à des systèmes critiques, workflows qui croisent plusieurs APIs.</p>
+      <p><strong>Ressources HiPay :</strong> <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/359858179/n8n+Best+Practices+Guide" style="color:var(--accent)">Guide Best Practices n8n</a> · <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/704708616/Radar+Automation+IA+Efficacit+HiPay" style="color:var(--accent)">Radar Automation HiPay</a>. Avant de construire, vérifiez s'il n'existe pas déjà un workflow similaire.</p>
+
+      <h3>L'erreur classique avec n8n</h3>
+      <p>Vouloir tout automatiser. Or : un workflow qui tourne 2 fois par an ne mérite pas 4 heures de config + maintenance. Un workflow trop ambitieux casse souvent. Un workflow doit être <strong>maintenu</strong>.</p>
+      <p><strong>Règle pratique</strong> : automatisez ce qui <strong>revient souvent</strong>, est <strong>stable</strong>, et apporte <strong>un gain de temps significatif</strong> (au moins 10 minutes par occurrence).</p>
+
+      <div class="callout">
+        <span class="callout-label">Le Radar Automation HiPay</span>
+        <p>Avant de construire un workflow, consultez le <a href="https://hipay.atlassian.net/wiki/spaces/n8n/pages/704708616/Radar+Automation+IA+Efficacit+HiPay" style="color:var(--accent)">Radar des initiatives Automation × IA sur Confluence</a>. Vous éviterez de doublonner un workflow existant et pourrez vous inspirer des bonnes pratiques internes.</p>
+      </div>
+
+      <h3>Ce qu'il faut retenir</h3>
+      <ul>
+        <li>n8n = automatiser les tâches répétitives. Pas pour les tâches uniques.</li>
+        <li>Configurez une fois, tourne automatiquement ensuite.</li>
+        <li>Avant de construire, vérifiez le Radar HiPay (ne pas réinventer).</li>
+      </ul>
+
+      <details class="bonus">
+        <summary>Workflow type : le résumé automatique de la semaine</summary>
+        <div class="bonus-body">
+          <p><strong>Objectif</strong> : chaque vendredi à 17h, votre équipe reçoit sur Slack un résumé de la semaine basé sur les tickets / mails / docs créés.</p>
+          <p><strong>Étapes du workflow :</strong></p>
+          <ol>
+            <li><strong>Déclencheur</strong> : cron tous les vendredis 17h</li>
+            <li><strong>Récupération</strong> : API de votre tracker (Jira, Linear, ou autre) → récupère les tickets clos de la semaine</li>
+            <li><strong>Filtrage</strong> : ne garder que les tickets de l'équipe concernée</li>
+            <li><strong>Génération IA</strong> : envoi à Gemini Flash avec prompt structuré</li>
+            <li><strong>Mise en forme</strong> : transformation en message Slack</li>
+            <li><strong>Envoi</strong> : post sur Slack #equipe-xxx</li>
+          </ol>
+          <p><strong>Coût</strong> : quelques euros par mois en API Gemini Flash. Quelques heures de config. <strong>Gain</strong> : votre équipe gagne en visibilité sans qu'aucun manager ait à compiler le résumé manuellement.</p>
+          <p>C'est ce type de workflow que vous pouvez demander à <code>#ai-taskforce</code> de vous aider à construire.</p>
+        </div>
+      </details>
+
+      <div class="case-study" data-case="case-2-6">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p>Vous êtes Account Manager. Chaque mois, vous préparez un dashboard pour 8 de vos merchants prioritaires avec : volumes, incidents, demandes support, recommandations. Ça vous prend une journée complète chaque début de mois.</p>
+        </div>
+        <p class="case-study-question"><strong>Faut-il automatiser cela avec n8n ?</strong></p>
+        <div class="cs-options">
+          <button class="cs-option">A) Non, c'est une tâche stratégique, ça doit rester manuel.</button>
+          <button class="cs-option">B) Oui, totalement automatiser : le dashboard est envoyé tel quel aux merchants.</button>
+          <button class="cs-option">C) Partiellement automatiser : n8n collecte les données et génère un draft de dashboard, vous relisez, ajoutez vos recommandations, puis envoyez.</button>
+          <button class="cs-option">D) Demander à un dev de coder un outil dédié.</button>
+        </div>
+        <button class="cs-reveal-btn">Voir la réponse ↓</button>
+        <div class="cs-answer" hidden>
+          <p><strong>La bonne réponse est C.</strong></p>
+          <ul>
+            <li><strong>A est un faux argument</strong> : "stratégique" ne veut pas dire "tout manuel". La <strong>collecte de données</strong> n'est pas stratégique — c'est mécanique. Vos <strong>recommandations</strong> le sont. Vous gardez la partie stratégique, automatisez la mécanique.</li>
+            <li><strong>B est dangereux</strong> : automatiser jusqu'à l'envoi vous fait perdre la main. Un workflow peut générer du contenu incorrect — vous voulez relire avant d'envoyer à un client.</li>
+            <li><strong>C est la bonne approche</strong> : n8n collecte et génère un draft (10-15 min de travail au lieu de 8h), vous reprenez la main pour les recommandations. Vous passez d'une journée à 1-2 heures.</li>
+            <li><strong>D est lourd</strong> : coder un outil dédié prend des semaines. n8n permet de tester en quelques heures.</li>
+          </ul>
+          <p><strong>Méthode généralisable</strong> : automatisez <strong>la partie mécanique</strong> (collecte, mise en forme, draft), gardez <strong>la partie jugement</strong> (recommandations, validation, envoi). C'est l'équilibre humain × machine.</p>
+        </div>
+      </div>
+
+      <div class="gems-section">
+        <div class="gems-section-title">Gems · Prompts prêts à copier</div>
+        <div class="gem-block" data-gem-id="2.6.1">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.6.1</span>
+            <span class="gem-block-title">Identifier les candidates à l'automatisation</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Voici mes 5 tâches récurrentes principales : [LISTEZ-LES]
+
+Pour chacune, dis-moi :
+1. Si elle est automatisable avec n8n + IA (oui / partiellement / non)
+2. Pourquoi
+3. Quelle partie automatiser et quelle partie garder manuelle
+4. Estimation du temps gagné par occurrence
+
+Si une tâche est trop variable pour être automatisée, dis-le honnêtement.</pre>
+        </div>
+        <div class="gem-block" data-gem-id="2.6.2">
+          <div class="gem-block-header">
+            <span class="gem-block-num">Gem 2.6.2</span>
+            <span class="gem-block-title">Spécifier un workflow simple</span>
+            <button class="gem-copy-btn">Copier</button>
+          </div>
+          <pre>Je veux automatiser le workflow suivant : [DÉCRIVEZ EN 3 LIGNES]
+
+Aide-moi à le spécifier pour que je puisse le confier à l'équipe AI ou le construire moi-même.
+
+Format de sortie :
+1. Déclencheur (quand le workflow se lance)
+2. Sources de données (où il récupère ce qu'il lui faut)
+3. Étapes (1 par 1, avec entrée et sortie attendues)
+4. Étape IA (si pertinente) : quel prompt, quel modèle (rapide / lourd)
+5. Destination (où le résultat arrive)
+6. Cas d'erreur (que faire si une étape échoue)</pre>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz="m2-6">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 2.6</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m2-6">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="cl-item"><input type="checkbox" data-idx="0"> Je sais reconnaître une tâche candidate à l'automatisation n8n</label>
+        <label class="cl-item"><input type="checkbox" data-idx="1"> Je consulte le Radar Automation avant de construire un workflow</label>
+        <label class="cl-item"><input type="checkbox" data-idx="2"> Je distingue ce que je peux configurer seul vs ce qu'il faut déléguer</label>
+        <label class="cl-item"><input type="checkbox" data-idx="3"> J'utilise des modèles légers pour les workflows à volume</label>
+      </div>
+    </div>
+    <!-- /lesson-2-6 -->
+
+    <hr class="lesson-sep">
+
+    <!-- QUIZ RÉCAPITULATIF MODULE 2 -->
     <div class="quiz" data-quiz="m_outils">
       <div class="quiz-head">
-        <h3>Quiz · Vos outils</h3>
+        <h3>Quiz récapitulatif · Module 02</h3>
         <span class="quiz-counter">4 questions</span>
       </div>
       <div class="quiz-body"></div>
@@ -3628,6 +4492,150 @@ const QUIZZES = {
       explain: "Les LLM sont probabilistes. Le paramètre 'température' contrôle le degré d'aléatoire dans le choix du mot suivant. Température 0 = déterministe, température 1+ = créatif et variable."
     }
   ],
+  'm2-1': [
+    {
+      q: "Vous voulez retrouver une procédure interne HiPay dans Confluence. Quel outil est le plus adapté ?",
+      opts: [
+        "Gemini Advanced, il connaît tout",
+        "Claude, il est plus précis",
+        "DUST (quand déployé), conçu pour chercher dans vos sources internes",
+        "Cowork, il va lire les pages Confluence pour vous"
+      ],
+      correct: 2,
+      explain: "DUST est l'outil dédié à la recherche dans les sources internes HiPay. Il cite ses extraits, donc vous pouvez vérifier. Gemini et Claude ne connaissent pas votre Confluence et inventeront. Cowork est un agent, surdimensionné pour une simple recherche."
+    },
+    {
+      q: "Vous devez répéter la même tâche IA (résumer un type de mail) plusieurs fois par semaine. Quelle est la meilleure approche ?",
+      opts: [
+        "Continuer à le faire à la main dans Gemini, c'est rapide",
+        "Penser à un workflow n8n qui automatise le tout",
+        "Utiliser Claude qui fait mieux",
+        "Attendre que DUST soit déployé"
+      ],
+      correct: 1,
+      explain: "Une tâche répétitive est exactement ce pour quoi n8n existe. Vous configurez une fois, puis le workflow tourne à votre place. Faire la même chose à la main chaque semaine, c'est du temps perdu. Le 'manuel' a sa place pour les tâches uniques."
+    }
+  ],
+  'm2-2': [
+    {
+      q: "Vous devez juste résumer un mail de 3 paragraphes pour votre boss. Quel mode utilisez-vous ?",
+      opts: [
+        "Mode raisonnement, pour la meilleure qualité",
+        "Mode lourd (Gemini Pro / Claude Opus), pour ne pas se tromper",
+        "Mode rapide (Flash / Haiku), c'est largement suffisant",
+        "Peu importe, le résultat sera identique"
+      ],
+      correct: 2,
+      explain: "Un résumé de 3 paragraphes est une tâche simple. Le mode rapide fait ça en 2 secondes, parfaitement. Le mode lourd serait 10 fois plus lent pour le même résultat. Le mode raisonnement serait absurde — il pourrait même sur-développer et vous sortir une analyse au lieu d'un résumé."
+    },
+    {
+      q: "Vous voulez planifier une stratégie produit en croisant budget, équipe, priorités et risques. Quel mode est le plus adapté ?",
+      opts: [
+        "Mode rapide, pour aller vite",
+        "Mode lourd, pour avoir du contenu",
+        "Mode raisonnement / thinking, pour qu'il décompose et croise vraiment",
+        "Aucun mode IA ne convient pour ça"
+      ],
+      correct: 2,
+      explain: "Une planification stratégique avec contraintes croisées est exactement le type de problème qui demande au modèle de réfléchir étape par étape. Le mode raisonnement (thinking, deep research) est conçu pour ça. Il prendra 1-2 minutes mais produira une analyse vraiment structurée. Le mode rapide donnera du superficiel."
+    }
+  ],
+  'm2-3': [
+    {
+      q: "Vous devez analyser un dossier de 5 documents (rapports, articles, notes internes). Quelle fonctionnalité Gemini est la plus adaptée ?",
+      opts: [
+        "Le chat classique de Gemini",
+        "Deep Research, qui va chercher des compléments sur le web",
+        "NotebookLM, où vous importez vos sources et interrogez l'ensemble avec citations",
+        "Canvas, pour rédiger un brief"
+      ],
+      correct: 2,
+      explain: "NotebookLM est conçu exactement pour ça : importer vos propres sources et les interroger avec citations précises. Le chat classique mélangerait tout. Deep Research irait chercher AILLEURS, pas dans vos sources. Canvas est pour rédiger, pas pour analyser des sources."
+    },
+    {
+      q: "Quelle est la principale limite de votre licence Gemini Advanced chez HiPay ?",
+      opts: [
+        "Elle est moins performante que la version gratuite",
+        "Elle ne donne pas accès aux intégrations Workspace (Drive, Gmail, Docs, Sheets)",
+        "Elle ne permet pas Deep Research",
+        "Elle ne fonctionne que sur Chrome"
+      ],
+      correct: 1,
+      explain: "HiPay n'a pas Google Workspace, donc Gemini ne peut pas accéder à votre Gmail, Drive, Docs ou Sheets. Vous devez copier-coller ou importer vos documents manuellement. En revanche, vous avez toutes les fonctionnalités natives de Gemini Advanced : Thinking, Canvas, Deep Research, NotebookLM."
+    }
+  ],
+  'm2-4': [
+    {
+      q: "Vous devez analyser un rapport de 50 pages. Quelle approche est généralement la plus adaptée ?",
+      opts: [
+        "Gemini Flash dans un chat classique, rapide et efficace",
+        "Claude (Sonnet ou Opus) si accès, ou NotebookLM (Gemini Advanced) pour interroger avec citations",
+        "Cowork, l'agent ira plus vite",
+        "Aucune IA n'est fiable sur 50 pages"
+      ],
+      correct: 1,
+      explain: "Pour les longs documents, deux options légitimes : Claude (excellent sur le long et nuancé) ou NotebookLM dans Gemini Advanced (interroger un document importé avec citations précises). Gemini Flash en chat classique mélangerait tout. Cowork est surdimensionné — c'est un agent, pas un analyste."
+    },
+    {
+      q: "Vous voulez lancer Cowork pour renommer 200 fichiers dans un dossier selon une nouvelle convention. Quel est le bon réflexe avant de lancer ?",
+      opts: [
+        "Lui donner accès à tout le disque pour qu'il soit autonome",
+        "Tester sur 5 fichiers d'abord, puis valider, puis lancer sur les 200",
+        "Lancer directement les 200, on verra bien",
+        "Demander confirmation pour chaque fichier"
+      ],
+      correct: 1,
+      explain: "Toujours tester un agent sur un petit échantillon avant de le lancer sur le gros volume. Si Cowork interprète mal la consigne, vous limitez la casse à 5 fichiers au lieu de 200. Confirmation à chaque fichier serait épuisant et tue l'intérêt. Accès total au disque est dangereux."
+    }
+  ],
+  'm2-5': [
+    {
+      q: "Vous cherchez à comprendre la politique HiPay sur un sujet précis. Quel outil utilisez-vous en priorité ?",
+      opts: [
+        "Gemini Advanced, qui connaît bien le secteur paiement",
+        "Claude, plus précis sur les sujets nuancés",
+        "DUST, qui cherche dans vos sources internes et cite ses extraits",
+        "Une recherche Google sur les politiques fintech"
+      ],
+      correct: 2,
+      explain: "DUST est le seul outil de la stack qui connaît HiPay (parce qu'il a accès à vos sources). Gemini et Claude inventeront une politique plausible mais non-HiPay. Google donnera du générique. Réflexe : pour toute question HiPay-spécifique, DUST."
+    },
+    {
+      q: "DUST vous donne une réponse claire avec des sources citées. Que faites-vous avant de l'utiliser dans un document officiel ?",
+      opts: [
+        "Rien, DUST cite les sources, c'est sûr",
+        "Je clique sur les sources pour vérifier ce qu'elles disent vraiment, et leur date",
+        "Je demande à Gemini de confirmer",
+        "Je copie-colle directement"
+      ],
+      correct: 1,
+      explain: "DUST cite ses sources, mais peut mal les interpréter. Cliquer pour vérifier ce que les sources disent vraiment (et leur date) est obligatoire pour un usage pro. Une politique de 2022 peut être obsolète. Une source citée peut avoir été partiellement comprise par DUST."
+    }
+  ],
+  'm2-6': [
+    {
+      q: "Quel est le bon critère pour décider de construire un workflow n8n ?",
+      opts: [
+        "La tâche est complexe et stratégique",
+        "La tâche est récurrente, stable, et le gain de temps est significatif",
+        "La tâche utilise plusieurs outils différents",
+        "On a envie d'essayer n8n"
+      ],
+      correct: 1,
+      explain: "Le bon critère est récurrence + stabilité + gain. Une tâche qui revient souvent, dont les règles ne changent pas tous les jours, et qui prend assez de temps pour justifier la config. Stratégique ou pas n'est pas le critère — beaucoup de tâches stratégiques restent manuelles."
+    },
+    {
+      q: "Vous voulez automatiser la préparation d'un dashboard mensuel pour vos clients. Quelle approche est la plus saine ?",
+      opts: [
+        "Automatiser jusqu'à l'envoi, ça gagne le maximum de temps",
+        "Automatiser la collecte et le draft, garder la main sur les recommandations et l'envoi",
+        "Tout faire manuellement, c'est plus sûr",
+        "Demander à un dev de coder une appli sur mesure"
+      ],
+      correct: 1,
+      explain: "Automatiser la partie mécanique (collecte, mise en forme), garder la main sur la partie jugement (recommandations, validation, envoi). C'est l'équilibre humain × machine. Tout automatiser perd le contrôle qualité. Tout manuel n'utilise pas le levier. Une appli dédiée serait sur-dimensionnée."
+    }
+  ],
   m2: [
     {
       q: "Lequel de ces éléments peut être copié dans un prompt sans risque ?",
@@ -4068,6 +5076,26 @@ function bindReveal() {
 }
 
 // ============================================
+// GEM BLOCKS (copie presse-papier)
+// ============================================
+function initGemBlocks() {
+  document.querySelectorAll('.gem-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pre = btn.closest('.gem-block').querySelector('pre');
+      if (!pre) return;
+      navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+        btn.textContent = 'Copié ✓';
+        btn.classList.add('gem-copied');
+        setTimeout(() => {
+          btn.textContent = 'Copier';
+          btn.classList.remove('gem-copied');
+        }, 2000);
+      });
+    });
+  });
+}
+
+// ============================================
 // CAS PRATIQUE
 // ============================================
 function initCaseStudies() {
@@ -4124,6 +5152,7 @@ async function init() {
   bindLibFilters();
   bindChecklist();
   bindReveal();
+  initGemBlocks();
   initCaseStudies();
   initChecklists();
 
