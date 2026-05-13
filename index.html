@@ -9008,6 +9008,30 @@ Sois lucide, pas attaché à l'existant. Un workflow qui ne sert plus doit être
       <h3>Quand partager ses Gems avec l'équipe</h3>
       <p>Un Gem mérite d'être promu équipe (Confluence, Slack, démo) quand : il résout un problème <strong>récurrent dans plusieurs membres de l'équipe</strong>, il a été testé sur <strong>plusieurs cas réels</strong>, et vous pouvez l'<strong>expliquer en 2 minutes</strong>. Le bon moment : quand un collègue exprime une douleur que votre Gem résout.</p>
 
+      <h3>Du Gem perso à l'agent DUST partagé</h3>
+      <p>Tous les Gems n'ont pas vocation à rester perso. Quand un Gem est utilisé régulièrement par plusieurs personnes dans plusieurs équipes, qu'il a besoin d'accéder à des sources internes HiPay (Confluence, docs équipe, base de connaissance produit), ou qu'il commence à être copié-collé un peu partout en versions divergentes — c'est le signal qu'il est mûr pour devenir <strong>un agent DUST</strong>.</p>
+      <!-- À VÉRIFIER : statut actuel du déploiement DUST chez HiPay -->
+      <p>DUST est conçu <strong>par construction</strong> pour le collectif : un agent DUST est un Gem partagé à l'échelle d'une équipe ou de toute l'entreprise, avec en plus l'accès aux sources internes HiPay configurées par la AI Taskforce. Un Gem bien fait + DUST = un actif vivant utilisé par 20-50 personnes, pas un fichier dans le Notion d'un collaborateur.</p>
+      <div class="callout">
+        <span class="callout-label">Le critère pour passer un Gem en agent DUST : 3 signes convergents</span>
+        <ol>
+          <li><strong>Utilisation transverse</strong> : au moins 3-5 personnes différentes vous ont demandé votre Gem (ou copient le vôtre)</li>
+          <li><strong>Besoin de sources internes</strong> : le Gem gagnerait à interroger directement Confluence, la doc produit, ou un autre référentiel HiPay au lieu d'attendre que l'utilisateur colle les sources à la main</li>
+          <li><strong>Stabilité</strong> : le Gem n'a pas changé significativement depuis 4-6 semaines (ce qui dérive encore n'est pas prêt à être figé en agent partagé)</li>
+        </ol>
+      </div>
+      <p>Quand vous identifiez les 3 signes, le réflexe n'est pas de construire l'agent DUST seul. C'est de <strong>proposer le passage à la AI Taskforce</strong> sur <code>#ai-taskforce</code> avec : votre Gem actuel, les usages réels observés, les sources internes qu'il devrait interroger, les bénéficiaires estimés. La Taskforce arbitre, vous accompagne sur la construction, et surtout pose les <strong>garde-fous propres aux agents partagés</strong> que vous ne posez pas seul sur un Gem perso.</p>
+      <div class="callout warn">
+        <span class="callout-label">Garde-fous spécifiques à un agent DUST partagé</span>
+        <ul>
+          <li><strong>Pas d'agent autonome qui agit</strong> sur des comptes, du cash, du code en production, ou des décisions impactant des personnes (cf. Modules 3 et 5). Un agent DUST partagé qui aurait ces pouvoirs serait un risque démultiplié par le nombre d'utilisateurs.</li>
+          <li><strong>Données sensibles</strong> : si l'agent doit accéder à des sources qui contiennent du KYC, du financier sensible, du juridique, des données collaborateurs — validation DPO préalable obligatoire (cf. Module 3).</li>
+          <li><strong>Logs et traçabilité</strong> : qui utilise l'agent, sur quels cas, avec quels résultats. C'est la AI Taskforce qui pose ce cadre, pas vous.</li>
+          <li><strong>Maintenance dans la durée</strong> : un agent DUST partagé qui dérive impacte 20-50 personnes. Le cycle d'audit (cf. Bonus Leçon 6.2) est encore plus critique sur un agent partagé que sur un workflow perso.</li>
+        </ul>
+      </div>
+      <p><em>En résumé : le Gem perso est votre terrain de jeu, l'agent DUST est un actif d'entreprise. Le passage de l'un à l'autre se fait avec la Taskforce, pas en solo.</em></p>
+
       <div class="callout good">
         <span class="callout-label">Ce qu'il faut retenir</span>
         <ul>
@@ -9158,6 +9182,48 @@ Sois lucide. Une bibliothèque de 15 Gems excellents vaut mieux qu'une de 40 Gem
 Format : tableau Gem / Verdict / Justification (1 phrase) / Action concrète.</pre>
       </div>
 
+      <div class="gem-block" data-gem-id="gem-6-3-4">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.3.4</span>
+          <span class="gem-block-title">Évaluer si un Gem mérite de devenir un agent DUST partagé</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une fintech B2B européenne de paiement.
+
+J'ai un Gem que j'utilise depuis quelque temps et je me demande s'il est mûr pour devenir un agent DUST partagé à l'échelle de mon équipe ou de HiPay.
+
+Description du Gem :
+- Titre : [...]
+- Ce qu'il fait : [...]
+- Depuis combien de temps je l'utilise : [...]
+- Fréquence d'usage perso : [...]
+- Personnes qui m'ont demandé / copié ce Gem : [...]
+- Sources internes HiPay que le Gem gagnerait à interroger directement (Confluence, doc produit, autre) : [...]
+- Données sensibles éventuellement impliquées : [...]
+
+Évalue selon les 3 critères de maturité pour un passage en agent DUST :
+
+1. Utilisation transverse : au moins 3-5 personnes différentes l'utilisent ou le demandent ?
+2. Besoin de sources internes : un agent DUST avec accès aux sources HiPay apporterait-il une vraie valeur vs ma version "Gem + sources collées à la main" ?
+3. Stabilité : le Gem n'a pas changé significativement depuis 4-6 semaines ?
+
+Pour chaque critère : évaluation (faible / moyen / fort) avec 1 phrase de justification.
+
+Puis identifie les risques spécifiques à un agent partagé :
+- Risque d'action autonome (l'agent doit-il "agir" ou seulement préparer/structurer ?)
+- Données sensibles dans les sources (KYC, financier sensible, juridique, collaborateurs ?)
+- Risque de dérive si l'agent n'est pas maintenu
+- Bénéficiaires estimés (combien de personnes, dans quelles équipes ?)
+
+Conclusion :
+- Verdict : mûr pour DUST / pas encore / pas adapté à un agent partagé
+- Si "mûr" : aide-moi à rédiger un post court (max 200 mots) pour la #ai-taskforce avec : Gem actuel, usages réels, sources à interroger, bénéficiaires, garde-fous à poser
+- Si "pas encore" : qu'est-ce qui doit évoluer avant de proposer le passage ?
+- Si "pas adapté" : explique pourquoi sans détour (ex : décision humaine, risque réglementaire, usage trop perso)
+
+Ne sois pas complaisant. Tous les bons Gems perso ne sont pas de bons agents DUST.</pre>
+      </div>
+
       <div class="quiz" data-quiz="m6-bibliotheque">
         <div class="quiz-head">
           <h3>Quiz · Leçon 6.3 — Bibliothèque de Gems</h3>
@@ -9176,6 +9242,7 @@ Format : tableau Gem / Verdict / Justification (1 phrase) / Action concrète.</p
         <label class="checklist-item"><input type="checkbox" data-idx="1"> Je sais transformer un one-shot en Gem en 5-10 minutes (variables / contexte / contraintes / test)</label>
         <label class="checklist-item"><input type="checkbox" data-idx="2"> J'ai une bibliothèque accessible en moins de 10 secondes</label>
         <label class="checklist-item"><input type="checkbox" data-idx="3"> Je fais le ménage trimestriel pour maintenir une bibliothèque vivante (pas un cimetière de Gems)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="4"> Je sais reconnaître quand un Gem perso est mûr pour devenir un agent DUST partagé (et je passe le relais à la AI Taskforce à ce moment)</label>
       </div>
     </div>
     <!-- /LEÇON 6.3 -->
@@ -9220,6 +9287,7 @@ Format : tableau Gem / Verdict / Justification (1 phrase) / Action concrète.</p
             <li>Votre cas touche à des données sensibles et vous voulez une validation</li>
             <li>Vous voulez proposer une initiative (nouveau cas d'usage, partenariat outil, formation interne)</li>
             <li>Vous avez un doute réglementaire (AI Act, RGPD) sur un projet</li>
+            <li>Vous avez un Gem perso utilisé par plusieurs personnes que vous voulez transformer en agent DUST partagé (cf. Leçon 6.3 — passage à l'échelle)</li>
           </ul>
         </div>
         <div class="compare-col after">
