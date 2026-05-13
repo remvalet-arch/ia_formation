@@ -8484,59 +8484,969 @@ Si une étape dépend d'un outil HiPay spécifique que tu ne connais pas, mets [
 <section class="lesson" id="aller-loin">
   <div class="lesson-wrap">
     <div class="lesson-meta">Module 06 · Aller plus loin</div>
-    <h2>Du Gem à <em>l'agent autonome</em>.</h2>
-    <p class="lead">Vous maîtrisez les bases. Voici comment industrialiser : automatisation, agents, et la communauté qui pérennise tout ça en interne.</p>
+    <h2>Installer l'IA <em>durablement</em>.</h2>
+    <p class="lead">Vous savez utiliser l'IA. Ce module vous apprend à installer l'usage durablement autour de vous — en devenant AI Champion, en identifiant les bonnes automatisations, en construisant une bibliothèque de Gems qui vit, et en restant connecté à la communauté HiPay. 4 leçons, ~25 minutes.</p>
 
-    <h3>Le pont vers l'automatisation</h3>
-    <p>Un Gem qui écrit un mail, c'est bien. Un Gem qui écrit le mail <em>et</em> l'envoie tous les lundis à 9h pendant que vous prenez votre café, c'est mieux. C'est ce qu'on appelle l'<strong>automatisation IA + workflow</strong>.</p>
-
-    <div class="callout">
-      <span class="callout-label">Le pattern</span>
-      <p><strong>Cerveau (IA) + Muscle (workflow tool).</strong> L'IA décide / rédige / classe. L'outil d'automatisation (n8n, Make, Zapier) exécute en boucle, branche aux systèmes existants (Slack, Gmail, HubSpot, JIRA), et tourne sans vous.</p>
+    <div class="parcours-nav">
+      <div class="parcours-nav-label">Les 4 leçons</div>
+      <ul>
+        <li>🏆 <strong><a href="#lecon-champion">Leçon 6.1 — Devenir AI Champion dans votre équipe</a></strong> — Partager sans évangéliser, aider sans faire à la place · 6 min</li>
+        <li>⚙️ <strong><a href="#lecon-automatisation">Leçon 6.2 — Identifier les bonnes opportunités d'automatisation</a></strong> — 3 critères, 3 fausses bonnes idées, test du papier · 7 min</li>
+        <li>💎 <strong><a href="#lecon-bibliotheque">Leçon 6.3 — Construire votre bibliothèque de Gems</a></strong> — Du prompt one-shot au Gem réutilisable · 6 min</li>
+        <li>🤝 <strong><a href="#lecon-communaute">Leçon 6.4 — La communauté IA chez HiPay</a></strong> — Canaux Slack, AI Taskforce, Radar Automation · 6 min</li>
+      </ul>
     </div>
 
-    <h3>Les agents autonomes : la frontière 2026</h3>
-    <p>Un agent IA ne se contente pas de répondre. Il :</p>
-    <ul>
-      <li><strong>Planifie</strong> — découpe un objectif complexe en sous-tâches.</li>
-      <li><strong>Utilise des outils</strong> — recherche web, calculatrice, exécution de code, appel d'API.</li>
-      <li><strong>Itère</strong> — corrige ses erreurs, ajuste sa stratégie.</li>
-      <li><strong>Rend compte</strong> — résume ce qu'il a fait, ce qui a marché, ce qui n'a pas marché.</li>
-    </ul>
-    <p>Exemple concret chez HiPay : un agent qui, sur demande "Prépare-moi le QBR du client X", va chercher les données dans le CRM, génère le PowerPoint, le poste dans Slack, et vous demande validation avant envoi. <em class="highlight">Ce qui prenait 1h prend 4 minutes</em>.</p>
+    <!-- ============ LEÇON 6.1 — AI CHAMPION ============ -->
+    <div class="parcours-block" id="lecon-champion">
+      <div class="parcours-block-label">🏆 Leçon 6.1 · Devenir AI Champion · 6 min</div>
+      <h2>Devenir AI Champion dans <em>votre équipe</em></h2>
+      <p class="lead"><em>"Le rôle d'AI Champion ne consiste pas à convaincre les sceptiques que l'IA est géniale. Il consiste à rendre l'usage IA évident là où il apporte de la valeur, et invisible le reste du temps."</em></p>
 
-    <h3>Construire ses propres Gems</h3>
-    <p>Sur Claude (Projects), ChatGPT (Custom GPTs) ou Gemini (Gems), vous pouvez créer un assistant spécialisé en 3 étapes :</p>
-    <ol>
-      <li><strong>Nommer</strong> et décrire la fonction (ce qu'il fait, ce qu'il ne fait pas)</li>
-      <li><strong>Coller le prompt système</strong> (les Gems de ce site sont prêts à copier)</li>
-      <li><strong>Ajouter des fichiers de référence</strong> (templates, exemples HiPay, guidelines de marque)</li>
-    </ol>
-    <p>Bonus : vous pouvez le partager avec votre équipe. Un Gem bien fait, c'est 10 personnes qui gagnent 2h/semaine.</p>
+      <h3>Pourquoi devenir AI Champion (et pour qui)</h3>
+      <p>Vous gagnez plusieurs heures par semaine grâce à ce que vous avez appris dans cette formation. Vos collègues, eux, sont encore à pousser leurs prompts dans ChatGPT en mode "Stp aide moi à écrire un mail". Devenir AI Champion ne consiste pas à les évangéliser. Ça consiste à <strong>rendre votre usage visible</strong> quand quelqu'un est curieux, et à <strong>partager un Gem</strong> au bon moment quand vous voyez qu'un collègue galère sur quelque chose que vous avez déjà résolu.</p>
+      <p>L'intérêt est triple. Pour vous : vous consolidez votre pratique en l'expliquant. Pour votre équipe : la productivité collective monte. Pour HiPay : l'adoption se diffuse organiquement, pas par décret. Et accessoirement, c'est très bien vu en évaluation annuelle.</p>
 
-    <h3>La communauté AI Champions chez HiPay</h3>
-    <p>Pour que ce programme prenne, il faut des relais. On les appelle les <strong>AI Champions</strong> : 10% de l'effectif, un par équipe, qui :</p>
-    <ul>
-      <li>Animent un rituel hebdomadaire (15-30 min) : Q&A, partage de Gem du mois, retour d'expérience</li>
-      <li>Recensent les cas d'usage qui marchent et ceux qui flopent</li>
-      <li>Remontent les blocages (techniques, formation, sécurité) à la cellule IA</li>
-      <li>Évaluent les nouveaux outils du marché</li>
-    </ul>
-    <p>Si vous voulez être Champion ou en parler à votre manager, contactez la cellule IA sur le canal Slack <code>#ai-taskforce</code>. Pour les questions du quotidien : <code>#ai-support</code>. Pour suivre l'actualité IA : <code>#ai-news</code>.</p>
+      <h3>Les 3 erreurs classiques du Champion débutant</h3>
+      <div class="callout warn">
+        <span class="callout-label">Le prosélytisme</span>
+        <p>Vous arrivez au café et vous lancez "vous savez que Gemini Advanced peut faire X ? Et Y ? Et Z ?". Personne ne vous a rien demandé. Vos collègues hochent poliment puis se rappellent qu'ils ont une réunion. Vous perdez en crédibilité sur les sujets où vous auriez vraiment quelque chose à apporter.</p>
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">Le technicisme</span>
+        <p>Quelqu'un vous demande comment vous avez fait. Vous répondez en expliquant le Pattern Few-Shot, le Chain of Thought, le rôle de la température. Vous perdez votre interlocuteur à la deuxième phrase. La règle : si votre explication contient un mot que la personne ne connaissait pas avant la conversation, simplifiez.</p>
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">L'élitisme</span>
+        <p><em>"Mais c'est évident, il suffit de cadrer le prompt."</em> Non. Ce qui vous est évident maintenant ne l'était pas pour vous il y a 3 mois. Tout le monde a un point d'entrée différent dans l'IA, et la condescendance fait reculer l'adoption de 6 mois.</p>
+      </div>
 
-    <h3>Ce qui vient après</h3>
-    <ul>
-      <li><strong>Modèles spécialisés HiPay</strong> — fine-tunés sur nos données internes (en chantier)</li>
-      <li><strong>RAG sur la base de connaissances interne</strong> — l'IA répond avec nos vrais docs, pas avec ses approximations</li>
-      <li><strong>Agents intégrés dans nos produits</strong> — pour les merchants, pour le support, pour le risque</li>
-      <li><strong>Programme de certification interne</strong> — pour reconnaître les niveaux de maîtrise</li>
-    </ul>
+      <h3>Comment partager ses gains sans imposer</h3>
+      <p>La règle de base : <strong>montrer plutôt que dire</strong>. Vous gagnez 2h par semaine sur la rédaction de comptes-rendus avec un Gem ? Quand un collègue se plaint de ses CR le vendredi soir, vous lui montrez votre Gem en 3 minutes. Pas une conférence sur la productivité IA — juste : <em>"Tiens, j'ai ça si tu veux essayer."</em></p>
+      <p>Le bon moment de partage, c'est quand <strong>quelqu'un exprime une douleur</strong> que vous savez résoudre. Pas quand vous avez envie de partager. La nuance est énorme : dans le premier cas, vous répondez à une demande. Dans le second, vous projetez un besoin que la personne n'a pas exprimé.</p>
 
-    <div class="mission-card">
-      <h3>Mission pour <em>demain</em></h3>
-      <p>Choisissez UN Gem dans votre parcours métier. Créez-le sur Claude / ChatGPT / Gemini. Utilisez-le sur une tâche que vous deviez faire de toute façon cette semaine. Mesurez le temps gagné.</p>
-      <a href="#bibliotheque" class="btn btn-primary">Aller à la bibliothèque <span class="arrow">→</span></a>
+      <h3>Comment accompagner un collègue qui débute</h3>
+      <p>La tentation forte : prendre son clavier et faire à sa place pour gagner du temps. À éviter. Vous lui retirez la marche d'apprentissage, et au prochain cas similaire il vous redemandera.</p>
+      <p>Posez plutôt 3 questions :</p>
+      <ol>
+        <li><em>"Qu'est-ce que tu veux obtenir exactement ?"</em> (force la clarification de l'objectif — c'est souvent là que ça bloque)</li>
+        <li><em>"Qu'est-ce que tu as déjà essayé ?"</em> (évite de répéter ce qu'il a déjà tenté)</li>
+        <li><em>"Qu'est-ce qui ne marche pas dans ce qu'il te sort ?"</em> (oriente vers le diagnostic concret du problème)</li>
+      </ol>
+      <p>Avec ces 3 questions, dans 70% des cas votre collègue trouve seul ce qu'il devait ajuster dans son prompt. Vous n'avez rien fait, il pense que vous l'avez aidé. Tout le monde y gagne.</p>
+
+      <h3>Comment gérer les sceptiques</h3>
+      <p>Les sceptiques ne sont pas vos ennemis. Ils sont souvent <strong>vos meilleurs informateurs sur les vraies limites de l'IA</strong>. Quand un collègue vous dit <em>"j'ai essayé, ça m'a fait perdre du temps"</em>, il a probablement raison sur son cas précis. Ne contre-argumentez pas — demandez-lui sur quel usage il a essayé. Vous découvrirez peut-être un cas légitime où l'IA n'apporte rien, ou un cas où elle apporte si vous lui montrez comment cadrer.</p>
+      <p>Acceptez aussi qu'<strong>il y a des cas où l'IA ne sert à rien</strong>. Convaincre quelqu'un d'utiliser l'IA pour des tâches où elle ne fait pas la différence, c'est lui faire perdre son temps et le braquer durablement.</p>
+
+      <h3>Le rôle de l'AI Champion : relais, pas chef de projet</h3>
+      <p>Vous n'êtes pas responsable de l'adoption IA de votre équipe. Vous êtes <strong>disponible</strong> pour aider quand on vous sollicite, et vous <strong>rendez visible</strong> ce que vous faites. C'est tout. Si votre équipe veut industrialiser un usage, ça passe par la AI Taskforce, pas par vous seul.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Ce qu'il faut retenir</span>
+        <ul>
+          <li>Le Champion n'évangélise pas, il <strong>répond aux douleurs exprimées</strong>.</li>
+          <li>Montrer plutôt que dire. Un Gem partagé au bon moment vaut 10 explications théoriques.</li>
+          <li>Aider, c'est poser des questions — pas faire à la place.</li>
+          <li>Les sceptiques sont des sources d'information. Écoutez-les avant de répondre.</li>
+          <li>Vous êtes un relais, pas un chef de projet IA.</li>
+        </ul>
+      </div>
+
+      <details class="bonus" id="bonus-rituel-5min">
+        <summary>Bonus — Le rituel des 5 minutes en réunion d'équipe</summary>
+        <div class="bonus-body">
+          <p>Si votre manager est ouvert, proposez un rituel léger en réunion hebdo : <strong>5 minutes par semaine</strong>, une personne (en tournante) montre un usage IA concret qu'elle a fait dans la semaine. Pas un cours, pas une démo léchée — juste <em>"voilà ce que j'ai utilisé, voilà le Gem, voilà ce que j'ai gagné"</em>.</p>
+          <p>Ce que ça crée en 2-3 mois :</p>
+          <ul>
+            <li>Une bibliothèque informelle de cas d'usage <strong>dans le contexte exact de votre équipe</strong> (pas des cas abstraits)</li>
+            <li>Des collègues qui osent partager leurs propres essais, y compris les ratés (souvent plus instructifs que les réussites)</li>
+            <li>Une normalisation : utiliser l'IA devient ordinaire, pas un sujet à part</li>
+          </ul>
+          <p>Ce que ça <strong>ne</strong> doit <strong>pas</strong> devenir : un comité de pilotage IA, un moment où certains se sentent jugés sur leur niveau, une obligation déguisée d'utiliser l'IA. Si ça part dans une de ces directions, arrêtez le rituel. Mieux vaut pas de rituel qu'un rituel toxique pour la dynamique d'équipe.</p>
+          <!-- À VÉRIFIER : statut actuel de ce format chez HiPay — proposer ou adapter si déjà existant -->
+        </div>
+      </details>
+
+      <div id="case-champion" class="case-study">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p><strong>La situation :</strong> un collègue avec qui vous travaillez régulièrement vous dit en sortant d'une réunion : <em>"Franchement, l'IA, ça me fait gagner zéro temps. J'ai essayé 3 fois, à chaque fois je perds plus de temps à reformuler qu'à écrire moi-même. C'est surcoté."</em></p>
+          <p>Vous avez 30 secondes avant qu'il parte vers son bureau.</p>
+          <p><strong>Option A</strong> — Vous lui expliquez qu'il s'y prend probablement mal, que la clé c'est le cadrage du prompt, et que vous pouvez lui montrer en 10 minutes après la pause-café.</p>
+          <p><strong>Option B</strong> — Vous lui demandez sur quel cas précis il a essayé. Vous l'écoutez 30 secondes. Puis selon sa réponse, soit vous validez ("oui, c'est un cas où l'IA n'apporte pas grand-chose"), soit vous proposez de lui montrer rapidement un angle qu'il n'a pas testé.</p>
+          <p><strong>Option C</strong> — Vous lui partagez 3 Gems que vous trouvez géniaux pour qu'il les essaie cette semaine.</p>
+          <p><strong>Option D</strong> — Vous lui dites <em>"chacun son truc"</em> et vous changez de sujet pour ne pas le braquer.</p>
+        </div>
+        <details>
+          <summary><strong>Voir la réponse et l'explication</strong></summary>
+          <div style="padding:16px 0">
+            <p><strong>Bonne réponse : B</strong></p>
+            <p>En 30 secondes d'écoute, vous obtenez l'info qui détermine tout le reste : sur quel cas il a essayé. Sans cette info, vous projetez ce que VOUS pensez qu'il devrait faire, ce qui est exactement ce qu'il vient de fuir avec son commentaire.</p>
+            <p>Si le cas est légitimement difficile pour l'IA, <strong>vous validez son ressenti</strong>. Vous gagnez en crédibilité parce que vous ne défendez pas l'IA comme un produit — vous reconnaissez ses limites. Si vous voyez un angle qu'il n'a pas essayé, vous proposez sans imposer.</p>
+            <p><strong>Pourquoi pas les autres :</strong> A présuppose qu'il s'y prend mal — vous le braquez. C envoie 3 Gems sans avoir compris son cas = il va essayer en force, ça ne va pas marcher, il dit "tu vois". D : vous perdez l'opportunité d'apprendre de son expérience.</p>
+            <p><strong>À retenir :</strong> devant un sceptique, votre première phrase doit être une <strong>question</strong>, pas une affirmation.</p>
+          </div>
+        </details>
+      </div>
+
+      <h3>Gems — Prompts prêts à copier</h3>
+
+      <div class="gem-block" data-gem-id="gem-6-1-1">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.1.1</span>
+          <span class="gem-block-title">Aider un collègue à débuter avec l'IA</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une entreprise B2B.
+
+Un collègue veut commencer à utiliser l'IA mais ne sait pas par où démarrer. Voici ce que je sais de lui (ou ce qu'il m'a dit) :
+- Son métier / rôle : [...]
+- Les tâches qui lui prennent le plus de temps : [...]
+- Ce qu'il a déjà essayé (s'il a essayé) : [...]
+- Ce qui lui semble bloquant : [...]
+
+Aide-moi à structurer une conversation de 15-20 minutes avec lui (pas un cours, une discussion). Pour chaque étape :
+1. La question que je dois lui poser
+2. L'objectif de la question (ce que je cherche à clarifier)
+3. Selon ses réponses possibles, l'orientation à prendre
+
+Objectif final : qu'il reparte avec UN cas d'usage concret pour sa semaine, pas une liste de 10 idées.
+
+Évite :
+- Le ton "expert qui explique au novice"
+- Les références à des techniques (CODE, Few-Shot, etc.) — il n'a pas suivi la formation
+- Les listes longues qui le perdront
+
+Format : tableau Étape / Question à poser / Objectif / Orientations selon sa réponse.</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-1-2">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.1.2</span>
+          <span class="gem-block-title">Préparer une démo IA de 5 minutes pour une équipe non technique</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une entreprise B2B européenne.
+
+Je dois faire une démo IA de 5 minutes à une équipe non technique :
+- Profil de l'équipe : [...]
+- Contexte de la démo (réunion d'équipe / lunch &amp; learn / autre) : [...]
+- Cas d'usage que je veux montrer : [...]
+- Outil utilisé : [Gemini Advanced / Claude.ai Team / autre]
+
+Aide-moi à structurer la démo :
+1. Accroche (30 secondes) — par où je commence pour capter l'attention sans hype
+2. Démonstration (3 minutes) — le scénario pas-à-pas, ce que je tape, ce qui ressort
+3. Limites honnêtes (1 minute) — ce que cet usage NE fait PAS, ou les cas où ça ne marcherait pas
+4. Action concrète (30 secondes) — ce que les participants peuvent essayer dès demain
+
+Règles :
+- Pas de superlatifs ("incroyable", "révolutionnaire")
+- Montrer aussi un cas où l'IA se trompe ou est limitée (crédibilise le reste)
+- Pas de jargon technique (pas de "prompt engineering", "modèle", "token")
+- Finir sur une action concrète, pas sur une généralité</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-1-3">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.1.3</span>
+          <span class="gem-block-title">Collecter les vraies frictions de mon équipe</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une entreprise B2B européenne.
+
+Je veux comprendre ce qui bloque vraiment mes collègues dans leur usage de l'IA, pour proposer des actions ciblées (et pas faire la énième présentation générique).
+
+Aide-moi à préparer une mini-enquête (5-7 questions, max 3 minutes à remplir) sur les frictions réelles d'usage IA.
+
+Couvre :
+1. Ce que les gens utilisent déjà (et fréquence)
+2. Ce qu'ils ont essayé puis abandonné (et pourquoi)
+3. Ce qu'ils aimeraient faire mais ne savent pas comment
+4. Ce qu'ils trouvent bloquant côté outils / sécurité / process
+5. Une question ouverte courte pour les verbatims
+
+Règles :
+- Questions formulées sans présupposé (ne pas demander "qu'est-ce qui vous freine" — ça présuppose qu'il y a un frein)
+- Anonyme par défaut
+- Pas de question qui force socialement une réponse positive
+- Éviter les échelles trop fines (5 niveaux max)
+
+Format : tableau Question / Type (fermé/ouvert) / Justification de la formulation.</pre>
+      </div>
+
+      <div class="quiz" data-quiz="m6-champion">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 6.1 — AI Champion</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m6-champion">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je sais distinguer "partager mon usage" et "évangéliser"</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je sais écouter un sceptique avant de répondre — sa première phrase contient l'info clé</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> J'aide en posant 3 questions (objectif / essais / blocages), je ne prends pas le clavier</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Je partage mes Gems au moment où une douleur est exprimée, pas à froid</label>
+      </div>
     </div>
+    <!-- /LEÇON 6.1 -->
+
+    <!-- ============ LEÇON 6.2 — AUTOMATISATION ============ -->
+    <div class="parcours-block" id="lecon-automatisation">
+      <div class="parcours-block-label">⚙️ Leçon 6.2 · Bonnes opportunités d'automatisation · 7 min</div>
+      <h2>Identifier les bonnes opportunités <em>d'automatisation</em></h2>
+      <p class="lead"><em>"Toute tâche répétitive n'est pas une bonne opportunité d'automatisation. Apprendre à dire non aux fausses bonnes idées vaut autant qu'apprendre à dire oui aux vraies."</em></p>
+
+      <h3>Les 3 critères d'une bonne opportunité</h3>
+      <p>Une opportunité d'automatisation mérite l'investissement (n8n + IA, ou agent, ou Gem industrialisé) si elle coche <strong>les 3 critères suivants</strong> :</p>
+      <dl class="definition">
+        <dt>1. Récurrence</dt>
+        <dd>Vous faites cette tâche au moins 1 fois par semaine, idéalement plusieurs fois. Si c'est une fois par trimestre, le temps de la mettre en place dépasse le temps que vous économiserez en 1 an.</dd>
+        <dt>2. Stabilité</dt>
+        <dd>La tâche se fait à peu près de la même façon chaque fois. Format d'entrée stable, format de sortie stable, règles claires. Si vous "ajustez selon le contexte" à chaque fois, c'est que la part de jugement humain est trop élevée pour automatiser sans risque.</dd>
+        <dt>3. Gain significatif</dt>
+        <dd>Le temps économisé est mesurable : minimum 30 min par exécution, ou un effet de qualité clair (moins d'erreurs, plus de cohérence). Si vous gagnez 5 min par exécution et que vous l'exécutez 2 fois par mois, l'effort de mise en place n'est jamais amorti.</dd>
+      </dl>
+      <div class="callout">
+        <span class="callout-label">Les 3 ensemble, pas séparément</span>
+        <p>Un workflow récurrent mais qui change tout le temps n'est pas automatisable. Un workflow stable mais qu'on fait 4 fois par an non plus.</p>
+      </div>
+
+      <h3>Les 3 fausses bonnes idées classiques</h3>
+      <div class="callout warn">
+        <span class="callout-label">"Ça serait cool d'automatiser X"</span>
+        <p>La phrase qui pousse à perdre 3 jours sur un projet qu'on n'utilisera jamais. Le test : si on vous enlevait l'automatisation aujourd'hui, est-ce que vous la reconstruiriez ? Si la réponse est "bof", c'est que ce n'était pas un vrai besoin.</p>
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">Automatiser une décision humaine</span>
+        <p>Tentation : faire qualifier des candidatures, classer des dossiers, juger la qualité d'un livrable, valider une dépense. Risque : vous transférez une responsabilité (et l'AI Act peut s'appliquer, cf. Module 3). L'IA peut <strong>préparer</strong> la décision (synthèse, structuration, premier classement), un humain <strong>décide</strong>.</p>
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">Automatiser sans mesurer le gain</span>
+        <p>Vous mettez en place un workflow n8n, vous êtes content. 3 mois plus tard, vous ne savez pas si ça vous fait gagner du temps réel ou si vous passez juste autant à maintenir le workflow qu'à faire la tâche à la main. <strong>Sans mesure du gain réel, l'automatisation est un coût.</strong></p>
+      </div>
+
+      <h3>Le "test du papier" : décrire le workflow en 5 lignes</h3>
+      <p>Avant d'investir une heure à construire, écrivez sur papier le workflow en <strong>5 lignes maximum</strong> :</p>
+      <ol>
+        <li>Étape 1 : quel input ?</li>
+        <li>Étape 2 : quelle transformation ?</li>
+        <li>Étape 3 : quelle décision (s'il y en a) ?</li>
+        <li>Étape 4 : quel output ?</li>
+        <li>Étape 5 : où va le résultat ?</li>
+      </ol>
+      <p>Si vous y arrivez en 5 lignes claires, le workflow est mûr. Si ça vous prend 15 lignes confuses avec plein de "ça dépend", c'est que <strong>le besoin n'est pas encore stabilisé</strong>. Ne construisez pas. Attendez 2-3 mois que la pratique se clarifie.</p>
+
+      <h3>La matrice impact × effort</h3>
+      <p>Une fois que vous avez 5-10 idées d'automatisation, classez-les sur 2 axes : <strong>impact</strong> (temps économisé × fréquence, ou gain qualité × visibilité) et <strong>effort</strong> (temps pour construire + maintenir + risque d'erreur).</p>
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>✅ Impact fort / Effort faible</h5>
+          <p>Quick wins, à faire en premier.</p>
+          <h5>⚠️ Impact fort / Effort fort</h5>
+          <p>Projets sérieux, à passer par la AI Taskforce.</p>
+        </div>
+        <div class="compare-col after">
+          <h5>🕐 Impact faible / Effort faible</h5>
+          <p>À faire si vous avez du temps, sans urgence.</p>
+          <h5>🚫 Impact faible / Effort fort</h5>
+          <p>À ne <strong>jamais</strong> faire (et pourtant on y passe tous du temps un jour).</p>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Le cas le plus piégeant</span>
+        <p>"Impact moyen / Effort fort". Tentation de le faire parce que ça paraît intéressant — résultat, vous y passez du temps et l'usage réel ne suit pas.</p>
+      </div>
+
+      <h3>Quand demander à la #ai-taskforce vs faire soi-même</h3>
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Faites-le vous-même quand :</h5>
+          <ul>
+            <li>C'est un Gem ou un workflow n8n simple</li>
+            <li>Ça concerne <strong>votre</strong> usage individuel ou celui de votre petite équipe</li>
+            <li>Vous savez décrire le besoin clairement</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Passez par la #ai-taskforce quand :</h5>
+          <ul>
+            <li>L'automatisation concerne plusieurs équipes ou tout HiPay</li>
+            <li>Elle touche à des données sensibles (RGPD, financier, KYC)</li>
+            <li>Elle nécessite un agent autonome ou des actions critiques</li>
+            <li>Vous n'êtes pas sûr du cadrage et vous voulez un avis avant d'investir</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Cas types qui marchent bien</h3>
+      <ul>
+        <li><strong>Reportings hebdomadaires</strong> : extraction depuis la BI + commentaire IA + Slack/mail</li>
+        <li><strong>Qualification de tickets entrants</strong> (Support, IT) : triage automatique + labels + premier diagnostic</li>
+        <li><strong>Génération de drafts personnalisés à l'échelle</strong> : séquences de prospection, mails d'onboarding, FAQ personnalisées</li>
+        <li><strong>Veille structurée</strong> : sources surveillées + synthèse hebdo + push Slack</li>
+        <li><strong>Documentation à partir d'événements</strong> : génération de fiches après chaque résolution d'incident</li>
+      </ul>
+
+      <div class="callout good">
+        <span class="callout-label">Ce qu'il faut retenir</span>
+        <ul>
+          <li>3 critères = récurrence + stabilité + gain significatif. <strong>Les 3 ensemble</strong>, pas séparément.</li>
+          <li>Test du papier : si vous ne pouvez pas décrire le workflow en 5 lignes claires, n'automatisez pas encore.</li>
+          <li>Matrice impact × effort = votre tri. Méfiance sur la case "impact moyen / effort fort".</li>
+          <li>Sans mesure du gain réel, l'automatisation est un coût caché.</li>
+          <li>Concerne plusieurs équipes ou données sensibles → #ai-taskforce. Usage perso → vous.</li>
+        </ul>
+      </div>
+
+      <details class="bonus" id="bonus-audit-trimestriel">
+        <summary>Bonus — Le piège des automatisations "invisibles"</summary>
+        <div class="bonus-body">
+          <p>Une automatisation que vous avez mise en place il y a 6 mois peut tourner sans que personne ne la regarde. C'est exactement ce qu'on veut — sauf que <strong>les conditions changent</strong>.</p>
+          <p>Le cas classique : votre workflow n8n triait les tickets via Gemini Advanced selon 5 catégories. Au bout de 4 mois, l'équipe Support a ajouté 2 nouvelles catégories. Votre workflow continue à trier sur les 5 anciennes, donc 15-20% des tickets sont mal catégorisés. Personne ne s'en rend compte parce que le workflow "marche" (il produit une sortie). Sauf que la sortie n'est plus pertinente.</p>
+          <p><strong>La règle du check trimestriel</strong> : tout workflow automatisé doit être audité 1 fois par trimestre. Questions à se poser : le format d'entrée a-t-il évolué ? Les règles métier ont-elles évolué ? La sortie est-elle toujours pertinente pour ceux qui la consomment ? Le gain réel est-il toujours là ?</p>
+          <p>5-10 minutes par workflow, par trimestre. Si vous ne trouvez pas ces 5 minutes, c'est que le workflow ne vous apporte pas tant que ça — et vous devriez peut-être le retirer.</p>
+        </div>
+      </details>
+
+      <div id="case-automatisation" class="case-study">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p><strong>La situation :</strong> votre manager vous demande de regarder 3 idées d'automatisation et de lui dire lesquelles méritent d'être lancées.</p>
+          <p><strong>Idée A</strong> — Automatiser le reporting hebdomadaire de l'équipe : extraction depuis la BI des 8 KPIs clés, commentaire généré par Gemini Advanced, push Slack le lundi matin. Vous le faites actuellement à la main chaque lundi (45 min).</p>
+          <p><strong>Idée B</strong> — Automatiser la qualification des candidatures reçues : Gemini Advanced lit chaque CV et lui attribue un score 1-5 selon des critères que vous lui donnez. Le manager n'a plus qu'à valider les scores élevés.</p>
+          <p><strong>Idée C</strong> — Automatiser la génération d'un slide de "fun fact du jour" pour la réunion d'équipe matinale. Vous passez 2-3 minutes le matin à le faire à la main.</p>
+          <p><strong>Option 1</strong> — Lancer les 3, ça ne coûte rien d'essayer. <strong>Option 2</strong> — Lancer A uniquement, écarter B et C avec une explication. <strong>Option 3</strong> — Lancer A et C, écarter B. <strong>Option 4</strong> — Écarter les 3 et tout faire à la main.</p>
+        </div>
+        <details>
+          <summary><strong>Voir la réponse et l'explication</strong></summary>
+          <div style="padding:16px 0">
+            <p><strong>Bonne réponse : Option 2 — Lancer A uniquement, écarter B et C.</strong></p>
+            <p><strong>A — À LANCER.</strong> Récurrence ✓ (hebdo), stabilité ✓ (même format, mêmes KPIs), gain ✓ (45 min × 50 semaines = 37h/an). Le test du papier passe en 5 lignes propres. Cas type "reporting hebdo" qui marche bien.</p>
+            <p><strong>B — À ÉCARTER.</strong> C'est exactement le piège "automatiser une décision humaine". Attribuer un score de pertinence à un candidat = décision impactant une personne, encadrée par l'AI Act (usage potentiellement élevé, cf. Module 3). L'IA peut <strong>structurer</strong> les candidatures (résumer le parcours, identifier les compétences mentionnées), pas <strong>noter</strong>. Cf. Module 5 — Parcours RH, Piège 1.</p>
+            <p><strong>C — À ÉCARTER.</strong> 2-3 minutes par jour × 220 jours = 11h/an. Mais l'effort de mise en place + maintenance n'est pas amorti, et surtout : un "fun fact du jour" généré par IA va perdre exactement ce qui fait sa valeur (l'authenticité, le geste du collègue qui choisit). C'est le cas typique du "ça serait cool d'automatiser X" sans vrai besoin sous-jacent.</p>
+            <p><strong>À retenir :</strong> avant de lancer une automatisation, passez chaque idée par les 3 critères. Et méfiez-vous des idées séduisantes mais qui touchent à de la décision humaine.</p>
+          </div>
+        </details>
+      </div>
+
+      <h3>Gems — Prompts prêts à copier</h3>
+
+      <div class="gem-block" data-gem-id="gem-6-2-1">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.2.1</span>
+          <span class="gem-block-title">Évaluer une idée d'automatisation</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es analyste d'opportunités d'automatisation dans une fintech B2B européenne.
+
+Voici une idée d'automatisation à évaluer :
+[DÉCRIRE L'IDÉE EN 3-5 LIGNES]
+
+Évalue selon 3 critères + 3 anti-critères :
+
+CRITÈRES POSITIFS :
+1. Récurrence (fréquence réelle d'exécution)
+2. Stabilité (la tâche se fait-elle à peu près pareil chaque fois ?)
+3. Gain significatif (temps économisé × fréquence, sur 1 an)
+
+ANTI-CRITÈRES (signaux de fausse bonne idée) :
+1. Décision humaine impliquée (notation, classement, jugement sur une personne ou une production)
+2. Forte variabilité du contexte (ajustements manuels à chaque fois)
+3. Effort de mise en place + maintenance disproportionné par rapport au gain
+
+Pour chaque critère et anti-critère : donne ton évaluation (faible / moyen / fort) avec 1 phrase de justification.
+
+Conclusion :
+- Verdict : à lancer / à reporter / à ne pas faire
+- Si "à reporter" : qu'est-ce qui devrait évoluer avant de lancer ?
+- Si "à ne pas faire" : explique pourquoi sans détour
+
+Ne sois pas complaisant. Si l'idée n'est pas bonne, dis-le.</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-2-2">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.2.2</span>
+          <span class="gem-block-title">Spécifier un workflow avant de le construire</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es analyste workflow dans une fintech B2B européenne de paiement.
+
+Aide-moi à spécifier un workflow d'automatisation AVANT de le construire (test du papier).
+
+Description du workflow envisagé :
+[DÉCRIRE]
+
+Stack disponible :
+- Gemini Advanced (rédaction, synthèse, structuration)
+- n8n (orchestration, déclencheurs, intégrations)
+- Outils internes : [Slack / Confluence / BI / CRM / ticketing — préciser ceux pertinents]
+
+Structure une spec en 5 sections, max 5 lignes par section :
+
+1. Trigger (qu'est-ce qui déclenche le workflow : heure, événement, demande manuelle ?)
+2. Inputs (quelles données entrent, dans quel format, depuis quelle source ?)
+3. Transformations (étapes successives, qui fait quoi : n8n ? Gemini ? humain ?)
+4. Décisions (y a-t-il un branchement conditionnel ? Si oui, qui décide : règle automatique ou humain ?)
+5. Output (quel résultat, dans quel format, vers qui/quoi ?)
+
+Puis identifie :
+- Les risques (RGPD, sécurité, qualité, dépendances externes)
+- Les garde-fous nécessaires (validation humaine, logs, rollback)
+- Une estimation grossière de l'effort de construction (heures, complexité)
+
+Si la spec dépasse 5 lignes par section, c'est que le workflow n'est pas mûr — signale-le.</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-2-3">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.2.3</span>
+          <span class="gem-block-title">Mesurer le ROI d'un workflow existant</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es analyste d'efficacité opérationnelle dans une fintech B2B européenne.
+
+J'ai un workflow automatisé qui tourne depuis [DURÉE]. Je veux évaluer s'il est toujours pertinent.
+
+Description du workflow :
+- Ce qu'il fait : [...]
+- Fréquence d'exécution : [...]
+- Temps gagné estimé à l'origine : [...] minutes par exécution
+- Temps de maintenance par mois : [...] minutes
+- Évolutions du contexte depuis le lancement (nouvelles règles, nouveaux formats, nouveaux acteurs) : [...]
+- Qualité actuelle de la sortie (subjective : "très bonne" / "correcte" / "douteuse") : [...]
+
+Aide-moi à arbitrer :
+
+1. Gain net réel estimé (gain brut - maintenance, sur 12 mois)
+2. Dégradation de qualité : la sortie est-elle toujours aussi pertinente qu'à l'origine ?
+3. Risques émergents depuis le lancement (réglementaires, sécurité, données)
+4. Verdict :
+   - À maintenir tel quel
+   - À retoucher (préciser quoi)
+   - À retirer (préciser pourquoi)
+   - À industrialiser via la AI Taskforce (si le gain dépasse l'usage perso)
+
+Sois lucide, pas attaché à l'existant. Un workflow qui ne sert plus doit être retiré.</pre>
+      </div>
+
+      <div class="quiz" data-quiz="m6-automatisation">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 6.2 — Automatisation</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m6-automatisation">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je passe chaque idée d'automatisation par les 3 critères (récurrence + stabilité + gain) avant d'investir</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je sais reconnaître les fausses bonnes idées (décision humaine, "ça serait cool", sans mesure du gain)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Je fais le test du papier (5 lignes claires) avant de construire</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Je sais quand passer par la #ai-taskforce vs faire seul</label>
+      </div>
+    </div>
+    <!-- /LEÇON 6.2 -->
+
+    <!-- ============ LEÇON 6.3 — BIBLIOTHÈQUE DE GEMS ============ -->
+    <div class="parcours-block" id="lecon-bibliotheque">
+      <div class="parcours-block-label">💎 Leçon 6.3 · Construire sa bibliothèque de Gems · 6 min</div>
+      <h2>Construire votre propre <em>bibliothèque de Gems</em></h2>
+      <p class="lead"><em>"Un bon Gem n'est pas un prompt jeté au hasard. C'est un actif qui se rentabilise dans le temps, à condition d'être construit comme tel."</em></p>
+
+      <h3>Pourquoi capitaliser ses prompts</h3>
+      <p>Si vous avez parcouru votre parcours métier au Module 5, vous avez vu une vingtaine de Gems prêts à coller. Vous allez en utiliser certains tels quels, en adapter d'autres, en créer d'autres encore qui vous sont propres. Au bout de 3-6 mois d'usage régulier, vous aurez probablement 10-20 Gems vraiment utiles à vous.</p>
+      <p>L'enjeu : <strong>les retrouver vite quand vous en avez besoin</strong>. Une bibliothèque de Gems mal organisée = vous recréez le même prompt 5 fois parce que vous ne retrouvez pas la version aboutie. Une bibliothèque bien organisée = vous gagnez du temps à chaque usage, et vous montez en qualité (parce que chaque réutilisation est l'occasion d'améliorer le Gem).</p>
+
+      <h3>Les 4 critères d'un Gem qui mérite d'être sauvegardé</h3>
+      <p>Pas tous vos prompts méritent une place dans votre bibliothèque. Un prompt mérite d'être promu Gem s'il coche <strong>les 4 critères suivants</strong> :</p>
+      <dl class="definition">
+        <dt>1. Utilisé au moins 3 fois</dt>
+        <dd>La première fois, c'est un essai. La deuxième, c'est une coïncidence. La troisième, c'est un pattern — et c'est là qu'il vaut le coup de le stabiliser.</dd>
+        <dt>2. Donne un résultat fiable</dt>
+        <dd>Sur les 3 usages, le résultat a été bon ou ajustable en 2-3 corrections, pas en 15.</dd>
+        <dt>3. Paramétrable</dt>
+        <dd>Les éléments qui changent à chaque usage (le sujet, l'audience, le contexte) sont <strong>clairement identifiés comme variables</strong>. Un prompt qui mentionne en dur "Chris du Sales" ou "le compte XYZ" n'est pas réutilisable — il faut le rendre générique avec des <code>[...]</code> ou <code>{VARIABLE}</code>.</dd>
+        <dt>4. Transmissible</dt>
+        <dd>Quelqu'un d'autre que vous, dans votre équipe ou ailleurs, pourrait l'utiliser sans avoir besoin d'une heure d'explication. Si seul vous comprenez comment l'utiliser, ce n'est pas encore un Gem — c'est un brouillon perso.</dd>
+      </dl>
+
+      <h3>Méthode pour transformer un prompt one-shot en Gem réutilisable</h3>
+      <p>La séquence en 4 étapes, qui prend 5-10 minutes :</p>
+      <ol>
+        <li><strong>Extraire les variables.</strong> Tout ce qui change d'un usage à l'autre devient un champ. Exemple : <em>"Tu es Sales chez HiPay, j'ai un RDV avec le DAF de Acme Corp..."</em> → <em>"Tu es Sales chez HiPay, j'ai un RDV avec [TYPE DE CONTACT] de [NOM ENTREPRISE]..."</em></li>
+        <li><strong>Ajouter le contexte de rôle.</strong> Au début du prompt, posez clairement le rôle que l'IA doit prendre, et le contexte HiPay. Exemple : <em>"Tu es Sales dans une fintech B2B européenne de paiement."</em> Ce contexte va être réutilisé à chaque usage du Gem, autant le mettre en haut.</li>
+        <li><strong>Expliciter les contraintes.</strong> Ce qui marchait "implicitement" dans le one-shot doit être écrit. <em>"Pas plus de 200 mots"</em>, <em>"Pas de jargon marketing"</em>, <em>"Cite chaque source"</em>, <em>"Si tu hésites sur un fait, dis-le"</em>. Plus c'est explicite, plus le Gem est robuste sur la durée.</li>
+        <li><strong>Tester sur 2 cas différents.</strong> Avant de sauvegarder, lancez le Gem sur 2 cas différents pour vérifier qu'il marche bien sur les deux. Si le résultat est très différent en qualité, c'est qu'il manque encore quelque chose.</li>
+      </ol>
+
+      <h3>Où stocker vos Gems et comment nommer</h3>
+      <p>Peu importe l'outil — Notion, Confluence, Drive, markdown. <strong>L'important n'est pas où, c'est que ce soit accessible en 10 secondes</strong> depuis n'importe où. Si vous mettez 30 secondes à retrouver un Gem, vous ne l'utiliserez pas.</p>
+      <p>Une taxonomie simple suffit : <strong>par cas d'usage</strong>, pas par outil. Exemples :</p>
+      <ul>
+        <li><code>[CR]</code> CR de RDV commercial</li>
+        <li><code>[CR]</code> CR de réunion équipe</li>
+        <li><code>[Mail]</code> Mail de cadrage post-meeting</li>
+        <li><code>[Mail]</code> Réponse client mécontent</li>
+        <li><code>[Analyse]</code> Synthèse de feedbacks 360°</li>
+        <li><code>[Doc]</code> Procédure interne à partir d'un cas résolu</li>
+      </ul>
+      <p>Le préfixe en majuscules permet le tri rapide. Évitez les taxonomies à 3 niveaux — vous passerez plus de temps à classer qu'à utiliser. À 20 Gems, une liste plate avec préfixes suffit.</p>
+
+      <h3>Quand partager ses Gems avec l'équipe</h3>
+      <p>Un Gem mérite d'être promu équipe (Confluence, Slack, démo) quand : il résout un problème <strong>récurrent dans plusieurs membres de l'équipe</strong>, il a été testé sur <strong>plusieurs cas réels</strong>, et vous pouvez l'<strong>expliquer en 2 minutes</strong>. Le bon moment : quand un collègue exprime une douleur que votre Gem résout.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Ce qu'il faut retenir</span>
+        <ul>
+          <li>4 critères pour promouvoir un prompt en Gem : utilisé 3+ fois, fiable, paramétrable, transmissible.</li>
+          <li>Méthode en 4 étapes : extraire variables / ajouter contexte de rôle / expliciter contraintes / tester sur 2 cas.</li>
+          <li>Lieu de stockage = peu importe, <strong>accessibilité en 10 secondes</strong> = essentiel.</li>
+          <li>Taxonomie simple par cas d'usage avec préfixes. Pas plus de 2 niveaux.</li>
+          <li>Partager au moment d'une douleur exprimée, pas en push.</li>
+        </ul>
+      </div>
+
+      <details class="bonus" id="bonus-menage-trimestriel">
+        <summary>Bonus — Le ménage trimestriel dans votre bibliothèque</summary>
+        <div class="bonus-body">
+          <p>Au bout de 6 mois, votre bibliothèque va se peupler de Gems que vous n'utilisez plus, de doublons, de versions parallèles du même Gem. Faites 30 minutes de ménage tous les 3 mois.</p>
+          <p>3 questions à vous poser sur chaque Gem :</p>
+          <ol>
+            <li><strong>Quand l'ai-je utilisé pour la dernière fois ?</strong> Si > 3 mois et que le besoin n'a pas disparu, c'est que vous ne le retrouvez pas — soit vous le mettez plus en avant, soit vous le supprimez.</li>
+            <li><strong>Donne-t-il toujours le résultat attendu ?</strong> Les modèles d'IA évoluent. Relancez sur un cas type pour vérifier.</li>
+            <li><strong>Y a-t-il un doublon ou une version meilleure ?</strong> Fusionnez vers la meilleure, supprimez les autres.</li>
+          </ol>
+          <p>Une bibliothèque de 15 Gems excellents vaut bien mieux qu'une bibliothèque de 40 Gems moyens. <strong>Le ménage est aussi important que la création.</strong></p>
+        </div>
+      </details>
+
+      <div id="case-bibliotheque" class="case-study">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p><strong>La situation :</strong> vous avez tapé hier ce prompt en one-shot dans Gemini Advanced :</p>
+          <blockquote style="margin:12px 0;padding:12px 16px;border-left:3px solid var(--line-strong);font-style:italic">"Je dois écrire un mail à un client qui s'est plaint que son onboarding a pris 3 semaines au lieu des 2 semaines prévues. C'est un client important (gros volumes). Le délai dépendait d'eux en partie (ils ont mis 10 jours à nous renvoyer leurs documents KYC) mais on a aussi pris du retard côté HiPay. Écris-moi un mail factuel, qui reconnaît le retard sans s'écraser, et qui propose une compensation raisonnable. 200 mots max."</blockquote>
+          <p>Le résultat était bon, vous avez envoyé le mail après 2 ajustements. Vous sentez que c'est un cas qui va revenir. Comment transformer ce one-shot en Gem réutilisable ?</p>
+          <p><strong>Option A</strong> — Le copier tel quel dans votre bibliothèque sous le titre "Mail client onboarding en retard".</p>
+          <p><strong>Option B</strong> — Réécrire le prompt en extrayant les variables (<code>[CLIENT — taille / volumes]</code>, <code>[DURÉE PRÉVUE]</code>, <code>[DURÉE RÉELLE]</code>, <code>[CAUSES DU RETARD]</code>), en ajoutant le contexte de rôle (Customer Success / Account Manager dans une fintech B2B), en explicitant les contraintes (factuel, reconnaît sans s'écraser, propose compensation raisonnable, max 200 mots, pas de "je me permets" / "n'hésitez pas à"), puis le tester sur 1-2 cas différents avant de le sauvegarder.</p>
+          <p><strong>Option C</strong> — Le sauvegarder en gardant le contexte spécifique de ce client précis ("client qui a mis 10 jours pour le KYC...") pour avoir un exemple concret.</p>
+          <p><strong>Option D</strong> — Ne pas le sauvegarder, attendre de l'avoir réutilisé 5 fois pour être sûr qu'il vaut la peine d'être stabilisé.</p>
+        </div>
+        <details>
+          <summary><strong>Voir la réponse et l'explication</strong></summary>
+          <div style="padding:16px 0">
+            <p><strong>Bonne réponse : B</strong></p>
+            <p><strong>Variables extraites</strong> = le Gem devient réutilisable sur n'importe quel cas similaire. Sans extraction, vous garderez une version en dur qui ne marchera pas sur le prochain cas. <strong>Contexte de rôle ajouté</strong> = vous ne le retaperez pas chaque fois. <strong>Contraintes explicitées</strong> = le Gem reste robuste même quand vous ne vous souvenez plus exactement de ce que vous aviez en tête en le créant. <strong>Test sur 2 cas différents</strong> = vous validez que le Gem marche au-delà du cas qui l'a inspiré.</p>
+            <p><strong>Pourquoi pas les autres :</strong> A = vous gardez un prompt avec des spécificités du cas initial, inutilisable sur le suivant. C = garder le contexte d'un client précis = exfiltration potentielle si quelqu'un d'autre utilise le Gem, et le Gem ne sera pas adaptable à d'autres cas. À proscrire. D = trop conservateur. Le critère est "3 fois ou pattern reconnu".</p>
+            <p><strong>À retenir :</strong> la transformation one-shot → Gem prend 5-10 minutes. C'est l'investissement à plus haut ROI dans toute votre pratique IA quotidienne.</p>
+          </div>
+        </details>
+      </div>
+
+      <h3>Gems — Prompts prêts à copier</h3>
+
+      <div class="gem-block" data-gem-id="gem-6-3-1">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.3.1</span>
+          <span class="gem-block-title">Transformer un prompt one-shot en Gem réutilisable (Gem méta)</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es expert en design de prompts pour usages professionnels.
+
+Voici un prompt one-shot que j'ai utilisé récemment et qui a donné un bon résultat. Je veux le transformer en Gem réutilisable.
+
+Prompt one-shot :
+[COLLER LE PROMPT TEL QUE VOUS L'AVEZ TAPÉ]
+
+Réponse obtenue (résumé) :
+[1-2 phrases sur ce qui était bien dans la réponse]
+
+Transforme ce prompt en Gem réutilisable, en suivant 4 étapes :
+
+1. Variables à extraire
+   - Identifie tous les éléments spécifiques au cas (nom de personne, entreprise, contexte précis, chiffres)
+   - Remplace-les par des placeholders clairs ([...] ou {VARIABLE})
+   - Liste les variables identifiées
+
+2. Contexte de rôle
+   - Ajoute en haut du Gem une définition claire du rôle de l'IA et du contexte HiPay (fintech B2B européenne de paiement)
+   - Si le métier précis (Sales / RH / Support / autre) est identifiable, précise-le
+
+3. Contraintes explicitées
+   - Identifie les contraintes qui étaient implicites dans le one-shot (longueur, ton, format, ce qu'il faut éviter)
+   - Écris-les explicitement dans le Gem
+
+4. Titre et taxonomie
+   - Propose un titre court avec préfixe [CR] / [Mail] / [Analyse] / [Doc] / [Recherche] / [autre]
+   - Le titre doit dire ce que fait le Gem, pas comment
+
+Format de sortie :
+- Titre proposé
+- Liste des variables
+- Version finale du Gem (prête à copier)
+- 2 suggestions de cas test pour valider le Gem avant de le sauvegarder</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-3-2">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.3.2</span>
+          <span class="gem-block-title">Documenter un nouveau Gem avant de l'ajouter à la bibliothèque</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es bibliothécaire de prompts dans une fintech B2B européenne.
+
+Je veux ajouter un nouveau Gem à ma bibliothèque. Aide-moi à le documenter proprement.
+
+Gem à documenter :
+[COLLER LE GEM]
+
+Génère une fiche de documentation structurée :
+
+1. Titre (avec préfixe de catégorie : [CR] [Mail] [Analyse] [Doc] [Recherche] [autre])
+2. Cas d'usage (en 1 phrase : quand utiliser ce Gem)
+3. Variables à renseigner (liste avec 1 ligne d'explication par variable : "ce que je dois mettre dedans")
+4. Pré-requis (anonymisation, validation préalable, sources à préparer — selon le cas)
+5. Garde-fous (ce que le Gem NE FAIT PAS : invente des chiffres, prend des décisions, etc.)
+6. Critères de qualité de la sortie (comment je sais si le Gem a bien fonctionné)
+7. Cas où NE PAS l'utiliser (situations où ce Gem n'est pas adapté)
+
+Format : fiche markdown, prête à coller dans Notion / Confluence.
+
+Sois concis : la fiche entière doit tenir en moins de 200 mots.</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-3-3">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.3.3</span>
+          <span class="gem-block-title">Ménage trimestriel dans la bibliothèque de Gems</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es bibliothécaire de prompts dans une fintech B2B européenne.
+
+Aide-moi à faire le tri dans ma bibliothèque de Gems.
+
+Voici la liste de mes Gems avec, pour chacun :
+- Titre
+- Date de dernière utilisation
+- Nombre estimé d'utilisations sur 3 mois
+- Qualité subjective (très bon / correct / douteux)
+- Doublon potentiel avec un autre Gem ? (oui/non, lequel)
+
+[COLLER LA LISTE]
+
+Pour chaque Gem, propose un verdict :
+- À garder tel quel (utilisé régulièrement, qualité bonne, pas de doublon)
+- À retoucher (qualité douteuse ou variables mal calibrées — précise quoi améliorer)
+- À fusionner (doublon avec un autre, propose la fusion : laquelle garder, laquelle supprimer)
+- À supprimer (non utilisé depuis 3+ mois, ou besoin disparu)
+- À promouvoir (utilisé souvent + bonne qualité = candidat au partage Confluence avec l'équipe)
+
+Sois lucide. Une bibliothèque de 15 Gems excellents vaut mieux qu'une de 40 Gems moyens.
+
+Format : tableau Gem / Verdict / Justification (1 phrase) / Action concrète.</pre>
+      </div>
+
+      <div class="quiz" data-quiz="m6-bibliotheque">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 6.3 — Bibliothèque de Gems</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m6-bibliotheque">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je sais reconnaître un prompt qui mérite d'être promu Gem (4 critères : 3+ usages, fiable, paramétrable, transmissible)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> Je sais transformer un one-shot en Gem en 5-10 minutes (variables / contexte / contraintes / test)</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> J'ai une bibliothèque accessible en moins de 10 secondes</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> Je fais le ménage trimestriel pour maintenir une bibliothèque vivante (pas un cimetière de Gems)</label>
+      </div>
+    </div>
+    <!-- /LEÇON 6.3 -->
+
+    <!-- ============ LEÇON 6.4 — COMMUNAUTÉ IA ============ -->
+    <div class="parcours-block" id="lecon-communaute">
+      <div class="parcours-block-label">🤝 Leçon 6.4 · La communauté IA chez HiPay · 6 min</div>
+      <h2>La communauté IA <em>chez HiPay</em></h2>
+      <p class="lead"><em>"La formation s'arrête, l'apprentissage continue. Voici les canaux et les rituels pour progresser sans s'isoler — et sans tomber dans l'overdose IA."</em></p>
+
+      <h3>Les 3 canaux Slack HiPay et leur usage</h3>
+      <p>Trois canaux, trois usages distincts. <strong>Connaître la différence vous évite de poster au mauvais endroit</strong> (et de ne pas avoir de réponse).</p>
+      <dl class="definition">
+        <dt><code>#ai-support</code></dt>
+        <dd>Questions d'usage quotidien. <em>"Comment je fais pour X dans Gemini Advanced ?"</em> / <em>"Mon Gem ne donne pas le résultat attendu, qu'est-ce que je rate ?"</em> / <em>"Est-ce que Claude.ai Team est validé pour traiter des données KYC ?"</em>. C'est le canal où vous obtenez une réponse rapide d'un pair ou de la AI Taskforce sur un blocage concret.</dd>
+        <dt><code>#ai-taskforce</code></dt>
+        <dd>Sujets stratégiques, projets, initiatives. <em>"On envisage d'industrialiser le triage de tickets avec n8n + DUST, qui d'autre travaille sur quelque chose de similaire ?"</em> Le canal où vous engagez la conversation avec ceux qui pilotent l'usage IA chez HiPay.</dd>
+        <dt><code>#ai-news</code></dt>
+        <dd>Veille et nouveautés. Articles, sorties de produit, évolutions réglementaires, retours d'expérience marquants. Pour rester informé sans aller chercher partout. Mais <strong>attention à la consommation passive</strong> : si vous ne faites que lire #ai-news sans rien tester, vous ne progressez pas.</dd>
+      </dl>
+      <div class="callout">
+        <span class="callout-label">Règle simple avant de poster</span>
+        <p>Demandez-vous <em>"qu'est-ce que j'attends comme réponse ?"</em>. Dépannage → <code>#ai-support</code>. Débat ou orientation → <code>#ai-taskforce</code>. Partage → <code>#ai-news</code>.</p>
+      </div>
+
+      <h3>L'espace GenAI sur Confluence</h3>
+      <p>C'est la <strong>référence officielle</strong>. Politiques HiPay (quels outils sont validés, pour quels usages, avec quelles données), guides pratiques (n8n, Gemini Advanced, etc.), Radar Automation (les initiatives en cours dans l'entreprise), et la doc qui se construit au fil du temps.</p>
+      <!-- À VÉRIFIER : confirmer que l'espace GenAI Confluence contient bien politiques, guides et Radar Automation accessibles à tous les collaborateurs -->
+      <div class="callout good">
+        <span class="callout-label">Réflexe à prendre</span>
+        <p>Avant de poser une question sur Slack, jeter un œil sur <a href="https://hipay.atlassian.net/wiki/spaces/genai/overview" target="_blank" rel="noopener">Confluence GenAI</a>. Pas pour faire le pédant — pour éviter qu'on vous réponde <em>"c'est documenté ici"</em>. Et accessoirement, parce que la réponse est souvent plus complète qu'un message Slack à la volée.</p>
+      </div>
+
+      <h3>La AI Taskforce HiPay : rôle, sollicitation, contribution</h3>
+      <p>La AI Taskforce, c'est l'équipe transverse qui pilote la stratégie IA chez HiPay : sélection des outils, cadrage des usages sensibles, accompagnement des projets d'automatisation, lien avec Compliance/DPO sur les sujets réglementaires.</p>
+      <!-- À COMPLÉTER : composition exacte et points de contact de la AI Taskforce selon l'organisation HiPay actuelle -->
+      <div class="compare">
+        <div class="compare-col before">
+          <h5>Quand les solliciter :</h5>
+          <ul>
+            <li>Vous voulez industrialiser un usage qui concerne plusieurs équipes</li>
+            <li>Votre cas touche à des données sensibles et vous voulez une validation</li>
+            <li>Vous voulez proposer une initiative (nouveau cas d'usage, partenariat outil, formation interne)</li>
+            <li>Vous avez un doute réglementaire (AI Act, RGPD) sur un projet</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h5>Comment contribuer :</h5>
+          <ul>
+            <li>Partager vos retours d'usage (positifs ET négatifs — les ratés sont précieux)</li>
+            <li>Proposer des cas d'usage que vous avez validés sur le terrain</li>
+            <li>Documenter les Gems et workflows que vous estimez prêts pour un partage large</li>
+            <li>Faire le lien quand vous identifiez qu'une autre équipe travaille sur quelque chose de similaire (éviter les doublons)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Le Radar Automation</h3>
+      <p>Liste des initiatives d'automatisation en cours ou actées chez HiPay, accessible sur Confluence. <strong>Réflexe à prendre avant de lancer un workflow</strong> : vérifier sur le Radar que personne ne travaille déjà sur quelque chose de similaire. Si oui, contactez la personne — vous gagnerez du temps à mutualiser plutôt que de refaire en parallèle.</p>
+      <!-- À VÉRIFIER : confirmer que le Radar Automation est public à tous les collaborateurs (pas restreint à la Taskforce) -->
+
+      <h3>Les rituels potentiels à proposer</h3>
+      <p>Certaines organisations mettent en place des rituels collectifs pour entretenir la dynamique. À HiPay, ces rituels peuvent exister ou émerger dans les mois qui viennent :</p>
+      <!-- À VÉRIFIER : statut actuel de ces formats chez HiPay — adapter la présentation si certains rituels sont déjà en place -->
+      <ul>
+        <li><strong>Démo mensuelle ouverte</strong> : 30-45 min, 2-3 personnes montrent un usage concret de leur mois. Format informel, questions libres.</li>
+        <li><strong>AI office hours</strong> : créneau hebdo où la AI Taskforce est disponible pour répondre aux questions en direct (visio ou présentiel).</li>
+        <li><strong>Lightning talks</strong> : interventions courtes (5-10 min) sur un cas, une découverte, une analyse.</li>
+      </ul>
+      <p>Si aucun de ces formats n'existe encore chez HiPay et qu'il vous semble utile, <strong>proposez-le</strong> sur <code>#ai-taskforce</code>. Précisez le format, la fréquence, et qui pourrait l'animer.</p>
+
+      <h3>Continuer à apprendre en dehors de HiPay (sans overdose)</h3>
+      <ul>
+        <li><strong>Limitez à 2-3 sources fiables.</strong> Préférez les sources qui creusent un sujet à celles qui font de la curation rapide.</li>
+        <li><strong>Bloquez un créneau hebdo</strong> (30-45 min, pas plus) pour la veille. En dehors, fermez les onglets.</li>
+        <li><strong>Privilégiez la pratique à la lecture.</strong> Une heure passée à essayer un nouveau Gem vous apprend plus que 5 heures de lecture sur l'IA.</li>
+      </ul>
+      <p>Pas de liste de newsletters dans cette leçon — toute liste serait obsolète dans 6 mois. Demandez plutôt sur <code>#ai-news</code> ce que les autres lisent.</p>
+
+      <h3>L'attitude long terme</h3>
+      <p>La stack IA va changer. Gemini Advanced d'aujourd'hui sera remplacé par autre chose dans 2-3 ans. Ne vous attachez pas à un outil — attachez-vous aux <strong>principes</strong> :</p>
+      <ul>
+        <li>Distinguer ce que l'IA fait bien (forme, synthèse, structure) de ce qu'elle fait mal (calcul, décision, jugement).</li>
+        <li>Vérifier les claims sensibles, anonymiser ce qui doit l'être, garder l'humain sur la décision.</li>
+        <li>Construire ses outils dans le temps (bibliothèque de Gems), partager au bon moment, ne pas évangéliser.</li>
+      </ul>
+      <p>Ces principes ne dépendent pas de l'outil du jour. Ils tiendront sur 5-10 ans.</p>
+
+      <div class="callout good">
+        <span class="callout-label">Ce qu'il faut retenir</span>
+        <ul>
+          <li>3 canaux Slack, 3 usages distincts. Avant de poster, demandez-vous <em>"qu'est-ce que j'attends comme réponse ?"</em></li>
+          <li>Confluence GenAI = la référence. Réflexe à prendre avant Slack.</li>
+          <li>AI Taskforce = à solliciter sur les sujets transverses, sensibles ou stratégiques.</li>
+          <li>Radar Automation = à consulter avant de lancer un workflow.</li>
+          <li>Veille : 2-3 sources, 30 min/semaine, pratique &gt; lecture.</li>
+          <li>Les outils changent, les principes restent.</li>
+        </ul>
+      </div>
+
+      <details class="bonus" id="bonus-eviter-goulot">
+        <summary>Bonus — Comment éviter de devenir "la personne IA" de votre équipe (au sens négatif)</summary>
+        <div class="bonus-body">
+          <p>Si vous êtes le premier de votre équipe à vraiment maîtriser l'usage IA, vous risquez de glisser dans un rôle qui n'est pas le vôtre : <em>"demande à [vous], c'est lui qui sait pour l'IA"</em>. Au début c'est flatteur. Au bout de 3 mois, vous passez 2h par jour à dépanner les autres au lieu de faire votre travail.</p>
+          <p>3 garde-fous pratiques :</p>
+          <ol>
+            <li><strong>Renvoyer vers les canaux officiels.</strong> <em>"Bonne question, pose-la sur #ai-support, tu auras d'autres avis que le mien."</em> Vous gagnez du temps ET la communauté se densifie.</li>
+            <li><strong>Documenter au lieu d'expliquer en boucle.</strong> La 3e fois que quelqu'un vous demande la même chose, faites une page Confluence rapide. La 4e fois, vous donnez le lien.</li>
+            <li><strong>Distinguer "aider 5 minutes" et "former 1 heure".</strong> Les 5 minutes, oui. La formation d'1 heure, c'est un projet, ça passe par votre manager ou par la AI Taskforce — pas par votre temps perso.</li>
+          </ol>
+          <p>L'objectif n'est pas d'être avare. C'est de ne pas devenir le <strong>goulot d'étranglement</strong> de l'adoption IA de votre équipe. Plus vous renvoyez vers les canaux et la doc, plus l'usage se diffuse sans dépendre de vous.</p>
+        </div>
+      </details>
+
+      <div id="case-communaute" class="case-study">
+        <span class="case-study-label">CAS PRATIQUE</span>
+        <div class="case-study-prompt">
+          <p><strong>La situation :</strong> vous tombez sur un nouvel outil IA externe (un agent autonome très impressionnant pour automatiser les workflows commerciaux) qui vous semble pouvoir transformer votre quotidien Sales. Il y a une version gratuite, vous pourriez l'essayer dès demain matin avec quelques comptes prospects réels.</p>
+          <p><strong>Option A</strong> — Vous l'essayez dès demain matin avec 5 prospects réels pour voir si ça marche, et si oui vous le partagez à toute l'équipe.</p>
+          <p><strong>Option B</strong> — Vous ne testez <strong>rien avec des données HiPay réelles</strong>, vous regardez d'abord la politique outils sur Confluence GenAI, vous postez sur <code>#ai-taskforce</code> un message court, et vous attendez un retour avant tout usage réel.</p>
+          <p><strong>Option C</strong> — Vous l'essayez en mode "compte test" avec des prospects bidons pour voir si ça marche techniquement, puis vous partagez à l'équipe sans passer par la AI Taskforce.</p>
+          <p><strong>Option D</strong> — Vous évitez tout outil non listé dans la stack HiPay, point final.</p>
+        </div>
+        <details>
+          <summary><strong>Voir la réponse et l'explication</strong></summary>
+          <div style="padding:16px 0">
+            <p><strong>Bonne réponse : B</strong></p>
+            <p><strong>Aucune donnée HiPay réelle dans un outil non validé.</strong> C'est la règle de base, vue plusieurs fois dans la formation (Modules 2 et 3). Un outil externe non validé HiPay = exfiltration potentielle de données commerciales sensibles (prospects, comptes, stratégies de négociation). Même la version gratuite.</p>
+            <p><strong>Consulter Confluence d'abord</strong> : peut-être que cet outil a déjà été évalué et écarté pour de bonnes raisons. Ou qu'un équivalent est déjà dans la stack validée.</p>
+            <p><strong>Poster sur #ai-taskforce</strong> : ils peuvent dire "déjà évalué", "à creuser, on regarde", ou "non, pour ces raisons". Vous évitez de pousser seul un outil qui sera bloqué pour des raisons légitimes.</p>
+            <p><strong>Pourquoi pas les autres :</strong> A = exfiltration de données commerciales sensibles dans un outil tiers non validé. C = "partager à l'équipe sans passer par la Taskforce" = vous diffusez l'usage d'un outil non validé. D = refuser tout nouvel outil = trop conservateur. La stack HiPay évolue justement parce que des collaborateurs identifient et proposent de nouveaux outils.</p>
+            <p><strong>À retenir :</strong> un nouvel outil externe se propose, ne s'utilise pas. La séquence est : Confluence → #ai-taskforce → décision → usage éventuel.</p>
+          </div>
+        </details>
+      </div>
+
+      <h3>Gems — Prompts prêts à copier</h3>
+
+      <div class="gem-block" data-gem-id="gem-6-4-1">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.4.1</span>
+          <span class="gem-block-title">Formuler une question utile dans #ai-support</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une fintech B2B européenne de paiement.
+
+Je veux poster une question dans #ai-support sur Slack pour obtenir une réponse rapide et utile. Aide-moi à bien la formuler.
+
+Voici mon problème en l'état :
+[DÉCRIRE LE PROBLÈME AVEC VOS PROPRES MOTS]
+
+Aide-moi à structurer le post Slack :
+
+1. Titre / résumé (1 ligne, pour que les gens voient tout de suite si ça les concerne)
+2. Contexte (2-3 lignes : quel outil j'utilise, quelle tâche je fais, quel résultat j'attends)
+3. Ce que j'ai déjà essayé (1-3 lignes : évite que quelqu'un me suggère ce que j'ai déjà testé)
+4. Ce qui bloque précisément (1-2 lignes : où exactement ça coince)
+5. La question concrète (1 ligne : qu'est-ce que je demande exactement à la communauté)
+
+Règles :
+- Max 10 lignes au total
+- Pas de "Bonjour, j'espère que vous allez bien" ou autre formule
+- Données sensibles : aucune (anonymise tout)
+- Si je sens que la question est trop vague pour répondre, dis-le-moi</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-4-2">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.4.2</span>
+          <span class="gem-block-title">Proposer une initiative à la #ai-taskforce</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es facilitateur IA dans une fintech B2B européenne de paiement.
+
+Je veux proposer une nouvelle initiative à la AI Taskforce HiPay. Aide-moi à structurer la proposition.
+
+Idée brute :
+[DÉCRIRE L'IDÉE EN 3-5 LIGNES]
+
+Bénéficiaires potentiels (qui en profiterait dans HiPay) :
+[...]
+
+Effort estimé (votre intuition) :
+[Faible / Moyen / Important]
+
+Aide-moi à structurer un post / une note pour la Taskforce :
+
+1. Le problème ou l'opportunité (en 2-3 lignes, factuel)
+2. La solution envisagée (en 3-5 lignes : ce que ça fait concrètement)
+3. Pour qui (équipes / rôles bénéficiaires)
+4. Gain estimé (temps économisé × fréquence, ou effet qualitatif)
+5. Risques identifiés (sécurité, RGPD, AI Act, dépendances)
+6. Ce que je demande à la Taskforce (validation, ressources, accompagnement, simple avis)
+
+Règles :
+- Tenir en moins de 250 mots
+- Honnête sur les risques et limites (ne survends pas)
+- Pas de jargon corporate
+- Si l'idée touche à des données sensibles, le préciser clairement
+- Proposer 1-2 prochaines étapes concrètes (pas juste "qu'en pensez-vous ?")</pre>
+      </div>
+
+      <div class="gem-block" data-gem-id="gem-6-4-3">
+        <div class="gem-block-header">
+          <span class="gem-block-num">Gem 6.4.3</span>
+          <span class="gem-block-title">Faire le tri dans la veille IA reçue cette semaine</span>
+          <button class="gem-copy-btn">Copier</button>
+        </div>
+        <pre>Tu es analyste de veille IA dans une fintech B2B européenne.
+
+Voici les articles / posts / contenus IA que j'ai accumulés cette semaine et que je n'ai pas encore lus :
+[COLLER LES TITRES ET LIENS, ou les résumés courts]
+
+Aide-moi à trier rapidement (max 5 min de lecture pour moi au total) :
+
+Pour chaque élément, classe-le dans une catégorie :
+1. À lire en priorité (impact direct sur mon métier ou sur la stack HiPay)
+2. À survoler (intérêt général, garder à l'œil mais pas urgent)
+3. À ignorer (hype, redite, contenu superficiel, sujet hors-périmètre)
+4. À partager sur #ai-news (utile pour la communauté HiPay, pas juste pour moi)
+
+Pour chaque élément classé "À lire en priorité" ou "À partager", donne-moi en 1 phrase pourquoi.
+
+Mon contexte (pour calibrer le tri) :
+- Rôle / métier : [...]
+- Sujets IA qui m'intéressent en ce moment : [...]
+- Sujets dont je n'ai pas besoin (déjà saturé) : [...]
+
+Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 trucs superficiels.</pre>
+      </div>
+
+      <div class="quiz" data-quiz="m6-communaute">
+        <div class="quiz-head">
+          <h3>Quiz · Leçon 6.4 — Communauté IA</h3>
+          <span class="quiz-counter">2 questions</span>
+        </div>
+        <div class="quiz-body"></div>
+        <div class="quiz-actions">
+          <span class="quiz-score">Score : <strong>—</strong></span>
+          <button class="btn btn-ghost quiz-restart">Recommencer</button>
+        </div>
+      </div>
+
+      <div class="lesson-checklist" data-checklist="m6-communaute">
+        <div class="lesson-checklist-title">Ce que vous savez faire maintenant</div>
+        <label class="checklist-item"><input type="checkbox" data-idx="0"> Je sais distinguer les usages de #ai-support, #ai-taskforce, #ai-news et je poste au bon endroit</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="1"> J'ai le réflexe Confluence GenAI avant de poser une question</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="2"> Je sais quand solliciter la AI Taskforce et comment formuler une proposition</label>
+        <label class="checklist-item"><input type="checkbox" data-idx="3"> J'ai une veille IA cadrée (2-3 sources, créneau hebdo limité, pratique &gt; lecture)</label>
+      </div>
+    </div>
+    <!-- /LEÇON 6.4 -->
+
+    <!-- ============ FIN DE LA FORMATION ============ -->
+    <div id="fin-formation" style="margin-top:80px;padding:48px 40px;background:var(--bg-elevated);border-radius:16px;border:1px solid var(--line-strong);text-align:center">
+      <div style="font-size:48px;margin-bottom:16px">🎓</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-0.02em;margin-bottom:20px">Fin de la formation.</h2>
+      <p style="max-width:640px;margin:0 auto 24px;font-size:18px;line-height:1.6;color:var(--ink-soft)">Vous avez parcouru les 6 modules. Le test final n'est pas un quiz. C'est ce que vous ferez demain matin.</p>
+      <div style="max-width:600px;margin:0 auto;text-align:left">
+        <p style="margin-bottom:12px"><strong>Module 1</strong> vous a donné les fondamentaux pour comprendre ce que l'IA peut et ne peut pas faire. <strong>Module 2</strong> vous a présenté la stack HiPay et leurs usages spécifiques. <strong>Module 3</strong> a posé les cadres sécurité, RGPD et AI Act. <strong>Module 4</strong> vous a donné la méthode CODE. <strong>Module 5</strong> vous a montré, métier par métier, où l'IA apporte le plus de valeur. <strong>Module 6</strong> vous a donné les outils pour installer l'usage dans la durée — autour de vous, dans une bibliothèque qui vit, dans une communauté qui se construit.</p>
+        <p style="margin-bottom:12px">Si demain vous prenez 10 minutes pour transformer un de vos prompts récents en Gem, c'est déjà ça. Si la semaine prochaine vous repérez <strong>une</strong> opportunité d'automatisation qui passe les 3 critères, c'est déjà ça. Si dans un mois vous avez aidé un collègue à débloquer son premier usage IA, c'est déjà ça.</p>
+        <p>La stack changera. Les modèles évolueront. Ce qui restera : <strong>distinguer ce que l'IA fait bien de ce qu'elle fait mal, garder l'humain sur la décision, anonymiser ce qui doit l'être, vérifier les claims sensibles, construire dans le temps, partager au bon moment.</strong></p>
+      </div>
+      <div style="margin-top:32px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+        <a href="#parcours" class="btn btn-primary">Revoir le programme</a>
+        <a href="#bibliotheque" class="btn btn-ghost">Bibliothèque de prompts</a>
+        <a href="#progression" class="btn btn-ghost">Ma progression</a>
+      </div>
+    </div>
+    <!-- /FIN DE LA FORMATION -->
+
   </div>
 </section>
 
@@ -9562,7 +10472,103 @@ const QUIZZES = {
       explain: "Les claims techniques/réglementaires engagent contractuellement HiPay. Une réponse hallucinée par l'IA peut créer un litige. Le bon réflexe : mail court de prise en compte, vérif parallèle avec les experts internes, puis structuration finale (où l'IA aide à la mise en forme, pas à inventer les faits). Agent autonome sur un sujet engageant = à proscrire."
     }
   ],
-  m4: [
+  'm6-champion': [
+    {
+      q: "Un collègue vous dit que l'IA lui fait perdre du temps. Quelle est la première chose à faire ?",
+      opts: [
+        "Lui expliquer qu'il s'y prend mal et lui montrer la bonne méthode",
+        "Lui demander sur quel cas précis il a essayé, écouter sa réponse, puis selon le cas valider sa frustration ou proposer un angle qu'il n'a pas testé",
+        "Lui partager 3 Gems qui marchent bien pour vous",
+        "Ne pas insister, chacun son rapport à l'IA"
+      ],
+      correct: 1,
+      explain: "Le sceptique est souvent un bon informateur. Sa première phrase vous donne l'info clé : sur quel cas il a essayé. Sans ça, vous projetez ce que vous pensez qu'il devrait faire — exactement ce qu'il rejette. Selon le cas, vous validez son ressenti (et vous gagnez en crédibilité parce que vous ne défendez pas l'IA comme un produit) ou vous proposez sans imposer. Lui partager des Gems sans avoir compris son cas = il essaie en force, ça rate, il dit 'tu vois'."
+    },
+    {
+      q: "Vous êtes AI Champion dans votre équipe. Vous gagnez 3h par semaine sur la rédaction de CR. Que faites-vous pour aider l'équipe ?",
+      opts: [
+        "Vous proposez en réunion une présentation de 30 minutes sur le 'pattern CR' que vous avez développé",
+        "Vous attendez que quelqu'un exprime une douleur sur la rédaction de CR, puis vous lui montrez votre Gem en 3 minutes",
+        "Vous envoyez à toute l'équipe par mail votre Gem et une checklist d'utilisation",
+        "Vous gardez votre Gem pour vous parce que c'est un avantage compétitif"
+      ],
+      correct: 1,
+      explain: "Le partage le plus efficace = le partage AU MOMENT D'UNE DOULEUR EXPRIMÉE. Présentation 30 min en réunion = personne ne demandait, vous imposez. Mail à tous = la moitié ne lira pas, l'autre essaiera mal sans contexte. Garder pour soi = vous passez à côté de l'opportunité Champion. Attendre la bonne fenêtre demande de la patience, mais le ratio impact / effort est bien meilleur."
+    }
+  ],
+  'm6-automatisation': [
+    {
+      q: "Vous voulez automatiser le triage des candidatures reçues sur les offres d'emploi. L'idée est que Gemini Advanced lise chaque CV et lui attribue un score 1-5 selon des critères donnés, pour que le recruteur ne traite que les scores élevés. Que faire ?",
+      opts: [
+        "Lancer, ça fait gagner beaucoup de temps au recrutement",
+        "Lancer mais informer les candidats dans la politique de confidentialité",
+        "Ne pas lancer : noter/classer des candidats est une décision impactant des personnes, encadrée par l'AI Act. L'IA peut structurer les candidatures (résumer le parcours, identifier les compétences) mais pas noter — la notation et la décision restent humaines",
+        "Lancer avec un humain qui valide les scores attribués par l'IA"
+      ],
+      correct: 2,
+      explain: "Le recrutement est classé 'usage potentiellement élevé' par l'AI Act. Une notation par IA, même avec validation humaine en aval, transfère partiellement la décision. La bonne pratique = l'IA structure (résumé, identification de compétences), le recruteur note. Cf. Module 3 (AI Act) et Module 5 — Parcours RH, Piège 1. C'est exactement l'archétype de 'fausse bonne idée d'automatisation' — séduisante en apparence, problématique sur le fond."
+    },
+    {
+      q: "Avant de construire un workflow d'automatisation, quel est le meilleur indicateur que le besoin est mûr ?",
+      opts: [
+        "Vous avez une idée précise du résultat final souhaité",
+        "Vous arrivez à décrire le workflow en 5 lignes claires (trigger / inputs / transformations / décisions / output) sans 'ça dépend'",
+        "Plusieurs collègues vous ont dit que ça serait utile",
+        "L'idée vous est venue il y a moins d'une semaine"
+      ],
+      correct: 1,
+      explain: "Le 'test du papier' : si vous décrivez le workflow en 5 lignes claires, il est mûr. Si vous avez 15 lignes confuses avec plein de 'ça dépend', le besoin n'est pas stabilisé — attendez 2-3 mois que la pratique se clarifie avant de construire. Avoir une idée du résultat final ne suffit pas. Plusieurs collègues qui disent 'ça serait utile' = signal faible. Une idée récente n'est pas un critère de maturité."
+    }
+  ],
+  'm6-bibliotheque': [
+    {
+      q: "Vous avez utilisé un prompt one-shot hier qui a bien marché. Vous sentez que ce cas va revenir. Que faire ?",
+      opts: [
+        "Le copier tel quel dans la bibliothèque, avec son contexte spécifique d'origine",
+        "Le transformer en Gem en 4 étapes : extraire les variables, ajouter le contexte de rôle, expliciter les contraintes, tester sur 1-2 cas différents",
+        "Attendre de l'avoir réutilisé 5+ fois pour être sûr",
+        "Le garder dans son historique Gemini Advanced, ça suffit"
+      ],
+      correct: 1,
+      explain: "Dès qu'un prompt a marché et que vous sentez que le cas va revenir (pattern reconnu, pas besoin d'attendre 5 fois), vous le promouvez en Gem en 5-10 minutes. Le copier tel quel = il garde des spécificités du cas, inutilisable sur le suivant. Attendre 5+ fois = vous le retapez 4 fois pour rien. Le garder dans l'historique = il sera noyé dans des dizaines d'autres prompts et vous ne le retrouverez plus."
+    },
+    {
+      q: "Vous avez 25 Gems dans votre bibliothèque. Vous remarquez que vous en utilisez seulement 8 régulièrement. Que faire ?",
+      opts: [
+        "Garder les 25 pour 'au cas où', on ne sait jamais",
+        "Faire un ménage trimestriel : pour chaque Gem non utilisé depuis 3+ mois, soit l'améliorer pour qu'il soit utilisable, soit le supprimer. Une bibliothèque de 15 Gems excellents vaut mieux qu'une de 40 Gems moyens",
+        "Faire un audit complet sur les 25 d'un coup en y passant une demi-journée",
+        "Supprimer les 17 non utilisés sans réfléchir"
+      ],
+      correct: 1,
+      explain: "Le ménage trimestriel régulier (30 min tous les 3 mois) maintient la bibliothèque vivante. Pour chaque Gem peu utilisé, 2 questions : 'le besoin a-t-il disparu ?' (si oui, supprimer) ou 'je ne le retrouve pas ?' (si oui, le mettre plus en avant ou l'améliorer). Garder les 25 'au cas où' = vous ne retrouverez plus rien. Audit complet d'une demi-journée = vous ne le ferez jamais."
+    }
+  ],
+  'm6-communaute': [
+    {
+      q: "Vous tombez sur un nouvel outil IA externe gratuit qui semble pouvoir transformer votre quotidien. Vous voulez le tester. Quelle est la bonne séquence ?",
+      opts: [
+        "Tester directement avec des données réelles HiPay pour voir si ça marche, puis partager à l'équipe si concluant",
+        "Consulter Confluence GenAI pour voir s'il a déjà été évalué, puis poster sur #ai-taskforce une présentation courte, attendre un retour AVANT tout usage avec des données HiPay",
+        "Tester avec des données bidons en mode 'compte test' puis partager à l'équipe sans passer par la Taskforce",
+        "Ignorer tout outil hors stack HiPay, point final"
+      ],
+      correct: 1,
+      explain: "Un nouvel outil externe = aucune donnée HiPay réelle tant qu'il n'est pas validé. La séquence est : Confluence (peut-être déjà évalué) → #ai-taskforce (présentation courte, demande de retour) → décision → usage éventuel. Tester direct avec des données réelles = exfiltration. Tester en bidon puis partager = vous diffusez un outil non validé, plusieurs collègues vont l'essayer avec leurs données. Ignorer tout outil hors stack = trop conservateur, la stack évolue grâce aux propositions des collaborateurs."
+    },
+    {
+      q: "Vous voulez rester informé sur l'évolution de l'IA sans saturer. Quelle approche est la plus durable ?",
+      opts: [
+        "Lire toutes les newsletters IA majeures pour ne rien rater",
+        "S'abonner à 10-15 sources et survoler chaque jour",
+        "Choisir 2-3 sources fiables sur la durée, bloquer 30-45 min par semaine pour la veille, privilégier la pratique à la lecture",
+        "Ne rien lire et apprendre uniquement par l'usage personnel"
+      ],
+      correct: 2,
+      explain: "L'écosystème IA produit beaucoup de bruit. 2-3 sources fiables sur la durée + 30-45 min par semaine = ratio signal/bruit acceptable. Tout lire = surcharge cognitive et FOMO permanent. 10-15 sources en survol = vous mémorisez rien, vous accumulez du flou. Ne rien lire = vous ratez les évolutions importantes (réglementaires, outils, pratiques). Et toujours : 1h à essayer un nouveau Gem vaut 5h à lire sur l'IA."
+    }
+  ],
+    m4: [
     {
       q: "Pour un Sales, quelle tâche reste irremplaçable par l'IA ?",
       opts: [
