@@ -1857,6 +1857,38 @@
   details.expandable[open] > summary { border-bottom: 1px solid var(--line); }
   details.expandable > *:not(summary) { padding: 20px; }
 
+
+  /* ============ WORKFLOW COLLAPSE ============ */
+  .workflow-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .workflow-details > summary {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .workflow-details > summary strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Pièges details specifics */
+  .pieges-details > summary {
+    color: var(--warn);
+  }
+
+  .pieges-details > summary::before {
+    color: var(--warn);
+  }
+
 </style>
 </head>
 <body>
@@ -11547,9 +11579,97 @@ function initModule5() {
   window._initModule5Cat(null);
 }
 
+
+// ============================================
+// MODULE 5 — PIÈGES COLLAPSE
+// ============================================
+function initPiegesCollapse() {
+  document.querySelectorAll('.cat-content').forEach(article => {
+    // Find pièges headings (h3 or h4 containing "Pièges transverses")
+    const allEls = [...article.children];
+    allEls.forEach(h => {
+      if (!['H3', 'H4'].includes(h.tagName)) return;
+      if (!h.textContent.includes('Pièges transverses')) return;
+
+      // Collect direct siblings until first .sous-metier div
+      const siblings = [];
+      let next = h.nextElementSibling;
+      while (next && !next.classList.contains('sous-metier')) {
+        siblings.push(next);
+        next = next.nextElementSibling;
+      }
+
+      if (siblings.length === 0) return;
+
+      // Count h4 elements named "Piège X"
+      const piegesCount = siblings.filter(el =>
+        el.tagName === 'H4' && el.textContent.trim().startsWith('Piège')
+      ).length;
+
+      const label = piegesCount > 0
+        ? `⚠️ ${piegesCount} piège${piegesCount > 1 ? 's' : ''} transverse${piegesCount > 1 ? 's' : ''} — cliquer pour replier`
+        : '⚠️ Pièges transverses — cliquer pour replier';
+
+      const details = document.createElement('details');
+      details.className = 'expandable pieges-details';
+      details.open = true;
+      const summary = document.createElement('summary');
+      summary.textContent = label;
+      details.appendChild(summary);
+
+      // Insert before heading, remove heading (replaced by summary), move siblings
+      h.parentNode.insertBefore(details, h);
+      h.remove();
+      siblings.forEach(s => details.appendChild(s));
+    });
+  });
+}
+
+// ============================================
+// MODULE 5 — WORKFLOW COLLAPSE
+// ============================================
+function initWorkflowCollapse() {
+  document.querySelectorAll('.cat-content .sous-metier').forEach(sm => {
+    // Iterate over a snapshot (array) because we mutate the DOM
+    const h4s = [...sm.querySelectorAll('h4')];
+    h4s.forEach(h => {
+      if (!h.textContent.includes('Workflow réel')) return;
+
+      // Extract title: "Workflow réel — "Title goes here""
+      const raw = h.textContent.trim();
+      const titleMatch = raw.match(/Workflow réel\s*[\u2014-]\s*"?(.+?)"?$/);
+      const title = titleMatch ? titleMatch[1].trim() : raw.replace(/^Workflow réel\s*[\u2014-]\s*/, '');
+
+      // Collect siblings until next h4 containing "Gem" or end of sous-metier
+      const siblings = [];
+      let next = h.nextElementSibling;
+      while (next) {
+        if (next.tagName === 'H4' && next.textContent.includes('Gem')) break;
+        siblings.push(next);
+        next = next.nextElementSibling;
+      }
+
+      const details = document.createElement('details');
+      details.className = 'expandable workflow-details';
+      const summary = document.createElement('summary');
+      summary.innerHTML =
+        '<span class="workflow-label">\uD83D\uDD01 Workflow r\u00E9el</span> <strong>' +
+        title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+        '</strong>';
+      details.appendChild(summary);
+
+      h.parentNode.insertBefore(details, h);
+      h.remove();
+      siblings.forEach(s => details.appendChild(s));
+    });
+  });
+}
+
 async function init() {
   await loadState();
   initModule5();
+  initPiegesCollapse();
+  initWorkflowCollapse();
   Object.keys(QUIZZES).forEach(renderQuiz);
   renderLibrary('all');
   bindLessonCopy();
