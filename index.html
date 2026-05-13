@@ -60,6 +60,7 @@
     background: rgba(14, 14, 18, 0.72);
     border-bottom: 1px solid var(--line);
     padding: 14px 32px;
+    transform: translateZ(0);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,6 +112,8 @@
     position: relative;
   }
   .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after { right: 0; height: 2px; transition: none; }
   .nav-links a::after {
     content: "";
     position: absolute;
@@ -541,7 +544,7 @@
 
   /* ============ CONTENT LESSONS ============ */
   .lesson {
-    padding: 100px 32px;
+    padding: 48px 32px;
     border-bottom: 1px solid var(--line);
     position: relative;
   }
@@ -1610,6 +1613,250 @@
     margin-top: 32px;
   }
   .encart-court h4 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--ink); }
+
+  /* ============ SPA VIEWS ============ */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ============ READING PROGRESS ============ */
+  .reading-progress {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 99;
+    transition: width 0.05s linear;
+    pointer-events: none;
+  }
+
+  /* ============ BRAND BASELINE ============ */
+  .brand-baseline {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  /* ============ BTN MICROCOPY ============ */
+  .btn-microcopy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 12px;
+  }
+
+  /* ============ SCROLL MARGIN ============ */
+  .lesson, .view, [id] {
+    scroll-margin-top: 80px;
+  }
+
+
+  /* ============ MODULE 5 — 2-COLUMN LAYOUT ============ */
+  .module-5-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    gap: 0;
+  }
+
+  .module-5-sidebar {
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding: 32px 24px;
+    border-right: 1px solid var(--line);
+    background: var(--bg-elevated);
+    flex-shrink: 0;
+  }
+
+  .sidebar-header {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-header .lesson-meta {
+    font-size: 11px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .sidebar-header h2 {
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .sidebar-cats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cat-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .cat-link:hover { background: var(--bg-card); color: var(--ink); }
+
+  .cat-link.active {
+    background: var(--bg-card);
+    color: var(--ink);
+    border-left-color: var(--accent);
+  }
+
+  .cat-emoji { font-size: 15px; flex-shrink: 0; }
+  .cat-name { line-height: 1.3; }
+
+  .sidebar-sub {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .sidebar-sub-link {
+    display: block;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: color 0.12s, background 0.12s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-sub-link:hover { color: var(--ink); background: var(--bg-card); }
+  .sidebar-sub-link.sub-active { color: var(--accent); }
+
+  .module-5-content {
+    padding: 48px 48px;
+    min-width: 0;
+  }
+
+  .cat-content { max-width: 860px; }
+  .cat-content.hidden { display: none; }
+
+  @media (max-width: 900px) {
+    .module-5-layout {
+      grid-template-columns: 1fr;
+    }
+    .module-5-sidebar {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      overflow-y: visible;
+    }
+    .module-5-content {
+      padding: 32px 20px;
+    }
+  }
+
+
+  /* ============ GEM COLLAPSE ============ */
+  .gem-details {
+    margin-top: 12px;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  .gem-details > summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    list-style: none;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    transition: color 0.12s, background 0.12s;
+    user-select: none;
+  }
+
+  .gem-details > summary::-webkit-details-marker { display: none; }
+
+  .gem-details > summary::before {
+    content: "▸";
+    font-size: 10px;
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+
+  .gem-details[open] > summary::before { transform: rotate(90deg); }
+  .gem-details > summary:hover { color: var(--ink); background: var(--bg-card); }
+
+  .gem-details > pre {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  /* ============ EXPANDABLE (for future piège/workflow collapses) ============ */
+  details.expandable {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin: 24px 0;
+    background: var(--bg-soft);
+    overflow: hidden;
+  }
+
+  details.expandable > summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  details.expandable > summary::-webkit-details-marker { display: none; }
+
+  details.expandable > summary::before {
+    content: "▸";
+    font-size: 11px;
+    color: var(--ink-faint);
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+
+  details.expandable[open] > summary::before { transform: rotate(90deg); }
+  details.expandable > summary:hover { background: var(--bg-card); }
+  details.expandable[open] > summary { border-bottom: 1px solid var(--line); }
+  details.expandable > *:not(summary) { padding: 20px; }
+
 </style>
 </head>
 <body>
@@ -1619,23 +1866,26 @@
   <div class="brand">
     <span class="brand-mark"></span>
     Formation IA <small>HiPay</small>
+    <span class="brand-baseline">Programme interne</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#why">Le pari</a></li>
-    <li><a href="#parcours">Parcours</a></li>
-    <li><a href="#fondamentaux">Théorie</a></li>
-    <li><a href="#outils">Outils</a></li>
-    <li><a href="#methode">Méthode CODE</a></li>
-    <li><a href="#metiers">Métiers</a></li>
-    <li><a href="#bibliotheque">Prompts</a></li>
-    <li><a href="#progression">Progression</a></li>
+    <li><a href="#view-home" data-view="view-home" data-scroll="#why">Le pari</a></li>
+    <li><a href="#view-home" data-view="view-home" data-scroll="#parcours">Parcours</a></li>
+    <li><a href="#view-module-1" data-view="view-module-1">Théorie</a></li>
+    <li><a href="#view-module-2" data-view="view-module-2">Outils</a></li>
+    <li><a href="#view-module-4" data-view="view-module-4">Méthode CODE</a></li>
+    <li><a href="#view-module-5" data-view="view-module-5">Métiers</a></li>
+    <li><a href="#view-bibliotheque" data-view="view-bibliotheque">Prompts</a></li>
+    <li><a href="#view-progress" data-view="view-progress">Progression</a></li>
   </ul>
   <div class="progress-pill">
     <span class="dot"></span>
     <span id="nav-progress">0 / 24 complétés</span>
   </div>
 </nav>
+<div class="reading-progress" id="reading-progress"></div>
 
+<section class="view active" id="view-home">
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div>
@@ -1648,10 +1898,13 @@
       Ce n'est ni un catalogue de formation, ni un cours de prompt engineering trouvé sur YouTube. C'est le programme interne HiPay pour passer de "j'ai peur d'être remplacé" à "je sais où je crée de la valeur que l'IA ne peut pas créer".
     </p>
     <div class="hero-cta">
-      <a href="#parcours" class="btn btn-primary">
-        Commencer le parcours <span class="arrow">→</span>
-      </a>
-      <a href="#why" class="btn btn-ghost">
+      <div>
+        <a href="#view-module-1" data-view="view-module-1" class="btn btn-primary">
+          Commencer le parcours <span class="arrow">→</span>
+        </a>
+        <div class="btn-microcopy">Sans inscription · Progression auto-sauvegardée localement</div>
+      </div>
+      <a href="#view-home" data-view="view-home" data-scroll="#why" class="btn btn-ghost">
         D'abord, parlons franchement
       </a>
     </div>
@@ -1747,7 +2000,7 @@
     </div>
 
     <div class="modules-list" id="modules-list">
-      <a href="#fondamentaux" class="module-row" data-module="fondamentaux">
+      <a href="#view-module-1" data-view="view-module-1" class="module-row" data-module="fondamentaux">
         <div class="module-num">01</div>
         <div class="module-content">
           <h3>Comprendre l'IA</h3>
@@ -1756,7 +2009,7 @@
         <div class="module-meta"><span>~45 min</span><span>5 leçons</span></div>
         <div class="module-arrow">→</div>
       </a>
-      <a href="#outils" class="module-row" data-module="outils">
+      <a href="#view-module-2" data-view="view-module-2" class="module-row" data-module="outils">
         <div class="module-num">02</div>
         <div class="module-content">
           <h3>Vos outils : lequel, pour quoi</h3>
@@ -1765,7 +2018,7 @@
         <div class="module-meta"><span>~30 min</span><span>5 fiches</span></div>
         <div class="module-arrow">→</div>
       </a>
-      <a href="#permis" class="module-row" data-module="permis">
+      <a href="#view-module-3" data-view="view-module-3" class="module-row" data-module="permis">
         <div class="module-num">03</div>
         <div class="module-content">
           <h3>Le permis de conduire</h3>
@@ -1774,7 +2027,7 @@
         <div class="module-meta"><span>~30 min</span><span>4 leçons</span></div>
         <div class="module-arrow">→</div>
       </a>
-      <a href="#methode" class="module-row" data-module="methode">
+      <a href="#view-module-4" data-view="view-module-4" class="module-row" data-module="methode">
         <div class="module-num">04</div>
         <div class="module-content">
           <h3>La méthode CODE</h3>
@@ -1783,7 +2036,7 @@
         <div class="module-meta"><span>~40 min</span><span>5 leçons</span></div>
         <div class="module-arrow">→</div>
       </a>
-      <a href="#metiers" class="module-row" data-module="metiers">
+      <a href="#view-module-5" data-view="view-module-5" class="module-row" data-module="metiers">
         <div class="module-num">05</div>
         <div class="module-content">
           <h3>Parcours métiers</h3>
@@ -1792,7 +2045,7 @@
         <div class="module-meta"><span>~60 min</span><span>5 parcours</span></div>
         <div class="module-arrow">→</div>
       </a>
-      <a href="#aller-loin" class="module-row" data-module="aller-loin">
+      <a href="#view-module-6" data-view="view-module-6" class="module-row" data-module="aller-loin">
         <div class="module-num">06</div>
         <div class="module-content">
           <h3>Aller plus loin</h3>
@@ -1804,7 +2057,9 @@
     </div>
   </div>
 </section>
+</section><!-- /view-home -->
 
+<section class="view" id="view-module-1">
 <!-- ============ MODULE 1 — FONDAMENTAUX ============ -->
 <section class="lesson" id="fondamentaux">
   <div class="lesson-wrap">
@@ -2349,7 +2604,9 @@
     </div>
   </div>
 </section>
+</section><!-- /view-module-1 -->
 
+<section class="view" id="view-module-2">
 <!-- ============ MODULE 2 — OUTILS ============ -->
 <section class="lesson" id="outils">
   <div class="lesson-wrap">
@@ -3368,7 +3625,9 @@ Format de sortie :
     </div>
   </div>
 </section>
+</section><!-- /view-module-2 -->
 
+<section class="view" id="view-module-3">
 <!-- ============ MODULE 3 — PERMIS ============ -->
 <section class="lesson" id="permis" style="background:var(--bg-soft)">
   <div class="lesson-wrap">
@@ -4268,7 +4527,9 @@ Sois concret et pragmatique. Ne me dis pas seulement "c'était risqué", expliqu
     </div>
   </div>
 </section>
+</section><!-- /view-module-3 -->
 
+<section class="view" id="view-module-4">
 <!-- ============ MODULE 3 — MÉTHODE CODE ============ -->
 <section class="lesson" id="methode">
   <div class="lesson-wrap">
@@ -5100,29 +5361,46 @@ Liste les améliorations à faire en moins de 5 lignes, puis donne-moi la versio
     </div>
   </div>
 </section>
+</section><!-- /view-module-4 -->
 
+<section class="view" id="view-module-5">
 <!-- ============ MODULE 4 — MÉTIERS ============ -->
 <section class="lesson" id="metiers" style="background:var(--bg-soft)">
-  <div class="lesson-wrap">
-    <div class="lesson-meta">Module 05 · Parcours métiers</div>
-    <h2>L'IA dans <em>votre métier</em>.</h2>
-    <p class="lead">Ce module détaille comment l'IA s'utilise concrètement dans chacun des grands métiers de HiPay. Chaque parcours : contexte, transformations avant/après, workflows réels, Gems prêts à l'emploi, cas pratique et checklist. Cible : au moins 2 actions à mettre en place dès cette semaine.</p>
-
-    <div class="parcours-nav">
-      <div class="parcours-nav-label">Les 7 parcours</div>
-      <ul>
-        <li>💼 <strong><a href="#parcours-business">Parcours 1 — Business &amp; Commercial</a></strong> — Sales/BD, Account Management, Pre-Sales, Customer Success, Partnerships</li>
-        <li>🎧 <strong><a href="#parcours-support">Parcours 2 — Support &amp; Service Client</a></strong> — Support technique, Customer Service, Onboarding</li>
-        <li>⚖️ <strong><a href="#parcours-risk">Parcours 3 — Risk, Compliance &amp; Legal</a></strong> — Legal, Compliance, Risk Management, DPO/Privacy</li>
-        <li>💰 <strong><a href="#parcours-finance">Parcours 4 — Finance &amp; Ops</a></strong> — Finance, Comptabilité, Operations, Procurement</li>
-        <li>📣 <strong><a href="#parcours-marketing">Parcours 5 — Marketing, Produit &amp; Communication</a></strong> — Marketing, Product, Product Marketing, Communication</li>
-        <li>🛠️ <strong><a href="#parcours-tech">Parcours 6 — Tech &amp; Engineering</a></strong> — Engineering, DevOps/SRE, Data, QA/Security</li>
-        <li>👥 <strong><a href="#parcours-people">Parcours 7 — People &amp; Internal</a></strong> — RH/Talent, People Ops, IT interne</li>
-      </ul>
-    </div>
+  <div class="module-5-layout">
+    <aside class="module-5-sidebar">
+      <div class="sidebar-header">
+        <div class="lesson-meta">Module 05 · Parcours métiers</div>
+        <h2>L'IA dans <em>votre métier</em>.</h2>
+      </div>
+      <nav class="sidebar-cats" aria-label="Catégories métiers">
+        <a href="#cat-business" data-cat="cat-business" class="cat-link active">
+          <span class="cat-emoji">💼</span><span class="cat-name">Business &amp; Commercial</span>
+        </a>
+        <a href="#cat-support" data-cat="cat-support" class="cat-link">
+          <span class="cat-emoji">🎧</span><span class="cat-name">Support &amp; Service Client</span>
+        </a>
+        <a href="#cat-risk" data-cat="cat-risk" class="cat-link">
+          <span class="cat-emoji">⚖️</span><span class="cat-name">Risk, Compliance &amp; Legal</span>
+        </a>
+        <a href="#cat-finance" data-cat="cat-finance" class="cat-link">
+          <span class="cat-emoji">💰</span><span class="cat-name">Finance &amp; Ops</span>
+        </a>
+        <a href="#cat-marketing" data-cat="cat-marketing" class="cat-link">
+          <span class="cat-emoji">📣</span><span class="cat-name">Marketing, Produit &amp; Com.</span>
+        </a>
+        <a href="#cat-tech" data-cat="cat-tech" class="cat-link">
+          <span class="cat-emoji">🛠️</span><span class="cat-name">Tech &amp; Engineering</span>
+        </a>
+        <a href="#cat-people" data-cat="cat-people" class="cat-link">
+          <span class="cat-emoji">👥</span><span class="cat-name">People &amp; Internal</span>
+        </a>
+      </nav>
+      <div class="sidebar-sub" id="sidebar-sub"></div>
+    </aside>
+    <main class="module-5-content" id="module-5-content">
 
     <!-- ============ PARCOURS 1 — BUSINESS & COMMERCIAL ============ -->
-    <div class="parcours-block" id="parcours-business">
+    <article class="cat-content" id="cat-business" data-cat-name="Business &amp; Commercial">
       <div class="parcours-block-label">💼 Parcours 1 · Business &amp; Commercial · 6-8 min</div>
       <h2>Business &amp; <em>Commercial</em></h2>
       <p class="lead">Le métier où l'IA donne le plus de gains de productivité immédiats — à condition de ne pas tomber dans le piège du commercial automatisé qui se voit à 10 km.</p>
@@ -5676,11 +5954,10 @@ Source chaque info. Si tu hésites, dis-le.</pre>
         <label class="checklist-item"><input type="checkbox" data-idx="5"> Les données nominatives prospects/clients ne sortent <strong>jamais</strong> vers un outil IA non validé (uniquement Gemini Advanced / Claude.ai Team / DUST)</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 1 — BUSINESS & COMMERCIAL -->
+    </article>
 
     <!-- ============ PARCOURS 2 — SUPPORT & SERVICE CLIENT ============ -->
-    <div class="parcours-block" id="parcours-support">
+    <article class="cat-content hidden" id="cat-support" data-cat-name="Support &amp; Service Client">
       <div class="parcours-block-label">🎧 Parcours 2 · Support &amp; Service Client · 6-8 min</div>
       <h3>Support &amp; <em>Service Client</em></h3>
       <p class="lead">Le métier où l'IA accélère le plus vite la qualité du premier contact — à condition de ne pas confondre "répondre vite" et "répondre bien".</p>
@@ -6087,11 +6364,10 @@ Si tu n'es pas sûr d'une feature HiPay spécifique, marque [À VÉRIFIER] plut�
         <label class="checklist-item"><input type="checkbox" data-idx="5"> Les tickets très sensibles (fraude, incident sécurité client) ne passent <strong>jamais</strong> par un outil IA externe</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 2 — SUPPORT & SERVICE CLIENT -->
+    </article>
 
     <!-- ============ PARCOURS 3 — RISK, COMPLIANCE & LEGAL ============ -->
-    <div class="parcours-block" id="parcours-risk">
+    <article class="cat-content hidden" id="cat-risk" data-cat-name="Risk, Compliance &amp; Legal">
       <div class="parcours-block-label">⚖️ Parcours 3 · Risk, Compliance &amp; Legal · 6-8 min</div>
       <h3>Risk, Compliance &amp; <em>Legal</em></h3>
       <p class="lead">Le métier où l'IA fait le plus peur — et où elle apporte pourtant des gains massifs, à condition de comprendre exactement ce qu'elle peut faire et ce qu'elle ne doit JAMAIS faire.</p>
@@ -6676,11 +6952,10 @@ Si une référence RGPD ou AI Act te semble pertinente, écris [RÉFÉRENCE À V
         <label class="checklist-item"><input type="checkbox" data-idx="5"> Je distingue clairement ce que l'IA fait (synthèse, comparaison, structure) de ce que je signe (décision, qualification, recommandation)</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 3 — RISK, COMPLIANCE & LEGAL -->
+    </article>
 
     <!-- ============ PARCOURS 4 — FINANCE & OPS ============ -->
-    <div class="parcours-block" id="parcours-finance">
+    <article class="cat-content hidden" id="cat-finance" data-cat-name="Finance &amp; Ops">
       <div class="parcours-block-label">💰 Parcours 4 · Finance &amp; Ops · 5-6 min</div>
       <h3>Finance &amp; <em>Ops</em></h3>
       <p class="lead">Le métier où l'IA fait gagner du temps sur la mise en mots des chiffres — sans jamais toucher aux chiffres eux-mêmes.</p>
@@ -7013,11 +7288,10 @@ Ton : factuel, opératoire. Cible : un opérateur qui doit pouvoir exécuter san
         <label class="checklist-item"><input type="checkbox" data-idx="5"> Les données financières sensibles (cash, P&amp;L détaillé, projections stratégiques) ne sortent que vers des outils validés HiPay</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 4 — FINANCE & OPS -->
+    </article>
 
     <!-- ============ PARCOURS 5 — MARKETING, PRODUIT & COMMUNICATION ============ -->
-    <div class="parcours-block" id="parcours-marketing">
+    <article class="cat-content hidden" id="cat-marketing" data-cat-name="Marketing, Produit &amp; Communication">
       <div class="parcours-block-label">📣 Parcours 5 · Marketing, Produit &amp; Communication · 6-8 min</div>
       <h3>Marketing, Produit &amp; <em>Communication</em></h3>
       <p class="lead">Les métiers de la production de contenu et de la décision produit. L'IA accélère massivement le premier jet et l'analyse — à condition de ne pas confondre "output IA" et "voix de la marque".</p>
@@ -7481,11 +7755,10 @@ Règles :
         <label class="checklist-item"><input type="checkbox" data-idx="6"> Aucun agent autonome ne publie de contenu en mon nom ou au nom de HiPay</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 5 — MARKETING, PRODUIT & COMMUNICATION -->
+    </article>
 
     <!-- ============ PARCOURS 6 — TECH & ENGINEERING ============ -->
-    <div class="parcours-block" id="parcours-tech">
+    <article class="cat-content hidden" id="cat-tech" data-cat-name="Tech &amp; Engineering">
       <div class="parcours-block-label">🛠️ Parcours 6 · Tech &amp; Engineering · 6-8 min</div>
       <h3>Tech &amp; <em>Engineering</em></h3>
       <p class="lead">Le métier où l'IA change le plus vite la façon de travailler — et où les pièges sont les moins visibles parce qu'ils se cachent dans du code qui marche.</p>
@@ -7879,11 +8152,10 @@ Règles :
         <label class="checklist-item"><input type="checkbox" data-idx="8"> Sur les RCA d'incidents, l'IA structure la narration — je tranche la cause racine</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 6 — TECH & ENGINEERING -->
+    </article>
 
     <!-- ============ PARCOURS 7 — PEOPLE & INTERNAL ============ -->
-    <div class="parcours-block" id="parcours-people">
+    <article class="cat-content hidden" id="cat-people" data-cat-name="People &amp; Internal">
       <div class="parcours-block-label">👥 Parcours 7 · People &amp; Internal · 6-8 min</div>
       <h3>People &amp; <em>Internal</em></h3>
       <p class="lead">Les métiers où l'IA fait gagner le plus de temps en volume d'usage quotidien — et le plus de risques sur le traitement des personnes. Voici comment combiner les deux.</p>
@@ -8463,8 +8735,7 @@ Si une étape dépend d'un outil HiPay spécifique que tu ne connais pas, mets [
         <label class="checklist-item"><input type="checkbox" data-idx="7"> Sur les dossiers très sensibles (médical, conflit, plainte harcèlement, alertes éthiques), aucun outil IA même validé sans accord DPO explicite</label>
       </div>
 
-    </div>
-    <!-- /PARCOURS 7 — PEOPLE & INTERNAL -->
+    </article>
 
     <!-- QUIZ RÉCAPITULATIF PARCOURS MÉTIERS -->
     <div class="quiz" data-quiz="m4">
@@ -8478,8 +8749,12 @@ Si une étape dépend d'un outil HiPay spécifique que tu ne connais pas, mets [
         <button class="btn btn-ghost quiz-restart">Recommencer</button>
       </div>
     </div>
+    </main>
   </div>
 </section>
+</section><!-- /view-module-5 -->
+
+<section class="view" id="view-module-6">
 <!-- ============ MODULE 5 — ALLER PLUS LOIN ============ -->
 <section class="lesson" id="aller-loin">
   <div class="lesson-wrap">
@@ -9508,16 +9783,18 @@ Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 
         <p>La stack changera. Les modèles évolueront. Ce qui restera : <strong>distinguer ce que l'IA fait bien de ce qu'elle fait mal, garder l'humain sur la décision, anonymiser ce qui doit l'être, vérifier les claims sensibles, construire dans le temps, partager au bon moment.</strong></p>
       </div>
       <div style="margin-top:32px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
-        <a href="#parcours" class="btn btn-primary">Revoir le programme</a>
-        <a href="#bibliotheque" class="btn btn-ghost">Bibliothèque de prompts</a>
-        <a href="#progression" class="btn btn-ghost">Ma progression</a>
+        <a href="#view-home" data-view="view-home" data-scroll="#parcours" class="btn btn-primary">Revoir le programme</a>
+        <a href="#view-bibliotheque" data-view="view-bibliotheque" class="btn btn-ghost">Bibliothèque de prompts</a>
+        <a href="#view-progress" data-view="view-progress" class="btn btn-ghost">Ma progression</a>
       </div>
     </div>
     <!-- /FIN DE LA FORMATION -->
 
   </div>
 </section>
+</section><!-- /view-module-6 -->
 
+<section class="view" id="view-bibliotheque">
 <!-- ============ BIBLIOTHEQUE ============ -->
 <section class="block" id="bibliotheque" style="background:var(--bg-soft)">
   <div class="wrap">
@@ -9543,7 +9820,9 @@ Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 
     </div>
   </div>
 </section>
+</section><!-- /view-bibliotheque -->
 
+<section class="view" id="view-progress">
 <!-- ============ PROGRESSION ============ -->
 <section class="block progress-section" id="progression">
   <div class="wrap">
@@ -9627,6 +9906,7 @@ Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 
     </div>
   </div>
 </section>
+</section><!-- /view-progress -->
 
 <!-- ============ FOOTER ============ -->
 <footer>
@@ -9640,17 +9920,17 @@ Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 
     </div>
     <div class="footer-col">
       <h6>Navigation</h6>
-      <a href="#why">Pourquoi ce programme</a>
-      <a href="#fondamentaux">Fondamentaux</a>
-      <a href="#permis">Sécurité</a>
-      <a href="#methode">Méthode CODE</a>
-      <a href="#metiers">Parcours métiers</a>
+      <a href="#view-home" data-view="view-home" data-scroll="#why">Pourquoi ce programme</a>
+      <a href="#view-module-1" data-view="view-module-1">Fondamentaux</a>
+      <a href="#view-module-3" data-view="view-module-3">Sécurité</a>
+      <a href="#view-module-4" data-view="view-module-4">Méthode CODE</a>
+      <a href="#view-module-5" data-view="view-module-5">Parcours métiers</a>
     </div>
     <div class="footer-col">
       <h6>Ressources</h6>
-      <a href="#bibliotheque">Bibliothèque de prompts</a>
-      <a href="#progression">Ma progression</a>
-      <a href="#aller-loin">Aller plus loin</a>
+      <a href="#view-bibliotheque" data-view="view-bibliotheque">Bibliothèque de prompts</a>
+      <a href="#view-progress" data-view="view-progress">Ma progression</a>
+      <a href="#view-module-6" data-view="view-module-6">Aller plus loin</a>
       <a href="#" onclick="alert('Contactez la cellule IA via Slack #ai-taskforce pour devenir AI Champion')">Devenir AI Champion</a>
     </div>
   </div>
@@ -10987,6 +11267,17 @@ function bindReveal() {
 // GEM BLOCKS (copie presse-papier)
 // ============================================
 function initGemBlocks() {
+  // Wrap each gem <pre> in a collapsible <details>
+  document.querySelectorAll('.gem-block pre').forEach(pre => {
+    const details = document.createElement('details');
+    details.className = 'gem-details';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Voir le prompt';
+    details.appendChild(summary);
+    pre.parentNode.insertBefore(details, pre);
+    details.appendChild(pre);
+  });
+
   document.querySelectorAll('.gem-copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const pre = btn.closest('.gem-block').querySelector('pre');
@@ -11051,8 +11342,214 @@ function initChecklists() {
 // ============================================
 // INIT
 // ============================================
+
+// ============================================
+// SPA ROUTER
+// ============================================
+
+const VIEWS = [
+  'view-home', 'view-module-1', 'view-module-2', 'view-module-3',
+  'view-module-4', 'view-module-5', 'view-module-6',
+  'view-bibliotheque', 'view-progress'
+];
+
+// Map view-id → nav link data-view value (for active state)
+function updateNavActive(viewId) {
+  document.querySelectorAll('.nav-links a[data-view]').forEach(a => {
+    a.classList.toggle('active', a.dataset.view === viewId);
+  });
+}
+
+function showView(viewId, scrollTarget) {
+  if (!VIEWS.includes(viewId)) viewId = 'view-home';
+
+  // Switch visibility
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(viewId);
+  if (target) target.classList.add('active');
+
+  // Scroll to top instantly
+  window.scrollTo({top: 0, behavior: 'instant'});
+
+  // Scroll to internal anchor if requested
+  if (scrollTarget) {
+    const anchor = document.querySelector(scrollTarget);
+    if (anchor) {
+      setTimeout(() => anchor.scrollIntoView({behavior: 'smooth'}), 50);
+    }
+  }
+
+  // Update nav active state
+  updateNavActive(viewId);
+
+  // Module 5: re-activate correct category
+  if (viewId === 'view-module-5' && window._initModule5Cat) {
+    const hash = location.hash.replace('#', '').split('/');
+    window._initModule5Cat(hash[1] || null);
+  }
+
+  // Update URL
+  const hash = scrollTarget ? viewId + '/' + scrollTarget.replace('#', '') : viewId;
+  history.pushState({view: viewId, scrollTarget: scrollTarget || null}, '', '#' + hash);
+
+  // Reset reading progress
+  const bar = document.getElementById('reading-progress');
+  if (bar) bar.style.width = '0%';
+}
+
+// Reading progress bar
+window.addEventListener('scroll', () => {
+  const bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+}, {passive: true});
+
+// Click delegation for [data-view]
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-view]');
+  if (!link) return;
+  e.preventDefault();
+  showView(link.dataset.view, link.dataset.scroll || null);
+});
+
+// Back/forward navigation
+window.addEventListener('popstate', e => {
+  const viewId = e.state?.view || 'view-home';
+  const scrollTarget = e.state?.scrollTarget || null;
+  // Show view without pushing history again
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(viewId);
+  if (target) target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'instant'});
+  if (scrollTarget) {
+    const anchor = document.querySelector('#' + scrollTarget);
+    if (anchor) setTimeout(() => anchor.scrollIntoView({behavior: 'smooth'}), 50);
+  }
+  updateNavActive(viewId);
+  const bar = document.getElementById('reading-progress');
+  if (bar) bar.style.width = '0%';
+});
+
+// Init: read hash on load
+(function initSPA() {
+  const hash = location.hash.replace('#', '');
+  let viewId = 'view-home';
+  let scrollTarget = null;
+
+  if (hash) {
+    // Support hash format: "view-module-1" or "view-home/why"
+    const parts = hash.split('/');
+    const candidate = parts[0];
+    if (VIEWS.includes(candidate)) {
+      viewId = candidate;
+      scrollTarget = parts[1] ? '#' + parts[1] : null;
+    }
+  }
+
+  // Show initial view (no history push for initial load)
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(viewId);
+  if (target) target.classList.add('active');
+  updateNavActive(viewId);
+
+  if (scrollTarget) {
+    const anchor = document.querySelector(scrollTarget);
+    if (anchor) setTimeout(() => anchor.scrollIntoView({behavior: 'smooth'}), 100);
+  }
+
+  // Replace current history state
+  history.replaceState({view: viewId, scrollTarget}, '', location.href);
+})();
+
+
+// ============================================
+// MODULE 5 — CATEGORY SWITCH
+// ============================================
+function initModule5() {
+  const catLinks = document.querySelectorAll('.cat-link');
+  const catContents = document.querySelectorAll('.cat-content');
+  const sidebarSub = document.getElementById('sidebar-sub');
+  let subObserver = null;
+
+  if (!catLinks.length) return;
+
+  function updateSidebarSub(activeArticle) {
+    if (!sidebarSub) return;
+    if (subObserver) { subObserver.disconnect(); subObserver = null; }
+
+    const sousMets = activeArticle.querySelectorAll('[id^="sous-metier-"]');
+    if (!sousMets.length) { sidebarSub.innerHTML = ''; return; }
+
+    const html = Array.from(sousMets).map(sm => {
+      const heading = sm.querySelector('h3, h4, strong');
+      const label = heading ? heading.textContent.trim().replace(/^.+?—\s*/, '') : sm.id;
+      return `<a href="#${sm.id}" class="sidebar-sub-link" data-anchor="${sm.id}">${label}</a>`;
+    }).join('');
+    sidebarSub.innerHTML = html;
+
+    sidebarSub.querySelectorAll('.sidebar-sub-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById(link.dataset.anchor);
+        if (target) target.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      subObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const link = sidebarSub.querySelector(`[data-anchor="${entry.target.id}"]`);
+          if (link) link.classList.toggle('sub-active', entry.isIntersecting);
+        });
+      }, {rootMargin: '-60px 0px -60% 0px', threshold: 0});
+      sousMets.forEach(sm => subObserver.observe(sm));
+    }
+  }
+
+  function switchCat(catId, pushUrl) {
+    catLinks.forEach(l => l.classList.toggle('active', l.dataset.cat === catId));
+    let found = false;
+    catContents.forEach(a => {
+      if (a.id === catId) {
+        a.classList.remove('hidden');
+        updateSidebarSub(a);
+        found = true;
+      } else {
+        a.classList.add('hidden');
+      }
+    });
+    if (!found && catContents[0]) {
+      catContents[0].classList.remove('hidden');
+      updateSidebarSub(catContents[0]);
+      catLinks[0]?.classList.add('active');
+    }
+    window.scrollTo({top: 0, behavior: 'instant'});
+    if (pushUrl !== false) {
+      history.replaceState(history.state, '', '#view-module-5/' + catId);
+    }
+  }
+
+  catLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      switchCat(link.dataset.cat);
+    });
+  });
+
+  // Expose for SPA router to call when view-module-5 is activated
+  window._initModule5Cat = function(catId) {
+    switchCat(catId || (catLinks[0]?.dataset.cat), false);
+  };
+
+  // Init default
+  window._initModule5Cat(null);
+}
+
 async function init() {
   await loadState();
+  initModule5();
   Object.keys(QUIZZES).forEach(renderQuiz);
   renderLibrary('all');
   bindLessonCopy();
