@@ -2020,7 +2020,7 @@
   </ul>
   <div class="progress-pill">
     <span class="dot"></span>
-    <span id="nav-progress">0 / 32 étapes</span>
+    <span id="nav-progress">0 / 14 étapes</span>
   </div>
 </nav>
 <div class="reading-progress" id="reading-progress"></div>
@@ -10041,12 +10041,12 @@ Sois sévère sur le tri. Mieux vaut lire 1 chose en profondeur que survoler 10 
 
     <div class="progress-cards">
       <div class="pcard">
-        <div class="pcard-num" id="stat-modules">0<small>/5</small></div>
+        <div class="pcard-num" id="stat-modules">0<small>/6</small></div>
         <div class="pcard-label">Modules complétés</div>
         <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-modules" style="width:0%"></div></div>
       </div>
       <div class="pcard">
-        <div class="pcard-num" id="stat-quiz">0<small>/17</small></div>
+        <div class="pcard-num" id="stat-quiz">0<small>/85</small></div>
         <div class="pcard-label">Bonnes réponses quiz</div>
         <div class="pcard-bar"><div class="pcard-bar-fill" id="bar-quiz" style="width:0%"></div></div>
       </div>
@@ -11530,34 +11530,42 @@ function bindChecklist() {
 // PROGRESS RENDER
 // ============================================
 function renderProgress() {
-  // Modules completed = only the 5 top-level module quizzes (lesson quizzes m1-1…m1-5 excluded)
-  const MODULE_QUIZ_IDS = ['m_outils', 'm1', 'm2', 'm3', 'm4', 'm6-champion', 'm6-automatisation', 'm6-bibliotheque', 'm6-communaute'];
-  const modCount = MODULE_QUIZ_IDS.filter(id => id in state.quizScores).length;
-  const modTotal = 9;
-  document.getElementById('stat-modules').innerHTML = `${modCount}<small>/${modTotal}</small>`;
-  document.getElementById('bar-modules').style.width = `${Math.min(100, (modCount/modTotal)*100)}%`;
+  // Un module est "engagé" dès qu'au moins un de ses quiz est répondu
+  const MODULE_GROUPS = {
+    '01': ['m1-1', 'm1-2', 'm1-3', 'm1-4', 'm1-5'],
+    '02': ['m2-1', 'm2-2', 'm2-3', 'm2-4', 'm2-5', 'm2-6'],
+    '03': ['m3-1', 'm3-2', 'm3-3', 'm3-4', 'm3-5'],
+    '04': ['m4-1', 'm4-2', 'm4-3', 'm4-4', 'm4-5'],
+    '05': ['m5-p1', 'm5-p2', 'm5-p3', 'm5-p4', 'm5-p5', 'm5-p6', 'm5-p7'],
+    '06': ['m6-champion', 'm6-automatisation', 'm6-bibliotheque', 'm6-communaute'],
+  };
+  const modTotal = 6;
+  const modCount = Object.values(MODULE_GROUPS).filter(ids => ids.some(id => id in state.quizScores)).length;
+  const el = (id) => document.getElementById(id);
+  if (el('stat-modules')) el('stat-modules').innerHTML = `${modCount}<small>/${modTotal}</small>`;
+  if (el('bar-modules')) el('bar-modules').style.width = `${Math.min(100, (modCount/modTotal)*100)}%`;
 
-  // Quiz correct answers total
+  // Quiz : total de bonnes réponses sur l'ensemble des questions
   const totalQ = Object.values(QUIZZES).reduce((sum, q) => sum + q.length, 0);
   const correct = Object.values(state.quizScores).reduce((s, n) => s + n, 0);
-  document.getElementById('stat-quiz').innerHTML = `${correct}<small>/${totalQ}</small>`;
-  document.getElementById('bar-quiz').style.width = `${(correct/totalQ)*100}%`;
+  if (el('stat-quiz')) el('stat-quiz').innerHTML = `${correct}<small>/${totalQ}</small>`;
+  if (el('bar-quiz')) el('bar-quiz').style.width = `${totalQ ? (correct/totalQ)*100 : 0}%`;
 
-  // Prompts
+  // Prompts copiés
   const promptCount = state.promptsCopied.length;
-  document.getElementById('stat-prompts').innerHTML = `${promptCount}<small>/${LIB.length}</small>`;
-  document.getElementById('bar-prompts').style.width = `${Math.min(100, (promptCount/LIB.length)*100)}%`;
+  if (el('stat-prompts')) el('stat-prompts').innerHTML = `${promptCount}<small>/${LIB.length}</small>`;
+  if (el('bar-prompts')) el('bar-prompts').style.width = `${Math.min(100, (promptCount/LIB.length)*100)}%`;
 
-  // Tasks
+  // Tâches cochées (check-row dans la vue progression)
   const tasksDone = Object.values(state.tasksDone).filter(Boolean).length;
-  document.getElementById('stat-check').innerHTML = `${tasksDone}<small>/8</small>`;
-  document.getElementById('bar-check').style.width = `${(tasksDone/8)*100}%`;
+  if (el('stat-check')) el('stat-check').innerHTML = `${tasksDone}<small>/8</small>`;
+  if (el('bar-check')) el('bar-check').style.width = `${(tasksDone/8)*100}%`;
 
-  // Nav pill
-  const total = modTotal + 8 + LIB.length;
-  const done = modCount + tasksDone + promptCount;
-  const navP = document.getElementById('nav-progress');
-  if (navP) navP.textContent = `${done} / ${total} étapes`;
+  // Nav pill : modules engagés + tâches (compteurs simples)
+  const navDone = modCount + tasksDone;
+  const navTotal = modTotal + 8;
+  const navP = el('nav-progress');
+  if (navP) navP.textContent = `${navDone} / ${navTotal} étapes`;
 }
 
 // ============================================
