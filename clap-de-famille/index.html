@@ -189,6 +189,14 @@ header.nav{
 .theme .t-emoji{font-size:1.7rem;display:block;margin-bottom:6px}
 .theme h3{color:#fff}
 .theme p{font-size:.88rem;opacity:.92}
+.theme .flag{position:absolute;top:12px;right:12px;z-index:2;font-size:.72rem;font-weight:700;
+  padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;backdrop-filter:blur(2px)}
+.theme .flag-free{background:var(--gold);color:var(--ink)}
+.theme .flag-lock{background:rgba(36,28,46,.55);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.theme .t-cta{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:.82rem;font-weight:700;opacity:.95}
+.theme .t-cta svg{transition:transform .18s ease}
+.theme:hover .t-cta svg{transform:translateX(3px)}
+.themes-note{text-align:center;margin-top:26px;font-size:.92rem;color:var(--ink-soft)}
 .th-aventure{background:linear-gradient(150deg,#2f6f5e,#1f4a3f)}
 .th-doc{background:linear-gradient(150deg,#3a5a8a,#26385a)}
 .th-comedie{background:linear-gradient(150deg,#d98032,#b25a1e)}
@@ -459,16 +467,41 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
     <div class="section-head">
       <span class="eyebrow">À vous de choisir</span>
       <h2>Une histoire pour chaque famille</h2>
-      <p>Chaque thème vient avec son propre scénario guidé et sa liste de plans. Choisissez celui qui vous ressemble.</p>
+      <p>Chaque thème vient avec son propre scénario guidé et sa liste de plans. Cliquez pour découvrir une fiche — la fiche <b>« Film d'aventure » est en accès libre</b>.</p>
     </div>
     <div class="themes">
-      <div class="theme th-aventure"><div class="t-inner"><span class="t-emoji">🗺️</span><h3>Film d'aventure</h3><p>Une quête, des héros, un trésor à trouver dans le jardin ou la forêt.</p></div></div>
-      <div class="theme th-doc"><div class="t-inner"><span class="t-emoji">🎥</span><h3>Une journée dans notre vie</h3><p>Le documentaire tendre du quotidien, du réveil au coucher.</p></div></div>
-      <div class="theme th-comedie"><div class="t-inner"><span class="t-emoji">😂</span><h3>Comédie familiale</h3><p>Gags, fous rires et situations du quotidien tournées en dérision.</p></div></div>
-      <div class="theme th-anniv"><div class="t-inner"><span class="t-emoji">🎂</span><h3>Le film d'anniversaire</h3><p>Le cadeau souvenir : on capture la fête comme un événement de cinéma.</p></div></div>
-      <div class="theme th-noel"><div class="t-inner"><span class="t-emoji">🎄</span><h3>Court-métrage de Noël</h3><p>La magie des fêtes, la table, les cadeaux et la neige (si possible !).</p></div></div>
-      <div class="theme th-vacances"><div class="t-inner"><span class="t-emoji">🏖️</span><h3>Souvenir de vacances</h3><p>Le clip lumineux qui résume votre été en quelques minutes inoubliables.</p></div></div>
+      <a class="theme th-aventure" href="fiches/aventure.html" target="_blank" rel="noopener" data-fiche="aventure" data-locked="0">
+        <span class="flag flag-free">✨ Exemple gratuit</span>
+        <div class="t-inner"><span class="t-emoji">🗺️</span><h3>Film d'aventure</h3><p>Une quête, des héros, un trésor à trouver dans le jardin ou la forêt.</p>
+          <span class="t-cta">Voir la fiche <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="theme th-doc" href="fiches/documentaire.html?locked=1" target="_blank" rel="noopener" data-fiche="documentaire" data-locked="1">
+        <span class="flag flag-lock">🔒 Liste d'attente</span>
+        <div class="t-inner"><span class="t-emoji">🎥</span><h3>Une journée dans notre vie</h3><p>Le documentaire tendre du quotidien, du réveil au coucher.</p>
+          <span class="t-cta">Découvrir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="theme th-comedie" href="fiches/comedie.html?locked=1" target="_blank" rel="noopener" data-fiche="comedie" data-locked="1">
+        <span class="flag flag-lock">🔒 Liste d'attente</span>
+        <div class="t-inner"><span class="t-emoji">😂</span><h3>Comédie familiale</h3><p>Gags, fous rires et situations du quotidien tournées en dérision.</p>
+          <span class="t-cta">Découvrir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="theme th-anniv" href="fiches/anniversaire.html?locked=1" target="_blank" rel="noopener" data-fiche="anniversaire" data-locked="1">
+        <span class="flag flag-lock">🔒 Liste d'attente</span>
+        <div class="t-inner"><span class="t-emoji">🎂</span><h3>Le film d'anniversaire</h3><p>Le cadeau souvenir : on capture la fête comme un événement de cinéma.</p>
+          <span class="t-cta">Découvrir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="theme th-noel" href="fiches/noel.html?locked=1" target="_blank" rel="noopener" data-fiche="noel" data-locked="1">
+        <span class="flag flag-lock">🔒 Liste d'attente</span>
+        <div class="t-inner"><span class="t-emoji">🎄</span><h3>Court-métrage de Noël</h3><p>La magie des fêtes, la table, les cadeaux et la neige (si possible !).</p>
+          <span class="t-cta">Découvrir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="theme th-vacances" href="fiches/vacances.html?locked=1" target="_blank" rel="noopener" data-fiche="vacances" data-locked="1">
+        <span class="flag flag-lock">🔒 Liste d'attente</span>
+        <div class="t-inner"><span class="t-emoji">🏖️</span><h3>Souvenir de vacances</h3><p>Le clip lumineux qui résume votre été en quelques minutes inoubliables.</p>
+          <span class="t-cta">Découvrir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
     </div>
+    <p class="themes-note">👉 <a href="fiches/aventure.html" target="_blank" rel="noopener" data-example style="color:var(--gold-deep);font-weight:700;text-decoration:underline">Voir un exemple de fiche complète</a> (Film d'aventure) — les autres se débloquent en rejoignant la liste d'attente.</p>
   </div>
 </section>
 
@@ -839,6 +872,17 @@ document.querySelectorAll("[data-cta]").forEach(function(btn){
     track("cta_click", {tier: tier});
     openModal(tier);
   });
+});
+
+/* Clic sur une fiche thématique : on log l'ouverture (verrouillée ou non).
+   Le lien fait son travail (ouvre la fiche) ; la fiche gère elle-même la "porte". */
+document.querySelectorAll("[data-fiche]").forEach(function(a){
+  a.addEventListener("click", function(){
+    track("fiche_open", {tier: a.getAttribute("data-fiche"), locked: a.getAttribute("data-locked") === "1"});
+  });
+});
+document.querySelectorAll("[data-example]").forEach(function(a){
+  a.addEventListener("click", function(){ track("example_view", {tier: "aventure"}); });
 });
 
 document.getElementById("modalClose").addEventListener("click", closeModal);

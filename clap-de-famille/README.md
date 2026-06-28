@@ -99,7 +99,10 @@ part que dans Formspree.
 | `scroll_50` | — | **Intérêt.** % de visiteurs qui lisent jusqu'à la moitié (jusqu'au pricing ≈). Indique si le hero accroche. |
 | `scroll_90` | — | **Engagement profond.** % qui vont jusqu'à la FAQ/CTA final. Une chute brutale entre 50 et 90 = la page perd les gens en milieu de page. |
 | `cta_click` | `tier` = `nav` \| `hero` \| `essentiel` \| `confort` \| `premium` \| `final` | **⭐ Appétence par prix.** Le signal le plus important : sur quelle formule les gens cliquent. Comparez le volume de clics `essentiel` vs `confort` vs `premium` pour mesurer la sensibilité au prix. |
-| `waitlist_submit` | `tier` | **Intention réelle.** Visiteur qui laisse son email. Le `tier` indique depuis quelle offre il s'est inscrit → quel prix génère le plus d'inscriptions effectives. |
+| `waitlist_submit` | `tier` (+ `source`) | **Intention réelle.** Visiteur qui laisse son email. Le `tier` indique d'où il vient (formule de prix **ou** thème de fiche) ; `source: "fiche_gate"` distingue les inscriptions venant d'une fiche verrouillée. |
+| `fiche_open` | `tier` (thème), `locked` | **Intérêt par thème.** Clic sur une carte thématique → quelle histoire attire le plus. `locked:true` = thème verrouillé, `false` = exemple gratuit. |
+| `example_view` | `tier: aventure` | **Curiosité produit.** Clic sur « Voir un exemple de fiche ». Mesure l'envie de voir le contenu réel. |
+| `fiche_locked_view` | `tier` (thème) | **Mur de contenu atteint.** La fiche verrouillée s'est affichée (porte « liste d'attente »). À comparer à `waitlist_submit(source:fiche_gate)` pour le taux de déblocage. |
 
 ### Indicateurs clés à construire dans PostHog
 - **Taux de conversion global** : `waitlist_submit` / `page_view`.
@@ -111,6 +114,39 @@ part que dans Formspree.
   - Clics répartis ou penchant `confort`/`premium` → vous pouvez monter les prix.
 - **Profondeur de lecture** : entonnoir `page_view → scroll_50 → scroll_90 → cta_click`
   pour voir où vous perdez les visiteurs.
+- **Attrait par thème** : `fiche_open` ventilé par `tier` → quel univers donne le plus envie.
+- **Taux de déblocage** : `waitlist_submit(source:fiche_gate)` / `fiche_locked_view`
+  → quel % de curieux acceptent de laisser leur email pour accéder au contenu.
+
+---
+
+## 4 bis. Le kit de fiches & le « gate » liste d'attente (dossier `fiches/`)
+
+Le dossier `fiches/` contient les **6 fiches scénario** + le **guide technique** + l'**atelier scénario**.
+
+### Comment c'est fait
+- Les 6 fiches scénario sont **générées** par `fiches/build-fiches.js` (une seule source de vérité).
+  Pour modifier un contenu (plans, textes, couleurs) : éditez `build-fiches.js`, puis :
+  ```bash
+  cd fiches
+  node build-fiches.js                       # régénère les 6 .html
+  node render-pdf.js aventure.html aventure.pdf   # (idem pour chaque fiche) régénère les PDF
+  ```
+- `guide-technique.html` et `atelier-scenario.html` sont autonomes (édition directe).
+
+### Le mécanisme « contenu réservé » (fake door sur les fiches)
+- Depuis la landing (section Thématiques), **« Film d'aventure » est en accès libre** ; les
+  **5 autres** s'ouvrent avec `?locked=1` → la fiche s'affiche **floutée derrière** une carte
+  « Rejoindre la liste d'attente » (capture email).
+- La soumission part dans **Formspree** + envoie l'event `waitlist_submit {tier, source:"fiche_gate"}`.
+- En **impression / PDF**, la porte est masquée et le flou retiré → les PDF restent propres.
+
+### ⚠️ Clés à renseigner aussi pour les fiches
+Le gate a sa **propre config**. Pour que les fiches verrouillées capturent vraiment les emails :
+1. Dans `fiches/build-fiches.js`, repérez `var CONFIG={FORMSPREE_ID:"FORMSPREE_ID",POSTHOG_KEY:"POSTHOG_KEY",...}`
+   (dans `GATE_JS`) et remplacez les deux placeholders.
+2. Relancez `node build-fiches.js` pour régénérer les fiches avec vos clés.
+> Tant que ce n'est pas fait, les fiches verrouillées fonctionnent en **mode démo** (email non envoyé).
 
 ---
 

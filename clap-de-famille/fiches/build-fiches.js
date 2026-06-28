@@ -1,0 +1,329 @@
+/* =====================================================================
+   Générateur des fiches scénario "Clap de Famille".
+   Une seule source de vérité -> 6 fichiers HTML identiques de mise en page.
+   Chaque fiche : A4 imprimable (PDF) + responsive mobile + "gate" waitlist.
+
+   Usage : node build-fiches.js
+   Puis  : node render-pdf.js <slug>.html <slug>.pdf  (pour les PDF)
+   ===================================================================== */
+const fs = require("fs");
+const path = require("path");
+
+/* ---- Réflexes réutilisables ---- */
+const R_LUM = { ic: "☀️", title: "La lumière", text: "Filmez avec la lumière dans votre dos. La fenêtre (ou le soleil) éclaire les visages, jamais derrière les héros." };
+const R_SON_SIL = { ic: "🎙️", title: "Le son", text: "Coupez TV et bruits parasites. Sans dialogue, c'est la musique — ajoutée au montage — qui porte l'émotion." };
+const R_SON_DIA = { ic: "🎙️", title: "Le son", text: "Pour les dialogues, rapprochez-vous à moins d'1 m et choisissez un coin calme." };
+
+/* ---- Données des 6 thèmes ---- */
+const THEMES = [
+  {
+    slug: "aventure", name: "Film d'aventure", theme: "#2f6f5e", themeDeep: "#1f4a3f",
+    lead: "Une quête, des héros, un trésor à dénicher. Transformez le jardin, le parc ou le salon en terrain d'aventure et filmez l'épopée de votre famille.",
+    dialogue: "🤫 Sans dialogue conseillé",
+    scenario: "Une carte mystérieuse apparaît. Les héros (vos enfants !) partent en expédition, affrontent quelques obstacles, suivent les indices… et découvrent le trésor caché. Pas besoin de texte à apprendre : on filme l'action, les regards et les émotions — c'est nous qui donnons le rythme au montage.",
+    shots: [
+      { t: "La découverte de la carte", m: "CINÉMATIQUE", d: "Gros plan sur les mains qui déplient la carte au trésor.", tip: "filmez près d'une fenêtre, lumière douce." },
+      { t: "Le départ de l'expédition", m: "ACTION", d: "Les héros marchent vers la caméra, déterminés.", tip: "reculez en filmant, gardez-les centrés." },
+      { t: "L'obstacle", m: "ACTION", d: "Un passage difficile : franchir un « ravin » (le canapé !), ramper sous une « grotte ».", tip: "filmez en contre-plongée, ça dramatise." },
+      { t: "L'indice trouvé", m: "CINÉMATIQUE", d: "Réaction de joie en découvrant un indice.", tip: "captez les visages, pas seulement l'objet." },
+      { t: "La course finale", m: "RALENTI", d: "Tout le monde court vers le trésor.", tip: "tenez le téléphone à deux mains, bras collés au corps." },
+      { t: "Le trésor !", m: "CINÉMATIQUE", d: "Ouverture du coffre, regards émerveillés.", tip: "filmez l'ouverture en entier, sans couper." },
+      { t: "Le plan victoire", m: "NORMAL 4K", d: "La famille réunie, bras levés, sourire.", tip: "posez le téléphone et lancez le retardateur vidéo." }
+    ],
+    reflexes: [R_LUM, R_SON_SIL, { ic: "🎬", title: "Le rythme", text: "Alternez plans larges (le décor) et gros plans (les visages) : c'est ce qui donne du souffle au film." }]
+  },
+  {
+    slug: "documentaire", name: "Une journée dans notre vie", theme: "#3a5a8a", themeDeep: "#26385a",
+    lead: "Le documentaire tendre de votre quotidien, du réveil au coucher. Capturez les vrais moments, les habitudes et les petites manies qui font votre famille.",
+    dialogue: "🗣️ Avec mini-interviews",
+    scenario: "Pas de scénario à inventer : on filme une vraie journée. Le matin qui s'étire, le repas, les jeux, les chamailleries pour rire, le rituel du soir. Glissez 2-3 mini-interviews (« c'était quoi ton meilleur moment ? ») : on tisse le tout en un documentaire plein de vie.",
+    shots: [
+      { t: "Le réveil", m: "NORMAL 4K", d: "Les premiers instants du matin, encore endormis.", tip: "lumière naturelle de la fenêtre, pas de plafonnier." },
+      { t: "Le petit-déjeuner", m: "CINÉMATIQUE", d: "La table, les tartines, les têtes pas réveillées.", tip: "filmez les détails (le bol, les mains) autant que les visages." },
+      { t: "La mini-interview", m: "CINÉMATIQUE", d: "Chacun répond à une question, face caméra.", tip: "téléphone à hauteur des yeux, approchez-vous pour le son." },
+      { t: "Le jeu / l'activité", m: "ACTION", d: "Le moment de jeu, dehors ou dedans.", tip: "suivez le mouvement, restez à leur hauteur." },
+      { t: "Le repas en famille", m: "NORMAL 4K", d: "Tout le monde à table, les conversations.", tip: "un plan large + des gros plans de réactions." },
+      { t: "Le petit rituel", m: "CINÉMATIQUE", d: "Le détail qui vous ressemble (histoire du soir, câlin).", tip: "lumière douce, laissez la scène se dérouler." },
+      { t: "Le coucher", m: "RALENTI", d: "Le calme du soir, la lumière qui baisse.", tip: "un ralenti doux pour clôturer la journée." }
+    ],
+    reflexes: [R_LUM, R_SON_DIA, { ic: "💛", title: "L'authenticité", text: "Ne forcez pas le jeu : les meilleurs moments sont ceux qu'on ne joue pas. Laissez tourner." }]
+  },
+  {
+    slug: "comedie", name: "Comédie familiale", theme: "#d98032", themeDeep: "#b25a1e",
+    lead: "Gags, fous rires et quiproquos : mettez en scène les situations du quotidien… en beaucoup plus drôles. La famille devient une troupe de comiques.",
+    dialogue: "🗣️ Avec dialogues",
+    scenario: "Choisissez une situation banale et poussez-la à l'absurde : la guerre de la télécommande, le petit-déj qui tourne mal, le « qui a mangé le dernier gâteau ? ». Pas besoin de jouer juste — le but, c'est de rire. On garde les meilleures prises au montage.",
+    shots: [
+      { t: "La situation de départ", m: "NORMAL 4K", d: "On plante le décor du quiproquo.", tip: "un plan clair qui montre qui est où." },
+      { t: "Le malentendu", m: "CINÉMATIQUE", d: "Le moment où ça dérape.", tip: "filmez les réactions, c'est là qu'est le rire." },
+      { t: "La réplique culte", m: "CINÉMATIQUE", d: "Un personnage lâche sa punchline.", tip: "2-3 prises, on garde la meilleure." },
+      { t: "L'escalade", m: "ACTION", d: "Ça part en cacahuète, tout le monde s'en mêle.", tip: "suivez l'action, n'ayez pas peur du désordre." },
+      { t: "Le gag visuel", m: "RALENTI", d: "Le moment slapstick (la glissade, la tarte).", tip: "un ralenti rend tout plus drôle." },
+      { t: "Le regard caméra", m: "CINÉMATIQUE", d: "Un perso fixe l'objectif, façon sitcom.", tip: "gros plan, tenez 2 secondes." },
+      { t: "La chute finale", m: "NORMAL 4K", d: "La conclusion qui retombe (ou pas !).", tip: "laissez tourner après la fin, les bêtisiers sont en or." }
+    ],
+    reflexes: [R_LUM, R_SON_DIA, { ic: "🎭", title: "Le bêtisier", text: "Gardez TOUT, même les ratés : ils font souvent le meilleur du film." }]
+  },
+  {
+    slug: "anniversaire", name: "Le film d'anniversaire", theme: "#c14f7a", themeDeep: "#8a3457",
+    lead: "Le cadeau souvenir : transformez la fête en événement de cinéma. Des préparatifs aux bougies, capturez la magie d'un anniversaire qu'on n'oubliera pas.",
+    dialogue: "🗣️ Dialogues bienvenus",
+    scenario: "De la préparation en cachette à l'explosion de joie : on suit l'anniversaire comme un petit film. Les préparatifs, l'arrivée des invités, le gâteau, les cadeaux, les rires. Glissez quelques mots des proches pour le héros ou l'héroïne du jour.",
+    shots: [
+      { t: "Les préparatifs secrets", m: "CINÉMATIQUE", d: "Déco, gâteau, surprise qui se prépare.", tip: "filmez les détails (ballons, bougies) en gros plan." },
+      { t: "L'arrivée / la surprise", m: "ACTION", d: "Le moment « surprise ! » et la réaction.", tip: "soyez prêt avant, ne ratez pas l'instant." },
+      { t: "Le mot des proches", m: "CINÉMATIQUE", d: "Un message face caméra pour le héros du jour.", tip: "approchez-vous pour le son, hauteur des yeux." },
+      { t: "Le jeu / l'animation", m: "ACTION", d: "Le grand moment de jeu de la fête.", tip: "restez à hauteur d'enfant, suivez le mouvement." },
+      { t: "Le gâteau & les bougies", m: "CINÉMATIQUE", d: "Le clou du spectacle, les yeux qui brillent.", tip: "filmez en continu, ne coupez pas le souffle des bougies." },
+      { t: "L'ouverture des cadeaux", m: "NORMAL 4K", d: "Les réactions à chaque paquet.", tip: "cadrez le visage autant que le cadeau." },
+      { t: "La photo de groupe animée", m: "RALENTI", d: "Tout le monde réuni, confettis.", tip: "un ralenti pour finir en beauté." }
+    ],
+    reflexes: [R_LUM, R_SON_DIA, { ic: "⏱️", title: "L'anticipation", text: "Repérez les moments clés (surprise, bougies) et soyez en position AVANT qu'ils arrivent." }]
+  },
+  {
+    slug: "noel", name: "Court-métrage de Noël", theme: "#a23b3b", themeDeep: "#6f2424",
+    lead: "La magie des fêtes en court-métrage : le sapin, la table, les cadeaux et, qui sait, un peu de neige. Le film qu'on ressortira chaque année.",
+    dialogue: "🤫 Sans dialogue conseillé",
+    scenario: "On raconte Noël par les images et la musique : la déco du sapin, les préparatifs gourmands, l'attente des enfants, l'ouverture des cadeaux au petit matin, le repas en famille. Pas besoin de paroles — la magie passe par les regards.",
+    shots: [
+      { t: "La décoration du sapin", m: "CINÉMATIQUE", d: "Les mains qui accrochent les boules, les guirlandes qui s'allument.", tip: "filmez près des lumières, en fin de journée." },
+      { t: "Les préparatifs gourmands", m: "ACTION", d: "La cuisine en effervescence, les biscuits.", tip: "gros plans sur les détails, ça met l'eau à la bouche." },
+      { t: "L'attente magique", m: "CINÉMATIQUE", d: "Les enfants guettent, le nez à la fenêtre.", tip: "lumière douce, léger contre-jour pour l'ambiance." },
+      { t: "Le matin de Noël", m: "ACTION", d: "La découverte des cadeaux sous le sapin.", tip: "soyez levé avant eux, filmez l'arrivée." },
+      { t: "L'ouverture des cadeaux", m: "NORMAL 4K", d: "Les papiers déchirés, les cris de joie.", tip: "cadrez les visages, pas seulement les cadeaux." },
+      { t: "Le repas de fête", m: "CINÉMATIQUE", d: "La table dressée, on trinque, les sourires.", tip: "un plan large de la table + des gros plans." },
+      { t: "Le moment cocooning", m: "RALENTI", d: "Au coin du feu, sous le plaid, apaisé.", tip: "un ralenti chaleureux pour conclure." }
+    ],
+    reflexes: [R_LUM, R_SON_SIL, { ic: "✨", title: "La lumière de Noël", text: "Privilégiez guirlandes et bougies, coupez les néons froids : la chaleur fait la magie." }]
+  },
+  {
+    slug: "vacances", name: "Souvenir de vacances", theme: "#c98e1f", themeDeep: "#9c6c12",
+    lead: "Le clip lumineux qui résume votre été en quelques minutes inoubliables. Plages, balades, fous rires : le best-of de vos vacances, monté comme un vrai film.",
+    dialogue: "🤫 Sans dialogue conseillé",
+    scenario: "On capture l'énergie des vacances : le départ, les paysages, les baignades, les jeux, les couchers de soleil. Filmez par petites touches tout au long du séjour — on assemble le tout en un clip dynamique et solaire.",
+    shots: [
+      { t: "Le départ", m: "ACTION", d: "La voiture chargée, l'excitation du départ.", tip: "filmez l'ambiance, pas besoin de tout cadrer parfaitement." },
+      { t: "Le paysage qui s'ouvre", m: "NORMAL 4K", d: "La première vue sur la mer ou la montagne.", tip: "utilisez le 0.5× (ultra grand-angle) pour les grands décors." },
+      { t: "La baignade / l'eau", m: "RALENTI", d: "Les sauts, les éclaboussures.", tip: "le ralenti sublime l'eau ; protégez bien le téléphone." },
+      { t: "Le jeu sur place", m: "ACTION", d: "Château de sable, raquettes, rando.", tip: "suivez le mouvement, restez à leur hauteur." },
+      { t: "Le moment gourmand", m: "CINÉMATIQUE", d: "La glace, le repas en terrasse.", tip: "gros plans gourmands, lumière naturelle." },
+      { t: "Le coucher de soleil", m: "ACCÉLÉRÉ", d: "Le ciel qui s'embrase.", tip: "posez le téléphone, lancez un time-lapse." },
+      { t: "Le portrait souvenir", m: "CINÉMATIQUE", d: "Un visage heureux, cheveux au vent.", tip: "arrière-plan flou (Cinématique), lumière dorée." }
+    ],
+    reflexes: [R_LUM, R_SON_SIL, { ic: "📆", title: "La régularité", text: "Filmez un peu chaque jour : 5 secondes par-ci par-là suffisent à raconter tout le séjour." }]
+  }
+];
+
+/* ---- Petit clap SVG ---- */
+const CLAP = '<svg class="clap" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="12" width="26" height="17" rx="2.5" fill="#fff"/><path d="M3 12L6.5 5.5 30 8.8 28 14.5 4 12.6Z" fill="#e6a23c"/><path d="M9.5 6.2l-2.6 5.6M15 6.9l-2.6 5.6M20.6 7.6l-2.6 5.6M26.1 8.3l-2.6 5.6" stroke="#241c2e" stroke-width="1.4"/></svg>';
+
+/* ---- "Gate" liste d'attente : CSS + HTML + JS (s'active avec ?locked) ---- */
+const GATE_CSS = `
+#cdf-gate{display:none}
+body.locked #cdf-gate{display:flex}
+body.locked .page{filter:blur(7px);pointer-events:none;user-select:none}
+#cdf-gate{position:fixed;inset:0;z-index:1000;background:rgba(36,28,46,.5);align-items:center;justify-content:center;padding:18px;font-family:var(--font-body)}
+.gate-card{background:#fff;border-radius:20px;max-width:420px;width:100%;padding:30px 26px;box-shadow:0 30px 70px rgba(36,28,46,.4);text-align:center}
+.gate-card .lock{width:54px;height:54px;border-radius:50%;background:var(--cream-2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px}
+.gate-card h3{font-family:var(--font-display);font-size:1.45rem;margin-bottom:6px;color:var(--ink)}
+.gate-card p.sub{color:var(--ink-soft);font-size:.95rem;line-height:1.5;margin-bottom:18px}
+.gate-card input[type=email]{width:100%;padding:14px 15px;border:1.5px solid rgba(36,28,46,.18);border-radius:12px;font-size:1rem;font-family:inherit;background:var(--cream);margin-bottom:10px}
+.gate-card input[type=email]:focus{outline:none;border-color:var(--gold)}
+.gate-consent{display:flex;gap:9px;text-align:left;font-size:.78rem;color:var(--ink-soft);margin-bottom:14px;align-items:flex-start}
+.gate-consent input{margin-top:3px;flex:none}
+.gate-btn{width:100%;background:var(--gold);color:var(--ink);font-weight:700;font-size:1rem;padding:14px;border-radius:999px;border:none;cursor:pointer;transition:background .2s}
+.gate-btn:hover{background:var(--gold-deep);color:#fff}
+.gate-err{color:var(--coral);font-size:.85rem;margin-bottom:8px;display:none}
+.gate-small{font-size:.72rem;color:var(--ink-soft);margin-top:12px;line-height:1.5}
+.gate-ex{display:inline-block;margin-top:14px;font-size:.85rem;color:var(--gold-deep);text-decoration:underline}
+.gate-success{display:none}
+@media print{#cdf-gate{display:none!important}body.locked .page{filter:none!important;pointer-events:auto!important}}
+`;
+
+const GATE_HTML = `
+<div id="cdf-gate" role="dialog" aria-modal="true" aria-label="Accès au contenu">
+  <div class="gate-card">
+    <div id="gateForm">
+      <div class="lock">🔒</div>
+      <h3>Contenu réservé</h3>
+      <p class="sub">Cette fiche fait partie du kit <b>Clap de Famille</b>. Le service ouvre bientôt — laissez votre email pour y accéder en avant-première, au tarif de lancement.</p>
+      <input type="email" id="gateEmail" placeholder="votre@email.fr" autocomplete="email" />
+      <div class="gate-err" id="gateErr">Email invalide.</div>
+      <label class="gate-consent"><input type="checkbox" id="gateConsent" /><span>J'accepte d'être recontacté·e au sujet du lancement de Clap de Famille.</span></label>
+      <button class="gate-btn" id="gateBtn">Rejoindre la liste d'attente</button>
+      <div class="gate-small">Aucun paiement. On ne stocke que votre email, uniquement pour vous prévenir.</div>
+      <a class="gate-ex" href="aventure.html">← Voir d'abord l'exemple gratuit (Film d'aventure)</a>
+    </div>
+    <div class="gate-success" id="gateSuccess">
+      <div class="lock" style="background:rgba(63,125,107,.14)">✅</div>
+      <h3>C'est noté, merci&nbsp;!</h3>
+      <p class="sub">On vous écrit dès que le kit est disponible. Vous pouvez fermer cette page.</p>
+    </div>
+  </div>
+</div>`;
+
+/* Le JS du gate. NB: les antislashs du regex sont doublés pour survivre au template literal. */
+const GATE_JS = `
+<script>
+(function(){
+  /* ===== Config (à renseigner — voir README) ===== */
+  var CONFIG={FORMSPREE_ID:"FORMSPREE_ID",POSTHOG_KEY:"POSTHOG_KEY",POSTHOG_HOST:"https://eu.i.posthog.com"};
+  var TIER=(document.body.getAttribute("data-tier")||"fiche");
+  var params=new URLSearchParams(location.search);
+  if(!params.has("locked")) return; /* fiche en accès libre (ex: exemple, PDF) */
+  document.body.classList.add("locked");
+
+  if(CONFIG.POSTHOG_KEY&&CONFIG.POSTHOG_KEY!=="POSTHOG_KEY"){
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id getGroups get_session_id opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init(CONFIG.POSTHOG_KEY,{api_host:CONFIG.POSTHOG_HOST,persistence:"memory",autocapture:false,capture_pageview:false,disable_session_recording:true,opt_out_capturing_by_default:true,respect_dnt:true,sanitize_properties:function(p){if(p){delete p.email;delete p.$email;}return p;}});
+  }
+  function track(ev,props){try{if(window.posthog&&posthog.capture)posthog.capture(ev,props||{});}catch(e){}console.debug("[track]",ev,props||{});}
+  track("fiche_locked_view",{tier:TIER});
+
+  var form=document.getElementById("gateForm"),succ=document.getElementById("gateSuccess");
+  var email=document.getElementById("gateEmail"),consent=document.getElementById("gateConsent"),err=document.getElementById("gateErr"),btn=document.getElementById("gateBtn");
+  function valid(v){return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);}
+  setTimeout(function(){try{email.focus();}catch(e){}},80);
+  btn.addEventListener("click",async function(){
+    var e=email.value.trim();
+    if(!valid(e)||!consent.checked){err.textContent=!consent.checked?"Merci de cocher la case.":"Merci d'entrer un email valide.";err.style.display="block";return;}
+    err.style.display="none";btn.disabled=true;btn.textContent="Envoi…";
+    if(window.posthog){try{posthog.opt_in_capturing&&posthog.opt_in_capturing();}catch(_){}}
+    track("waitlist_submit",{tier:TIER,source:"fiche_gate"});
+    var ok=false,configured=CONFIG.FORMSPREE_ID&&CONFIG.FORMSPREE_ID!=="FORMSPREE_ID";
+    if(configured){try{var r=await fetch("https://formspree.io/f/"+CONFIG.FORMSPREE_ID,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify({email:e,tier:TIER,source:"fiche_gate"})});ok=r.ok;}catch(_){ok=false;}}
+    else{ok=true;console.info("[gate] FORMSPREE_ID non configuré — email non envoyé (démo).",{email:e,tier:TIER});}
+    if(ok){form.style.display="none";succ.style.display="block";}
+    else{err.textContent="Échec de l'envoi, réessayez dans un instant.";err.style.display="block";}
+    btn.disabled=false;btn.textContent="Rejoindre la liste d'attente";
+  });
+})();
+<\/script>`;
+
+/* ---- Template d'une fiche ---- */
+function shotHTML(s, i) {
+  return `      <div class="shot"><div class="n">${i + 1}</div><div><h3>${s.t} <span class="mode">${s.m}</span></h3><p>${s.d} <span class="tip">Astuce : ${s.tip}</span></p></div></div>`;
+}
+function reflexHTML(r) {
+  return `        <div class="reflex"><h4><span class="ic">${r.ic}</span>${r.title}</h4><p>${r.text}</p></div>`;
+}
+function page(t) {
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clap de Famille — Fiche de tournage · ${t.name}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#241c2e; --ink-soft:#5a5168; --cream:#fdf7ef; --cream-2:#f6ecdd;
+  --gold:#e6a23c; --gold-deep:#c9822a; --coral:#e0654f; --plum:#3a2b4d; --green:#3f7d6b;
+  --theme:${t.theme}; --theme-deep:${t.themeDeep};
+  --font-display:"Fraunces", Georgia, serif;
+  --font-body:"Plus Jakarta Sans", system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);color:var(--ink);background:#e9e2d6;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;min-height:297mm;margin:0 auto;background:var(--cream);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.pad{padding:6mm 14mm 6mm}
+.band{background:linear-gradient(150deg,var(--theme),var(--theme-deep));color:#fff;padding:7mm 14mm 6mm;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:-30mm;top:-30mm;width:90mm;height:90mm;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%)}
+.brandline{display:flex;align-items:center;gap:8px;font-weight:700;font-size:9pt;letter-spacing:.16em;text-transform:uppercase;opacity:.92;position:relative;z-index:1}
+.brandline .clap{width:18px;height:18px;flex:none}
+.kind{font-size:9pt;letter-spacing:.2em;opacity:.8;margin-left:auto}
+.band h1{font-family:var(--font-display);font-weight:700;font-size:26pt;line-height:1.03;margin:3.5mm 0 1.5mm;position:relative;z-index:1}
+.band .lead{font-size:10pt;line-height:1.4;max-width:140mm;opacity:.95;position:relative;z-index:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4.5mm;position:relative;z-index:1}
+.chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:4px 9px;border-radius:999px;font-size:8.5pt;font-weight:600;display:inline-flex;gap:5px}
+.sec-title{font-family:var(--font-display);font-weight:600;font-size:12pt;color:var(--theme-deep);display:flex;align-items:center;gap:8px;margin:0 0 3mm}
+.sec-title .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.scenario{font-size:9.5pt;line-height:1.4;color:var(--ink-soft);margin-bottom:5mm}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:3mm 6mm;margin-bottom:5mm}
+.shot{display:flex;gap:8px;break-inside:avoid}
+.shot .n{font-family:var(--font-display);font-weight:700;font-size:10pt;color:#fff;background:var(--theme);width:20px;height:20px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.shot h3{font-size:10pt;font-weight:700;margin-bottom:1px}
+.shot h3 .mode{display:inline-block;font-size:6.5pt;font-weight:700;letter-spacing:.03em;background:var(--cream-2);color:var(--gold-deep);padding:1px 6px;border-radius:999px;margin-left:4px;vertical-align:middle;white-space:nowrap}
+.shot p{font-size:8.5pt;color:var(--ink-soft);line-height:1.3}
+.shot .tip{color:var(--gold-deep);font-weight:600}
+.reflexes{background:var(--cream-2);border-radius:10px;padding:4mm 7mm;margin-bottom:5mm}
+.reflexes .row{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+.reflex h4{font-size:9.5pt;font-weight:700;margin-bottom:1px;display:flex;gap:6px;align-items:center}
+.reflex p{font-size:8.5pt;color:var(--ink-soft);line-height:1.3}
+.reflex .ic{font-size:13pt}
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-bottom:auto}
+.step{text-align:center;padding:4mm 3mm;border:1px dashed rgba(36,28,46,.2);border-radius:10px}
+.step .num{font-family:var(--font-display);font-weight:700;color:var(--theme);font-size:12pt}
+.step h4{font-size:9.5pt;font-weight:700;margin:2px 0 1px}
+.step p{font-size:8pt;color:var(--ink-soft)}
+.foot{margin-top:6mm;padding-top:4mm;border-top:1px solid rgba(36,28,46,.12);display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--ink-soft)}
+.foot b{color:var(--ink)}
+.tag-ex{background:var(--coral);color:#fff;font-weight:700;font-size:7.5pt;padding:3px 9px;border-radius:999px;letter-spacing:.08em}
+@media screen{body{padding:16px 0}.page{box-shadow:0 20px 60px rgba(36,28,46,.25);width:min(210mm,100%);min-height:0}}
+@media screen and (max-width:760px){.shots{grid-template-columns:1fr}.reflexes .row{grid-template-columns:1fr}.next{grid-template-columns:1fr}.band h1{font-size:22pt}}
+@page{size:A4;margin:0}
+${GATE_CSS}
+</style>
+</head>
+<body data-tier="${t.slug}">
+<div class="page">
+  <div class="band">
+    <div class="brandline">${CLAP} Clap de Famille <span class="kind">FICHE DE TOURNAGE</span></div>
+    <h1>${t.name}</h1>
+    <p class="lead">${t.lead}</p>
+    <div class="chips">
+      <span class="chip">⏱ 1 à 2 h de tournage</span>
+      <span class="chip">👨‍👩‍👧‍👦 2 à 6 personnes</span>
+      <span class="chip">📱 iPhone ou Samsung</span>
+      <span class="chip">🎬 7 plans à filmer</span>
+      <span class="chip">${t.dialogue}</span>
+      <span class="chip">⚡ Livré en 3 jours</span>
+    </div>
+  </div>
+
+  <div class="pad">
+    <h2 class="sec-title"><span class="dot"></span>Le scénario</h2>
+    <p class="scenario">${t.scenario}</p>
+
+    <h2 class="sec-title"><span class="dot"></span>Votre liste de plans</h2>
+    <div class="shots">
+${t.shots.map(shotHTML).join("\n")}
+    </div>
+
+    <div class="reflexes">
+      <h2 class="sec-title" style="margin-bottom:4mm"><span class="dot"></span>3 réflexes de pro</h2>
+      <div class="row">
+${t.reflexes.map(reflexHTML).join("\n")}
+      </div>
+    </div>
+
+    <h2 class="sec-title"><span class="dot"></span>Et ensuite ?</h2>
+    <div class="next">
+      <div class="step"><div class="num">1</div><h4>Déposez vos rushes</h4><p>Glissez vos vidéos dans votre espace privé, sans logiciel.</p></div>
+      <div class="step"><div class="num">2</div><h4>On monte le film</h4><p>Musique, titres, étalonnage par notre équipe.</p></div>
+      <div class="step"><div class="num">3</div><h4>Reçu en 3 jours</h4><p>Votre court-métrage prêt à partager, en famille.</p></div>
+    </div>
+
+    <div class="foot">
+      <span><span class="tag-ex">EXEMPLE</span>&nbsp;&nbsp;Fiche de démonstration — le service ouvre bientôt.</span>
+      <span><b>Clap de Famille</b> · clapdefamille.fr · contact@clapdefamille.fr</span>
+    </div>
+  </div>
+</div>
+${GATE_HTML}
+${GATE_JS}
+</body>
+</html>
+`;
+}
+
+/* ---- Génération ---- */
+let n = 0;
+for (const t of THEMES) {
+  fs.writeFileSync(path.join(__dirname, t.slug + ".html"), page(t));
+  console.log("✓", t.slug + ".html");
+  n++;
+}
+console.log(n + " fiches générées.");
