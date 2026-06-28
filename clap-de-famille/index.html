@@ -332,6 +332,47 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
 .cookie .btn{padding:11px 18px;font-size:.9rem;flex:1}
 .cookie .btn-mini-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(253,247,239,.3)}
 
+/* ---------- Variantes A/B (cadeau vs soi) ---------- */
+[data-variant]{display:none!important}
+body.variant-gift [data-variant="gift"]{display:block!important}
+body.variant-self [data-variant="self"]{display:block!important}
+.gift-tag{display:inline-flex;align-items:center;gap:7px;background:var(--coral);color:#fff;
+  font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:6px 13px;border-radius:999px;margin-bottom:16px}
+
+/* ---------- Section "soyons honnêtes" ---------- */
+.honest{background:var(--ink);color:var(--cream);border-radius:var(--radius-lg);padding:40px 28px;text-align:center}
+.honest h2{color:#fff}
+.honest .lead{color:rgba(253,247,239,.82);max-width:560px;margin:14px auto 26px;font-size:1.05rem}
+.honest-grid{display:grid;gap:16px;max-width:840px;margin:0 auto;text-align:left}
+.honest-item{display:flex;gap:14px;background:rgba(253,247,239,.06);border:1px solid rgba(253,247,239,.12);
+  border-radius:14px;padding:18px 20px}
+.honest-item .em{font-size:1.6rem;flex:none}
+.honest-item h3{color:#fff;font-size:1.05rem;margin-bottom:3px}
+.honest-item p{color:rgba(253,247,239,.78);font-size:.94rem}
+.honest .filter{margin-top:24px;font-size:.95rem;color:var(--gold)}
+
+/* ---------- Section Magicien d'Oz ---------- */
+.oz{background:linear-gradient(150deg,var(--coral),#b84a36);color:#fff;border-radius:var(--radius-lg);
+  padding:42px 28px;position:relative;overflow:hidden}
+.oz::after{content:"";position:absolute;right:-40mm;top:-40mm;width:120mm;height:120mm;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.oz-in{position:relative;z-index:1;max-width:620px;margin:0 auto;text-align:center}
+.oz h2{color:#fff}
+.oz .lead{color:rgba(255,255,255,.92);margin:14px 0 8px;font-size:1.08rem}
+.oz .perks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:18px 0 24px;font-size:.92rem}
+.oz .perks span{display:inline-flex;align-items:center;gap:7px}
+.oz .btn-primary{background:#fff;color:var(--ink)}
+.oz .btn-primary:hover{background:var(--cream)}
+.oz .mini{margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.8)}
+
+/* ---------- Pré-réservation (modale) ---------- */
+.po-reassure{background:rgba(63,125,107,.1);border:1px solid rgba(63,125,107,.25);border-radius:12px;
+  padding:13px 15px;font-size:.86rem;color:var(--ink);margin-bottom:14px;display:flex;gap:10px;line-height:1.45}
+.po-reassure svg{color:var(--green);flex:none;margin-top:2px}
+.or-div{display:flex;align-items:center;gap:12px;margin:16px 0 14px;color:var(--ink-soft);font-size:.82rem}
+.or-div::before,.or-div::after{content:"";flex:1;height:1px;background:var(--line)}
+.price .badge-deposit{display:block;font-size:.78rem;color:var(--green);font-weight:600;margin-top:8px}
+
 /* ============================================================
    Desktop / tablette
    ============================================================ */
@@ -379,9 +420,10 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
       <a href="#comment">Comment ça marche</a>
       <a href="#themes">Thématiques</a>
       <a href="#pricing">Formules</a>
+      <a href="#oz">Familles test</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <button class="btn btn-primary" data-cta data-tier="nav">Rejoindre la liste</button>
+    <button class="btn btn-primary" data-scroll="pricing">Réserver ma place</button>
   </div>
 </header>
 
@@ -390,17 +432,30 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">🎬 Kit de tournage en famille</span>
-        <h1>Transformez vos vidéos de famille en un <span class="accent">vrai court-métrage</span>, livré en 3 jours.</h1>
-        <p class="sub">Vous filmez vous-même avec votre iPhone en suivant nos fiches pas-à-pas. Vous déposez vos rushes&nbsp;: on s'occupe du montage professionnel et on vous livre votre film en moins de 3&nbsp;jours.</p>
-        <div class="hero-cta">
-          <button class="btn btn-primary btn-lg" data-cta data-tier="hero">Je veux être prévenu·e au lancement</button>
-          <a href="#comment" class="btn btn-ghost btn-lg">Voir comment ça marche</a>
+        <!-- VARIANTE CADEAU (héro) -->
+        <div data-variant="gift">
+          <span class="gift-tag">🎁 L'idée cadeau qui fait pleurer (de joie)</span>
+          <h1>Offrez un <span class="accent">vrai court-métrage</span> de leur famille, monté et livré en 3 jours.</h1>
+          <p class="sub">Le cadeau parfait pour des (grands-)parents&nbsp;: ils filment leurs moments avec leur smartphone en suivant notre guide pas-à-pas, on monte le film, vous offrez un souvenir inoubliable.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" data-scroll="pricing">Offrir un court-métrage</button>
+            <button class="btn btn-ghost btn-lg" data-oz>Devenir famille test</button>
+          </div>
+        </div>
+        <!-- VARIANTE POUR SOI -->
+        <div data-variant="self">
+          <span class="eyebrow">🎬 Kit de tournage en famille</span>
+          <h1>Transformez vos vidéos de famille en un <span class="accent">vrai court-métrage</span>, livré en 3 jours.</h1>
+          <p class="sub">Vous filmez vous-même avec votre smartphone en suivant nos fiches pas-à-pas. Vous déposez vos rushes&nbsp;: on monte votre film et on vous le livre en moins de 3&nbsp;jours.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" data-scroll="pricing">Créer notre film</button>
+            <button class="btn btn-ghost btn-lg" data-oz>Devenir famille test</button>
+          </div>
         </div>
         <div class="hero-trust">
           <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Juste un smartphone</span>
           <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Aucun talent requis</span>
-          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Montage pro inclus</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Montage soigné inclus</span>
         </div>
       </div>
       <div class="hero-visual">
@@ -456,6 +511,26 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
         <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
         <h3>Recevez votre film en 3 jours</h3>
         <p>On monte, on ajoute musique, titres et étalonnage. Vous recevez votre court-métrage prêt à partager.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MAGICIEN D'OZ (recrutement familles test) ============== -->
+<section class="section" id="oz">
+  <div class="wrap">
+    <div class="oz">
+      <div class="oz-in">
+        <span class="gift-tag" style="background:rgba(255,255,255,.18)">🎬 On démarre — places limitées</span>
+        <h2>Devenez l'une de nos 10 premières familles</h2>
+        <p class="lead">On lance Clap de Famille et on cherche <b>10 familles pilotes</b>. Vous tournez votre film avec notre kit, on le monte <b>gratuitement</b>, en échange de votre retour honnête sur l'expérience.</p>
+        <div class="perks">
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> 100&nbsp;% gratuit</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Votre court-métrage offert</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Vous façonnez le service</span>
+        </div>
+        <button class="btn btn-primary btn-lg" data-oz>Je veux être une famille test</button>
+        <p class="mini">⚠️ Ça demande de filmer ~1 à 2 h en famille. On cherche des gens vraiment motivés, pas juste curieux.</p>
       </div>
     </div>
   </div>
@@ -534,60 +609,81 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
   </div>
 </section>
 
+<!-- ============== SOYONS HONNÊTES (filtre activation) ============== -->
+<section class="section" id="honnete" style="padding-top:0">
+  <div class="wrap">
+    <div class="honest">
+      <span class="eyebrow" style="background:rgba(230,162,60,.18)">Promis, on ne vous ment pas</span>
+      <h2>Soyons honnêtes : c'est vous qui filmez</h2>
+      <p class="lead">Clap de Famille n'est pas une appli magique. C'est un vrai petit projet en famille — et c'est justement ce qui le rend unique. Voici ce que ça demande, sans enrobage.</p>
+      <div class="honest-grid">
+        <div class="honest-item"><span class="em">⏱️</span><div><h3>1 à 2 h de tournage</h3><p>Vous suivez notre shot-list pas-à-pas. C'est guidé, c'est ludique, mais ça reste un moment à bloquer en famille.</p></div></div>
+        <div class="honest-item"><span class="em">📱</span><div><h3>Vous, votre smartphone, notre guide</h3><p>On vous dit exactement quoi filmer et comment. Pas de matériel, pas de logiciel — mais c'est bien vous derrière la caméra.</p></div></div>
+        <div class="honest-item"><span class="em">🎬</span><div><h3>Le reste, c'est nous</h3><p>Vous déposez vos rushes, on s'occupe du montage, de la musique, des titres et de la couleur. Vous recevez le film en 3 jours.</p></div></div>
+      </div>
+      <p class="filter">Pas envie de filmer vous-même&nbsp;? Alors ce n'est (sincèrement) pas pour vous — et c'est très bien ainsi.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============== PRICING ============== -->
 <section class="section" id="pricing">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Tarifs de lancement</span>
       <h2>Choisissez votre formule</h2>
-      <p>Un tarif unique par film, sans abonnement. Vous payez seulement quand vous tournez.</p>
+      <p>Un tarif unique par film, sans abonnement. <b>Réservez votre place dès maintenant</b> avec un dépôt 100&nbsp;% remboursable.</p>
     </div>
     <div class="prices">
-      <!-- Essentiel -->
+      <!-- Auto (100% automatisé) -->
       <div class="price">
-        <div class="tier">Essentiel</div>
-        <div class="amount"><span class="num">39</span><span class="cur">€</span></div>
+        <div class="tier">Auto</div>
+        <div class="amount"><span class="num">49</span><span class="cur">€</span></div>
         <div class="per">par film livré</div>
-        <p class="desc">Pour tester l'expérience et obtenir un joli souvenir monté.</p>
+        <p class="desc">Le souvenir monté, en express, sans intervention humaine.</p>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Kit de tournage guidé complet</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Shot-list & guide iPhone</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Montage automatisé simple</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Livraison en 3 jours</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Shot-list & guide iPhone/Samsung</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Montage 100&nbsp;% automatisé</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Livraison express</li>
         </ul>
-        <button class="btn btn-ghost btn-block" data-cta data-tier="essentiel">Je veux cette formule</button>
+        <button class="btn btn-ghost btn-block" data-preorder data-tier="auto">Réserver ma place</button>
+        <span class="badge-deposit">Dépôt remboursable aujourd'hui</span>
       </div>
-      <!-- Confort (recommandée) -->
-      <div class="price featured">
-        <div class="pop">★ La plus choisie</div>
+      <!-- Confort -->
+      <div class="price" data-feat="self">
+        <div class="pop" data-feat-pop>★ La plus choisie</div>
         <div class="tier">Confort</div>
-        <div class="amount"><span class="num">69</span><span class="cur">€</span></div>
+        <div class="amount"><span class="num">89</span><span class="cur">€</span></div>
         <div class="per">par film livré</div>
-        <p class="desc">Le meilleur équilibre : un film personnalisé qui a vraiment du style.</p>
+        <p class="desc">Un film façonné main : la finition d'un monteur, le goût en plus.</p>
         <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Tout l'Essentiel, et&nbsp;:</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Montage soigné par un monteur</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Tout l'Auto, et&nbsp;:</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Curation & finition par un monteur</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Musique & titres personnalisés</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Étalonnage couleur cinéma</li>
         </ul>
-        <button class="btn btn-primary btn-block" data-cta data-tier="confort">Je veux cette formule</button>
+        <button class="btn btn-primary btn-block" data-preorder data-tier="confort">Réserver ma place</button>
+        <span class="badge-deposit">Dépôt remboursable aujourd'hui</span>
       </div>
-      <!-- Premium -->
-      <div class="price">
-        <div class="tier">Premium</div>
-        <div class="amount"><span class="num">119</span><span class="cur">€</span></div>
+      <!-- Cadeau / Premium (héro) -->
+      <div class="price" data-feat="gift">
+        <div class="pop" data-feat-pop>🎁 Le cadeau qu'on n'oublie pas</div>
+        <div class="tier">Cadeau</div>
+        <div class="amount"><span class="num">149</span><span class="cur">€</span></div>
         <div class="per">par film livré</div>
-        <p class="desc">L'expérience complète, accompagnée, pour un vrai grand film.</p>
+        <p class="desc">L'expérience complète à offrir, avec bon cadeau et version longue.</p>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Tout le Confort, et&nbsp;:</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Joli bon cadeau (à offrir)</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Version longue du film</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> 1 visio d'accompagnement au tournage</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Priorité de livraison</li>
         </ul>
-        <button class="btn btn-ghost btn-block" data-cta data-tier="premium">Je veux cette formule</button>
+        <button class="btn btn-primary btn-block" data-preorder data-tier="cadeau">Offrir ce cadeau</button>
+        <span class="badge-deposit">Dépôt remboursable aujourd'hui</span>
       </div>
     </div>
-    <p class="price-note">💡 Aucun paiement aujourd'hui — le service ouvre bientôt. Rejoignez la liste pour être prévenu·e (et bénéficier du tarif de lancement).</p>
+    <p class="price-note">💡 <b>Aucun risque</b> : vous bloquez votre place avec un petit dépôt remboursable à 100&nbsp;%. Le solde n'est dû qu'au lancement, si vous confirmez. Le service n'est pas encore ouvert.</p>
   </div>
 </section>
 
@@ -628,9 +724,12 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
   <div class="wrap">
     <div class="final">
       <div class="wrap-in">
-        <h2>Prêts à filmer votre histoire&nbsp;?</h2>
-        <p>Le service ouvre bientôt. Laissez-nous votre email&nbsp;: vous serez les premiers prévenus, avec le tarif de lancement.</p>
-        <button class="btn btn-primary btn-lg" data-cta data-tier="final">Me prévenir au lancement</button>
+        <h2>Prêts à créer votre histoire&nbsp;?</h2>
+        <p>Réservez votre place avec un dépôt remboursable, ou laissez simplement votre email pour être prévenu·e au lancement.</p>
+        <div class="hero-cta" style="justify-content:center">
+          <button class="btn btn-primary btn-lg" data-scroll="pricing">Réserver ma place</button>
+          <button class="btn btn-ghost btn-lg" data-waitlist data-tier="final" style="color:#fff;border-color:rgba(255,255,255,.4)">Juste me prévenir</button>
+        </div>
       </div>
     </div>
   </div>
@@ -685,7 +784,18 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
       </svg>
       <span class="tier-pill" id="tierPill" hidden></span>
       <h3 id="modalTitle">Soyez prévenu·e au lancement</h3>
-      <p class="m-sub">Laissez votre email&nbsp;: on vous écrit dès que Clap de Famille ouvre, avec le tarif de lancement réservé aux premiers inscrits.</p>
+      <p class="m-sub" id="modalSub">Laissez votre email&nbsp;: on vous écrit dès que Clap de Famille ouvre.</p>
+
+      <!-- Bloc pré-réservation (mode preorder uniquement) -->
+      <div id="preorderBlock" hidden>
+        <div class="po-reassure">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-8.5 9C7.5 19.5 4 17 4 12V6l8.5-3L21 6v6z"/></svg>
+          <span>Vous bloquez votre place avec un <b>dépôt de <span id="depositLabel">5 €</span>, remboursable à 100&nbsp;%</b> si on n'ouvre pas ou si vous changez d'avis. Le solde n'est dû qu'au lancement.</span>
+        </div>
+        <button type="button" class="btn btn-primary btn-block btn-lg" id="preorderBtn">Bloquer ma place (dépôt remboursable)</button>
+        <div class="or-div">ou laissez juste votre email</div>
+      </div>
+
       <form id="waitlistForm" novalidate>
         <div class="field">
           <input type="email" id="email" name="email" placeholder="votre@email.fr" autocomplete="email" required />
@@ -693,10 +803,10 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
         <div class="err" id="formErr">Merci d'entrer une adresse email valide.</div>
         <label class="consent">
           <input type="checkbox" id="consentBox" required />
-          <span>J'accepte d'être recontacté·e par email au sujet du lancement de Clap de Famille. <a href="#faq">En savoir plus</a></span>
+          <span id="consentLabel">J'accepte d'être recontacté·e par email au sujet du lancement de Clap de Famille. <a href="#faq">En savoir plus</a></span>
         </label>
         <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Me prévenir au lancement</button>
-        <p class="small-print">Aucun paiement n'est demandé. On ne stocke que votre email, uniquement pour vous prévenir.</p>
+        <p class="small-print">Aucun email n'est partagé. On ne stocke votre adresse que pour vous prévenir.</p>
       </form>
     </div>
 
@@ -705,9 +815,9 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
       <div class="check">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
-      <h3>C'est noté, merci&nbsp;! 🎬</h3>
-      <p>Le service ouvre bientôt. On vous écrit dès que c'est prêt — promis, pas de spam.</p>
-      <p style="margin-top:14px;font-size:.85rem">En attendant, vous pouvez fermer cette fenêtre et continuer à imaginer votre futur film.</p>
+      <h3 id="successTitle">C'est noté, merci&nbsp;! 🎬</h3>
+      <p id="successMsg">Le service ouvre bientôt. On vous écrit dès que c'est prêt — promis, pas de spam.</p>
+      <p style="margin-top:14px;font-size:.85rem">Vous pouvez fermer cette fenêtre et continuer à imaginer votre futur film.</p>
     </div>
   </div>
 </div>
@@ -731,14 +841,39 @@ footer{padding:44px 0 60px;font-size:.9rem;color:var(--ink-soft)}
    - POSTHOG_KEY  : votre clé projet PostHog Cloud EU
    ============================================================ */
 const CONFIG = {
-  FORMSPREE_ID: "FORMSPREE_ID",                  // <-- à remplacer
+  FORMSPREE_ID: "FORMSPREE_ID",                  // <-- à remplacer (waitlist + Oz)
   POSTHOG_KEY:  "POSTHOG_KEY",                   // <-- à remplacer
-  POSTHOG_HOST: "https://eu.i.posthog.com"       // Cloud EU (RGPD)
+  POSTHOG_HOST: "https://eu.i.posthog.com",      // Cloud EU (RGPD)
+
+  /* Pré-réservation (smoke test paiement) : 1 Stripe Payment Link par formule.
+     Astuce smoke test : pointez ces liens vers un DÉPÔT remboursable (ex. 5 €),
+     PAS le prix complet — le signal d'intention est le même, sans risque légal.
+     Laisser vide ("") => mode démo (aucune redirection, on logge quand même l'intention). */
+  STRIPE_LINKS: { auto: "", confort: "", cadeau: "" },
+  PREORDER_DEPOSIT: "5 €",                        // libellé du dépôt remboursable affiché
+  /* Page de retour après paiement Stripe (à mettre comme "success URL" du Payment Link) :
+     .../merci-precommande.html?tier=confort  -> y déclenche l'event preorder_paid */
 };
 
 /* ---------- État courant ---------- */
-let currentTier = "hero";   // tier d'où vient le dernier clic CTA
+let currentTier = "hero";            // dernière formule concernée
+let currentMode = "waitlist";        // 'waitlist' | 'preorder' | 'oz'
 const CONSENT_KEY = "cdf_consent";   // 'granted' | 'denied'
+const VARIANT_KEY = "cdf_variant";   // 'gift' | 'self'
+
+/* ---------- Variante A/B : cadeau vs soi ---------- */
+function resolveVariant(){
+  const p = new URLSearchParams(location.search).get("v");
+  let v = (p === "gift" || p === "self") ? p : sessionStorage.getItem(VARIANT_KEY);
+  if(v !== "gift" && v !== "self"){
+    // pas de préférence : tirage 50/50 (varié par l'horloge d'arrivée, pas de Math.random requis)
+    v = (new Date().getMilliseconds() % 2 === 0) ? "gift" : "self";
+  }
+  try{ sessionStorage.setItem(VARIANT_KEY, v); }catch(e){}
+  document.body.classList.add("variant-" + v);
+  return v;
+}
+const VARIANT = resolveVariant();
 
 /* ============================================================
    POSTHOG — events anonymisés, opt-out RGPD par défaut
@@ -789,6 +924,7 @@ function applyConsent(state){
         posthog.opt_in_capturing();
         posthog.set_config({persistence:"localStorage+cookie"});
         posthog.capture("page_view", {path: location.pathname});
+        posthog.capture("variant_view", {variant: VARIANT});
       }catch(e){}
     }
     enableScrollTracking();
@@ -840,21 +976,53 @@ const emailInput  = document.getElementById("email");
 const consentBox  = document.getElementById("consentBox");
 const formErr     = document.getElementById("formErr");
 const submitBtn   = document.getElementById("submitBtn");
+const modalTitle  = document.getElementById("modalTitle");
+const modalSubEl  = document.getElementById("modalSub");
+const preorderBlk = document.getElementById("preorderBlock");
+const preorderBtn = document.getElementById("preorderBtn");
+const consentLbl  = document.getElementById("consentLabel");
+const successTtl  = document.getElementById("successTitle");
+const successMsg  = document.getElementById("successMsg");
 
-const TIER_LABELS = {essentiel:"Formule Essentiel · 39 €", confort:"Formule Confort · 69 €", premium:"Formule Premium · 119 €"};
+const TIER_LABELS = {auto:"Formule Auto · 49 €", confort:"Formule Confort · 89 €", cadeau:"Formule Cadeau · 149 €"};
 
-function openModal(tier){
+function setPill(tier){
+  if(TIER_LABELS[tier]){ tierPill.textContent = TIER_LABELS[tier]; tierPill.hidden = false; }
+  else { tierPill.hidden = true; }
+}
+
+/* Ouverture générique de la modale selon le mode */
+function openModal(mode, tier){
+  currentMode = mode;
   currentTier = tier || "hero";
-  // reset
   modalForm.style.display = "block";
   modalSucc.style.display = "none";
   formErr.style.display = "none";
-  // pastille du tier si c'est une formule
-  if(TIER_LABELS[tier]){
-    tierPill.textContent = TIER_LABELS[tier];
-    tierPill.hidden = false;
-  } else {
-    tierPill.hidden = true;
+  preorderBlk.hidden = (mode !== "preorder");
+  setPill(mode === "preorder" ? tier : null);
+
+  if(mode === "preorder"){
+    const label = (TIER_LABELS[tier] || "votre formule").split(" · ")[0].replace("Formule ", "");
+    modalTitle.textContent = "Réservez votre place";
+    modalSubEl.innerHTML = "Soyez parmi les premiers servis sur la formule <b>" + label + "</b> au lancement.";
+    submitBtn.textContent = "Me prévenir gratuitement";
+    consentLbl.innerHTML = "J'accepte d'être recontacté·e au sujet du lancement de Clap de Famille.";
+    successTtl.textContent = "Votre place est notée ! 🎬";
+    successMsg.textContent = "On vous écrit dès l'ouverture. Si vous avez laissé un dépôt, il est 100 % remboursable jusqu'au lancement.";
+  } else if(mode === "oz"){
+    modalTitle.textContent = "Devenir une famille test 🎬";
+    modalSubEl.innerHTML = "Laissez votre email&nbsp;: on revient vers vous pour organiser votre tournage pilote (gratuit). On cherche des familles vraiment motivées à filmer 1-2&nbsp;h.";
+    submitBtn.textContent = "Je veux participer";
+    consentLbl.innerHTML = "Je suis motivé·e pour filmer en famille et j'accepte d'être recontacté·e à ce sujet.";
+    successTtl.textContent = "Génial, merci ! 🙌";
+    successMsg.textContent = "On revient très vite vers vous pour organiser votre tournage pilote. Pensez à regarder vos spams.";
+  } else { /* waitlist */
+    modalTitle.textContent = "Soyez prévenu·e au lancement";
+    modalSubEl.innerHTML = "Laissez votre email&nbsp;: on vous écrit dès que Clap de Famille ouvre.";
+    submitBtn.textContent = "Me prévenir au lancement";
+    consentLbl.innerHTML = "J'accepte d'être recontacté·e par email au sujet du lancement de Clap de Famille.";
+    successTtl.textContent = "C'est noté, merci ! 🎬";
+    successMsg.textContent = "Le service ouvre bientôt. On vous écrit dès que c'est prêt — promis, pas de spam.";
   }
   modal.classList.add("open");
   document.body.style.overflow = "hidden";
@@ -865,17 +1033,48 @@ function closeModal(){
   document.body.style.overflow = "";
 }
 
-/* Tous les CTA -> log cta_click(tier) + ouvre la modale */
-document.querySelectorAll("[data-cta]").forEach(function(btn){
+/* Raccourcis d'ouverture */
+function openWaitlist(tier){ openModal("waitlist", tier); }
+function openPreorder(tier){ track("cta_click", {tier: tier}); openModal("preorder", tier); }
+function openOz(){ openModal("oz", "oz"); }
+
+/* Défilement doux vers une section */
+document.querySelectorAll("[data-scroll]").forEach(function(btn){
   btn.addEventListener("click", function(){
-    const tier = btn.getAttribute("data-tier") || "hero";
-    track("cta_click", {tier: tier});
-    openModal(tier);
+    const el = document.getElementById(btn.getAttribute("data-scroll"));
+    if(el) el.scrollIntoView({behavior:"smooth"});
   });
 });
 
-/* Clic sur une fiche thématique : on log l'ouverture (verrouillée ou non).
-   Le lien fait son travail (ouvre la fiche) ; la fiche gère elle-même la "porte". */
+/* Boutons formules -> pré-réservation */
+document.querySelectorAll("[data-preorder]").forEach(function(btn){
+  btn.addEventListener("click", function(){ openPreorder(btn.getAttribute("data-tier") || "confort"); });
+});
+/* Boutons "juste me prévenir" -> waitlist */
+document.querySelectorAll("[data-waitlist]").forEach(function(btn){
+  btn.addEventListener("click", function(){ openWaitlist(btn.getAttribute("data-tier") || "final"); });
+});
+/* Boutons "famille test" -> Magicien d'Oz */
+document.querySelectorAll("[data-oz]").forEach(function(btn){
+  btn.addEventListener("click", openOz);
+});
+
+/* Bouton dépôt Stripe : log preorder_click puis redirige (ou démo) */
+preorderBtn.addEventListener("click", function(){
+  track("preorder_click", {tier: currentTier});
+  const link = (CONFIG.STRIPE_LINKS || {})[currentTier];
+  if(link){ window.location.href = link; }
+  else {
+    console.info("[Clap de Famille] Stripe non configuré pour", currentTier, "— mode démo (pas de redirection).");
+    // En démo, on bascule sur l'écran de remerciement comme si la place était bloquée.
+    successTtl.textContent = "Démo : place bloquée 🎬";
+    successMsg.textContent = "En production, vous seriez redirigé·e vers le paiement du dépôt remboursable. (Stripe non configuré.)";
+    modalForm.style.display = "none";
+    modalSucc.style.display = "block";
+  }
+});
+
+/* Clic sur une fiche thématique : on log l'ouverture (verrouillée ou non). */
 document.querySelectorAll("[data-fiche]").forEach(function(a){
   a.addEventListener("click", function(){
     track("fiche_open", {tier: a.getAttribute("data-fiche"), locked: a.getAttribute("data-locked") === "1"});
@@ -905,13 +1104,19 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
     return;
   }
   formErr.style.display = "none";
+  const btnLabel = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = "Envoi…";
 
-  /* --- Event analytics : tier uniquement, JAMAIS l'email --- */
-  track("waitlist_submit", {tier: currentTier});
+  /* --- Event analytics : variante + tier/mode, JAMAIS l'email --- */
+  if(currentMode === "oz"){ track("oz_apply", {variant: VARIANT}); }
+  else { track("waitlist_submit", {tier: currentTier, variant: VARIANT, source: currentMode}); }
 
   /* --- Envoi Formspree --- */
+  const formSource = currentMode === "oz" ? "magicien_oz" : ("landing_" + currentMode);
+  const subject = currentMode === "oz"
+    ? "Candidature FAMILLE TEST — Clap de Famille"
+    : "Inscription " + currentMode + " — Clap de Famille (" + currentTier + ")";
   const configured = CONFIG.FORMSPREE_ID && CONFIG.FORMSPREE_ID !== "FORMSPREE_ID";
   let ok = false;
   if(configured){
@@ -920,17 +1125,14 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
         method:"POST",
         headers:{ "Accept":"application/json", "Content-Type":"application/json" },
         body: JSON.stringify({
-          email: email,
-          tier: currentTier,
-          source: "landing_clap_de_famille",
-          _subject: "Nouvelle inscription waitlist — Clap de Famille (" + currentTier + ")"
+          email: email, tier: currentTier, variant: VARIANT,
+          source: formSource, _subject: subject
         })
       });
       ok = res.ok;
     }catch(err){ ok = false; }
   } else {
-    // Mode démo : pas de Formspree configuré
-    console.info("[Clap de Famille] FORMSPREE_ID non configuré — email NON envoyé (mode démo).", {email, tier:currentTier});
+    console.info("[Clap de Famille] FORMSPREE_ID non configuré — email NON envoyé (mode démo).", {email, tier:currentTier, mode:currentMode});
     ok = true;
   }
 
@@ -943,7 +1145,7 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
     formErr.style.display = "block";
   }
   submitBtn.disabled = false;
-  submitBtn.textContent = "Me prévenir au lancement";
+  submitBtn.textContent = btnLabel;
 
   /* =========================================================
      FALLBACK SUPABASE (optionnel) — décommentez pour l'utiliser
@@ -968,6 +1170,20 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
      }catch(err){ console.error("Supabase insert failed", err); }
      ========================================================= */
 });
+
+/* Met en avant la formule selon la variante : Cadeau (gift) ou Confort (self) */
+(function applyVariantFeatured(){
+  document.querySelectorAll("[data-feat-pop]").forEach(function(p){ p.style.display = "none"; });
+  document.querySelectorAll(".price[data-feat]").forEach(function(card){
+    if(card.getAttribute("data-feat") === VARIANT){
+      card.classList.add("featured");
+      var pop = card.querySelector("[data-feat-pop]"); if(pop) pop.style.display = "";
+    }
+  });
+})();
+
+/* Libellé du dépôt de pré-réservation */
+(function(){ var d = document.getElementById("depositLabel"); if(d) d.textContent = CONFIG.PREORDER_DEPOSIT || "5 €"; })();
 
 /* Année dans le footer (statique, pas de Date.now requis) */
 document.getElementById("year").textContent = "2026";

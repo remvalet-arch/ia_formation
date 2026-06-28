@@ -1,271 +1,306 @@
-# 🎬 Clap de Famille — Brief projet
+# 🎬 Clap de Famille — Business Plan (v2, corrigé)
 
-> **But de ce document** : servir de base de travail unique (notamment avec Claude Cowork) pour
-> (1) rédiger le **business plan**, et (2) concevoir la **chaîne d'automatisation** qui permettra de scaler.
-> Il récapitule le concept, l'offre, ce qui est déjà construit, la stratégie de validation, le modèle
-> économique et les questions ouvertes.
+> **Statut** : phase de validation (pré-produit). Réécriture intégrant la critique stratégique.
+> Cette version corrige le risque mal ciblé (appétence → **activation**), recentre le modèle de
+> coût (infra → **main-d'œuvre**), pousse l'**angle cadeau**, et redéfinit la validation autour
+> d'un **test Magicien d'Oz** avant tout investissement produit.
 >
-> _Statut : phase de validation (pré-produit). Dernière mise à jour : voir l'historique git._
+> ⚠️ Tous les chiffres économiques sont des **hypothèses à valider** sur les premiers films réels.
 
 ---
 
 ## 1. Résumé exécutif
 
-**Clap de Famille** transforme les vidéos de famille en un **vrai court-métrage monté**, livré en moins de 3 jours.
+**Clap de Famille** transforme les vidéos de famille en un **court-métrage monté**, livré en
+< 3 jours, via un **kit DIY guidé** : la famille tourne elle-même au smartphone en suivant des
+fiches (thème, shot-list, guide technique), dépose ses rushes, et notre équipe assure le
+**montage semi-automatisé** (sélection, musique, titres, étalonnage).
 
-Le principe : un **kit DIY guidé**. La famille tourne elle-même, avec son smartphone (iPhone ou Samsung),
-en suivant des **fiches d'instructions** (choix d'une thématique, liste de plans à filmer, conseils de tournage,
-guide technique, atelier scénario). Elle **dépose ses rushes**, et notre équipe se charge du **montage
-semi-automatisé** (sélection, musique, titres, étalonnage) pour livrer le film fini rapidement.
+- **Modèle** : paiement à l'acte, pas d'abonnement.
+- **Différenciation** : ni app de montage (trop technique), ni vidéaste (trop cher). On vend
+  **l'accompagnement + le montage soigné**, en laissant la famille capturer ses vrais moments.
 
-- **Modèle** : à l'acte (un paiement par film), pas d'abonnement.
-- **Différenciation** : on ne vend ni une app de montage (trop technique), ni une prestation vidéaste
-  (trop chère). On vend **l'accompagnement + le montage pro**, en laissant la famille capturer ses
-  propres moments authentiques.
-- **Statut actuel** : aucun produit livré encore. On teste l'**appétence** et la **sensibilité au prix**
-  via une landing « fake door » + capture d'emails.
+**Les 3 vérités qui structurent ce plan :**
+1. Le coût n'est pas la techno (~1-5 €/film), c'est la **main-d'œuvre humaine** qu'on garde
+   dans la boucle. Toute la marge se joue là.
+2. Le risque n°1 n'est pas "est-ce que ça plaît ?" mais **"est-ce que la famille tournera et
+   livrera vraiment des rushes exploitables ?"** (activation).
+3. Le moat n'est pas le montage (l'IA le commoditise), c'est **structure + goût humain + cadeau
+   + distribution**.
 
----
-
-## 2. Le problème & l'insight
-
-- Les familles filment énormément (smartphones) mais **n'en font jamais rien** : les vidéos dorment
-  dans la pellicule, jamais montées, jamais regardées.
-- Monter soi-même est **trop long et trop technique** (logiciels, musique, droits, rythme).
-- Faire appel à un vidéaste pro est **cher** et perd la **spontanéité** du moment familial.
-- **Insight** : les gens ne manquent pas d'images, ils manquent de **structure pour bien filmer** et de
-  **temps/compétence pour monter**. On industrialise ces deux manques.
+**Conséquence** : avant de construire, on valide l'activation et l'intention de paiement réelle.
+Le go/no-go ne dépend pas du nombre d'emails, mais de 3 chiffres mesurés sur familles réelles.
 
 ---
 
-## 3. Proposition de valeur
+## 2. Problème & insight
+
+- Les familles filment énormément mais **n'en font jamais rien** : rushes qui dorment, jamais montés.
+- Monter soi-même est **long et technique** ; un vidéaste pro est **cher** et tue la spontanéité.
+- **Insight** : les gens ne manquent pas d'images, ils manquent de **structure pour bien filmer**
+  et de **temps/compétence pour monter**. On industrialise ces deux manques.
+- **Contre-insight (à ne pas oublier)** : filmer 1-2 h de shot-list est un **effort réel**. La
+  raison du succès de CapCut, c'est *zéro devoir maison*. Notre promesse demande de l'engagement —
+  c'est notre principal point de friction, pas un détail.
+
+---
+
+## 3. Proposition de valeur & défendabilité
 
 > « Vous filmez les moments, on en fait un film. »
 
 | Pour la famille | Ce qu'on apporte |
 |---|---|
-| « Je ne sais pas quoi filmer » | Thématique + scénario + **shot-list** prête à l'emploi |
-| « Je filme mal » | **Guide technique** (modes caméra, son, lumière) iPhone & Samsung |
-| « Je n'ai pas le temps de monter » | **Montage pro semi-automatisé** livré en < 3 jours |
-| « Je veux un beau souvenir » | Musique, titres, étalonnage → un **vrai court-métrage** |
+| « Je ne sais pas quoi filmer » | Thème + scénario + **shot-list** prête à l'emploi |
+| « Je filme mal » | **Guide technique** iPhone & Samsung |
+| « Je n'ai pas le temps de monter » | **Montage semi-automatisé + curation humaine**, < 3 j |
+| « Je veux un beau souvenir / un cadeau » | Musique, titres, étalonnage → un vrai court-métrage |
+
+**Où est le moat (important) :** *pas* dans la techno de montage — l'auto-montage IA devient
+gratuit et bon. Notre défendabilité repose sur :
+- **La structure/guidage** (les fiches qui transforment une famille en équipe de tournage).
+- **Le goût humain** (curation, rythme, finition — ce qu'une IA ne fait pas avec âme).
+- **La marque "cadeau émotionnel"** (positionnement, confiance, packaging).
+- **La distribution** (audience/communauté/niche) — *à construire, c'est le maillon faible actuel.*
 
 ---
 
-## 4. Cible & personas
+## 4. Cible & positionnement
 
-- **Cœur de cible** : parents 30–45 ans, équipés smartphone, sensibles aux souvenirs de famille,
-  CSP moyenne/supérieure, à l'aise pour acheter en ligne. **Majoritairement sur mobile.**
-- **Occasions déclencheuses** (saisonnalité forte) : anniversaire, Noël, vacances d'été, naissance,
+- **Cœur de cible** : parents 30–45 ans, équipés smartphone, CSP moyenne/supérieure, à l'aise en
+  ligne, majoritairement mobile.
+- **Occasions déclencheuses** (saisonnalité forte) : Noël, vacances d'été, anniversaire, naissance,
   fête des grands-parents.
-- **Personas pressentis** (à challenger dans le BP) :
-  - *La maman mémoire* — veut figer les moments avant que les enfants grandissent.
-  - *Le papa « projet »* — aime l'idée d'un défi créatif à faire en famille le week-end.
-  - *Le cadeau* — offert aux (grands-)parents : un format « bon cadeau » est à explorer.
+- **Bascule de positionnement à tester — l'angle CADEAU en priorité :**
+  - *Le cadeau* (héro pressenti) — offert aux (grands-)parents. L'acheteur ≠ le filmeur : ça
+    **réduit le problème d'activation**, c'est **moins price-sensitive**, ça **justifie 89-149 €**.
+  - *La maman mémoire* — figer les moments avant que les enfants grandissent.
+  - *Le papa "projet"* — défi créatif du week-end en famille.
 
 ---
 
-## 5. L'offre & le pricing (hypothèses à valider)
+## 5. Offre & pricing (révisé)
 
-Prix **affichés** sur la landing pour mesurer la sensibilité (un paiement par film, sans abonnement) :
-
-| Formule | Prix | Contenu |
-|---|---|---|
-| **Essentiel** | **39 €** | Kit guidé + shot-list + guide iPhone + **montage automatisé simple** + livraison 3 j |
-| **Confort** ⭐ _(recommandée)_ | **69 €** | Tout l'Essentiel + montage soigné par un monteur + **musique & titres personnalisés** + étalonnage |
-| **Premium** | **119 €** | Tout le Confort + **version longue** + **1 visio d'accompagnement** au tournage + priorité |
-
-> ⚠️ Ces prix sont des **hypothèses de test**, pas des prix figés. L'objectif de la phase actuelle est
-> justement de mesurer **quel prix génère le plus d'intention réelle** (cf. §8).
-
-**Pistes de revenus additionnels** (à étudier dans le BP) : option « bon cadeau », tirage/clé USB physique,
-musique premium sous licence, packs multi-films (abonnement annuel « 1 film par trimestre »), B2B
-(crèches, écoles, mariages, EHPAD), affiliation matériel (trépieds, micros).
-
----
-
-## 6. Le parcours client (expérience cible)
-
-1. **Choix du thème** (6 univers : Aventure, Documentaire « une journée », Comédie, Anniversaire, Noël, Vacances).
-2. **Réception du kit** : fiche scénario + guide technique + atelier scénario (PDF / espace en ligne).
-3. **Tournage** en famille avec le smartphone, en suivant la shot-list (1–2 h).
-4. **Dépôt des rushes** via un lien privé sécurisé (sans logiciel à installer).
-5. **Montage** par notre chaîne semi-automatisée + contrôle humain.
-6. **Livraison** du court-métrage en < 3 jours, prêt à partager.
-7. (Boucle) **upsell** : version longue, autre thème, bon cadeau.
-
----
-
-## 7. Ce qui est déjà construit ✅
-
-Tout est dans le dossier `clap-de-famille/` du dépôt.
-
-### a) Landing page « fake door » (`index.html`)
-- Page **statique unique**, mobile-first, déployable sur Vercel en 2 min.
-- Sections : hero, comment ça marche, thématiques, ce qui est inclus, **pricing 3 formules**, FAQ, CTA final.
-- **Capture email** via Formspree (waitlist) + **fallback Supabase** prévu.
-- **Analytics PostHog Cloud EU** (RGPD : opt-out par défaut, bandeau consentement, aucun email envoyé à PostHog).
-- **Aucun paiement déclenché** — promesse honnête « le service ouvre bientôt ».
-
-### b) Kit de fiches (dossier `fiches/`)
-- **Fiche scénario** (pilote : `aventure.html/.pdf`) — pitch, shot-list de 7 plans avec astuces,
-  **tag de mode caméra par plan**, indicateur dialogue, 3 réflexes de pro, rappel de l'offre. Format A4 + mobile.
-- **Guide technique iPhone & Samsung** (`guide-technique.html/.pdf`, 2 pages) — réglages, **tous les modes
-  caméra** (Vidéo, Cinématique, Action, Ralenti, Accéléré, objectifs) avec équivalences Samsung,
-  maîtrise de l'image, **son & dialogues** (avec/sans), erreurs à éviter.
-- **Atelier scénario** (`atelier-scenario.html/.pdf`) — feuille de **brainstorming** à remplir
-  (idée, dialogue ou non, structure en 3 actes, tableau de plans, boîte à idées).
-- **`render-pdf.js`** — script Chromium headless qui exporte n'importe quelle fiche HTML en **PDF A4**.
-
-### c) À produire ensuite (même gabarit)
-- Les **5 autres fiches scénario** : Documentaire, Comédie, Anniversaire, Noël, Vacances.
-- Remplacer les placeholders **nom de marque** + **contact** par les vrais.
-
----
-
-## 8. Stratégie de validation (phase actuelle)
-
-**Méthode** : test « fake door » — on mesure l'intention **avant** de construire le produit.
-
-### Événements trackés (PostHog, anonymes)
-| Event | Propriété | Ce qu'il révèle |
-|---|---|---|
-| `page_view` | `path` | Volume de trafic (dénominateur) |
-| `scroll_50` / `scroll_90` | — | Profondeur de lecture / intérêt |
-| `cta_click` | `tier` | **Appétence par prix** (clic sur Essentiel / Confort / Premium) |
-| `waitlist_submit` | `tier` | **Intention réelle** (email laissé) par formule |
-
-### Critères de décision (à arbitrer dans le BP)
-- **Taux de conversion** waitlist / visiteurs : `< 2 %` faible · `2–5 %` correct · `> 5 %` fort.
-- **Répartition des clics par prix** : beaucoup d'Essentiel → marché price-sensitive ; penchant Confort/Premium → marge possible.
-- **Funnel** `cta_click(tier) → waitlist_submit(tier)` : écart entre « ça m'intéresse » et « je m'engage ».
-- Sources de trafic à tester : Meta/Instagram Ads (cible parents), groupes Facebook famille, Pinterest, bouche-à-oreille.
-
-### Prochaines briques de validation
-- Mettre en place les clés `FORMSPREE_ID` + `POSTHOG_KEY` et déployer en prod (Vercel).
-- Lancer un **petit budget pub** (ex. 100–300 €) pour générer du trafic qualifié.
-- Optionnel : test de prix A/B (variantes de la grille tarifaire).
-- Optionnel : « smoke test » de paiement (bouton Stripe en pré-commande remboursable) pour mesurer une intention encore plus forte que l'email.
-
----
-
-## 9. La chaîne de production & d'automatisation 🏭 (cœur du scale)
-
-> Objectif : tenir la promesse **« livré en 3 jours »** tout en gardant une **marge** correcte et une
-> **qualité** constante, même avec beaucoup de commandes. C'est ici que se joue le « semi-automatisé ».
-
-### 9.1 Vue d'ensemble du pipeline
-
-```
-[1] Commande & brief      → choix thème + formule (web)
-[2] Kit envoyé            → fiches PDF / espace client
-[3] Tournage (client)     → smartphone
-[4] Dépôt des rushes      → upload sécurisé
-[5] Ingestion & tri       → contrôle, dérushage
-[6] Montage               → assemblage sur template + musique + titres + étalonnage
-[7] Contrôle qualité      → relecture humaine
-[8] Livraison             → lien de visionnage + téléchargement
-[9] Après-vente / upsell  → feedback, version longue, nouveau thème
-```
-
-### 9.2 Où mettre l'automatisation (étape par étape)
-
-| Étape | Aujourd'hui (manuel / MVP) | Cible automatisée | Pistes outils / tech |
+| Formule | Prix | Contenu | Note |
 |---|---|---|---|
-| Commande & paiement | Formulaire | Checkout + génération de commande | Stripe, Tally/Typeform, Airtable/Notion comme back-office |
-| Envoi du kit | Email manuel | Email auto déclenché à l'achat | Make/Zapier/n8n + email transactionnel (Resend, Postmark) |
-| Dépôt des rushes | Lien partagé | Espace upload nommé par commande, notifs auto | Uppy + S3/Cloudflare R2, ou Google Drive/Dropbox API |
-| Ingestion & tri | Visionnage complet | **Dérushage assisté** : détection de scènes, suppression des plans flous/noirs, transcription | ffmpeg, PySceneDetect, Whisper (transcription), modèles de qualité d'image |
-| Montage | 100 % à la main | **Montage sur template** : on mappe shot-list → timeline, calage musical auto, titres dynamiques | Templates (Premiere/DaVinci/Final Cut), ou rendu programmatique (ffmpeg, Shotstack API, Remotion), auto-sync musique |
-| Étalonnage | Manuel | LUT/preset par thème appliqué automatiquement | LUTs par univers, auto-color |
-| Contrôle qualité | — | Relecture humaine **systématique** (garde-fou qualité) | Checklist QC, double validation |
-| Livraison | Lien manuel | Page de visionnage générée + email auto | Page client, lien expirable, watermark levé après paiement |
-| Suivi / SAV | Manuel | Relances, NPS, upsell automatisés | Séquences email, CRM léger |
+| **Auto** | **49 €** | Kit + shot-list + **montage 100 % automatisé**, aucune main humaine, livraison express | Remplace l'ancien 39 € : sans humain → marge protégée |
+| **Confort** ⭐ | **89 €** | Auto + **curation & finition par un monteur** + musique/titres perso + étalonnage | Cœur de gamme |
+| **Cadeau / Premium** | **149 €** | Confort + **bon cadeau** + version longue + priorité saisonnière | Positionnement héro |
 
-### 9.3 Principe directeur : « semi-automatisé »
-- **Automatiser le répétitif** (ingestion, dérushage, assemblage sur template, titres, étalonnage par preset, emails).
-- **Garder l'humain** sur ce qui fait la **qualité perçue** : le choix des meilleurs plans, le rythme,
-  le contrôle final. C'est le différenciateur vs un montage 100 % auto sans âme.
-- **Le kit guidé sert l'automatisation** : si la famille filme la bonne shot-list dans le bon ordre avec
-  les bons modes, les rushes arrivent **prêts à monter** → moins de travail manuel → marge + délai tenus.
-  → _Plus les fiches sont bonnes, plus la chaîne scale._
+**Changements clés vs v1 :**
+- L'ancien **39 € avec humain est supprimé** : il attirait les price-sensitive produisant les
+  pires rushes et le plus de SAV, pour une marge négative dès qu'un humain y touchait.
+- Le **49 € est 100 % automatisé** (aucune main-d'œuvre) → c'est l'offre d'appel sûre côté marge.
+- **Ancrage sur 89/149 €** et **formule cadeau en héro**.
 
-### 9.4 Templates par thème (la clé de l'industrialisation)
-Chaque thème = un **template de montage** réutilisable : structure narrative (intro / corps / fin),
-banque musicale dédiée, jeu de titres, LUT couleur. Le montage devient « remplir un template avec les
-bons rushes » plutôt que « partir d'une page blanche ».
-
-### 9.5 Capacité & délais (à modéliser dans le BP)
-- Temps de traitement par film (objectif) : ___ h main d'œuvre (à mesurer sur les 1ers films).
-- Nb de films/jour par monteur : ___ → goulot d'étranglement = étape de montage/QC.
-- Effet de l'automatisation : viser une **réduction X %** du temps de montage à qualité égale.
+**Revenus additionnels à étudier** : bon cadeau (déjà intégré), tirage/clé USB, packs multi-films
+saisonniers, B2B (crèches, écoles, mariages, EHPAD), affiliation matériel.
 
 ---
 
-## 10. Modèle économique (cadre pour le BP)
+## 6. Parcours client & funnel d'activation (section critique)
 
-> À remplir avec des chiffres réels une fois les premiers films produits. Cadre de calcul :
+### 6.1 Parcours cible
+1. Choix du thème (6 univers) · 2. Réception du kit · 3. Tournage (1-2 h) · 4. Dépôt des rushes ·
+5. Montage semi-auto + QC · 6. Livraison < 3 j · 7. Upsell (version longue, autre thème, cadeau).
 
-- **Revenu / film** : 39 € · 69 € · 119 € selon formule. **Panier moyen** = dépend du mix de formules (à observer via `waitlist_submit.tier`).
-- **Coûts variables / film** : main d'œuvre montage + QC, stockage/bande passante, licences musique, frais de paiement (~1,5 %+0,25 € Stripe).
-- **Marge brute / film** = prix − coûts variables. _L'automatisation vise à faire baisser le coût de main d'œuvre._
-- **Coûts d'acquisition (CAC)** : budget pub / nb de clients. À comparer au **panier moyen** et à la **LTV** (réachats, upsells, saisonnalité).
-- **Coûts fixes** : outils (hébergement, Make/n8n, email, logiciels montage), éventuels freelances monteurs.
-- **Seuil de rentabilité** : nb de films/mois pour couvrir les coûts fixes.
-- **Leviers de marge** : taux de Confort/Premium, automatisation du montage, réduction du dérushage grâce au kit, achats récurrents.
+### 6.2 Le funnel d'activation (le tueur silencieux)
+Chaque marche perd du monde, et le BP doit la mesurer :
 
----
+```
+Payé → Kit ouvert → A réellement filmé → Rushes uploadés → Rushes EXPLOITABLES → Livré → Satisfait
+```
 
-## 11. Risques & hypothèses à challenger
+- **Quelqu'un paie puis ne filme jamais** (la vie) → remboursement, support, mauvais avis.
+- À chiffrer : taux de non-livraison post-achat (hypothèse prudente : 20-40 % en DIY).
+- **L'angle cadeau atténue** ce risque (motivation sociale : on a été offert un cadeau, on s'exécute).
 
-- **Demande** : les gens disent-ils oui *et* paient-ils ? (l'email ≠ l'achat → envisager smoke test paiement).
-- **Qualité des rushes** : si les familles filment mal malgré le kit, le coût de montage explose. → qualité des fiches = critique.
-- **Délai 3 jours** : tenable à la montée en charge ? Dépend de l'automatisation et de la capacité monteurs.
-- **Saisonnalité** : pics (Noël, été, anniversaires) → gérer la charge variable.
-- **Droits & RGPD** : vidéos de mineurs, consentement, conservation/suppression des rushes, hébergement EU.
-- **Concurrence / substituts** : apps de montage auto (CapCut, etc.), vidéastes, « ne rien faire ».
-- **Dépendance plateformes** : coût d'acquisition pub (Meta) qui dérive.
-
----
-
-## 12. Roadmap (proposition)
-
-- **Phase 0 — Validation (en cours)** : landing live + clés configurées + trafic payant + analyse des métriques.
-- **Phase 1 — MVP manuel** : si signal positif, produire 5–10 films « à la main » pour mesurer temps réel, coûts, satisfaction.
-- **Phase 2 — Semi-automatisation** : templates par thème, dérushage assisté, emails & dépôt automatisés.
-- **Phase 3 — Scale** : montage programmatique partiel, recrutement monteurs freelance, upsells & saisonnalité, B2B/cadeau.
+### 6.3 Workflow "rushes inexploitables" (manquant en v1, indispensable)
+Vertical, sombre, vent, shot-list incomplète → procédure définie à l'avance :
+- Détection auto à l'ingestion (qualité image/son, complétude shot-list).
+- Si sous le seuil → message guidé "re-filme ces 3 plans" **avant** montage.
+- Sinon → montage best-effort + attente posée + éventuel geste commercial.
+- **Impact** : pilote directement coût de montage, satisfaction et taux de remboursement.
 
 ---
 
-## 13. Questions ouvertes pour le business plan (à traiter avec Cowork)
+## 7. Production & automatisation (recentré)
 
-1. **Positionnement prix** : confirme-t-on 39/69/119 € ? Le panier cible ? Une offre « cadeau » ?
-2. **Marché** : taille estimée (France d'abord ?), saisonnalité, canaux d'acquisition prioritaires.
-3. **Unit economics** : coût réel de production d'un film, marge par formule, CAC cible, LTV.
-4. **Production** : internaliser les monteurs ou réseau de freelances ? Quel niveau d'automatisation Phase 2 ?
-5. **Stack outillage** : choix back-office (Airtable/Notion), orchestration (Make/n8n), paiement (Stripe), stockage (R2/S3).
-6. **Juridique** : CGV, mentions, RGPD/mineurs, conservation des rushes, licences musique.
-7. **Objectifs chiffrés** : seuil de rentabilité, nb de films/mois à 6 et 12 mois, besoin de financement éventuel.
-8. **Go / No-go** : quels seuils de validation déclenchent le passage en Phase 1 ?
+> Le « semi-automatisé » n'a qu'un seul but : **réduire le temps humain par film** sans tuer la
+> qualité perçue. C'est là, et nulle part ailleurs, que se joue la marge.
+
+### 7.1 Pipeline
+```
+[1] Commande & brief → [2] Kit envoyé → [3] Tournage (client) → [4] Dépôt rushes →
+[5] Ingestion & tri → [6] Montage sur template → [7] QC humain → [8] Livraison → [9] SAV/upsell
+```
+
+### 7.2 La brique qui décide de tout : l'auto-assemblage
+Mapper shot-list → timeline + calage musical + titres + LUT par thème, pour que l'humain
+**finisse** au lieu de **refaire**. 
+- Si l'auto-assemblage est bon → 15-25 min de finition/film → **marge OK**.
+- S'il est moyen → le monteur reprend tout → 60-120 min → **marge détruite**.
+- C'est la partie la plus dure à coder (plusieurs mois en solo, jamais "finie"). **Priorité tech n°1**,
+  mais **seulement après validation activation.**
+
+### 7.3 Où automatiser (et avec quoi — self-hosted, je code)
+| Étape | Cible automatisée | Outils |
+|---|---|---|
+| Commande/paiement | Checkout + commande générée | Stripe, back-office Airtable/Notion |
+| Envoi kit | Email auto à l'achat | n8n (self-host) + Resend |
+| Dépôt rushes | Espace upload nommé par commande | Uppy + Cloudflare R2 |
+| Ingestion/tri | Détection scènes, plans flous/noirs, transcription, **contrôle qualité auto** | ffmpeg, PySceneDetect, Whisper (self-host) |
+| Montage | Assemblage sur template + calage musical + titres | **Remotion** (rendu programmatique), templates DaVinci |
+| Étalonnage | LUT/preset par thème | LUTs par univers |
+| QC | Relecture humaine **systématique** (garde-fou) | Checklist QC |
+| Livraison | Page de visionnage + email auto | Page client, lien expirable |
+| SAV/upsell | Relances, NPS, upsell | Séquences email n8n |
+
+### 7.4 Capacité & saisonnalité (à modéliser, non négligeable)
+- 300 films/mois ≈ **1-2 ETP monteur** selon temps/film.
+- Pic Noël : 60-100 films sur une semaine → besoin d'un **banc de freelances** sous-utilisé hors saison.
+  **Coût de capacité réel** à intégrer (le SLA 3 j casse au pic si non géré).
 
 ---
 
-## 14. Annexes
+## 8. Modèle économique & unit economics (le cœur)
+
+> **Le coût qui compte n'est pas l'infra, c'est la main-d'œuvre.** Démonstration ci-dessous.
+
+### 8.1 Coût infra / SaaS (négligeable, self-hosted)
+| Poste | Coût mensuel (≈) | Par film @ 200/mois |
+|---|---|---|
+| Stockage R2 (purge 30-60 j) | 50-200 € | 0,25-1 € |
+| n8n self-host (VPS) | 10-30 € | ~0,1 € |
+| Compute rendu/transcription | 50-200 € | 0,25-1 € |
+| Email (Resend) | ~20 € | 0,1 € |
+| **Total infra** | **~300-800 €** | **~1-3 € / film** |
+| Stripe (par transaction) | — | ~1,3 € @ 89 € |
+| Licence musique commerciale ⚠️ | **à vérifier** | 2-5 € (hypothèse) |
+
+> ⚠️ **Licence musique** = risque légal, pas une simple ligne de coût. Le tier perso
+> (Epidemic/Artlist) **ne couvre pas** la revente de livrables clients. Vérifier le tier
+> commercial/"for clients" avant tout lancement.
+
+### 8.2 Le vrai coût : main-d'œuvre montage + QC
+- Monteur freelance FR : **25-50 €/h**.
+- Temps/film selon qualité auto-assemblage : 20 min (bon) à 90 min (rushes pourris).
+- → **13 € à 75 € de main-d'œuvre par film**. C'est l'ordre de grandeur qui domine tout le reste.
+
+### 8.3 P&L illustratif par film (hypothèses à valider)
+*CAC Meta supposé 25 € · temps montage 45 min @ 40 €/h = 30 € (cas "auto moyen").*
+
+| | Auto 49 € (0 humain) | Confort 89 € | Cadeau 149 € |
+|---|---|---|---|
+| Revenu | 49 € | 89 € | 149 € |
+| Main-d'œuvre | 0 € | 30 € | 30 € |
+| Infra + Stripe + musique | ~5 € | ~7 € | ~8 € |
+| **Marge brute** | **~44 €** | **~52 €** | **~111 €** |
+| − CAC (25 €) | **19 €** | **27 €** | **86 €** |
+| − non-livraison/SAV (prudent) | fragile | mince | **solide** |
+
+**Lecture :**
+- L'ancien **39 € avec humain** : marge brute ≈ 1 € → **négatif après CAC**. Confirmé : à supprimer.
+- **Confort 89 €** ne tient *que* si le temps de montage descend (auto-assemblage bon). À 90 min, il
+  passe en négatif après CAC.
+- **Cadeau 149 €** est le **seul vraiment confortable** → renforce le positionnement cadeau.
+
+### 8.4 Le nerf de la guerre : CAC × fréquence
+- Achat **one-shot, occasionnel** (1-2x/an max) → **LTV structurellement faible**.
+- Acquisition payante permanente = **tapis roulant** : il faut soit un CAC très bas (distribution
+  organique, communauté, cadeau viral), soit un panier élevé (→ cadeau), soit de la récurrence
+  (→ packs saisonniers / abonnement "1 film par trimestre").
+- **Question de viabilité n°1** (pas une note de bas de page) : *quel chemin crédible vers une
+  marge positive après CAC à 200-300 films/mois ?*
+
+---
+
+## 9. Stratégie de validation (réordonnée)
+
+### 9.1 Test Magicien d'Oz — AVANT tout (priorité absolue)
+10 vraies familles, gratuit, montage 100 % à la main. On mesure les **3 chiffres qui décident** :
+1. **% qui livrent vraiment** (activation).
+2. **Qualité des rushes** (pilote le coût de montage).
+3. **Temps de montage réel/film** (pilote la marge).
+
+> La landing ne dira jamais ça. Sans ces 3 chiffres, on valide du vent.
+
+### 9.2 Landing refonte (en parallèle) — teste l'intention, pas l'appétence
+- A/B **"cadeau" vs "soi"**.
+- Section **honnête sur l'effort** (filtrer ceux qui ne feront pas le devoir maison).
+- **Smoke test paiement** : pré-commande Stripe **remboursable** (intention > email).
+- CTA **recrutement Magicien d'Oz**.
+- Events PostHog : `variant_view`, `preorder_click(tier)`, `preorder_paid(tier)`, `oz_apply`.
+
+### 9.3 Seuils go/no-go (à arbitrer)
+- Activation Magicien d'Oz < 50 % de livraison → **stop / repenser l'offre**.
+- Temps montage réel > ce que la marge supporte au prix testé → **revoir prix/auto**.
+- Pré-commandes payées ≈ 0 malgré trafic qualifié → **offre/prix/promesse à revoir**.
+- Variante cadeau surperforme → **bascule de positionnement**.
+
+---
+
+## 10. Risques & hypothèses à challenger
+
+| Risque | Pourquoi ça fait mal | Mitigation |
+|---|---|---|
+| **Activation DIY** | On paie mais on ne filme pas → SAV, remboursements, avis | Magicien d'Oz, angle cadeau, kit excellent |
+| **Qualité des rushes** | Mauvais rushes → coût de montage explose | Fiches au top, contrôle auto + re-shoot guidé |
+| **Marge après CAC** | One-shot + CAC → reste ~rien | Panier élevé (cadeau), organique, récurrence |
+| **Auto-assemblage faible** | Toute la thèse de marge s'effondre | Prioriser la brique, mesurer le gain de temps |
+| **Licences musique** | Risque légal sur revente | Tier commercial vérifié avant lancement |
+| **RGPD / mineurs** | Vidéos d'enfants, consentement, conservation | Hébergement EU, purge auto, CGV claires |
+| **Saisonnalité** | SLA 3 j casse au pic Noël | Banc de freelances, file d'attente assumée |
+| **Concurrence IA** | Auto-montage gratuit dans 18 mois | Moat = guidage + goût + cadeau, jamais "on monte mieux" |
+| **Dépendance Meta** | CAC qui dérive | Construire de l'organique/communauté tôt |
+
+---
+
+## 11. Roadmap (avec gates go/no-go)
+
+- **Phase 0 — Validation activation (priorité)** : Magicien d'Oz (10 familles) + landing refonte
+  (cadeau/soi + pré-commande). **Gate** : 3 chiffres + intention de paiement réelle au vert.
+- **Phase 1 — MVP manuel** : 5-10 films payants "à la main" → temps réel, coûts, satisfaction.
+  **Gate** : marge après CAC crédible sur au moins une formule (probablement cadeau).
+- **Phase 2 — Semi-automatisation** : auto-assemblage, ingestion/QC auto, emails & dépôt auto,
+  templates par thème. **Gate** : réduction mesurée du temps de montage.
+- **Phase 3 — Scale** : montage programmatique partiel, banc de freelances, upsells & saisonnalité,
+  B2B/cadeau, organique.
+
+---
+
+## 12. Questions ouvertes / décisions (pour le BP final)
+
+1. **Positionnement** : bascule-t-on en héro "cadeau" ? Quelle formule devient la vitrine ?
+2. **Pricing** : confirme-t-on 49 (auto) / 89 / 149 ? On supprime bien tout humain sous 89 € ?
+3. **Activation** : quel taux de livraison minimum rend le business viable ?
+4. **Auto-assemblage** : quel gain de temps cible (min/film) débloque la marge ?
+5. **CAC/fréquence** : quel mix organique/payant/récurrence vise-t-on ? Pack saisonnier ?
+6. **Capacité** : freelances vs internalisation ? Comment on encaisse le pic de Noël ?
+7. **Juridique** : CGV, RGPD/mineurs, conservation rushes, **licence musique commerciale**.
+8. **Go/No-go** : seuils chiffrés exacts pour passer Phase 0 → 1 → 2.
+
+---
+
+## 13. Annexes
 
 ### Assets & liens
-- **Landing** : `clap-de-famille/index.html` (+ `README.md`, `vercel.json`).
+- **Landing** : `clap-de-famille/index.html` (à refondre — cf. prompt correctif).
 - **Fiches** : `clap-de-famille/fiches/` (aventure, guide-technique, atelier-scenario + PDF).
-- **Aperçu mobile** (githack, branche de dev) :
-  `https://raw.githack.com/remvalet-arch/ia_formation/<branche>/clap-de-famille/index.html`
 - **Repo** : `remvalet-arch/ia_formation`.
 
 ### À fournir / décider
-- Nom de marque définitif (provisoire : « Clap de Famille »).
-- Email de contact + nom de domaine.
-- `FORMSPREE_ID` et `POSTHOG_KEY` (région EU).
-- Budget et canal du 1ᵉʳ test d'acquisition.
+- Nom de marque définitif · email contact · domaine.
+- `FORMSPREE_ID`, `POSTHOG_KEY` (EU), clés Stripe.
+- Budget & canal du 1ᵉʳ test d'acquisition.
+- Liste des 10 familles Magicien d'Oz.
 
 ### Glossaire express
-- **Fake door** : page qui présente une offre comme si elle existait, pour mesurer l'intérêt avant de construire.
-- **Dérushage** : tri/sélection des rushes (vidéos brutes) avant montage.
-- **Template de montage** : trame réutilisable (structure + musique + titres + couleurs) par thème.
-- **Unit economics** : économie d'une unité vendue (revenu vs coûts d'un film).
+- **Magicien d'Oz** : on délivre le service à la main, sans automatisation, pour valider la demande
+  réelle avant de construire la techno.
+- **Activation** : part des acheteurs qui vont jusqu'au bout (filment + livrent des rushes exploitables).
+- **Fake door / Smoke test** : page qui mesure l'intérêt (email) ou l'intention de paiement (pré-commande)
+  avant que le produit existe.
+- **Auto-assemblage** : pré-montage automatique (shot-list → timeline + musique + titres + LUT) que
+  l'humain finit au lieu de refaire.
+- **CAC / LTV** : coût d'acquisition d'un client / valeur générée sur sa durée de vie.

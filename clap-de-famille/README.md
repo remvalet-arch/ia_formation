@@ -1,14 +1,22 @@
-# 🎬 Clap de Famille — Landing page « fake door »
+# 🎬 Clap de Famille — Landing de validation (v2)
 
-Page de validation (test d'appétence) pour un kit DIY de tournage de court-métrage
-en famille à l'iPhone, avec montage livré en 3 jours.
+Page de validation pour un kit DIY de tournage de court-métrage en famille, monté et
+livré en 3 jours. **v2 : on ne teste plus l'appétence (email) mais l'activation, l'angle
+cadeau et l'intention de paiement réelle** (cf. `NORTH-STAR.md` et `PROJET-CLAP-DE-FAMILLE.md`).
 
-> ⚠️ Ce n'est **pas** le produit. Aucun service n'existe encore derrière.
-> La page capture uniquement des emails (waitlist) et mesure l'intérêt par prix.
-> Aucun paiement n'est jamais déclenché.
+> ⚠️ Ce n'est **pas** le produit. Aucun service n'existe encore derrière. La pré-réservation
+> repose sur un **dépôt remboursable** (smoke test), pas une vente. Aucune livraison déclenchée.
 
-C'est **une seule page statique** (`index.html`, tout est inline : HTML + CSS + JS).
-Aucun build nécessaire — déployable sur Vercel en 2 minutes.
+**Ce que la page teste :**
+1. **Cadeau vs Soi** — 2 positionnements en A/B (`?v=gift` / `?v=self`, sinon tirage 50/50).
+2. **Intention de paiement** — pré-réservation avec dépôt remboursable (Stripe) > simple email.
+3. **Activation** — section honnête « c'est vous qui filmez » pour filtrer les non-activables.
+4. **Recrutement Magicien d'Oz** — CTA « 10 premières familles ».
+
+C'est **une seule page statique** (`index.html`, tout inline) + une page de retour Stripe
+(`merci-precommande.html`). Aucun build — déployable sur Vercel en 2 minutes.
+
+> Variante forcée par URL pour tes campagnes : `…/index.html?v=gift` (cadeau) ou `?v=self` (pour soi).
 
 ---
 
@@ -45,6 +53,27 @@ const CONFIG = {
 > les clés sont des constantes éditées dans le fichier. Si vous passez plus tard sur Vite,
 > remplacez les valeurs par `import.meta.env.VITE_FORMSPREE_ID` / `VITE_POSTHOG_KEY`
 > et créez un `.env`.
+
+### c) `STRIPE_LINKS` — pré-réservation (smoke test paiement)
+Dans `CONFIG` (`index.html`), renseignez un **Stripe Payment Link** par formule :
+```js
+STRIPE_LINKS: { auto: "https://buy.stripe.com/…", confort: "…", cadeau: "…" },
+PREORDER_DEPOSIT: "5 €",
+```
+> 💡 **Conseil smoke test (recommandé)** : pointez ces liens vers un **dépôt de ~5 €
+> remboursable**, *pas* le prix complet (49/89/149 €). Le signal d'intention est quasi
+> identique, et vous évitez les obligations légales d'une vraie vente (TVA, rétractation).
+> *(Hypothèse à valider avec votre comptable — flaguée.)*
+
+Pour chaque Payment Link Stripe, mettez comme **URL de succès** :
+`https://votre-domaine/merci-precommande.html?tier=confort` (adaptez `tier`). Cette page
+déclenche l'event **`preorder_paid`** — votre signal d'achat le plus fort.
+
+> Tant que `STRIPE_LINKS` est vide, la pré-réservation tourne en **mode démo** (pas de
+> redirection ; l'intention `preorder_click` est quand même loggée).
+
+> ⚠️ **Les fiches verrouillées ont leur propre config** (Formspree/PostHog dans
+> `fiches/build-fiches.js`) — voir §4 bis.
 
 ---
 
@@ -99,7 +128,11 @@ part que dans Formspree.
 | `scroll_50` | — | **Intérêt.** % de visiteurs qui lisent jusqu'à la moitié (jusqu'au pricing ≈). Indique si le hero accroche. |
 | `scroll_90` | — | **Engagement profond.** % qui vont jusqu'à la FAQ/CTA final. Une chute brutale entre 50 et 90 = la page perd les gens en milieu de page. |
 | `cta_click` | `tier` = `nav` \| `hero` \| `essentiel` \| `confort` \| `premium` \| `final` | **⭐ Appétence par prix.** Le signal le plus important : sur quelle formule les gens cliquent. Comparez le volume de clics `essentiel` vs `confort` vs `premium` pour mesurer la sensibilité au prix. |
-| `waitlist_submit` | `tier` (+ `source`) | **Intention réelle.** Visiteur qui laisse son email. Le `tier` indique d'où il vient (formule de prix **ou** thème de fiche) ; `source: "fiche_gate"` distingue les inscriptions venant d'une fiche verrouillée. |
+| `waitlist_submit` | `tier`, `variant`, `source` | **Intention faible (email).** `source` = `waitlist`/`preorder`/`fiche_gate`/`final` ; `variant` = `gift`/`self`. |
+| `variant_view` | `variant` = `gift` \| `self` | **Base de l'A/B.** Quelle variante a été vue (dénominateur par positionnement). |
+| `preorder_click` | `tier` | **Intention forte.** Clic sur « Bloquer ma place » (départ vers le dépôt Stripe). |
+| `preorder_paid` | `tier` | **⭐ Intention RÉELLE.** Dépôt effectué (déclenché sur `merci-precommande.html`). Le vrai signal d'achat. |
+| `oz_apply` | `variant` | **Recrutement Magicien d'Oz.** Candidature « famille test ». Objectif : ≥ 10 qualifiées. |
 | `fiche_open` | `tier` (thème), `locked` | **Intérêt par thème.** Clic sur une carte thématique → quelle histoire attire le plus. `locked:true` = thème verrouillé, `false` = exemple gratuit. |
 | `example_view` | `tier: aventure` | **Curiosité produit.** Clic sur « Voir un exemple de fiche ». Mesure l'envie de voir le contenu réel. |
 | `fiche_locked_view` | `tier` (thème) | **Mur de contenu atteint.** La fiche verrouillée s'est affichée (porte « liste d'attente »). À comparer à `waitlist_submit(source:fiche_gate)` pour le taux de déblocage. |
